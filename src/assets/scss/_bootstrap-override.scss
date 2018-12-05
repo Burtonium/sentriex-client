@@ -1,0 +1,51 @@
+$blue:       #5b86b9 !default;
+$darkblue:   #334c73 !default;
+$darkerblue: #134279 !default;
+$lightblue:  #9dc4f1 !default;
+$indigo:     #6610f2 !default;
+$purple:     #6f42c1 !default;
+$pink:       #e83e8c !default;
+$red:        #ee6d73 !default;
+$orange:     #ee7600 !default;
+$yellow:     #ffc107 !default;
+$green:      #0c9337 !default;
+$teal:       #20c997 !default;
+$cyan:       #03a9f4 !default;
+$white:      #fff    !default;
+$lightgrey:  #f8f9fa !default; 
+$grey:       #6c757d !default;
+$darkgrey:   #343a40 !default;
+$darkergrey: #22262a !default;
+
+$colors: (
+  blue: $blue,
+  darkblue: $darkblue,
+  darkerblue: $darkerblue,
+  lightblue: $lightblue,
+  indigo: $indigo,
+  purple: $purple,
+  pink: $pink,
+  red: $red,
+  orange: $orange,
+  yellow: $yellow,
+  green: $green,
+  teal: $teal,
+  cyan: $cyan,
+  white: $white,
+  gray: $grey,
+  gray-dark: $darkgrey,
+  gray-darker: $darkergrey
+) !default;
+
+$theme-colors: (
+  primary: $orange,
+  secondary: $darkblue,
+  tertiary: $darkerblue,
+  success: $green,
+  info: $lightblue,
+  warning: $yellow,
+  danger: $red,
+  light: $lightgrey,
+  dark: $darkgrey,
+  darker: $darkergrey
+) !default;

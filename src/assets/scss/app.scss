@@ -1,0 +1,48 @@
+@import "bootstrap-override";
+@import "variables";
+@import "~bootstrap/scss/bootstrap.scss";
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: lighter;
+  letter-spacing: 0.75px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: $app-max-width;
+}
+
+.capitalized {
+  text-transform: uppercase;
+}
+
+.capitalize-first::first-letter {
+  text-transform: uppercase;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.no-uppercase { 
+  text-transform:none;
+}
+
+.no-wrap {
+  white-space:nowrap;
+}
