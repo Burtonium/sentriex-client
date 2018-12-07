@@ -3,7 +3,7 @@
     <div class="wrapper mt-5">
       <div class="row text-left">
         <div class="col-md-3">
-          <investment-fund-nav :selected="investmentFundId"/>
+          <investment-fund-nav :selected="investmentFundId" :investmentFunds="investmentFunds"/>
         </div>
         <div class="col-md-6">
           <investment-fund-details :investment-fund="investmentFund"/>

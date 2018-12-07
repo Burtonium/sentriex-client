@@ -38,7 +38,7 @@
         <b-tab title="Performance" active>
           <br>Performance metrics coming soon
         </b-tab>
-        <b-tab title="Manager" >
+        <b-tab title="Manager">
           <br>
           <p>
             Contact:

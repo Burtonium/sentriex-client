@@ -3,14 +3,16 @@ import assert from 'assert';
 import * as types from './mutation_types';
 
 export default {
-  [types.LOGIN](state, csrfToken) {
+  [types.LOGIN](state, { csrfToken, user }) {
     assert(csrfToken, 'CSRF Token was not provided');
+    state.user = user;
     state.authenticated = true;
     state.csrfToken = csrfToken;
   },
   [types.LOGOUT](state) {
     state.authenticated = false;
     state.csrfToken = null;
+    state.user = {};
   },
   [types.SET_BALANCES](state, balances) {
     Vue.set(state, 'balances', balances);

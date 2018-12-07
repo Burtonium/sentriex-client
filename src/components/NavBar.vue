@@ -7,6 +7,11 @@
       </b-navbar-brand>
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav v-if="authenticated">
+          <b-nav-item-dropdown v-if="user.manager" text="manage" style="margin-top: 0.5rem;">
+            <b-dropdown-item href="/manage/investment-funds">
+              My Investment Funds
+            </b-dropdown-item>
+          </b-nav-item-dropdown>
           <b-nav-item href="/investment-funds">
             <b-nav-text>
               Investment Funds

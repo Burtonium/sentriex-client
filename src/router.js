@@ -8,6 +8,7 @@ import Account from '@/views/Account.vue';
 import Balances from '@/views/Balances.vue';
 import InvestmentFunds from '@/views/InvestmentFunds.vue';
 import InvestmentFund from '@/views/InvestmentFund.vue';
+import InvestmentFundManagement from '@/views/manage/InvestmentFundManagement.vue';
 import PageNotFound from '@/views/PageNotFound.vue';
 import store from '@/store';
 
@@ -87,10 +88,48 @@ const router = new Router({
       },
     },
     {
+      path: '/manage/investment-funds/:investmentFundId?',
+      name: 'manage-investment-funds',
+      component: InvestmentFundManagement,
+      meta: { requiresManager: true },
+      async beforeEnter(to, from, next) {
+        await Promise.all([
+          store.dispatch('fetchInvestmentFunds'),
+          store.dispatch('fetchCurrencies'),
+        ]);
+        next(store.state.authenticated || loginWithRedirect(to));
+      }
+    },
+    {
       path: '*',
+      name: 'not-found',
       component: PageNotFound,
     },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(route => route.meta.requiresManager)) {
+    if (store.state.authenticated && store.state.user.manager) {
+      next();
+    } else {
+      next({ name: 'not-found' });
+    }
+  } else {
+    next();
+  }
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(route => route.meta.requiresAdmin)) {
+    if (store.state.authenticated && store.state.user.admin) {
+      next();
+    } else {
+      next({ name: 'not-found' });
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;

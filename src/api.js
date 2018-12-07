@@ -37,6 +37,10 @@ export const fetchInvestmentFunds = () => instance.get('/investment-funds');
 export const fetchInvestmentFundShares = () => instance.get('/investment-fund-shares');
 export const subscribeToFund = ({ id, amount }) => instance.post(`/investment-funds/${id}/subscribe`, { amount });
 export const redeemFromFund = ({ id, amount }) => instance.post(`/investment-funds/${id}/redeem`, { amount });
+export const updateFundBalance = ({ id, amount }) => instance.post(`/investment-funds/${id}/balance-updates`, { amount });
+export const createInvestmentFund = args => instance.post('/investment-funds', { ...args });
+export const updateInvestmentFund = args => instance.patch(`/investment-funds/${args.id}`, { ...args });
+export const fetchInvestmentBalanceUpdates = ({ id }) => instance.get(`/investment-funds/${id}/balance-updates`);
 
 export const errorCodes = {
   INVALID_2FA: 16,

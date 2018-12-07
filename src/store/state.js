@@ -3,7 +3,8 @@ export const STORAGE_KEY = 'durango-project';
 
 const initialState = {
   authenticated: false,
-  user: null,
+  user: {},
+  csrfToken: '',
 };
 
 if (localStorage.getItem(STORAGE_KEY)) {

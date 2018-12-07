@@ -1,12 +1,12 @@
 <template>
   <div>
     <ul class="nav-list">
-      <router-link :to="{ name: 'investment-fund-view',
+      <router-link :to="{ name: routeName,
                           params: { investmentFundId: investmentFund.id }}"
                     tag="li"
                     :key="investmentFund.id"
                     v-for="investmentFund in investmentFunds"
-                    class="clickable"
+                    class="clickable investment-fund-nav-button"
                     :class="{'selected': selected === investmentFund.id}">
           {{ investmentFund.name }}
      </router-link>
@@ -14,26 +14,23 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex';
-
 export default {
-  props: ['selected'],
-  computed: mapGetters(['investmentFunds']),
+  props: ['selected', 'investmentFunds', 'routeName'],
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../assets/scss/bootstrap-override.scss';
 ul {
   border-radius: 3px;
 }
 
-li {
+.investment-fund-nav-button {
   color: map-get($theme-colors, primary);
   padding: 12px;
   border-radius: 3px;
 }
 
-li.selected {
+.investment-fund-nav-button.selected {
   background-color: map-get($theme-colors, primary);
   color:white;
 }
