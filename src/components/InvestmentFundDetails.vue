@@ -18,7 +18,14 @@
             {{ investmentFund.currencyCode }}
           </div>
           <div>
-            12.5% <icon name="play" class="arrow-up"/> weekly
+            <span :class="{ 'text-success': investmentFund.monthlyPerformance > 0,
+                            'text-danger': investmentFund.monthlyPerformance < 0 }">
+              {{ investmentFund.monthlyPerformance }}%
+            </span>
+            <icon name="play" v-if="investmentFund.monthlyPerformance !== 0"
+                  :class="{ 'arrow-up': investmentFund.monthlyPerformance > 0,
+                            'arrow-down': investmentFund.monthlyPerformance < 0 }"/>
+            (monthly)
           </div>
           <div>
             Risk level:
@@ -99,7 +106,7 @@ export default {
 }
 
 .arrow-down {
-  transform: rotate(270deg);
+  transform: rotate(90deg);
   color: map-get($theme-colors, danger);
 }
 </style>

@@ -24,7 +24,10 @@
               {{ investmentFund.riskLevel }}
             </div>
           </td>
-          <td>Pretty good I guess?</td>
+          <td :class="{ 'text-success': investmentFund.monthlyPerformance > 0,
+                        'text-danger': investmentFund.monthlyPerformance < 0 }">
+            {{ investmentFund.monthlyPerformance }}%
+          </td>
           <td class="no-wrap">
             <button class="btn btn-sm btn-outline-primary mr-2"
                     @click.stop="selectedInvestmentFund = investmentFund"

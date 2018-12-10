@@ -23,7 +23,7 @@ VeeValidate.Validator.extend('verify_password', {
   },
 });
 
-Vue.use(VeeValidate);
+Vue.use(VeeValidate, { fieldsBagName: 'veeFields' });
 Vue.use(VueTimeago);
 Vue.component('icon', Icon);
 

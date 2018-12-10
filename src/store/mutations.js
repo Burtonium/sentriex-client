@@ -29,4 +29,7 @@ export default {
   [types.SET_INVESTMENT_FUND_SHARES](state, investmentFundShares) {
     Vue.set(state, 'investmentFundShares', investmentFundShares);
   },
+  [types.SET_INVESTMENT_FUND_BALANCE_UPDATES](state, { id, balanceUpdates }) {
+    Vue.set(state.balanceUpdates, id, balanceUpdates);
+  },
 };

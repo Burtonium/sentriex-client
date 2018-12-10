@@ -33,7 +33,7 @@
 </template>
 <script>
 import { subscribeToFund } from '@/api';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   data() {
@@ -64,11 +64,13 @@ export default {
     },
   },
   methods: {
+    ...mapActions(['fetchBalances']),
     async handleSubscription() {
       await subscribeToFund({
         id: this.investmentFund.id,
         amount: this.amount,
       });
+      await this.fetchBalances();
     },
   },
 };

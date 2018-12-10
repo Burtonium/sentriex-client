@@ -9,7 +9,11 @@ import Balances from '@/views/Balances.vue';
 import InvestmentFunds from '@/views/InvestmentFunds.vue';
 import InvestmentFund from '@/views/InvestmentFund.vue';
 import InvestmentFundManagement from '@/views/manage/InvestmentFundManagement.vue';
+import CryptoManagement from '@/views/admin/CryptoManagement.vue';
 import PageNotFound from '@/views/PageNotFound.vue';
+import Deposits from '@/views/Deposits.vue';
+import Withdrawals from '@/views/Withdrawals.vue';
+
 import store from '@/store';
 
 Vue.use(Router);
@@ -88,6 +92,16 @@ const router = new Router({
       },
     },
     {
+      path: '/deposits',
+      name: 'deposits',
+      component: Deposits,
+    },
+    {
+      path: '/withdrawals',
+      name: 'withdrawals',
+      component: Withdrawals,
+    },
+    {
       path: '/manage/investment-funds/:investmentFundId?',
       name: 'manage-investment-funds',
       component: InvestmentFundManagement,
@@ -98,10 +112,26 @@ const router = new Router({
           store.dispatch('fetchCurrencies'),
         ]);
         next(store.state.authenticated || loginWithRedirect(to));
-      }
+      },
+    },
+    {
+      path: '/admin/crypto/:currencyCode?',
+      name: 'crypto-management',
+      component: CryptoManagement,
+      meta: { requiresAdmin: true },
+      async beforeEnter(to, from, next) {
+        await Promise.all([
+          store.dispatch('fetchCurrencies'),
+        ]);
+        next(store.state.authenticated || loginWithRedirect(to));
+      },
     },
     {
       path: '*',
+      redirect: '/404',
+    },
+    {
+      path: '/404',
       name: 'not-found',
       component: PageNotFound,
     },
@@ -113,7 +143,7 @@ router.beforeEach((to, from, next) => {
     if (store.state.authenticated && store.state.user.manager) {
       next();
     } else {
-      next({ name: 'not-found' });
+      next({ replace: true, name: 'not-found' });
     }
   } else {
     next();
@@ -125,7 +155,7 @@ router.beforeEach((to, from, next) => {
     if (store.state.authenticated && store.state.user.admin) {
       next();
     } else {
-      next({ name: 'not-found' });
+      next({ replace: true, name: 'not-found' });
     }
   } else {
     next();

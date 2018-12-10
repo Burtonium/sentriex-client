@@ -5,6 +5,7 @@ const initialState = {
   authenticated: false,
   user: {},
   csrfToken: '',
+  balanceUpdates: {},
 };
 
 if (localStorage.getItem(STORAGE_KEY)) {

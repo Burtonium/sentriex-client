@@ -40,7 +40,7 @@
           <b-button :href="`/funding/${balance.currency.code}`"
                     variant="outline-primary"
                     size="sm">
-            Fund
+            Deposit
           </b-button>
         </td>
       </tr>

@@ -1,12 +1,18 @@
 <template>
   <div>
     <ul class="nav-list">
+      <router-link v-if="create" tag="li"
+                   :to="{ name: routeName }"
+                   class="clickable nav-button"
+                   :class="{ 'selected': !selected }">
+        Create
+      </router-link>
       <router-link :to="{ name: routeName,
                           params: { investmentFundId: investmentFund.id }}"
                     tag="li"
                     :key="investmentFund.id"
                     v-for="investmentFund in investmentFunds"
-                    class="clickable investment-fund-nav-button"
+                    class="clickable nav-button"
                     :class="{'selected': selected === investmentFund.id}">
           {{ investmentFund.name }}
      </router-link>
@@ -15,22 +21,22 @@
 </template>
 <script>
 export default {
-  props: ['selected', 'investmentFunds', 'routeName'],
+  props: ['selected', 'investmentFunds', 'routeName', 'create'],
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../assets/scss/bootstrap-override.scss';
 ul {
   border-radius: 3px;
 }
 
-.investment-fund-nav-button {
+.nav-button {
   color: map-get($theme-colors, primary);
   padding: 12px;
   border-radius: 3px;
 }
 
-.investment-fund-nav-button.selected {
+.nav-button.selected {
   background-color: map-get($theme-colors, primary);
   color:white;
 }

@@ -40,7 +40,12 @@ export const redeemFromFund = ({ id, amount }) => instance.post(`/investment-fun
 export const updateFundBalance = ({ id, amount }) => instance.post(`/investment-funds/${id}/balance-updates`, { amount });
 export const createInvestmentFund = args => instance.post('/investment-funds', { ...args });
 export const updateInvestmentFund = args => instance.patch(`/investment-funds/${args.id}`, { ...args });
-export const fetchInvestmentBalanceUpdates = ({ id }) => instance.get(`/investment-funds/${id}/balance-updates`);
+export const fetchInvestmentBalanceUpdates = id => instance.get(`/investment-funds/${id}/balance-updates`);
+
+// currencies
+export const createCurrency = currency => instance.post('/currencies', { currency });
+export const updateCurrency = ({ currency, code }) => instance.patch(`/currencies/${code}`, { currency });
+export const addAddresses = ({ code, addresses }) => instance.post(`/currencies/${code}/addresses`, { addresses });
 
 export const errorCodes = {
   INVALID_2FA: 16,

@@ -20,6 +20,7 @@ export default new Vuex.Store({
     balances: s => s.balances,
     investmentFunds: s => s.investmentFunds,
     investmentFundShares: s => s.investmentFundShares,
+    investmentFundBalanceUpdates: s => s.balanceUpdates,
   },
   mutations,
 });

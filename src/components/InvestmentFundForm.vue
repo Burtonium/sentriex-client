@@ -15,18 +15,22 @@
     <div class="form-group">
       <label for="currencyCodeInput">Currency</label>
       <select class="form-control" required v-model="investmentFund.currencyCode">
-        <option v-for="currency in currencies" :value="currency.code">
+        <option v-for="currency in currencies" :value="currency.code" :key="currency.code">
           {{ currency.label }} ({{ currency.code }})
         </option>
       </select>
     </div>
     <div class="form-group">
       <label for="shortDescriptionInput">Short description</label>
-      <textarea class="form-control" v-model="investmentFund.shortDescription" rows="2"/></textarea>
+      <textarea class="form-control"
+                v-model="investmentFund.shortDescription"
+                rows="2"></textarea>
     </div>
     <div class="form-group">
       <label for="detailedDescriptionInput">Detailed description</label>
-      <textarea class="form-control" v-model="investmentFund.detailedDescription" rows="5"/></textarea>
+      <textarea class="form-control"
+                v-model="investmentFund.detailedDescription"
+                rows="5"></textarea>
     </div>
     <div class="form-group">
       <b-btn variant="primary" v-if="!investmentFund.id" type="submit">Create</b-btn>
@@ -44,7 +48,7 @@ export default {
       type: Object,
       required: false,
       default: () => ({}),
-    }
+    },
   },
   computed: {
     ...mapGetters(['currencies']),
@@ -57,7 +61,6 @@ export default {
       } else {
         await createInvestmentFund(this.investmentFund);
       }
-      
       this.fetchInvestmentFunds();
     },
   },

@@ -7,8 +7,8 @@ export default {
     const response = await api.fetchAccount();
     store.commit(types.SET_ACCOUNT, response.data);
   },
-  async fetchCurrencies(store) {
-    if (!store.state.currencies) {
+  async fetchCurrencies(store, config = {}) {
+    if (!store.state.currencies || config.refresh) {
       const response = await api.fetchCurrencies();
       const currencies = {};
       Object.keys(response.data.currencies).forEach((code) => {
@@ -28,5 +28,13 @@ export default {
   async fetchInvestmentFundShares(store) {
     const response = await api.fetchInvestmentFundShares();
     store.commit(types.SET_INVESTMENT_FUND_SHARES, response.data.investmentFundShares);
+  },
+  async fetchInvestmentBalanceUpdates(store, id) {
+    const response = await api.fetchInvestmentBalanceUpdates(id);
+    const { balanceUpdates } = response.data;
+    store.commit(types.SET_INVESTMENT_FUND_BALANCE_UPDATES, {
+      balanceUpdates,
+      id,
+    });
   },
 };

@@ -31,7 +31,7 @@
   </b-modal>
 </template>
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import { redeemFromFund } from '@/api';
 import { BigNumber } from 'bignumber.js';
 
@@ -65,12 +65,14 @@ export default {
     },
   },
   methods: {
+    ...mapActions(['fetchBalances']),
     async handleRedemption() {
       if (this.investmentFund) {
         await redeemFromFund({
           id: this.investmentFund.id,
           amount: this.amount,
         });
+        await this.fetchBalances();
       }
     },
   },
