@@ -13,6 +13,7 @@ import CryptoManagement from '@/views/admin/CryptoManagement.vue';
 import PageNotFound from '@/views/PageNotFound.vue';
 import Deposits from '@/views/Deposits.vue';
 import Withdrawals from '@/views/Withdrawals.vue';
+import Activation from '@/views/Activation.vue';
 
 import store from '@/store';
 
@@ -50,6 +51,13 @@ const router = new Router({
         await store.dispatch('fetchAccount');
         next(store.state.authenticated || loginWithRedirect(to));
       },
+    },
+    {
+      path: '/activate/:token',
+      component: Activation,
+      props: route => ({
+        token: route.params.token
+      })
     },
     {
       path: '/balances',

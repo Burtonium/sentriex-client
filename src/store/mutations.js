@@ -37,5 +37,8 @@ export default {
   },
   [types.SET_DEPOSITS](state, { currencyCode, deposits }) {
     Vue.set(state.deposits, currencyCode, deposits);
-  }
+  },
+  [types.SET_WITHDRAWALS](state, { currencyCode, withdrawals }) {
+    Vue.set(state.withdrawals, currencyCode, withdrawals);
+  },
 };

@@ -28,7 +28,6 @@ export const fetchAccount = () => instance.get('/account');
 export const generateTwoFaSecret = () => instance.get('/2fa/secret');
 export const enableTwoFa = (twofaSecret, twofaToken) => instance.post('/2fa/enable', { data: { twofaSecret, twofaToken } });
 export const disableTwoFa = twofaToken => instance.post('/2fa/disable', { data: { twofaToken } });
-export const fetchTransferMethods = (type, currency) => instance.get(`/${type}/methods/${currency || ''}`);
 
 // BALANCES
 export const fetchBalances = () => instance.get('/balances');
@@ -48,11 +47,14 @@ export const fetchCurrencies = () => instance.get('/currencies');
 
 // DEPOSIT
 export const fetchDepositAddresses = () => instance.get('/deposit-addresses');
-export const fetchMyDeposits = (currencyCode) => instance.get('/deposits', { params: { currencyCode }});
+export const fetchMyDeposits = currencyCode => instance.get('/deposits', { params: { currencyCode } });
 export const generateDepositAddress = currencyCode => instance.post(`/generate-address/${currencyCode}`);
 
 // WITHDRAWAL
-export const createWithdrawal = withdrawal => instance.post('/withdrawals', { withdrawal });
+export const createWithdrawal = args => instance.post('/withdrawals', { ...args });
+export const patchWithdrawal = (id, args) => instance.patch(`/withdrawals/${id}`, { ...args });
+export const fetchMyWithdrawals = currencyCode => instance.get('/withdrawals', { params: { currencyCode } });
+export const cancelWithdrawal = id => instance.post(`/withdrawals/${id}/cancel`);
 
 // ADMIN ROUTES
 
@@ -64,7 +66,10 @@ export const addAddresses = ({ code, addresses }) => instance.post(`/admin/curre
 // DEPOSITS
 export const searchDepositAddress = ({ address, currencyCode }) => instance.get(`/admin/deposit-addresses/${address}`, { params: { currencyCode } });
 export const createDeposit = args => instance.post('/admin/deposits', args);
-export const fetchDeposits = currencyCode => instance.get('/admin/deposits', { params: { currencyCode }});
+export const fetchDeposits = currencyCode => instance.get('/admin/deposits', { params: { currencyCode } });
+
+// WITHDRAWALS
+export const fetchWithdrawals = currencyCode => instance.get('/admin/withdrawals', { params: { currencyCode } });
 
 export const errorCodes = {
   INVALID_2FA: 16,

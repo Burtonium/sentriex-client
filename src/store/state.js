@@ -8,6 +8,7 @@ const initialState = {
   balanceUpdates: {},
   depositAddresses: {},
   deposits: {},
+  withdrawals: {},
 };
 
 if (localStorage.getItem(STORAGE_KEY)) {

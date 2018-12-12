@@ -24,7 +24,7 @@ export default {
   computed: {
     ...mapGetters(['deposits']),
     filteredDeposits() {
-      const c = this.currencyCode; 
+      const c = this.currencyCode;
       return c ? this.deposits[c] : valueConcat(this.deposits);
     }
   },

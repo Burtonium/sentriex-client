@@ -1,12 +1,12 @@
 <template>
   <div class="deposit-history">
-    <h4>Deposit History</h4>
     <spinner v-if="loading" />
     <b-table 
       v-else
       :items="userDeposits" 
       :fields="depositFields" 
       :show-empty="true"
+      stacked="md"
       empty-text="You have no deposits yet">
       <template slot="txId" slot-scope="row">
         {{ row.item.txId }}
@@ -75,10 +75,12 @@ export default {
 };
 </script>
 <style>
-td.txid-ellipsis {
-  max-width: 200px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+@media (min-width: 768px) { 
+  td.txid-ellipsis {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 </style>

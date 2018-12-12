@@ -23,6 +23,7 @@ export default new Vuex.Store({
     investmentFundBalanceUpdates: s => s.balanceUpdates,
     depositAddresses: s => s.depositAddresses,
     deposits: s => s.deposits,
+    withdrawals: s => s.withdrawals,
   },
   mutations,
 });
