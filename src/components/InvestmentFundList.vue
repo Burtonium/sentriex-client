@@ -4,6 +4,7 @@
       <thead>
         <tr>
           <th>Name</th>
+          <th>Currency</th>
           <th>Short Description</th>
           <th>Risk Level</th>
           <th>Performance</th>
@@ -17,6 +18,9 @@
             @click="navigateToInvestmentFund(investmentFund.id)">
           <td>
             {{ investmentFund.name }}
+          </td>
+          <td>
+            {{ investmentFund.currencyCode }}
           </td>
           <td>{{ investmentFund.shortDescription }}</td>
           <td>

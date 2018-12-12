@@ -32,4 +32,10 @@ export default {
   [types.SET_INVESTMENT_FUND_BALANCE_UPDATES](state, { id, balanceUpdates }) {
     Vue.set(state.balanceUpdates, id, balanceUpdates);
   },
+  [types.SET_DEPOSIT_ADDRESSES](state, depositAddresses) {
+    state.depositAddresses = depositAddresses;
+  },
+  [types.SET_DEPOSITS](state, { currencyCode, deposits }) {
+    Vue.set(state.deposits, currencyCode, deposits);
+  }
 };

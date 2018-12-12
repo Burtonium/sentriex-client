@@ -3,7 +3,8 @@
     <div class="wrapper mt-5">
       <div class="row text-left">
         <div class="col-md-3">
-          <currency-nav :selected="currencyCode"
+          <currency-nav :create="true"
+                        :selected="currencyCode"
                         :currencies="currencies"
                         routeName="crypto-management"/>
         </div>
@@ -24,7 +25,9 @@
               </b-tab>
               <b-tab title="Deposits">
                 <br>
-                Manage Deposits
+                <deposit-address-search-form :currencyCode="currencyCode"/>
+                <br>
+                <deposits-table :currencyCode="currencyCode" />
               </b-tab>
               <b-tab title="Server">
                 <br>
@@ -44,6 +47,8 @@ import CurrencyForm from '@/components/CurrencyForm.vue';
 import UserAddressesForm from '@/components/UserAddressesForm.vue';
 import CryptoServerForm from '@/components/CryptoServerForm.vue';
 import ManageUserWithdrawals from '@/components/ManageUserWithdrawals.vue';
+import DepositAddressSearchForm from '@/components/DepositAddressSearchForm.vue';
+import DepositsTable from '@/components/DepositsTable.vue';
 
 export default {
   name: 'manage-crypto',
@@ -53,6 +58,8 @@ export default {
     UserAddressesForm,
     CryptoServerForm,
     ManageUserWithdrawals,
+    DepositAddressSearchForm,
+    DepositsTable,
   },
   computed: {
     ...mapGetters(['currencies']),

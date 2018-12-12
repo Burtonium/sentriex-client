@@ -92,14 +92,38 @@ const router = new Router({
       },
     },
     {
-      path: '/deposits',
+      path: '/deposits/:currencyCode',
       name: 'deposits',
       component: Deposits,
+      async beforeEnter(to, from, next) {
+        await Promise.all([
+          store.dispatch('fetchCurrencies'),
+          store.dispatch('fetchDepositAddresses'),
+          store.dispatch('fetchMyDeposits', to.params.currencyCode),
+        ]);
+        next(store.state.authenticated || loginWithRedirect(to));
+      },
+    },
+    {
+      path: '/withdrawals/:currencyCode',
+      name: 'withdrawals',
+      component: Withdrawals,
+      async beforeEnter(to, from, next) {
+        await Promise.all([
+          store.dispatch('fetchCurrencies'),
+          store.dispatch('fetchBalances'),
+          store.dispatch('fetchAccount'),
+        ]);
+        next(store.state.authenticated || loginWithRedirect(to));
+      },
     },
     {
       path: '/withdrawals',
-      name: 'withdrawals',
-      component: Withdrawals,
+      redirect: '/withdrawals/BTC',
+    },
+    {
+      path: '/deposits',
+      redirect: '/deposits/BTC',
     },
     {
       path: '/manage/investment-funds/:investmentFundId?',
@@ -139,11 +163,24 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
+  if (to.matched.some(route => route.meta.requiresAuth)) {
+    if (store.state.authenticated) {
+      next();
+    } else {
+      next({ name: 'login' });
+    }
+  } else {
+    next();
+  }
+});
+
+
+router.beforeEach((to, from, next) => {
   if (to.matched.some(route => route.meta.requiresManager)) {
     if (store.state.authenticated && store.state.user.manager) {
       next();
     } else {
-      next({ replace: true, name: 'not-found' });
+      next({ name: 'not-found' });
     }
   } else {
     next();
@@ -155,7 +192,7 @@ router.beforeEach((to, from, next) => {
     if (store.state.authenticated && store.state.user.admin) {
       next();
     } else {
-      next({ replace: true, name: 'not-found' });
+      next({ name: 'not-found' });
     }
   } else {
     next();

@@ -1,10 +1,11 @@
 <template>
   <div>
     <ul class="nav-list">
-      <router-link tag="li"
-                       :to="{ name: routeName }"
-                       class="clickable nav-button"
-                       :class="{ 'selected': !selected }">
+      <router-link v-if="create"
+                   tag="li"
+                   :to="{ name: routeName }"
+                   class="clickable nav-button"
+                   :class="{ 'selected': !selected }">
         Create
       </router-link>
       <router-link  v-for="currency in currencies"
@@ -21,7 +22,7 @@
 </template>
 <script>
 export default {
-  props: ['selected', 'currencies', 'routeName'],
+  props: ['selected', 'currencies', 'routeName', 'create'],
 };
 </script>
 <style lang="scss" scoped>

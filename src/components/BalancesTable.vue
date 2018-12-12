@@ -31,13 +31,13 @@
         <td>{{ balance.inFunds }}</td>
         <td>{{ balance.amount }}</td>
         <td>
-          <b-button :href="`/withdraw/${balance.currency.code}`"
+          <b-button :href="`/withdrawals/${balance.currency.code}`"
                     variant="outline-primary"
                     size="sm"
                     class="mr-2">
             Withdraw
           </b-button>
-          <b-button :href="`/funding/${balance.currency.code}`"
+          <b-button :href="`/deposits/${balance.currency.code}`"
                     variant="outline-primary"
                     size="sm">
             Deposit

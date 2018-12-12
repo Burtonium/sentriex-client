@@ -37,4 +37,22 @@ export default {
       id,
     });
   },
+  async fetchDepositAddresses(store) {
+    const response = await api.fetchDepositAddresses();
+    store.commit(types.SET_DEPOSIT_ADDRESSES, response.data.depositAddresses);
+  },
+  async fetchDeposits(store, currencyCode) {
+    const response = await api.fetchDeposits(currencyCode);
+    store.commit(types.SET_DEPOSITS, {
+      currencyCode,
+      deposits: response.data.deposits,
+    });
+  },
+  async fetchMyDeposits(store, currencyCode) {
+    const response = await api.fetchMyDeposits(currencyCode);
+    store.commit(types.SET_DEPOSITS, {
+      currencyCode,
+      deposits: response.data.deposits,
+    });
+  }
 };

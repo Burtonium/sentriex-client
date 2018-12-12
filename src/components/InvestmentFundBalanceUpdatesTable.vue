@@ -2,7 +2,7 @@
   <div>
     <spinner v-if="!balanceUpdates"/>
     <b-table :items="balanceUpdates"
-             :fields="['previousBalance', 'updatedBalance', 'createdAt']" v-else />
+             :fields="['previousBalance', 'updatedBalance', 'updatedSharePrice', 'createdAt']" v-else />
   </div>
 </template>
 <script>

@@ -9,12 +9,19 @@
              required />
     </div>
     <div class="form-group">
-      <label for="currencyCodeInput">Currency</label>
+      <label for="currencyCodeInput">Currency Code</label>
       <input id="currencyCodeInput"
              class="form-control"
              type="text"
              v-model="currency.code"
              required />
+    </div>
+    <div class="form-group">
+      <label for="currencyTypeInput">Type</label>
+      <select class="form-control" v-model="currency.type">
+        <option value="crypto">Crypto</option>
+        <option value="fiat">Fiat</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="precisionInput">Precision</label>
@@ -81,7 +88,7 @@ export default {
     currency: {
       type: Object,
       required: false,
-      default: () => ({ precision: 8 }),
+      default: () => ({ precision: 8, type: 'crypto' }),
     },
   },
   computed: {

@@ -120,6 +120,11 @@ export default {
     RecaptchaButton,
     Checkmark,
   },
+  computed: {
+    fields() {
+      return this.veeFields;
+    }
+  },
   methods: {
     async register(code) {
       this.valid = code && await this.$validator.validateAll();

@@ -6,6 +6,8 @@ const initialState = {
   user: {},
   csrfToken: '',
   balanceUpdates: {},
+  depositAddresses: {},
+  deposits: {},
 };
 
 if (localStorage.getItem(STORAGE_KEY)) {

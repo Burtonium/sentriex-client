@@ -1,8 +1,15 @@
 <template>
-  <div class="loader"></div>
+  <div class="container">
+    <div class="loader"></div>
+  </div>
 </template>
 <style lang="scss" scoped>
 @import '../assets/scss/bootstrap-override.scss';
+
+.container {
+  height: 7.5em;
+}
+
 .loader,
 .loader:before,
 .loader:after {

@@ -27,9 +27,14 @@
               Balances
             </b-nav-text>
           </b-nav-item>
-          <b-nav-item href="/balances">
+          <b-nav-item href="/deposits">
             <b-nav-text>
-              History
+              Deposit
+            </b-nav-text>
+          </b-nav-item>
+          <b-nav-item href="/withdrawals">
+            <b-nav-text>
+              Withdraw
             </b-nav-text>
           </b-nav-item>
         </b-navbar-nav>

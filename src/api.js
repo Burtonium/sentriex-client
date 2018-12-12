@@ -12,7 +12,9 @@ const instance = axios.create({
   withCredentials: true,
 });
 
-// Authentication routes
+// USER ROUTES
+
+// AUTHENTICATION
 export const authenticate = user => instance.post('/authenticate', user);
 export const register = params => instance.post('/register', params);
 export const activate = token => instance.post(`/activate/${token}`);
@@ -21,31 +23,48 @@ export const availability = username => instance.get(`/availability/${username}`
 export const sendResetEmail = email => instance.post('/reset', { email });
 export const resetPassword = args => instance.post(`/reset-password/${args.resetToken || ''}`, { data: args });
 
-// Account routes
+// ACCOUNT
 export const fetchAccount = () => instance.get('/account');
 export const generateTwoFaSecret = () => instance.get('/2fa/secret');
 export const enableTwoFa = (twofaSecret, twofaToken) => instance.post('/2fa/enable', { data: { twofaSecret, twofaToken } });
 export const disableTwoFa = twofaToken => instance.post('/2fa/disable', { data: { twofaToken } });
 export const fetchTransferMethods = (type, currency) => instance.get(`/${type}/methods/${currency || ''}`);
 
-// Balances
-export const fetchCurrencies = () => instance.get('/currencies');
+// BALANCES
 export const fetchBalances = () => instance.get('/balances');
 
-// Investment funds
+// INVESTMENT
 export const fetchInvestmentFunds = () => instance.get('/investment-funds');
 export const fetchInvestmentFundShares = () => instance.get('/investment-fund-shares');
 export const subscribeToFund = ({ id, amount }) => instance.post(`/investment-funds/${id}/subscribe`, { amount });
 export const redeemFromFund = ({ id, amount }) => instance.post(`/investment-funds/${id}/redeem`, { amount });
 export const updateFundBalance = ({ id, amount }) => instance.post(`/investment-funds/${id}/balance-updates`, { amount });
-export const createInvestmentFund = args => instance.post('/investment-funds', { ...args });
-export const updateInvestmentFund = args => instance.patch(`/investment-funds/${args.id}`, { ...args });
+export const createInvestmentFund = args => instance.post('/investment-funds', args);
+export const updateInvestmentFund = args => instance.patch(`/investment-funds/${args.id}`, args);
 export const fetchInvestmentBalanceUpdates = id => instance.get(`/investment-funds/${id}/balance-updates`);
 
-// currencies
-export const createCurrency = currency => instance.post('/currencies', { currency });
-export const updateCurrency = ({ currency, code }) => instance.patch(`/currencies/${code}`, { currency });
-export const addAddresses = ({ code, addresses }) => instance.post(`/currencies/${code}/addresses`, { addresses });
+// CURRENCY
+export const fetchCurrencies = () => instance.get('/currencies');
+
+// DEPOSIT
+export const fetchDepositAddresses = () => instance.get('/deposit-addresses');
+export const fetchMyDeposits = (currencyCode) => instance.get('/deposits', { params: { currencyCode }});
+export const generateDepositAddress = currencyCode => instance.post(`/generate-address/${currencyCode}`);
+
+// WITHDRAWAL
+export const createWithdrawal = withdrawal => instance.post('/withdrawals', { withdrawal });
+
+// ADMIN ROUTES
+
+// CURRENCIES
+export const createCurrency = currency => instance.post('/admin/currencies', { currency });
+export const updateCurrency = ({ code, currency }) => instance.patch(`/admin/currencies/${code}`, { currency });
+export const addAddresses = ({ code, addresses }) => instance.post(`/admin/currencies/${code}/addresses`, { addresses });
+
+// DEPOSITS
+export const searchDepositAddress = ({ address, currencyCode }) => instance.get(`/admin/deposit-addresses/${address}`, { params: { currencyCode } });
+export const createDeposit = args => instance.post('/admin/deposits', args);
+export const fetchDeposits = currencyCode => instance.get('/admin/deposits', { params: { currencyCode }});
 
 export const errorCodes = {
   INVALID_2FA: 16,
@@ -57,6 +76,8 @@ export const errorCodes = {
   INSUFFICIENT_FUNDS: 13,
   INVALID_USER_TOKEN: 11,
   INVALID_CSRF_TOKEN: 40,
+  NO_AVAILABLE_ADDRESS: 46,
+  DEPOSIT_ALREADY_EXISTS: 47,
 };
 
 const invalidTokenCodes = [errorCodes.INVALID_CSRF_TOKEN, errorCodes.INVALID_USER_TOKEN];
