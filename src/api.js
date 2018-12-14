@@ -18,16 +18,16 @@ const instance = axios.create({
 export const authenticate = user => instance.post('/authenticate', user);
 export const register = params => instance.post('/register', params);
 export const activate = token => instance.post(`/activate/${token}`);
-export const resend = identifier => instance.post('/resend', { data: { identifier } });
+export const resend = identifier => instance.post('/resend', {  identifier });
 export const availability = username => instance.get(`/availability/${username}`);
 export const sendResetEmail = email => instance.post('/reset', { email });
-export const resetPassword = args => instance.post(`/reset-password/${args.resetToken || ''}`, { data: args });
+export const resetPassword = args => instance.post(`/reset-password/${args.resetToken || ''}`,  args);
 
 // ACCOUNT
 export const fetchAccount = () => instance.get('/account');
 export const generateTwoFaSecret = () => instance.get('/2fa/secret');
-export const enableTwoFa = (twofaSecret, twofaToken) => instance.post('/2fa/enable', { data: { twofaSecret, twofaToken } });
-export const disableTwoFa = twofaToken => instance.post('/2fa/disable', { data: { twofaToken } });
+export const enableTwoFa = (twofaSecret, twofaToken) => instance.post('/2fa/enable', { twofaSecret, twofaToken });
+export const disableTwoFa = twofaToken => instance.post('/2fa/disable', { twofaToken });
 
 // BALANCES
 export const fetchBalances = () => instance.get('/balances');
@@ -70,6 +70,7 @@ export const fetchDeposits = currencyCode => instance.get('/admin/deposits', { p
 
 // WITHDRAWALS
 export const fetchWithdrawals = currencyCode => instance.get('/admin/withdrawals', { params: { currencyCode } });
+export const updateWithdrawal = ({ id, status, txId }) => instance.patch(`/withdrawals/${id}`, { status, txId });
 
 export const errorCodes = {
   INVALID_2FA: 16,

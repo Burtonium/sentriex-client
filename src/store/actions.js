@@ -59,7 +59,7 @@ export default {
     const response = await api.fetchWithdrawals(currencyCode);
     store.commit(types.SET_WITHDRAWALS, {
       currencyCode,
-      withdrawals: response.data.deposits,
+      withdrawals: response.data.withdrawals,
     });
   },
   async fetchMyWithdrawals(store, currencyCode) {

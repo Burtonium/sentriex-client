@@ -39,11 +39,8 @@
 import { mapActions, mapGetters } from 'vuex';
 import { cancelWithdrawal } from '@/api';
 import Spinner from '@/components/Spinner.vue';
-
-const snakeCaseToCapitalized = text => text
-  .split('_')
-  .map(word => word[0].toUpperCase() + word.substr(1))
-  .join(' ');
+import utils  from '@/utils';
+const { snakeCaseToCapitalized } = utils;
 
 export default {
   data() { 

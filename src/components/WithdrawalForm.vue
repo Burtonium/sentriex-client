@@ -95,13 +95,18 @@ export default {
   },
   watch : {
     currencyCode() {
-      Object.assign(this, cloneDeep(initialState));
+      this.resetForm();
     }
   },
   methods: {
     ...mapActions(['fetchBalances', 'fetchMyWithdrawals']),
+    resetForm() {
+      this.$validator.reset();
+      Object.assign(this, cloneDeep(initialState));
+    },
     async onSubmit() {
       let valid = await this.$validator.validateAll();
+
       if (!valid) {
         return valid;
       }
@@ -109,6 +114,7 @@ export default {
       try {
         response = await createWithdrawal({
           currencyCode: this.currencyCode,
+          twofaToken: this.twofaToken,
           ...this.withdrawal,
         });
         await Promise.all([
@@ -121,14 +127,16 @@ export default {
       }
 
       if (response.data.code === errorCodes.INVALID_2FA) {
-        this.errors.add('code', 'Invalid 2fa code');
+        this.errors.add({
+          field: 'twofa', 
+          msg: 'Invalid 2fa code',
+        });
       }
 
       if (response.data.success) {
         this.$emit('withdrawal', response.data.withdrawal);
+        this.resetForm();
       }
-      
-      Object.assign(this, cloneDeep(initialState));
     },
   },
 };

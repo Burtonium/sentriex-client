@@ -5,7 +5,7 @@
            title="Enable 2FA"
            cancel-variant="outline-primary"
            @change="generateSecret"
-           @ok="enableTwoFa">
+           @ok.prevent="enableTwoFa">
     <p v-if="error" class="text-danger">
       Something went wrong. Please contact support.
     </p>
@@ -26,9 +26,7 @@
                type="number"
                placeholder="2fa code"
                autocomplete="off"
-               :maxlength="6"
-               @input="checkCode"
-               @keydown="preventExtraInput">
+               maxlength="6">
         <br>
         <br>
         <p class="text-danger">
@@ -40,9 +38,7 @@
 </template>
 <script>
 import { enableTwoFa, generateTwoFaSecret, errorCodes } from '@/api';
-
-const keyCodeIsNumber = evt => ((evt.keyCode >= 48 && evt.keyCode <= 57)
-  || (evt.keyCode >= 96 && evt.keyCode <= 109));
+  
 export default {
   data() {
     return {
@@ -59,18 +55,6 @@ export default {
     },
   },
   methods: {
-    preventExtraInput(evt) {
-      if (this.code && this.code.length >= 6 && keyCodeIsNumber(evt)) {
-        evt.preventDefault();
-      }
-    },
-    checkCode() {
-      if (this.code.length === 6) {
-        this.enableTwoFa();
-      } else {
-        this.errors.clear();
-      }
-    },
     async generateSecret(visible) {
       if (visible) {
         const response = await generateTwoFaSecret();
@@ -86,14 +70,14 @@ export default {
       }
     },
     async enableTwoFa(bvEvt) {
-      if (bvEvt) {
-        bvEvt.preventDefault();
-      }
       const valid = await this.$validator.validateAll();
       if (valid) {
         const response = await enableTwoFa(this.secret, this.code);
         if (response.data.code === errorCodes.INVALID_2FA) {
-          this.errors.add('code', 'Invalid 2fa code');
+          this.errors.add({
+            field: 'code',
+            msg: 'Invalid 2FA code',
+          });
         }
 
         if (response.data.code === errorCodes.TWOFA_ALREADY_ENABLED) {
@@ -105,7 +89,6 @@ export default {
           this.code = null;
           this.$validator.reset();
           this.$refs.enableTwoFaModal.hide();
-          this.flash('success', 'Two factor authentication enabled');
           this.$emit('2faEnabled');
         } else {
           this.error = true;

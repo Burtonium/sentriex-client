@@ -8,6 +8,7 @@ import {
   Alert,
   Table,
   FormRadio,
+  Pagination,
 } from 'bootstrap-vue/es/components';
 
 
@@ -19,3 +20,4 @@ Vue.use(Tabs);
 Vue.use(Alert);
 Vue.use(Table);
 Vue.use(FormRadio);
+Vue.use(Pagination);

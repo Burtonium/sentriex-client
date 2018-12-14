@@ -5,7 +5,7 @@
            title="Disable 2FA"
            cancel-variant="outline-primary"
            ok-variant="danger"
-           @ok="disable2fa">
+           @ok.prevent="disable2fa">
     <p v-if="error" class="text-danger">
       Something went wrong. Please contact support.
     </p>
@@ -21,8 +21,7 @@
              type="number"
              placeholder="2fa code"
              autocomplete="off"
-             :maxlength="6"
-             @keydown="preventExtraInput">
+             maxlength="6">
       <br>
       <p class="text-danger">
         {{ errors.first('code') }}
@@ -36,8 +35,6 @@
 <script>
 import { disableTwoFa, errorCodes } from '@/api';
 
-const keyCodeIsNumber = evt => ((evt.keyCode >= 48 && evt.keyCode <= 57)
-  || (evt.keyCode >= 96 && evt.keyCode <= 109));
 export default {
   data() {
     return {
@@ -52,15 +49,7 @@ export default {
     },
   },
   methods: {
-    preventExtraInput(evt) {
-      if (this.code && this.code.length >= 6 && keyCodeIsNumber(evt)) {
-        evt.preventDefault();
-      }
-    },
     async disable2fa(bvEvt) {
-      if (bvEvt) {
-        bvEvt.preventDefault();
-      }
       const valid = await this.$validator.validateAll();
       if (valid) {
         const response = await disableTwoFa(this.code);
@@ -77,7 +66,6 @@ export default {
           this.code = null;
           this.$validator.reset();
           this.$refs.disableTwoFaModal.hide();
-          this.flash('warning', 'Two factor authentication disabled');
           this.$emit('2faDisabled');
         }
       }
