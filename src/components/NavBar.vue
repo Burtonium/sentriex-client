@@ -1,6 +1,6 @@
 <template>
   <header>
-    <b-navbar toggleable="lg" type="dark" class="wrapper">
+    <b-navbar toggleable="lg" type="dark" variant="primary" class="wrapper">
       <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
       <b-navbar-brand href="/dashboard">
         LOGO HERE
@@ -89,7 +89,7 @@ header {
 }
 
 header {
-  background-color: map-get($theme-colors, dark);
+  background-color: map-get($theme-colors, primary);
   color: white;
 }
 

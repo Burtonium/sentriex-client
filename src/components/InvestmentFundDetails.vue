@@ -55,10 +55,6 @@
             Member since <timeago :datetime="investmentFund.creator.createdAt"/>
           </p>
         </b-tab>
-        <b-tab title="History">
-          <br>
-          History here
-        </b-tab>
       </b-tabs>
       <br>
       <div class="float-right">

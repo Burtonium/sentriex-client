@@ -27,9 +27,9 @@
                class="mb-1 currency-icon"
                v-if="icons[balance.currency.code]">
         </td>
-        <td>{{ balance.amount }}</td>
+        <td>{{ formatAmount(balance) }}</td>
         <td>{{ balance.inFunds }}</td>
-        <td>{{ balance.amount }}</td>
+        <td>{{ formatAmount(balance) }}</td>
         <td>
           <b-button :href="`/withdrawals/${balance.currency.code}`"
                     variant="outline-primary"
@@ -65,12 +65,12 @@ export default {
     },
     ...mapGetters(['balances', 'currencies']),
     filteredBalances() {
-      return pickBy(this.balances, balance => !this.hideZero || parseFloat(balance.total) > 0);
+      return pickBy(this.balances, balance => !this.hideZero || parseFloat(balance.amount) > 0);
     },
   },
   methods: {
-    formatCurrency(amount, code) {
-      const currency = this.currencies[code];
+    formatAmount({ amount, currencyCode }) {
+      const currency = this.currencies[currencyCode];
       return currency ? currency.format(amount) : amount;
     },
     hasIcon(code) {

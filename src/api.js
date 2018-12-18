@@ -35,12 +35,10 @@ export const fetchBalances = () => instance.get('/balances');
 // INVESTMENT
 export const fetchInvestmentFunds = () => instance.get('/investment-funds');
 export const fetchInvestmentFundShares = () => instance.get('/investment-fund-shares');
+export const fetchInvestmentFundRequests = () => instance.get('/investment-fund-requests');
+export const cancelInvestmentFundRequest = id => instance.post(`/investment-fund-requests/${id}/cancel`);
 export const subscribeToFund = ({ id, amount }) => instance.post(`/investment-funds/${id}/subscribe`, { amount });
-export const redeemFromFund = ({ id, amount }) => instance.post(`/investment-funds/${id}/redeem`, { amount });
-export const updateFundBalance = ({ id, amount }) => instance.post(`/investment-funds/${id}/balance-updates`, { amount });
-export const createInvestmentFund = args => instance.post('/investment-funds', args);
-export const updateInvestmentFund = args => instance.patch(`/investment-funds/${args.id}`, args);
-export const fetchInvestmentBalanceUpdates = id => instance.get(`/investment-funds/${id}/balance-updates`);
+export const redeemFromFund = ({ id, amount, percent }) => instance.post(`/investment-funds/${id}/redeem`, { amount, percent });
 
 // CURRENCY
 export const fetchCurrencies = () => instance.get('/currencies');
@@ -56,8 +54,16 @@ export const patchWithdrawal = (id, args) => instance.patch(`/withdrawals/${id}`
 export const fetchMyWithdrawals = currencyCode => instance.get('/withdrawals', { params: { currencyCode } });
 export const cancelWithdrawal = id => instance.post(`/withdrawals/${id}/cancel`);
 
-// ADMIN ROUTES
+// FUND MANAGER ROUTES
+// INVESTMENT FUNDS
+export const fetchAllInvestmentFundRequests = investmentFundId => instance.get('/manager/investment-fund-requests', { params: { investmentFundId } });
+export const updateInvestmentFundRequest = ({ id, status }) => instance.patch(`/manager/investment-fund-requests/${id}`, { status });
+export const updateFundBalance = ({ id, amount }) => instance.post(`/manager/investment-funds/${id}/balance-updates`, { amount });
+export const createInvestmentFund = args => instance.post('/manager/investment-funds', args);
+export const updateInvestmentFund = args => instance.patch(`/manager/investment-funds/${args.id}`, args);
+export const fetchInvestmentBalanceUpdates = id => instance.get(`/manager/investment-funds/${id}/balance-updates`);
 
+// ADMIN ROUTES
 // CURRENCIES
 export const createCurrency = currency => instance.post('/admin/currencies', { currency });
 export const updateCurrency = ({ code, currency }) => instance.patch(`/admin/currencies/${code}`, { currency });
@@ -101,3 +107,5 @@ instance.interceptors.request.use((config) => {
   Object.assign(config.headers, { 'x-csrf-token': store.state.csrfToken });
   return config;
 });
+
+export const api = instance;

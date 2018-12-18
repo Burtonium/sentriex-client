@@ -1,51 +1,64 @@
 <template>
-  <div v-if="state ==='initial'">
-    <loading/>
-    <br>
-    <br>
-    <p class="alert alert-info">Currently activating your account, please wait.</p>
-  </div>
-  <div v-else-if="state === 'success'">
-    <checkmark/>
-    <p class="alert alert-success">
-      You account was successfully activated... Redirecting you to login.
-    </p>
-  </div>
-  <div v-else-if="state === 'error'">
-    <p class="alert alert-danger">
-      {{ error.message }}
-    </p>
-  </div>
+  <landing-container>
+    <div v-if="!error && !success">
+      <loading/>
+      <p class="text-primary mt-5">Currently activating your {{ resourceName }}, please wait.</p>
+    </div>
+    <div v-else-if="success">
+      <checkmark/>
+      <p class="text-success mt-5">
+        You {{ resourceName }} was successfully authenticated...<br>Redirecting you to login.
+      </p>
+    </div>
+    <div v-else-if="error">
+      <h3 class="text-danger">
+        {{ error.message || 'Something went wrong' }}...<br>Redirecting you to login.
+      </h3>
+    </div>
+  </landing-container>
 </template>
 <script>
+import LandingContainer from '@/components/LandingContainer.vue';
 import Checkmark from '@/components/Checkmark.vue';
 import Loading from '@/components/Loading.vue';
 
-import { activate } from '../api';
+import { api } from '../api';
 
 export default {
   data() {
     return {
-      state: 'initial',
+      success: false,
       error: null
     };
   },
   components: {
     Checkmark,
-    Loading
+    Loading,
+    LandingContainer,
+  },
+  props: {
+    resourceName: {
+      type: String,
+      required: false,
+      default: 'account',
+    },
+    redirect: {
+      type: String,
+      required: false,
+      default: '/login',
+    },
   },
   async mounted() {
-    const token = this.$route.params.token;
-    const res = await activate(token);
+    const res = await api.post(this.$route.path).catch(() => this.error = { message: 'Invalid token' });
+    console.log(res);
     if (res.data.success) {
-      this.state = 'success';
-      setTimeout(() => {
-        this.$router.push('/login');
-      }, 4000);
+      this.success = true;
     } else {
-      this.state = 'error';
-      this.error = { message: res.data.message };
+      this.error = { message: 'Invalid Token' };
     }
+    setTimeout(() => {
+      this.$router.push(this.redirect);
+    }, 4000);
   }
 };
 </script>

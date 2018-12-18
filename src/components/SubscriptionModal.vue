@@ -3,43 +3,63 @@
            lazy
            title="Investment Fund Subscription"
            cancel-variant="outline-primary"
+           ref="investmentFundSubscription"
            ok-variant="primary"
-           @ok="handleSubscription"
+           @ok.prevent="handleSubscription"
+           footer-class="modal-footer-center"
            class="text-center">
     <p>
       You currently have
       <span class="text-info">{{ formattedCurrentBalance }}</span>
     </p>
     <div class="col-md-6 offset-md-3">
-      <div class="text-center">
+      <div class="form-group">
         <input id="subscription-amount"
-               class="form-control"
+               class="form-control input-center-text"
                v-model="amount"
                name="amount"
                type="number"
-               v-validate="`max_value:${currentBalance}`"
+               v-validate="`max_value:${parseFloat(currentBalance)}|required|min_value:0`"
                placeholder="Amount"
                autocomplete="off">
       </div>
+      <div class="form-group" v-if="user.twofa">
+        <input class="form-control input-center-text"
+               name="twofa"
+               placeholder="2FA Code"
+               type="number"
+               v-model="twofaToken"
+               autocomplete="off"
+               v-validate="'digits:6|required'">
+        <p class="text-danger mt-2">
+          {{ errors.first('twofa') }}
+        </p>
+      </div>
     </div>
-    <br>
-    <p class="text-danger" v-if="!investmentFund">
-      Something went wrong.
-    </p>
-    <p class="text-danger" v-if="errors.any()">
-      {{ errors.first('amount') }}
-    </p>
+    <div class="errors mt-2">
+      <p class="text-danger" v-if="!investmentFund || error">
+        Something went wrong.
+      </p>
+      <p class="text-danger" v-if="errors.any()">
+        {{ errors.first('amount') }}
+      </p>
+    </div>
+    <template slot="modal-ok">
+      Submit Subscription Request
+    </template>
   </b-modal>
 </template>
 <script>
 import { subscribeToFund } from '@/api';
 import { mapGetters, mapActions } from 'vuex';
+import { EventBus, events } from '@/event-bus';
 
 export default {
   data() {
     return {
       error: false,
       amount: null,
+      twofaToken: null,
     };
   },
   props: {
@@ -51,7 +71,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['balances', 'currencies']),
+    ...mapGetters(['balances', 'currencies', 'user']),
     currentBalance() {
       const currencyCode = this.investmentFund && this.investmentFund.currencyCode;
       const balance = this.balances[currencyCode];
@@ -66,31 +86,37 @@ export default {
   methods: {
     ...mapActions(['fetchBalances']),
     async handleSubscription() {
-      await subscribeToFund({
-        id: this.investmentFund.id,
-        amount: this.amount,
-      });
-      await this.fetchBalances();
+      const valid = await this.$validator.validateAll();
+      if (!valid) {
+        return;
+      }
+      let response;
+      try {
+        response = await subscribeToFund({
+          id: this.investmentFund.id,
+          amount: this.amount,
+          twofaToken: this.twofaToken,
+        });
+      } catch (error) {
+        
+        this.error = true;
+      }
+      if (response.status >= 400) {
+        this.error = true;
+      }
+      
+      if (response.data.success) {
+        EventBus.$emit(events.INVESTMENT_REQUEST_CREATED, response.data.request);
+        await this.fetchBalances();
+        this.$refs.investmentFundSubscription.hide();
+      }
     },
   },
 };
 </script>
-<style scoped>
-#twofa-code {
-  width: 100px;
-  display:inline-block;
-  text-align:center;
-}
-::-webkit-input-placeholder {
-   text-align: center;
-}
-:-moz-placeholder { /* Firefox 18- */
-   text-align: center;
-}
-::-moz-placeholder {  /* Firefox 19+ */
-   text-align: center;
-}
-:-ms-input-placeholder {
-   text-align: center;
+<style>
+.modal-footer-center {
+  display: flex;
+  justify-content: center;
 }
 </style>

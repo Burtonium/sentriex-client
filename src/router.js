@@ -60,6 +60,16 @@ const router = new Router({
       })
     },
     {
+      path: '/investment-fund-requests/activate/:token',
+      component: Activation,
+      props: () => ({
+        resourceName: 'request',
+      }),
+      beforeEnter(to, from, next) {
+        next(store.state.authenticated || loginWithRedirect(to));
+      }
+    },
+    {
       path: '/balances',
       name: 'Balances',
       component: Balances,

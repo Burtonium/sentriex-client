@@ -22,7 +22,7 @@
             </b-tab>
             <b-tab title="Red/Subs" v-if="investmentFund">
               <br>
-              Coming soon
+              <manage-investment-fund-requests :investmentFund="investmentFund" />
             </b-tab>
             <b-tab title="Withdraw/Deposit" v-if="investmentFund">
               <br>
@@ -39,6 +39,7 @@ import { mapGetters } from 'vuex';
 import InvestmentFundForm from '@/components/InvestmentFundForm.vue';
 import InvestmentFundBalanceForm from '@/components/InvestmentFundBalanceForm.vue';
 import InvestmentFundBalanceUpdatesTable from '@/components/InvestmentFundBalanceUpdatesTable.vue';
+import ManageInvestmentFundRequests from '@/components/ManageInvestmentFundRequests.vue';
 import InvestmentFundNav from '@/components/InvestmentFundNav.vue';
 
 export default {
@@ -47,6 +48,7 @@ export default {
     InvestmentFundBalanceForm,
     InvestmentFundNav,
     InvestmentFundBalanceUpdatesTable,
+    ManageInvestmentFundRequests,
   },
   computed: {
     ...mapGetters(['investmentFunds', 'user']),

@@ -1,6 +1,6 @@
-$blue:       #5b86b9 !default;
-$darkblue:   #334c73 !default;
-$darkerblue: #134279 !default;
+$blue:       #1f61d0 !default;
+$darkblue:   #143d85 !default;
+$darkerblue: #0a1f43 !default;
 $lightblue:  #9dc4f1 !default;
 $indigo:     #6610f2 !default;
 $purple:     #6f42c1 !default;
@@ -38,12 +38,12 @@ $colors: (
 ) !default;
 
 $theme-colors: (
-  primary: $orange,
+  primary: $blue,
   secondary: $darkblue,
   tertiary: $darkerblue,
   success: $green,
   info: $lightblue,
-  warning: $yellow,
+  warning: $orange,
   danger: $red,
   light: $lightgrey,
   dark: $darkgrey,
