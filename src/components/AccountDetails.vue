@@ -76,18 +76,15 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import '../assets/scss/bootstrap-override.scss';
 .card-title {
   color: map-get($theme-colors, tertiary);
 }
-
 .card .bg-primary {
   color: white;
 }
 .card {
   line-height: 1.8;
 }
-
 .card-icon {
   position: relative;
   top:-2px;

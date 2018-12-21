@@ -2,7 +2,7 @@
   <header>
     <b-navbar toggleable="lg" type="dark" variant="primary" class="wrapper">
       <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-      <b-navbar-brand href="/dashboard">
+      <b-navbar-brand :to="authenticated ? '/dashboard' : '/'">
         <img src="img/logo.png" width="50"/>
       </b-navbar-brand>
       <b-collapse is-nav id="nav_collapse">
@@ -10,29 +10,29 @@
           <b-nav-item-dropdown v-if="user.manager"
                                :text="user.admin ? 'admin' : 'manage'"
                                style="margin-top: 0.5rem;">
-            <b-dropdown-item href="/manage/investment-funds">
+            <b-dropdown-item :to="'/manage/investment-funds'">
               My Investment Funds
             </b-dropdown-item>
-            <b-dropdown-item href="/admin/crypto" v-if="user.admin">
+            <b-dropdown-item :to="'/admin/crypto'" v-if="user.admin">
               Manage Crypto
             </b-dropdown-item>
           </b-nav-item-dropdown>
-          <b-nav-item href="/investment-funds">
+          <b-nav-item :to="'/investment-funds'">
             <b-nav-text>
               Investment Funds
             </b-nav-text>
           </b-nav-item>
-          <b-nav-item href="/balances">
+          <b-nav-item :to="'/balances'">
             <b-nav-text>
               Balances
             </b-nav-text>
           </b-nav-item>
-          <b-nav-item href="/deposits">
+          <b-nav-item :to="'/deposits'">
             <b-nav-text>
               Deposit
             </b-nav-text>
           </b-nav-item>
-          <b-nav-item href="/withdrawals">
+          <b-nav-item :to="'/withdrawals'">
             <b-nav-text>
               Withdraw
             </b-nav-text>
@@ -40,22 +40,22 @@
         </b-navbar-nav>
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto" v-if="!authenticated">
-          <b-nav-item href="/login">
+          <b-nav-item :to="'/login'">
             <b-nav-text variant="text-light">
               Login
             </b-nav-text>
           </b-nav-item>
-          <b-nav-item href="/register">
+          <b-nav-item :to="'/register'">
             <b-button variant="outline-light">
               Sign Up
             </b-button>
           </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto" v-else>
-          <b-nav-item href="/account">
+          <b-nav-item :to="'/account'">
             Account
           </b-nav-item>
-          <b-nav-item href="#" @click="logout">
+          <b-nav-item @click="logout">
             Log out
           </b-nav-item>
         </b-navbar-nav>
@@ -82,7 +82,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/scss/bootstrap-override.scss';
 header {
   position: relative;
   z-index: 1000;

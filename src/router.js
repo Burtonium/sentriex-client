@@ -13,6 +13,7 @@ import PageNotFound from '@/views/PageNotFound.vue';
 import Deposits from '@/views/Deposits.vue';
 import Withdrawals from '@/views/Withdrawals.vue';
 import Activation from '@/views/Activation.vue';
+import Home from '@/views/Home.vue';
 
 import store from '@/store';
 
@@ -24,7 +25,8 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      redirect: 'home.html',
+      name: 'home',
+      component: Home
     },
     {
       path: '/login',

@@ -92,7 +92,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import '../assets/scss/bootstrap-override.scss';
 .card {
   box-shadow: 3px 3px 3px #aaa;
 }

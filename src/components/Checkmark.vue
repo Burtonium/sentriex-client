@@ -18,7 +18,6 @@
 export default {};
 </script>
 <style lang="scss" scoped>
-@import '../assets/scss/bootstrap-override.scss';
 $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
 
 .checkmark {

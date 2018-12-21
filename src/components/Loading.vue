@@ -42,7 +42,6 @@
     </svg>
 </template>
 <style lang="scss" scoped>
-@import '../assets/scss/bootstrap-override.scss';
   svg {
     fill: map-get($theme-colors, primary);
   }
