@@ -15,6 +15,9 @@
       <template slot="amount" slot-scope="row">
         {{ currency.format(row.item.amount) }}
       </template>
+      <template slot="feeAmount" slot-scope="row">
+        {{ currency.format(row.item.feeAmount) }}
+      </template>
       <template slot="status" slot-scope="row">
         <span :class="statusClasses[row.item.status] || ''">
           {{ statusToWords(row.item.status) }}
@@ -67,6 +70,9 @@ export default {
       return { 
         amount: {
           label: 'Amount',
+        },
+        feeAmount: {
+          label: 'Fees',
         },
         createdAt: {
           label: 'Created',

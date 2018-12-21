@@ -35,7 +35,7 @@
       </template>
       <template slot="row-details" slot-scope="row">
         <p>Created: <timeago :datetime="row.item.createdAt" /></p>
-        <p>Investment Fund: 
+        <p>Investment Fund:
           <router-link :to="investmentFundRoute(row.item.investmentFundId)">
             {{ row.item.investmentFund }}
           </router-link>
@@ -44,7 +44,10 @@
     </b-table>
     <div class="row">
       <div class="col-md-6 my-1">
-        <b-pagination :total-rows="investmentFundRequests.length" :per-page="perPage" v-model="currentPage" class="my-0" />
+        <b-pagination :total-rows="investmentFundRequests.length"
+                      :per-page="perPage"
+                      v-model="currentPage"
+                      class="my-0"/>
       </div>
     </div>
   </div>
@@ -53,9 +56,10 @@
 import { mapGetters, mapActions } from 'vuex';
 import Spinner from '@/components/Spinner.vue';
 import { cancelInvestmentFundRequest, fetchInvestmentFundRequests } from '@/api';
-import utils  from '@/utils';
-const { snakeCaseToCapitalized } = utils;
+import utils from '@/utils';
 import { events, EventBus } from '@/event-bus';
+
+const { snakeCaseToCapitalized } = utils;
 
 export default {
   data() {
@@ -73,14 +77,14 @@ export default {
   computed: {
     ...mapGetters(['currencies']),
     investmentFundRequests() {
-      return this.requests.map(r => {
-        const amount = this.currencies[r.investmentFund.currencyCode].format(r.requestAmount);
-        const percentAmount = r.requestPercent && parseFloat(r.requestPercent).toFixed(2) + '%';
+      return this.requests.map((r) => {
+        const amount = r.amount && this.currencies[r.investmentFund.currencyCode].format(r.amount);
+        const percentAmount = r.requestPercent && `${parseFloat(r.requestPercent).toFixed(2)}%`;
         return {
           id: r.id,
           type: r.type === 'subscription' ? 'Sub' : 'Redeem',
           statusClass: this.statusClasses[r.status],
-          amount: percentAmount || amount,
+          amount: amount || percentAmount,
           status: this.statusToWords(r.status),
           createdAt: r.createdAt,
           actions: '',
@@ -108,8 +112,8 @@ export default {
     ...mapActions(['fetchBalances']),
     async loadData() {
       const response = await fetchInvestmentFundRequests()
-        .catch(() => this.error = true)
-        .finally(() => this.loading = false);
+        .catch(() => { this.error = true; })
+        .finally(() => { this.loading = false; });
 
       if (response.data.success) {
         this.requests = response.data.requests;
@@ -130,11 +134,11 @@ export default {
     investmentFundRoute(id) {
       return {
         name: 'investment-fund-view',
-        params: { 
+        params: {
           investmentFundId: id,
-        }
+        },
       };
-    }
+    },
   },
   created() {
     this.loadData();

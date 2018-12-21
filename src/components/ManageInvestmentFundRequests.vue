@@ -60,20 +60,22 @@
         </template>
       </template>
       <template slot="actions" slot-scope="row">
-        <b-btn v-if="row.item.cancelable"
-               variant="danger"
-               size="sm"
-               @click="updateRequest({ id: row.item.id, status: 'declined' })">
-          Decline
-        </b-btn>
-        <b-btn class="ml-2"
-               v-if="row.item.cancelable"
-               variant="primary"
-               size="sm"
-               :disabled="!sufficientFunds(row.item)"
-               @click="updateRequest({ id: row.item.id, status: 'approved' })">
-          Approve
-        </b-btn>
+        <div class="no-wrap">
+          <b-btn v-if="row.item.cancelable"
+                 variant="danger"
+                 size="sm"
+                 @click="updateRequest({ id: row.item.id, status: 'declined' })">
+            Decline
+          </b-btn>
+          <b-btn class="ml-1"
+                 v-if="row.item.cancelable"
+                 variant="primary"
+                 size="sm"
+                 :disabled="!sufficientFunds(row.item)"
+                 @click="updateRequest({ id: row.item.id, status: 'approved' })">
+            Approve
+          </b-btn>
+        </div>
       </template>
     </b-table>
     <div class="row">
@@ -125,15 +127,15 @@ export default {
       return this.currencies[this.currencyCode];
     },
     investmentFundRequests() {
-      return this.requests
+      return (this.requests || [])
         .map(r => {
-          const amount = this.currencyFormat(r.requestAmount);
+          const amount = r.amount && this.currencyFormat(r.amount);
           const percentAmount = r.requestPercent && parseFloat(r.requestPercent).toFixed(2) + '%';
           return {
             id: r.id,
             type: r.type,
             statusClass: this.statusClasses[r.status],
-            amount: percentAmount || amount,
+            displayAmount: amount || percentAmount,
             status: r.status,
             createdAt: r.createdAt,
             actions: '',
@@ -142,7 +144,9 @@ export default {
             investmentFundId: r.investmentFundId,
             username: r.user.username,
             userId: r.userId,
-            requestAmount: r.requestAmount,
+            amount: r.amount,
+            siteFees: this.currencyFormat(r.siteFees),
+            profitShare: this.currencyFormat(r.profitShare),
           };
         })
         .filter(r => !this.statusFilter || r.status === this.statusFilter)
@@ -155,8 +159,14 @@ export default {
         username: {
           label: 'User',
         },
-        amount: {
+        displayAmount: {
           label: 'Amount',
+        },
+        siteFees: {
+          label: 'Site Fees'
+        },
+        profitShare: {
+          label: 'Profit share'
         },
         status: {
           label: 'Status',
@@ -227,9 +237,9 @@ export default {
         const [shares] = this.investmentFund.shares.filter(s => s.userId === request.userId);
         if (!shares || parseFloat(shares.amount) === 0) {
           sufficientFunds = false;
-        } else if (request.requestAmount) {
+        } else if (request.amount) {
           const shareValue = shares.amount * this.investmentFund.sharePrice;
-          if (parseFloat(request.requestAmount) > shareValue) {
+          if (parseFloat(request.amount) > shareValue) {
             sufficientFunds = false;
           }
         }

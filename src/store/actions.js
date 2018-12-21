@@ -70,7 +70,7 @@ export default {
     });
   },
   async fetchMyInvestmentFundRequests(store) {
-    const response = await api.fetchMyInvestmentFundRequests();
+    const response = await api.fetchInvestmentFundRequests();
     store.commit(types.SET_INVESTMENT_FUND_REQUESTS, response.data.requests);
-  }
+  },
 };
