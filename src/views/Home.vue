@@ -7,8 +7,12 @@
             <div class="col-lg-7 col-md-9 col-sm-12">
               <div class="banner-content">
                 <h1> Hello Investor</h1>
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-
+                <p> 
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                  ullamco laboris nisi ut aliquip ex ea commodo consequat
+                </p>
                 <div class="butn">
                   <a class="butn-white" href="#"> Get started</a>
                 </div>
@@ -18,22 +22,24 @@
         </div>
       </div>
     </section>
-
     <section class="investment">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-7 col-md-9 col-sm-12">
             <div class="investment-content">
               <h2> MOST POPULAR INVESTMENT PLANS</h2>
-              <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-
+              <p> 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat
+              </p>
               <div class="butn">
                 <a class="butn-blue" href="#"> View all</a>
               </div>
             </div>
           </div>
         </div>
-
         <div class="row investment-plan-segment">
           <div class="col-md-3 col-sm-6">
             <div class="investment-plan shadow">
@@ -43,37 +49,30 @@
               <span class="arrow"> <i class="icofont-rounded-right"></i></span>
             </div>
           </div>
-
           <div class="col-md-3 col-sm-6">
             <div class="investment-plan shadow">
               <h4> Fibs30 Automated </h4>
               <p> $280.57 </p>
               <img src="img/line2.svg" alt="" />
-
               <span class="arrow"> <i class="icofont-rounded-right"></i></span>
             </div>
           </div>
-
           <div class="col-md-3 col-sm-6">
             <div class="investment-plan shadow">
               <h4> Fibs30 Automated </h4>
               <p> $175.36 </p>
               <img src="img/line3.svg" alt="" />
-
               <span class="arrow"> <i class="icofont-rounded-right"></i></span>
             </div>
           </div>
-
           <div class="col-md-3 col-sm-6">
             <div class="investment-plan shadow">
               <h4> Fibs30 Automated </h4>
               <p> $57.25 </p>
               <img src="img/line4.svg" alt="" />
-
               <span class="arrow"> <i class="icofont-rounded-right"></i></span>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -87,12 +86,15 @@
               </div>
             </div>
           </div>
-
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="mission-content">
               <h2> Our mission is to help our customers maximize their money</h2>
-              <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-
+              <p> 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat
+              </p>
               <div class="butn">
                 <a class="butn-blue" href="#"> Read more </a>
               </div>
@@ -101,7 +103,6 @@
         </div>
       </div>
     </section>
-
     <section class="howitworks">
       <div class="container">
         <div class="row justify-content-center">
@@ -110,7 +111,6 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
           </div>
         </div>
-
         <div class="row">
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="module_box shadow-lg">
@@ -119,7 +119,6 @@
               <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. </p>
             </div>
           </div>
-
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="module_box shadow-lg">
               <img src="img/icon2.png" alt="" />
@@ -127,7 +126,6 @@
               <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. </p>
             </div>
           </div>
-
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="module_box shadow-lg">
               <img src="img/icon3.png" alt="" />
@@ -138,8 +136,6 @@
         </div>
       </div>
     </section>
-
-
     <section class="portfolio-features">
       <div class="container">
         <div class="row justify-content-center">
@@ -148,7 +144,6 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
           </div>
         </div>
-
         <div class="row">
           <div class="col-md-6 col-sm-12">
             <div class="features-items">
@@ -158,7 +153,6 @@
                     <img src="img/feature-icon.png" alt="" />
                   </div>
                 </div>
-
                 <div class="col-lg-9 col-sm-12">
                   <div class="module-text">
                     <h4> Manage your portfolio</h4>
@@ -166,14 +160,12 @@
                   </div>
                 </div>
               </div>
-
               <div class="feature-item-module row">
                 <div class="col-lg-3 col-sm-12">
                   <div class="module-icon">
                     <img src="img/feature-icon.png" alt="" />
                   </div>
                 </div>
-
                 <div class="col-lg-9 col-sm-12">
                   <div class="module-text">
                     <h4> Manage your portfolio</h4>
@@ -181,14 +173,12 @@
                   </div>
                 </div>
               </div>
-
               <div class="feature-item-module row">
                 <div class="col-lg-3 col-sm-12">
                   <div class="module-icon">
                     <img src="img/feature-icon.png" alt="" />
                   </div>
                 </div>
-
                 <div class="col-lg-9 col-sm-12">
                   <div class="module-text">
                     <h4> Manage your portfolio</h4>
@@ -198,7 +188,6 @@
               </div>
             </div>
           </div>
-
           <div class="col-md-6 col-sm-12">
             <div class="app_screen">
               <img src="img/mockup.png" alt="" />
@@ -207,7 +196,6 @@
         </div>
       </div>
     </section>
-
     <section class="testimonial">
       <div class="container">
         <div class="row justify-content-center">
@@ -228,7 +216,6 @@
                     <p> <i class="icofont-quote-left"></i>Lorem ipsum dolor sit amet, conse adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                   </div>
                 </div>
-
                 <div class="col-lg-12">
                   <div class="testimonial-box">
                     <div class="person-image">
@@ -239,52 +226,15 @@
                     <p> <i class="icofont-quote-left"></i>Lorem ipsum dolor sit amet, conse adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                   </div>
                 </div>
-
-                <div class="col-lg-12">
-                  <div class="testimonial-box">
-                    <div class="person-image">
-                      <img src="img/person.png" alt="" />
-                    </div>
-                    <h4> David Anderson</h4>
-                    <h5> Web developer </h5>
-                    <p> <i class="icofont-quote-left"></i>Lorem ipsum dolor sit amet, conse adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                  </div>
-                </div>
-
-                <div class="col-lg-12">
-                  <div class="testimonial-box">
-                    <div class="person-image">
-                      <img src="img/person2.png" alt="" />
-                    </div>
-                    <h4> Sandra Reigel</h4>
-                    <h5> Photographer </h5>
-                    <p> <i class="icofont-quote-left"></i>Lorem ipsum dolor sit amet, conse adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                  </div>
-                </div>
-
-                <div class="col-lg-12">
-                  <div class="testimonial-box">
-                    <div class="person-image">
-                      <img src="img/person.png" alt="" />
-                    </div>
-                    <h4> David Anderson</h4>
-                    <h5> Web developer </h5>
-                    <p> <i class="icofont-quote-left"></i>Lorem ipsum dolor sit amet, conse adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                  </div>
-                </div>
-
-
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
     <section class="subscription">
       <div class="container">
         <div class="row justify-content-center">
-
           <div class="col-lg-5 col-md-7 col-sm-9 col-xs-12 subscription-form">
             <h2> Subscribe us to get notified</h2>
             <form action="">
@@ -297,7 +247,6 @@
         </div>
       </div>
     </section>
-
   </div>
 </template>
 
