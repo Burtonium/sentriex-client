@@ -9,6 +9,7 @@ import InvestmentFunds from '@/views/InvestmentFunds.vue';
 import InvestmentFund from '@/views/InvestmentFund.vue';
 import InvestmentFundManagement from '@/views/manage/InvestmentFundManagement.vue';
 import CryptoManagement from '@/views/admin/CryptoManagement.vue';
+import SettingsManagement from '@/views/admin/SettingsManagement.vue';
 import PageNotFound from '@/views/PageNotFound.vue';
 import Deposits from '@/views/Deposits.vue';
 import Withdrawals from '@/views/Withdrawals.vue';
@@ -24,7 +25,7 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      redirect: 'home.html',
+      redirect: '/home.html',
     },
     {
       path: '/login',
@@ -54,8 +55,8 @@ const router = new Router({
       path: '/activate/:token',
       component: Activation,
       props: route => ({
-        token: route.params.token
-      })
+        token: route.params.token,
+      }),
     },
     {
       path: '/investment-fund-requests/activate/:token',
@@ -65,7 +66,7 @@ const router = new Router({
       }),
       beforeEnter(to, from, next) {
         next(store.state.authenticated || loginWithRedirect(to));
-      }
+      },
     },
     {
       path: '/balances',
@@ -165,6 +166,12 @@ const router = new Router({
         ]);
         next(store.state.authenticated || loginWithRedirect(to));
       },
+    },
+    {
+      path: '/admin/settings',
+      name: 'settings-management',
+      component: SettingsManagement,
+      meta: { requiresAdmin: true },
     },
     {
       path: '*',

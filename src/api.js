@@ -78,6 +78,10 @@ export const fetchDeposits = currencyCode => instance.get('/admin/deposits', { p
 export const fetchWithdrawals = currencyCode => instance.get('/admin/withdrawals', { params: { currencyCode } });
 export const updateWithdrawal = ({ id, status, txId }) => instance.patch(`/withdrawals/${id}`, { status, txId });
 
+// SETTINGS
+export const fetchSettings = () => instance.get('/admin/settings');
+export const patchSettings = args => instance.patch('/admin/settings', args);
+
 export const errorCodes = {
   INVALID_2FA: 16,
   TWOFA_ALREADY_ENABLED: 17,

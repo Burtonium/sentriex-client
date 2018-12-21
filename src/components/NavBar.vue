@@ -16,6 +16,9 @@
             <b-dropdown-item href="/admin/crypto" v-if="user.admin">
               Manage Crypto
             </b-dropdown-item>
+            <b-dropdown-item href="/admin/settings" v-if="user.admin">
+              Site Settings
+            </b-dropdown-item>
           </b-nav-item-dropdown>
           <b-nav-item href="/investment-funds">
             <b-nav-text>
