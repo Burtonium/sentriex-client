@@ -4,7 +4,6 @@ import VueTimeago from 'vue-timeago';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import './registerServiceWorker';
 import Icon from './icons';
 import './bootstrap-vue';
 

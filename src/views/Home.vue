@@ -5,7 +5,6 @@
         <div class="container">
           <div class="banner-content">
             <h2 class="banner-title capitalized mb-4">
-               {{ api || 'NOPE' }}
               The world’s first cryptocurrency platform specializing in
               investment funds and products
             </h2>
