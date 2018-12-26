@@ -5,6 +5,7 @@
         <div class="container">
           <div class="banner-content">
             <h2 class="banner-title capitalized mb-4">
+               {{ api }}
               The world’s first cryptocurrency platform specializing in
               investment funds and products
             </h2>
@@ -159,6 +160,11 @@ export default {
   components: {
     TopPerformingFunds,
   },
+  computed: {
+    api() {
+      return process.env.API_URL;
+    }
+  }
 };
 </script>
 
