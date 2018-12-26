@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="investmentFund in investmentFunds"
+        <tr v-for="investmentFund in sortedInvestmentFunds"
             :key="investmentFund.id"
             class="clickable"
             @click="navigateToInvestmentFund(investmentFund.id)">
@@ -34,21 +34,23 @@
           </td>
           <td class="no-wrap">
             <button class="btn btn-sm btn-outline-primary mr-2"
-                    @click.stop="selectedInvestmentFund = investmentFund"
+                    @click.stop="handleModalOpen($event, investmentFund)"
                     v-b-modal.subscription-modal>
               Subscribe
             </button>
             <button class="btn btn-sm btn-outline-primary"
-                    @click.stop="selectedInvestmentFund = investmentFund"
+                    @click.stop="handleModalOpen($event, investmentFund)"
                     v-b-modal.redemption-modal>Redeem</button>
           </td>
         </tr>
       </tbody>
     </table>
     <subscription-modal modalId="subscription-modal"
-                        :investmentFund="selectedInvestmentFund"/>
+                        :investmentFund="selectedInvestmentFund"
+                        v-if="authenticated"/>
     <redemption-modal modalId="redemption-modal"
-                      :investmentFund="selectedInvestmentFund"/>
+                      :investmentFund="selectedInvestmentFund"
+                      v-if="authenticated"/>
   </div>
 </template>
 
@@ -57,6 +59,8 @@ import { mapGetters } from 'vuex';
 import SubscriptionModal from './SubscriptionModal.vue';
 import RedemptionModal from './RedemptionModal.vue';
 
+const performanceSort = (a, b) => 
+  parseFloat(b.monthlyPerformance) - parseFloat(a.monthlyPerformance);
 
 export default {
   components: {
@@ -69,9 +73,20 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['investmentFunds']),
+    ...mapGetters(['investmentFunds', 'authenticated']),
+    sortedInvestmentFunds() {
+      return (this.investmentFunds || []).sort(performanceSort);
+    }
   },
   methods: {
+    handleModalOpen(evt, investmentFund) {
+      if (!this.authenticated) {
+        evt.preventDefault();
+        this.$router.push('/login');
+      } else {
+        this.selectedInvestmentFund = investmentFund;
+      }
+    },
     getRiskLevelClass(riskLevel) {
       let classes = '';
       if (riskLevel === 'high') {

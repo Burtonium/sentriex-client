@@ -3,79 +3,23 @@
     <section class="banner">
       <div class="banner-wraper">
         <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-7 col-md-9 col-sm-12">
-              <div class="banner-content">
-                <h1> Hello Investor</h1>
-                <p> 
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat
-                </p>
-                <div class="butn">
-                  <a class="butn-white" href="#"> Get started</a>
-                </div>
-              </div>
-            </div>
+          <div class="banner-content">
+            <h2 class="banner-title capitalized mb-4">
+              The world’s first cryptocurrency platform specializing in
+              investment funds and products
+            </h2>
+            <h4 class="banner-sub-title mb-4">
+              There's finally a secure investment solution managed by veteran
+              cryptocurrency traders that enables current and new cryptocurrency
+              investors to grow their digital capital with minimal risk and
+              maximized gains regardless of the volatility of the market.
+            </h4>
+            <b-btn variant="outline-light" size="lg" :to="'/register'">Get started</b-btn>
           </div>
         </div>
       </div>
     </section>
-    <section class="investment">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-7 col-md-9 col-sm-12">
-            <div class="investment-content">
-              <h2> MOST POPULAR INVESTMENT PLANS</h2>
-              <p> 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat
-              </p>
-              <div class="butn">
-                <a class="butn-blue" href="#"> View all</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row investment-plan-segment">
-          <div class="col-md-3 col-sm-6">
-            <div class="investment-plan shadow">
-              <h4> Fibs30 Automated </h4>
-              <p> $350.89 </p>
-              <img src="img/line.svg" alt="" />
-              <span class="arrow"> <i class="icofont-rounded-right"></i></span>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="investment-plan shadow">
-              <h4> Fibs30 Automated </h4>
-              <p> $280.57 </p>
-              <img src="img/line2.svg" alt="" />
-              <span class="arrow"> <i class="icofont-rounded-right"></i></span>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="investment-plan shadow">
-              <h4> Fibs30 Automated </h4>
-              <p> $175.36 </p>
-              <img src="img/line3.svg" alt="" />
-              <span class="arrow"> <i class="icofont-rounded-right"></i></span>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="investment-plan shadow">
-              <h4> Fibs30 Automated </h4>
-              <p> $57.25 </p>
-              <img src="img/line4.svg" alt="" />
-              <span class="arrow"> <i class="icofont-rounded-right"></i></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <top-performing-funds />
     <section class="mission">
       <div class="container">
         <div class="row">
@@ -88,49 +32,42 @@
           </div>
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="mission-content">
-              <h2> Our mission is to help our customers maximize their money</h2>
-              <p> 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat
+              <h2>Our mission</h2>
+              <p>
+                Giving our customers investment services and products in a secure
+                environment that helps maximize gains and manage
+                risk as well as providing piece of mind with expert
+                traders continuously watching and studying the market for them.
               </p>
-              <div class="butn">
-                <a class="butn-blue" href="#"> Read more </a>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="howitworks">
-      <div class="container">
+    <section id="howitworks" class="howitworks">
+      <div class="container howitworks-container">
         <div class="row justify-content-center">
           <div class="col-lg-7 col-md-7 col-sm-10 col-xs-12 section-heading">
-            <h2> How it works </h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
+            <h2>How it works</h2>
           </div>
         </div>
         <div class="row">
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="module_box shadow-lg">
-              <img src="img/icon1.png" alt="" />
-              <h3> Create an account </h3>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. </p>
+              <img src="/img/icon1.png" alt="" />
+              <h3>Create an account </h3>
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="module_box shadow-lg">
-              <img src="img/icon2.png" alt="" />
-              <h3> Create an account </h3>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. </p>
+              <img src="/img/icon2.png" alt="" />
+              <h3>Fund your account</h3>
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="module_box shadow-lg">
-              <img src="img/icon3.png" alt="" />
-              <h3> Create an account </h3>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. </p>
+              <img src="/img/icon3.png" alt="" />
+              <h3>Start investing</h3>
             </div>
           </div>
         </div>
@@ -140,8 +77,7 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-8 ccol-sm-10 col-xs-12 section-heading">
-            <h2> Create your digital currency portfolio today </h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
+            <h2>Create your digital currency portfolio today</h2>
           </div>
         </div>
         <div class="row">
@@ -150,39 +86,42 @@
               <div class="feature-item-module row">
                 <div class="col-lg-3 col-sm-12 ">
                   <div class="module-icon">
-                    <img src="img/feature-icon.png" alt="" />
+                    <icon name="fire-extinguisher" class="feature-icon" />
                   </div>
                 </div>
                 <div class="col-lg-9 col-sm-12">
                   <div class="module-text">
-                    <h4> Manage your portfolio</h4>
-                    <p> Buy and sell popular digital currencies, keep track of them in the one place.</p>
+                    <h4>Manage your risk</h4>
+                    <p>Choose from a variety of investment funds with different levels of risk.</p>
                   </div>
                 </div>
               </div>
               <div class="feature-item-module row">
                 <div class="col-lg-3 col-sm-12">
                   <div class="module-icon">
-                    <img src="img/feature-icon.png" alt="" />
+                    <icon name="chart-line" class="feature-icon" />
                   </div>
                 </div>
                 <div class="col-lg-9 col-sm-12">
                   <div class="module-text">
-                    <h4> Manage your portfolio</h4>
-                    <p> Buy and sell popular digital currencies, keep track of them in the one place.</p>
+                    <h4>Manage Your Portfolio</h4>
+                    <p>Maximize gains by strategically allocating assets to high performing funds.</p>
                   </div>
                 </div>
               </div>
               <div class="feature-item-module row">
                 <div class="col-lg-3 col-sm-12">
                   <div class="module-icon">
-                    <img src="img/feature-icon.png" alt="" />
+                    <icon name="user-friends" class="feature-icon" />
                   </div>
                 </div>
                 <div class="col-lg-9 col-sm-12">
                   <div class="module-text">
-                    <h4> Manage your portfolio</h4>
-                    <p> Buy and sell popular digital currencies, keep track of them in the one place.</p>
+                    <h4>Referral Incentives</h4>
+                    <p>
+                      Refer other investors to the platform to participate in
+                      our competitive affiliate program.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -196,47 +135,11 @@
         </div>
       </div>
     </section>
-    <section class="testimonial">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-7 col-md-7 col-sm-10 col-xs-12 section-heading">
-            <h2> Testimonial </h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
-          </div>
-          <div class="col-lg-8">
-            <div class="row">
-              <div class="owl-carousel owl-theme">
-                <div class="col-lg-12">
-                  <div class="testimonial-box">
-                    <div class="person-image">
-                      <img src="img/person.png" alt="" />
-                    </div>
-                    <h4> David Anderson</h4>
-                    <h5> Web developer </h5>
-                    <p> <i class="icofont-quote-left"></i>Lorem ipsum dolor sit amet, conse adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                  </div>
-                </div>
-                <div class="col-lg-12">
-                  <div class="testimonial-box">
-                    <div class="person-image">
-                      <img src="img/person2.png" alt="" />
-                    </div>
-                    <h4> Sandra Reigel</h4>
-                    <h5> Photographer </h5>
-                    <p> <i class="icofont-quote-left"></i>Lorem ipsum dolor sit amet, conse adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
     <section class="subscription">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-5 col-md-7 col-sm-9 col-xs-12 subscription-form">
-            <h2> Subscribe us to get notified</h2>
+            <h2>Subscribe to us and get notified</h2>
             <form action="">
               <div class="form-group">
                 <input type="email" placeholder="Enter your email here" />
@@ -249,19 +152,21 @@
     </section>
   </div>
 </template>
-
 <script>
+import TopPerformingFunds from '@/components/TopPerformingFunds.vue';
 export default {
   name: 'home',
+  components: {
+    TopPerformingFunds,
+  },
 };
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="scss">
 html {
-    color: #222;
-    font-size: 1em;
-    line-height: 1.4;
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
   font-family:'Rubik-Regular';
 }
 
@@ -276,7 +181,6 @@ html {
     text-shadow: none;
 }
 
-
 hr {
     display: block;
     height: 1px;
@@ -285,7 +189,6 @@ hr {
     margin: 1em 0;
     padding: 0;
 }
-
 
 
 audio,
@@ -303,7 +206,6 @@ fieldset {
     padding: 0;
 }
 
-
 textarea {
     resize: vertical;
 }
@@ -319,27 +221,27 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-/*Typography*/ 
+/*Typography*/
 
 @font-face{
   font-family:'Rubik-Bold';
   src:url('/fonts/Rubik-Bold.ttf');
-} 
+}
 @font-face{
   font-family:'icofont';
   src:url('/fonts/icofont.ttf');
-} 
+}
 
 @font-face{
   font-family:'Rubik-Regular';
   src:url('/fonts/Rubik-Regular.ttf');
-} 
+}
 
 
 @font-face{
   font-family:'Rubik-Light';
   src:url('/fonts/Rubik-Light.ttf');
-} 
+}
 
 
 p {
@@ -350,53 +252,53 @@ p {
 h1{
   font-family:'Rubik-Bold';
   font-size:3em;
-  
+
 }
 h2{
   font-family:'Rubik-Bold';
   font-size:2em;
-  
+
 }
 h3{
   font-family:'Rubik-Bold';
   font-size:1.5em;
-  
+
 }
 h4{
   font-family:'Rubik-Bold';
   font-size:1em;
-  
+
 }
 h5{
   font-family:'Rubik-Bold';
   font-size:.8em;
-  
+
 }
 h6{
   font-family:'Rubik-Bold';
   font-size:.5em;
-  
+
 }
 
 /*essetials for list items and hyperlink */
 
 ul {
-  
+
   margin:0;
   padding:0;
-  
+
 }
 
 ul li {
-  
+
   list-style:none;
 }
 a {
-  
+
   text-decoration:none;
 }
 a:hover{
-  
+
   text-decoration:none;
 }
 
@@ -413,6 +315,22 @@ a:hover{
   background-position:center center;
   position:relative;
 }
+
+@media(max-width: 468px) {
+  .banner-title {
+    font-size: 1em;
+  }
+  .banner-sub-title {
+    font-size: 0.7em;
+  }
+}
+
+@media(max-width: 340px) {
+  .banner {
+    height: 130vh;
+  }
+}
+
 .banner:before {
   content:"";
   position:absolute;
@@ -434,6 +352,15 @@ a:hover{
   background-size:contain;
   background-position:bottom center;
 }
+.banner-title {
+  letter-spacing: 0.15em;
+  line-height: 1.7;
+}
+.banner-sub-title {
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+}
+
 .nav-wraper {
   width:100%;
   height:auto;
@@ -447,7 +374,7 @@ a:hover{
   z-index:90;
 }
 .sticky {
-  background:#1959c5;
+  background:map-get($theme-colors, primary);
   -webkit-box-shadow: 0px 5px 17px 0px rgba(0,0,0,0.2);
   -moz-box-shadow: 0px 5px 17px 0px rgba(0,0,0,0.2);
   box-shadow: 0px 5px 17px 0px rgba(0,0,0,0.2);
@@ -458,101 +385,11 @@ a:hover{
   color:#ffffff;
 }
 
-.butn-white {
-  border:1px solid #ffffff;
-  padding:8px 25px;
-  border-radius:30px;
-  color:#ffffff;
-  transition:all .5s;
-}
-.butn {
-  padding-top:20px;
-}
-.butn-white:hover {
-  background:#ffffff;
-  color:#1959c5;
-  -webkit-box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
-  -moz-box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
-  box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
-}
-.butn-blue {
-  padding:10px 30px;
-  border-radius:30px;
-  color:#ffffff;
-  background:#1959c5;
-  transition:all .5s;
-}
-
-.butn-blue:hover {
-  color:#ffffff;
-  -webkit-box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
-  -moz-box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
-  box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
-}
-
-/*Investment area*/
-.investment {
-  width:100%;
-  height:auto;
-  padding:100px 0px;
-  text-align:center;
-}
-.investment-content {
-  color:#1959c5;
-  margin-bottom:50px;
-}
-.investment-plan-segment {
-  margin-top:50px;
-}
-.investment-plan {
-  width:100%;
-  min-height:250px;
-  border-radius:10px;
-  padding:30px 30px;
-  margin-top:30px;
-}
-.investment-plan h4 {
-  font-size:16px;
-  font-weight:bold;
-  color:#666666;
-}
-.investment-plan p {
-  font-size:1.8em;
-  font-family:'Rubik-Bold';
-  color:#1959c5;
-  margin-bottom:20px;
-}
-
-.arrow {
-  background:#1959c5;
-  border-radius:30px;
-  color:#ffffff;
-  padding:6px 10px;
-  position:absolute;
-  bottom:15px;
-  right:30px;
-  
-  transition:all .5s;
-}
-
-
-.arrow:hover {
-  -webkit-box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
--moz-box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
-box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
-  
-}
-.investment-grid {
-  width:100%;
-  margin-top:70px;
-}
-
-
 /*mission area*/
 .mission {
   width:100%;
   height:auto;
-  padding:100px 0px;
+  padding:50px 0px 100px;
   position:relative;
   background:#fbfbfb;
 }
@@ -564,7 +401,7 @@ box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
   height:100%;
   left:20%;
   top:0;
-  background:#1959c5;
+  background:map-get($theme-colors, primary);
 }
 .mission-thumbnail {
   padding:50px;
@@ -583,9 +420,9 @@ box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
 }
 .mission-content h2 {
   font-size:1.8em;
-  color:#1959c5;
+  color:map-get($theme-colors, primary);
   text-transform:uppercase;
-  
+
 }
 
 /*how it works area*/
@@ -622,21 +459,25 @@ box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
   z-index:-10;
 }
 
+.howitworks-container {
+  position: relative;
+  top: 60px;
+}
+
 .section-heading {
   text-align:center;
-  margin-bottom:50px;
 }
 .section-heading h2 {
   font-size:1.8em;
-  color:#1959c5;
+  color:map-get($theme-colors, primary);
   text-transform:uppercase;
 }
 .module-portion {
-  
+
   margin-top:30px;
 }
 .module_box {
-  
+
   text-align:center;
   padding:30px;
   border-radius:15px;
@@ -644,7 +485,7 @@ box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
   margin:30px 0px;
 }
 .module_box img {
-  
+
   padding-bottom:20px;
 }
 .module_box h3 {
@@ -655,7 +496,6 @@ box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
 /*portfolio-features area*/
 
 .portfolio-features {
-  
   width:100%;
   height:auto;
   padding:100px 0px;
@@ -670,13 +510,19 @@ box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
 
 }
 
-.module-icon{ 
-  background:#1959c5;
+.module-icon{
+  background:map-get($theme-colors, primary);
   border-radius:100%;
   width:100px;
   height:100px;
   text-align:center;
-  padding-top:22px;
+  padding:18px;
+}
+
+.feature-icon {
+  fill: white;
+  height: 100%;
+  width: 100%;
 }
 .module-text {
   padding-top:15px;
@@ -689,56 +535,7 @@ box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
   height:auto;
 }
 
-.testimonial-box {
-  background:#ffffff;
-  border-radius:25px;
-  text-align:center;
-  padding:30px 25px;
-  margin:30px 0px;
-  -webkit-box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.2);
-  -moz-box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.2);
-  box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.2);
-  
-}
-.person-image {
-  
-  margin-top:20px;
-  margin-bottom:20px;
-}
-.person-image img {
-  width:150px;
-  height:150px;
-  border-radius:100%;
-}
-
-.testimonial-box h4 {
-  font-size:20px;
-  color:#1959c5;
-  text-transform:uppercase;
-}
-.testimonial-box h5 {
-  font-size:16px;
-  color:#666666;
-  line-height:26px;
-}
-.testimonial-box p {
-  margin-top:20px;
-  color:#333333;
-  font-size:16px;
-  line-height:26px;
-  
-}
-.testimonial-box i {
-  color:#1959c5;
-  padding-right:10px;
-}
-.testimonial {
-  padding:50px 0px 100px 0px;
-  background:url(/img/map.png);
-}
-
 /*subscription portion style*/
-
 .subscription {
   width:100%;
   min-height:300px;
@@ -757,7 +554,7 @@ box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
   position:absolute;
   top:0;
   left:0;
-  background:#1959c5;
+  background:map-get($theme-colors, primary);
   opacity:.8;
   z-index:1;
 }
@@ -854,7 +651,7 @@ box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
 }
 @media only screen and (max-width: 991px) {
   .navbar-collapse {
-    background:#1959c5;
+    background:map-get($theme-colors, primary);
     color:#ffffff;
     text-align:center;
     padding:30px;
@@ -879,12 +676,6 @@ box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
     color:#ffffff;
     box-shadow:none;
   }
-  .investment-plan p {
-    font-size:1.5em;
-    font-family:'Rubik-Bold';
-    color:#1959c5;
-    margin-bottom:20px;
-  }
   .mission-thumbnail {
     padding:30px;
   }
@@ -899,7 +690,7 @@ box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
     background:#fbfbfb;
     padding-top:50px;
   }
-  .module-icon{ 
+  .module-icon{
     width:80px;
     height:80px;
     text-align:center;
@@ -913,7 +704,7 @@ box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
 @media only screen and (max-width: 768px) {
   .mission {
     padding:50px 30px;
-  } 
+  }
   .mission-thumbnail {
     padding:0;
   }
@@ -930,7 +721,7 @@ box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
   }
   .howitworks, .portfolio-features, .testimonial {
     padding:50px 30px;
-  } 
+  }
   .feature-item-module {
     margin-top:30px;
   }
@@ -939,15 +730,6 @@ box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
     z-index:99;
     top:20%;
     padding:0 30px;
-  }
-}
-
-@media only screen and (max-width: 560px) {
-  .investment {
-    padding:50px 30px!important;
-  }
-  .investment-plan {
-    margin-top:50px;
   }
 }
 
@@ -1042,40 +824,5 @@ box-shadow: 0px 8px 34px 0px rgba(1,15,31,0.4);
     outline: none!important;
   }
 }
-/*owl carousel style*/
-.owl-carousel .owl-item img {
-  width:150px;
-  margin:auto;
-}
-.owl-theme .owl-nav {
-  text-align:left;
-  position:absolute;
-  top:45%;
-  right:-15%;
-}
-.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev {
-  color:#ffffff;
-  font-size:15px;
-  background:#1959c5;
-  width:30px;
-  height:30px;
-  line-height:30px;
-  border-radius:100%;
-  font-family:'icofont';
-}
-.owl-carousel .owl-nav button.owl-prev:before{
-  content: "\ea9d";
-}
-.owl-carousel .owl-nav button.owl-next:after{
-  content: "\eaa0";
-}
-.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot span {
-  width:15px;
-  height:15px;
-  background:#1959c5;
-  opacity:.5;
-}
-.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
-  opacity:1;
-}
+
 </style>

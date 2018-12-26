@@ -2,13 +2,13 @@
   <div class="investment-funds">
     <div class="wrapper mt-5">
       <div class="row text-left">
-        <div class="col-md-3">
+        <div class="col-md-2">
           <investment-fund-nav :create="true"
                                :selected="investmentFundId"
                                :investmentFunds="myInvestmentFunds"
                                routeName="manage-investment-funds"/>
         </div>
-        <div class="col-md-9 col-lg-8">
+        <div class="col-md-10 col-lg-10">
           <b-tabs>
             <b-tab title="Information" :active="!investmentFund">
               <br>

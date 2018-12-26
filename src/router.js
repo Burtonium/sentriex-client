@@ -17,6 +17,7 @@ import Activation from '@/views/Activation.vue';
 import Home from '@/views/Home.vue';
 
 import store from '@/store';
+import { LOGOUT } from '@/store/mutation_types';
 
 Vue.use(Router);
 const loginWithRedirect = to => ({ path: '/login', query: { redirect: to.fullPath } });
@@ -33,6 +34,14 @@ const router = new Router({
       path: '/login',
       name: 'login',
       component: Login,
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      beforeEnter(to, from, next) {
+        store.commit(LOGOUT);
+        next('/');
+      },
     },
     {
       path: '/register',
@@ -88,12 +97,12 @@ const router = new Router({
       component: InvestmentFunds,
       async beforeEnter(to, from, next) {
         await Promise.all([
-          store.dispatch('fetchBalances'),
+          store.state.authenticated &&store.dispatch('fetchBalances'),
+          store.state.authenticated && store.dispatch('fetchInvestmentFundShares'),
           store.dispatch('fetchCurrencies'),
           store.dispatch('fetchInvestmentFunds'),
-          store.dispatch('fetchInvestmentFundShares'),
         ]);
-        next(store.state.authenticated || loginWithRedirect(to));
+        next();
       },
     },
     {
@@ -102,12 +111,12 @@ const router = new Router({
       component: InvestmentFund,
       async beforeEnter(to, from, next) {
         await Promise.all([
-          store.dispatch('fetchBalances'),
+          store.state.authenticated && store.dispatch('fetchBalances'),
+          store.state.authenticated && store.dispatch('fetchInvestmentFundShares'),
           store.dispatch('fetchCurrencies'),
           store.dispatch('fetchInvestmentFunds'),
-          store.dispatch('fetchInvestmentFundShares'),
         ]);
-        next(store.state.authenticated || loginWithRedirect(to));
+        next();
       },
     },
     {

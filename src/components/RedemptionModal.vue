@@ -68,7 +68,7 @@ import { EventBus, events } from '@/event-bus';
 export default {
   data() {
     return {
-      amountType: 'amount',
+      amountType: 'percent',
       amount: null,
       percent: null,
       twofaToken: null,
@@ -99,7 +99,7 @@ export default {
     ...mapGetters(['investmentFundShares', 'currencies']),
     shareBalance() {
       const id = this.investmentFund && this.investmentFund.id;
-      const shares = this.investmentFundShares.find(ifs => ifs.investmentFundId === id);
+      const shares = this.investmentFundShares && this.investmentFundShares.find(ifs => ifs.investmentFundId === id);
       const sharePrice = this.investmentFund && this.investmentFund.sharePrice;
       return shares && sharePrice ? (new BigNumber(shares.amount)).times(sharePrice).toString() : 0;
     },

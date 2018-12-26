@@ -5,10 +5,10 @@
         <div class="col-md-2">
           <investment-fund-nav :selected="investmentFundId" :investmentFunds="investmentFunds"/>
         </div>
-        <div class="col-md-5">
+        <div :class="{ 'col-md-5': authenticated, 'col-md-7': !authenticated }">
           <investment-fund-details :investment-fund="investmentFund"/>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-5" v-if="authenticated">
           <investment-fund-request-history />
         </div>
       </div>
@@ -28,7 +28,7 @@ export default {
     InvestmentFundRequestHistory,
   },
   computed: {
-    ...mapGetters(['investmentFunds']),
+    ...mapGetters(['investmentFunds', 'authenticated']),
     investmentFundId() {
       return this.$route.params.investmentFundId;
     },

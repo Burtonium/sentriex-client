@@ -55,6 +55,23 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header  bg-primary">
+              <div class="card-icon">
+                <icon name="user-friends"/>
+                </div>
+                <span>Referral Link</span>
+              </div>
+            <div class="card-body">
+              <p class="card-text text-bold pr-5">
+                Your referral link: <br> {{ referralLink }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <enable-two-fa-modal modalId="enable-two-fa" @2faEnabled="account.twofa = true"/>
     <disable-two-fa-modal modalId="disable-two-fa" @2faDisabled="account.twofa = false"/>
@@ -72,6 +89,11 @@ export default {
   },
   computed: {
     ...mapGetters(['account']),
+    referralLink() {
+      const siteUrl = process.env.SITE_URL || 'http://localhost';
+      const { referralCode } = this.account;
+      return `${siteUrl}/register?referralCode=${referralCode}`;
+    }
   },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>Login</h3>
-    <p>Need an account? <a href="/register">Register</a></p>
+    <p>Need an account? <router-link :to="'/register'">Register</router-link></p>
     <transition name="fade" mode="out-in">
       <div v-if="state === 'initial'" key="login">
         <p class="text-danger" v-if="error === 'credentials'">
@@ -63,7 +63,7 @@
     </template>
     <template>
       <p class="forget">
-        <a href="/reset-password" v-if="state === 'initial'">Forgot your password?</a>
+        <router-link :to="'/reset-password'" v-if="state === 'initial'">Forgot your password?</router-link>
         <a href="#" @click.prevent="state = 'initial'" v-if="state === 'twofa'">Back</a>
       </p>
       <button class="btn btn-primary btn-lg"

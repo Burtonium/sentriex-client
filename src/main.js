@@ -1,14 +1,11 @@
 import Vue from 'vue';
 import VeeValidate from 'vee-validate';
 import VueTimeago from 'vue-timeago';
-import 'vue-awesome/icons/info-circle';
-import 'vue-awesome/icons/play';
-import 'vue-awesome/icons/key';
-import Icon from 'vue-awesome/components/Icon.vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
 import './registerServiceWorker';
+import Icon from './icons';
 import './bootstrap-vue';
 
 Vue.config.productionTip = false;

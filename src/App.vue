@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <nav-bar />
-    <router-view />
-    <app-footer />
+    <div class="flex-wrapper">
+      <router-view />
+      <app-footer />
+    </div>
   </div>
 </template>
 <script>
@@ -18,5 +20,14 @@ export default {
 </script>
 
 <style lang="scss">
+.flex-wrapper {
+  display: flex;
+  min-height: 94.2vh;
+  flex-direction: column;
+  justify-content: space-between
+}
 
+.row {
+  width: 100%;
+}
 </style>

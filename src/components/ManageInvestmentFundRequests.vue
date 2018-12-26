@@ -233,7 +233,7 @@ export default {
     },
     sufficientFunds(request) {
       let sufficientFunds = true;
-      if (request.type === 'redemption') {
+      if (request.type === 'redemption' && request.isCancelable) {
         const [shares] = this.investmentFund.shares.filter(s => s.userId === request.userId);
         if (!shares || parseFloat(shares.amount) === 0) {
           sufficientFunds = false;

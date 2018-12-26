@@ -58,3 +58,9 @@ input.input-center-text {
 .card {
   border-radius: 0;
 }
+
+.ellipsis { 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

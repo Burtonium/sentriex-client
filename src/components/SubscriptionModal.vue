@@ -74,7 +74,7 @@ export default {
     ...mapGetters(['balances', 'currencies', 'user']),
     currentBalance() {
       const currencyCode = this.investmentFund && this.investmentFund.currencyCode;
-      const balance = this.balances[currencyCode];
+      const balance = this.balances && this.balances[currencyCode];
       return balance ? balance.amount : 0;
     },
     formattedCurrentBalance() {

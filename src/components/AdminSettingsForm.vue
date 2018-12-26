@@ -14,7 +14,7 @@
                  type="number" 
                  name="manager_cut" 
                  step="0.01" 
-                 v-validate="'min_value:0|max_value:1'"
+                 v-validate="'min_value:0|max_value:1|required'"
                  data-vv-as="manager's cut"
                  v-model="settings.fundManagerRedeemProfitPercent"/>
           <div class="text-danger" v-if="errors.first('manager_cut')">
@@ -27,11 +27,30 @@
                  type="number" 
                  name="site_cut" 
                  step="0.01" 
-                 v-validate="'min_value:0|max_value:1'"
+                 v-validate="'min_value:0|max_value:1|required'"
                  data-vv-as="site's cut"
                  v-model="settings.siteRedeemProfitPercent"/>
           <div class="text-danger" v-if="errors.first('site_cut')">
             {{ errors.first('site_cut') }}
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label>Referral's Redemption Profit Cut</label>
+          <input class="form-control"
+                 type="number" 
+                 name="referral_cut" 
+                 step="0.01" 
+                 v-validate="referralValidation"
+                 data-vv-as="referral's cut"
+                 v-model="settings.referralRedeemProfitPercent"/>
+          <div class="text-info">
+            <small>
+              This amount is deducted from site's cut when redeeming user was
+              referred to the site.
+            </small>
+          </div>
+          <div class="text-danger" v-if="errors.first('referral_cut')">
+            {{ errors.first('referral_cut') }}
           </div>
         </div>
         <div class="col-md-3">
@@ -40,7 +59,7 @@
                  type="number" 
                  name="user_cut" 
                  step="0.01" 
-                 v-validate="'min_value:0|max_value:1'"
+                 v-validate="'min_value:0|max_value:1|required'"
                  data-vv-as="user's cut"
                  v-model="settings.userRedeemProfitPercent"/>
           <div class="text-danger" v-if="errors.first('user_cut')">
@@ -48,6 +67,10 @@
           </div>
         </div>
       </div>
+      <input type="hidden" :value="totalProfitShare" name="is_one" v-validate="'is:1'"/>
+      <p class="text-danger" v-if="errors.first('is_one')">
+        Manager, site and users cut must all equal 1.
+      </p>
       <h4>Withdrawal Fees</h4>
       <div class="row">
         <div class="col-md-3 form-group">
@@ -56,7 +79,7 @@
                  type="number" 
                  name="withdrawal_fee_rate" 
                  step="0.01" 
-                 v-validate="'min_value:0|max_value:1'"
+                 v-validate="'min_value:0|max_value:1|required'"
                  data-vv-as="withdrawal fee rate"
                  v-model="settings.withdrawalFeeRate"/>
           <div class="text-danger" v-if="errors.first('withdrawal_fee_rate')">
@@ -84,6 +107,21 @@ export default {
       success: false,
     };
   },
+  computed: {
+    referralValidation() {
+      return [
+        'min_value:0',
+        `max_value:${this.settings.siteRedeemProfitPercent}`,
+        'required'
+      ].join('|');
+    },
+    totalProfitShare() {
+      const siteRedeemProfitPercent = parseFloat(this.settings.siteRedeemProfitPercent);
+      const userRedeemProfitPercent = parseFloat(this.settings.userRedeemProfitPercent);
+      const fundManagerRedeemProfitPercent = parseFloat(this.settings.fundManagerRedeemProfitPercent);
+      return siteRedeemProfitPercent + userRedeemProfitPercent + fundManagerRedeemProfitPercent;
+    }
+  },
   methods: {
     async loadData() {
       this.loading = true;
@@ -94,6 +132,10 @@ export default {
       this.settings = response.data.settings;
     },
     async update() {
+      const valid = await this.$validator.validateAll();
+      if (!valid) {
+        return;
+      }
       this.loading = true;
       const response = await patchSettings(this.settings)
         .catch(() => { this.error = true; })

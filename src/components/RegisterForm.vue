@@ -3,10 +3,10 @@
     <div class="mb-4">
       <h3>Register</h3>
       <span v-if="state === 'initial'">
-        Already have an account? <a href="/login">Sign In</a>
+        Already have an account? <router-link :to="'/login'">Sign In</router-link>
       </span>
       <span v-if="state === 'registered'">
-        Activated already? <a href="/login">Sign In</a>
+        Activated already? <router-link :to="'/login'">Sign In</router-link>
       </span>
     </div>
     <transition name="fade" mode="out-in">
@@ -111,11 +111,10 @@ export default {
       username: '',
       email: '',
       password: '',
-      code: this.referralCode,
+      code: this.$route.query.referralCode,
       captchaKey: process.env.RECAPTCHA_SITE_KEY,
     };
   },
-  props: ['referralCode'],
   components: {
     RecaptchaButton,
     Checkmark,

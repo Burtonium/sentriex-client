@@ -58,15 +58,20 @@
       </b-tabs>
       <br>
       <div class="float-right">
-        <b-btn variant="primary mr-2" v-b-modal.subscription-modal>Subscribe</b-btn>
-        <b-btn variant="primary" v-b-modal.redemption-modal>Redeem</b-btn>
+        <b-btn variant="primary mr-2" @click="handleModalOpen($event)" v-b-modal.subscription-modal>Subscribe</b-btn>
+        <b-btn variant="primary" @click="handleModalOpen($event)" v-b-modal.redemption-modal>Redeem</b-btn>
       </div>
     </div>
-    <subscription-modal modalId="subscription-modal" :investmentFund="investmentFund" />
-    <redemption-modal modalId="redemption-modal" :investmentFund="investmentFund" />
+    <div class="modals" v-if="authenticated">
+      <subscription-modal modalId="subscription-modal" 
+                          :investmentFund="investmentFund"/>
+      <redemption-modal modalId="redemption-modal"
+                        :investmentFund="investmentFund"/>
+    </div>
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 import SubscriptionModal from './SubscriptionModal.vue';
 import RedemptionModal from './RedemptionModal.vue';
 
@@ -76,7 +81,16 @@ export default {
     RedemptionModal,
   },
   props: ['investmentFund'],
+  computed: {
+    ...mapGetters(['authenticated']),
+  },
   methods: {
+    handleModalOpen(evt) {
+      if (!this.authenticated) {
+        evt.preventDefault();
+        this.$router.push('/login');
+      }
+    },
     getRiskLevelClass(riskLevel) {
       let classes = '';
       if (riskLevel === 'high') {

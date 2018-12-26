@@ -12,7 +12,7 @@
                     tag="li"
                     :key="investmentFund.id"
                     v-for="investmentFund in investmentFunds"
-                    class="clickable nav-button"
+                    class="clickable nav-button ellipsis"
                     :class="{'selected': selected === investmentFund.id}">
           {{ investmentFund.name }}
      </router-link>
