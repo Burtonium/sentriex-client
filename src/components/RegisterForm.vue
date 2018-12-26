@@ -112,7 +112,7 @@ export default {
       email: '',
       password: '',
       code: this.$route.query.referralCode,
-      captchaKey: process.env.RECAPTCHA_SITE_KEY,
+      captchaKey: process.env.VUE_APP_RECAPTCHA_SITE_KEY,
     };
   },
   components: {

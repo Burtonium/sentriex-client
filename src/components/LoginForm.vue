@@ -90,7 +90,7 @@ export default {
       twofa: '',
       state: 'initial',
       error: null,
-      supportEmail: process.env.SUPPORT_EMAIL,
+      supportEmail: process.env.VUE_APP_SUPPORT_EMAIL,
     };
   },
   props: ['redirectTo'],

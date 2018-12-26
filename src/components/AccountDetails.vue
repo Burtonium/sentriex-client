@@ -90,7 +90,7 @@ export default {
   computed: {
     ...mapGetters(['account']),
     referralLink() {
-      const siteUrl = process.env.SITE_URL || 'http://localhost';
+      const siteUrl = process.env.VUE_APP_SITE_URL || 'http://localhost';
       const { referralCode } = this.account;
       return `${siteUrl}/register?referralCode=${referralCode}`;
     }

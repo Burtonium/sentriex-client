@@ -1,5 +1,3 @@
-const Dotenv = require('dotenv-webpack');
-console.log('ENV VARIABLE', process.env.API_URL);
 module.exports = {
   pluginOptions: {
     webpackBundleAnalyzer: {
@@ -17,12 +15,6 @@ module.exports = {
   },
   configureWebpack: {
     plugins: [
-      new Dotenv({
-        path: './.env',
-        safe: true,
-        systemvars: true,
-        silent: false,
-      }),
     ],
   },
   devServer: {

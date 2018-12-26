@@ -3,7 +3,7 @@ import store from '@/store/index';
 import * as types from '@/store/mutation_types';
 
 const instance = axios.create({
-  baseURL: process.env.API_URL,
+  baseURL: process.env.VUE_APP_API_URL,
   validateStatus(status) {
     return status >= 200 && status < 500;
   },
