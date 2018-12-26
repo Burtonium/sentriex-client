@@ -1,5 +1,4 @@
 const Dotenv = require('dotenv-webpack');
-const path = require('path')
 
 module.exports = {
   pluginOptions: {
@@ -19,12 +18,15 @@ module.exports = {
   configureWebpack: {
     plugins: [
       new Dotenv({
-        path: './.env'
+        path: './.env',
+        safe: true,
+        systemvars: true,
+        silent: false,
       }),
     ],
   },
   devServer: {
-    port: 8080,
+    port: process.env.PORT || 8080,
     host: '0.0.0.0',
     hot: true,
     disableHostCheck: true,

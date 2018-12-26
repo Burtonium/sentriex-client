@@ -162,7 +162,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 html {
   color: #222;
   font-size: 1em;
