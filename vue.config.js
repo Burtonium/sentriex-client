@@ -1,5 +1,5 @@
 const Dotenv = require('dotenv-webpack');
-
+console.log('ENV VARIABLE', process.env.API_URL);
 module.exports = {
   pluginOptions: {
     webpackBundleAnalyzer: {
