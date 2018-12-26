@@ -8,6 +8,7 @@ import './registerServiceWorker';
 import Icon from './icons';
 import './bootstrap-vue';
 
+console.log(process.env.API_URL);
 Vue.config.productionTip = false;
 
 VeeValidate.Validator.extend('verify_password', {
