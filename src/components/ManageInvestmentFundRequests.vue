@@ -89,7 +89,8 @@
 import { mapGetters, mapActions } from 'vuex';
 import Spinner from '@/components/Spinner.vue';
 import { updateInvestmentFundRequest, fetchAllInvestmentFundRequests } from '@/api';
-import utils  from '@/utils';
+import utils from '@/utils';
+
 const { snakeCaseToCapitalized } = utils;
 
 export default {
@@ -110,7 +111,7 @@ export default {
     investmentFund: {
       required: true,
       default: () => ({}),
-    }
+    },
   },
   components: {
     Spinner,
@@ -128,9 +129,9 @@ export default {
     },
     investmentFundRequests() {
       return (this.requests || [])
-        .map(r => {
+        .map((r) => {
           const amount = r.amount && this.currencyFormat(r.amount);
-          const percentAmount = r.requestPercent && parseFloat(r.requestPercent).toFixed(2) + '%';
+          const percentAmount = r.requestPercent && `${parseFloat(r.requestPercent).toFixed(2)}%`;
           return {
             id: r.id,
             type: r.type,
@@ -163,10 +164,10 @@ export default {
           label: 'Amount',
         },
         siteFees: {
-          label: 'Site Fees'
+          label: 'Site Fees',
         },
         profitShare: {
-          label: 'Profit share'
+          label: 'Profit share',
         },
         status: {
           label: 'Status',
@@ -175,7 +176,7 @@ export default {
           label: 'Created',
         },
         actions: {
-          label: ''
+          label: '',
         },
       };
     },
@@ -199,7 +200,7 @@ export default {
   watch: {
     investmentFundId() {
       this.loadData();
-    }
+    },
   },
   methods: {
     ...mapActions(['fetchInvestmentFunds']),
@@ -214,7 +215,7 @@ export default {
       const response = await fetchAllInvestmentFundRequests(this.investmentFundId)
         .catch(() => this.error = { message: 'Something went wrong' })
         .finally(() => { this.loading = false; });
-        
+
       if (response.data.success) {
         this.requests = response.data.requests;
       }
@@ -245,11 +246,11 @@ export default {
         }
       }
       return sufficientFunds;
-    }
+    },
   },
   created() {
     this.loadData();
-  }
+  },
 };
 </script>
 <style scoped>

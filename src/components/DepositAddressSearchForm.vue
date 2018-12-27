@@ -85,18 +85,18 @@ export default {
           address: this.addressSearch,
           currencyCode: this.currencyCode,
         });
-      } catch(error) {
+      } catch (error) {
         this.error = true;
       }
-      
+
       this.searching = false;
       if (response.status === 404) {
         this.error = { message: 'Couldnt find that deposit address, sorry' };
       }
-      
+
       this.depositAddress = response.data.address;
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>

@@ -3,15 +3,15 @@ module.exports = {
     webpackBundleAnalyzer: {
       openAnalyzer: true,
       analyzerPort: 8082,
-      analyzerHost: '0.0.0.0'
+      analyzerHost: '0.0.0.0',
     },
     'style-resources-loader': {
       patterns: [
         './src/assets/scss/*.scss',
-        './src/assets/scss/animations/*.scss'
+        './src/assets/scss/animations/*.scss',
       ],
-      preProcessor: 'scss'
-    }
+      preProcessor: 'scss',
+    },
   },
   configureWebpack: {
     plugins: [
@@ -22,5 +22,5 @@ module.exports = {
     host: '0.0.0.0',
     hot: true,
     disableHostCheck: true,
-  }
+  },
 };

@@ -12,6 +12,7 @@
 </template>
 <script>
 import AdminSettingsForm from '@/components/AdminSettingsForm.vue';
+
 export default {
   components: {
     AdminSettingsForm,

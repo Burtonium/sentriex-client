@@ -43,7 +43,13 @@
           <p>{{ investmentFund.detailedDescription || 'N/A' }}</p>
         </b-tab>
         <b-tab title="Performance" active>
-          <br>Performance metrics coming soon
+          <br>
+          <p v-if="!authenticated">
+            Login to see the performance of your investments
+          </p>
+          <p>
+
+          </p>
         </b-tab>
         <b-tab title="Manager">
           <br>
@@ -63,7 +69,7 @@
       </div>
     </div>
     <div class="modals" v-if="authenticated">
-      <subscription-modal modalId="subscription-modal" 
+      <subscription-modal modalId="subscription-modal"
                           :investmentFund="investmentFund"/>
       <redemption-modal modalId="redemption-modal"
                         :investmentFund="investmentFund"/>

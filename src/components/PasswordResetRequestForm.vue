@@ -1,14 +1,15 @@
 <template>
   <div>
     <h3>Forgot Password</h3>
-    <div class="alert alert-success" role="alert" v-if="success"> <strong>Well done!</strong>
-      Thanks! A password reset was sent to your email address.
+    <div class="text-success" role="alert" v-if="success">
+      Success! A password reset was sent to your email address.
     </div>
     <br>
     <div class="form-group has-feedback">
       <input class="form-control form-control-lg"
              name="email"
              placeholder="Email Address"
+             v-model="email"
              type="text">
       <span class="glyphicon fa fa-envelope form-control-feedback" aria-hidden="true"></span>
     </div>
@@ -29,7 +30,7 @@ export default {
   methods: {
     async sendReset() {
       const response = await sendResetEmail(this.email);
-      if (response) {
+      if (response.data.success) {
         this.success = true;
       }
     },

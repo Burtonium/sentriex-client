@@ -38,7 +38,7 @@
 </template>
 <script>
 import { enableTwoFa, generateTwoFaSecret, errorCodes } from '@/api';
-  
+
 export default {
   data() {
     return {

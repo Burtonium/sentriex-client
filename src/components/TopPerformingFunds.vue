@@ -14,8 +14,8 @@
           <div class="investment-plan shadow">
             <h4>{{ investment.name }}</h4>
             <p>{{ investment.monthlyPerformance }}%</p>
-            <b-btn size="sm" 
-                   variant="outline-primary" 
+            <b-btn size="sm"
+                   variant="outline-primary"
                    :to="`/investment-funds/${investment.id}`">
               View
             </b-btn>
@@ -53,15 +53,15 @@ export default {
     loadData() {
       this.loading = true;
       this.fetchInvestmentFunds().finally(() => { this.loading = false; });
-    }
+    },
   },
   created() {
     this.loadData();
-  }
+  },
 };
 </script>
 <style lang="scss" scoped>
-h2 { 
+h2 {
   font-size: 1.8em;
   color: #1f61d0;
   text-transform: uppercase;

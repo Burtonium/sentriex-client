@@ -98,13 +98,12 @@ export default {
           twofaToken: this.twofaToken,
         });
       } catch (error) {
-        
         this.error = true;
       }
       if (response.status >= 400) {
         this.error = true;
       }
-      
+
       if (response.data.success) {
         EventBus.$emit(events.INVESTMENT_REQUEST_CREATED, response.data.request);
         await this.fetchBalances();

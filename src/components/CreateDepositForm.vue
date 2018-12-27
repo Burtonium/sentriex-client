@@ -89,7 +89,7 @@ export default {
           userId: this.depositAddress.user.id,
           userAddressId: this.depositAddress.id,
         });
-        
+
         this.success = response.data.success;
       } catch (error) {
         this.error = error;
@@ -97,7 +97,7 @@ export default {
       if (response.data.code === errorCodes.DEPOSIT_ALREADY_EXISTS) {
         this.error = { message: 'A deposit was found with that transaction id.' };
       }
-      
+
       await this.fetchDeposits(this.depositAddress.currencyCode);
     },
   },

@@ -12,9 +12,6 @@
     <transition name="fade" mode="out-in">
       <div v-if="state === 'initial'" key="initial">
         <div class="form-group has-feedback">
-            <p class="text-danger" v-if="errors.first('email')">
-              {{ errors.first('email') }}
-              </p>
             <input class="form-control form-control-lg"
                    name="email"
                    placeholder="Email Address"
@@ -23,10 +20,10 @@
                    v-validate="'email'">
             <span class="glyphicon fa fa-envelope form-control-feedback" aria-hidden="true"></span>
         </div>
+        <p class="text-danger" v-if="errors.first('email')">
+          {{ errors.first('email') }}
+        </p>
         <div class="form-group has-feedback">
-            <p class="text-danger" v-if="errors.first('username')">
-              {{ errors.first('username') }}
-            </p>
             <input class="form-control form-control-lg"
                    name="username"
                    v-model="username"
@@ -36,29 +33,26 @@
                    v-validate="'alpha_dash|available'">
             <span class="glyphicon fa fa-user form-control-feedback" aria-hidden="true"></span>
         </div>
+        <p class="text-danger" v-if="errors.first('username')">
+          {{ errors.first('username') }}
+        </p>
         <div class="form-group has-feedback">
-          <div class="password_message pop_container" autocomplete="new-password">
-            <p class="text-danger" v-if="errors.first('password')">
-              {{ errors.first('password') }}
-            </p>
-            <input id="password"
-                   type="password"
-                   name="password"
-                   v-model="password"
-                   class="form-control form-control-lg"
-                   placeholder="Password"
-                   autocomplete="false"
-                   ref="password"
-                   data-vv-validate-on="blur"
-                   v-validate="'required|verify_password'">
-          </div>
+          <input id="password"
+                 type="password"
+                 name="password"
+                 v-model="password"
+                 class="form-control form-control-lg"
+                 placeholder="Password"
+                 autocomplete="false"
+                 ref="password"
+                 data-vv-validate-on="blur"
+                 v-validate="'required|verify_password'">
           <span class="glyphicon fa fa-lock form-control-feedback" aria-hidden="true"></span>
         </div>
+        <p class="text-danger" v-if="errors.first('password')">
+          {{ errors.first('password') }}
+        </p>
         <div class="form-group has-feedback">
-          <p class="text-danger" v-if="errors.first('password_confirmation')
-            && fields.password_confirmation.touched">
-            {{ errors.first('password_confirmation') }}
-          </p>
           <input class="form-control form-control-lg"
                  name="password_confirmation"
                  placeholder="Confirm Password"
@@ -67,6 +61,10 @@
                  data-vv-validate-on="blur"
                  data-vv-as="password">
           <span class="glyphicon fa fa-lock form-control-feedback" aria-hidden="true"></span>
+          <p class="text-danger" v-if="errors.first('password_confirmation')
+            && fields.password_confirmation.touched">
+            {{ errors.first('password_confirmation') }}
+          </p>
         </div>
         <div class="form-group has-feedback">
           <input class="form-control form-control-lg"
@@ -126,11 +124,14 @@ export default {
   computed: {
     fields() {
       return this.veeFields;
-    }
+    },
   },
   methods: {
     async register(recaptchaCode) {
-      this.valid = recaptchaCode && await this.$validator.validateAll();
+      const valid = recaptchaCode && await this.$validator.validateAll();
+      if (!valid) {
+        return;
+      }
       let response;
       try {
         response = await register({

@@ -1,10 +1,10 @@
 <template>
   <div class="deposit-history">
     <spinner v-if="loading" />
-    <b-table 
+    <b-table
       v-else
-      :items="userDeposits" 
-      :fields="depositFields" 
+      :items="userDeposits"
+      :fields="depositFields"
       :show-empty="true"
       stacked="md"
       empty-text="You have no deposits yet">
@@ -22,9 +22,9 @@ import { mapActions, mapGetters } from 'vuex';
 import Spinner from '@/components/Spinner.vue';
 
 export default {
-  data() { 
+  data() {
     return {
-      loading: false
+      loading: false,
     };
   },
   components: {
@@ -40,16 +40,16 @@ export default {
     },
     userDeposits() {
       const deps = this.deposits ? this.deposits[this.currencyCode] : [];
-      return deps.map(d => ({ 
+      return deps.map(d => ({
         ...d,
-        amount: this.currency.format(d.amount)
+        amount: this.currency.format(d.amount),
       }));
     },
     depositFields() {
-      return { 
+      return {
         amount: {
           label: 'Amount',
-        }, 
+        },
         txId: {
           label: 'Transaction ID',
           tdClass: 'txid-ellipsis',
@@ -63,19 +63,19 @@ export default {
   watch: {
     currencyCode() {
       this.loadData();
-    }
+    },
   },
   methods: {
     ...mapActions(['fetchMyDeposits']),
     loadData() {
       this.loading = true;
-      this.fetchMyDeposits(this.currencyCode).finally(() => { this.loading = false; } );
-    }
-  }
+      this.fetchMyDeposits(this.currencyCode).finally(() => { this.loading = false; });
+    },
+  },
 };
 </script>
 <style>
-@media (min-width: 768px) { 
+@media (min-width: 768px) {
   td.txid-ellipsis {
     max-width: 200px;
     white-space: nowrap;

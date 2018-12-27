@@ -74,7 +74,7 @@
             </b-btn>
           </div>
         </form>
-        <p class="text-warning float-right mt-2" 
+        <p class="text-warning float-right mt-2"
           v-if="refundableStatus(row.item.status) && !row.item.refunded">
           User will be refunded {{ currency.format(row.item.amount) }}
         </p>
@@ -95,7 +95,8 @@ import { mapGetters, mapActions } from 'vuex';
 import Spinner from '@/components/Spinner.vue';
 import omit from 'lodash.omit';
 import { updateWithdrawal } from '@/api';
-import utils  from '@/utils';
+import utils from '@/utils';
+
 const { snakeCaseToCapitalized } = utils;
 
 export default {
@@ -106,7 +107,7 @@ export default {
       loading: false,
       perPage: 10,
       currentPage: 1,
-      filter: ''
+      filter: '',
     };
   },
   components: {
@@ -150,7 +151,7 @@ export default {
           label: 'Created',
         },
         showDetails: {
-          label: ''
+          label: '',
         },
       };
     },
@@ -174,7 +175,7 @@ export default {
   watch: {
     currencyCode() {
       this.loadData();
-    }
+    },
   },
   methods: {
     ...mapActions(['fetchWithdrawals']),
@@ -188,19 +189,21 @@ export default {
     refundableStatus(status) {
       return status === 'declined';
     },
-    async updateWithdrawal({ id, status, txId , vId }) {
+    async updateWithdrawal({
+      id, status, txId, vId,
+    }) {
       try {
         await updateWithdrawal({ id, status, txId });
         await this.fetchWithdrawals(this.currencyCode);
       } catch (error) {
         console.log(error);
-        this.errors.add({ field: vId, msg: `Something went wrong while updating`});
+        this.errors.add({ field: vId, msg: 'Something went wrong while updating' });
       }
     },
   },
   created() {
     this.loadData();
-  }
+  },
 };
 </script>
 <style scoped>

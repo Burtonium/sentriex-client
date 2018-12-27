@@ -47,9 +47,15 @@
                 </b-button>
                 <br>
                 Password:
-                <b-button variant="primary" size="sm">
+                <b-button variant="primary" size="sm" @click="sendReset">
                   Reset
                 </b-button>
+                <div class="text-success" v-if="success">
+                  Password reset request successfully sent.
+                </div>
+                <div class="text-danger" v-if="error">
+                  Something went wrong
+                </div>
               </p>
             </div>
           </div>
@@ -79,10 +85,17 @@
 </template>
 <script>
 import { mapGetters } from 'vuex';
+import { sendResetEmail } from '@/api';
 import EnableTwoFaModal from './EnableTwoFaModal.vue';
 import DisableTwoFaModal from './DisableTwoFaModal.vue';
 
 export default {
+  data() {
+    return {
+      success: false,
+      error: false,
+    };
+  },
   components: {
     EnableTwoFaModal,
     DisableTwoFaModal,
@@ -93,7 +106,14 @@ export default {
       const siteUrl = process.env.VUE_APP_SITE_URL || 'http://localhost';
       const { referralCode } = this.account;
       return `${siteUrl}/register?referralCode=${referralCode}`;
-    }
+    },
+    async sendReset() {
+      const response = await sendResetEmail(this.email)
+        .catch(() => { this.error = true; });
+      if (response.data.success) {
+        this.success = true;
+      }
+    },
   },
 };
 </script>

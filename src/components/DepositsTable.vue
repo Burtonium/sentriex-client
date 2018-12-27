@@ -8,9 +8,7 @@
 import { mapGetters, mapActions } from 'vuex';
 import Spinner from '@/components/Spinner.vue';
 
-const valueConcat = (obj) => {
-  return Object.values(obj).reduce((acc, cur) => acc.concat(cur), []);
-};
+const valueConcat = obj => Object.values(obj).reduce((acc, cur) => acc.concat(cur), []);
 
 export default {
   data() {
@@ -19,14 +17,14 @@ export default {
     };
   },
   components: {
-    Spinner
+    Spinner,
   },
   computed: {
     ...mapGetters(['deposits']),
     filteredDeposits() {
       const c = this.currencyCode;
       return c ? this.deposits[c] : valueConcat(this.deposits);
-    }
+    },
   },
   watch: {
     currencyCode() {
@@ -38,7 +36,7 @@ export default {
     loadData() {
       this.loading = true;
       this.fetchDeposits(this.currencyCode).finally(() => { this.loading = false; });
-    }
+    },
   },
   props: {
     currencyCode: {
@@ -48,6 +46,6 @@ export default {
   },
   created() {
     this.loadData();
-  }
+  },
 };
 </script>

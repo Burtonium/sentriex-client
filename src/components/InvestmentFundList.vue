@@ -59,8 +59,7 @@ import { mapGetters } from 'vuex';
 import SubscriptionModal from './SubscriptionModal.vue';
 import RedemptionModal from './RedemptionModal.vue';
 
-const performanceSort = (a, b) => 
-  parseFloat(b.monthlyPerformance) - parseFloat(a.monthlyPerformance);
+const performanceSort = (a, b) => parseFloat(b.monthlyPerformance) - parseFloat(a.monthlyPerformance);
 
 export default {
   components: {
@@ -76,7 +75,7 @@ export default {
     ...mapGetters(['investmentFunds', 'authenticated']),
     sortedInvestmentFunds() {
       return (this.investmentFunds || []).sort(performanceSort);
-    }
+    },
   },
   methods: {
     handleModalOpen(evt, investmentFund) {

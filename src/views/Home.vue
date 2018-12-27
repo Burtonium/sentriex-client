@@ -154,6 +154,7 @@
 </template>
 <script>
 import TopPerformingFunds from '@/components/TopPerformingFunds.vue';
+
 export default {
   name: 'home',
   components: {
@@ -162,8 +163,8 @@ export default {
   computed: {
     api() {
       return process.env.VUE_APP_API_URL;
-    }
-  }
+    },
+  },
 };
 </script>
 

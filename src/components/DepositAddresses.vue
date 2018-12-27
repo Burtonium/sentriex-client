@@ -11,7 +11,7 @@
         </div>
         <p class="text-danger">
           <strong>
-            Make sure you are sending {{ currency.code }} to this address. 
+            Make sure you are sending {{ currency.code }} to this address.
             Sending any other coin or token may result in the loss of your deposit.
           </strong>
         </p>

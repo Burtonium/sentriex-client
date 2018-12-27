@@ -49,6 +49,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import { createWithdrawal, errorCodes } from '@/api';
+
 const cloneDeep = require('lodash.clonedeep');
 
 const initialState = {
@@ -88,15 +89,15 @@ export default {
         'required',
         `min_value:${minValue}`,
         `max_value:${maxValue}`,
-        `decimal:${currency.precision}`
+        `decimal:${currency.precision}`,
       ];
       return rules.join('|');
-    }
+    },
   },
-  watch : {
+  watch: {
     currencyCode() {
       this.resetForm();
-    }
+    },
   },
   methods: {
     ...mapActions(['fetchBalances', 'fetchMyWithdrawals']),
@@ -105,7 +106,7 @@ export default {
       Object.assign(this, cloneDeep(initialState));
     },
     async onSubmit() {
-      let valid = await this.$validator.validateAll();
+      const valid = await this.$validator.validateAll();
 
       if (!valid) {
         return valid;
@@ -121,14 +122,13 @@ export default {
           this.fetchBalances(),
           this.fetchMyWithdrawals(this.currencyCode),
         ]);
-        
       } catch (error) {
         this.error = { message: 'Something went wrong' };
       }
 
       if (response.data.code === errorCodes.INVALID_2FA) {
         this.errors.add({
-          field: 'twofa', 
+          field: 'twofa',
           msg: 'Invalid 2fa code',
         });
       }

@@ -18,10 +18,10 @@ const instance = axios.create({
 export const authenticate = user => instance.post('/authenticate', user);
 export const register = params => instance.post('/register', params);
 export const activate = token => instance.post(`/activate/${token}`);
-export const resend = identifier => instance.post('/resend', {  identifier });
+export const resend = identifier => instance.post('/resend', { identifier });
 export const availability = username => instance.get(`/availability/${username}`);
 export const sendResetEmail = email => instance.post('/reset', { email });
-export const resetPassword = args => instance.post(`/reset-password/${args.resetToken || ''}`,  args);
+export const resetPassword = ({ resetToken, newPassword }) => instance.post(`/reset-password/${resetToken}`, { newPassword });
 
 // ACCOUNT
 export const fetchAccount = () => instance.get('/account');

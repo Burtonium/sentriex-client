@@ -30,7 +30,7 @@
                  v-validate="`min_value:0|required`"
                  :placeholder="`${investmentFund.currencyCode} value`"
                  autocomplete="off">
-                 
+
           <input v-show="amountType === 'percent'"
              id="redemption-amount-percent"
              class="form-control"
@@ -93,7 +93,7 @@ export default {
         this.errors.remove('amount');
         this.$validator.validate('percent');
       }
-    }
+    },
   },
   computed: {
     ...mapGetters(['investmentFundShares', 'currencies']),
@@ -116,18 +116,18 @@ export default {
       if (!valid) {
         return false;
       }
-      
+
       const response = await redeemFromFund({
         id: this.investmentFund.id,
         amount: this.amountType === 'amount' ? this.amount : null,
         percent: this.amountType === 'percent' ? this.percent : null,
         twofaToken: this.twofaToken,
       }).catch(() => this.error = false);
-      
+
       if (response.status >= 400) {
         this.error = true;
       }
-      
+
       if (response.data.success) {
         EventBus.$emit(events.INVESTMENT_REQUEST_CREATED, response.data.request);
         await this.fetchBalances();

@@ -14,8 +14,8 @@ import AppFooter from '@/components/AppFooter';
 export default {
   components: {
     NavBar,
-    AppFooter
-  }
+    AppFooter,
+  },
 };
 </script>
 

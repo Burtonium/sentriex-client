@@ -11,9 +11,9 @@
         <div class="col-md-3 form-group">
           <label>Fund Manager's Redemption Profit Cut</label>
           <input class="form-control"
-                 type="number" 
-                 name="manager_cut" 
-                 step="0.01" 
+                 type="number"
+                 name="manager_cut"
+                 step="0.01"
                  v-validate="'min_value:0|max_value:1|required'"
                  data-vv-as="manager's cut"
                  v-model="settings.fundManagerRedeemProfitPercent"/>
@@ -24,9 +24,9 @@
         <div class="col-md-3">
           <label>Site's Redemption Profit Cut</label>
           <input class="form-control"
-                 type="number" 
-                 name="site_cut" 
-                 step="0.01" 
+                 type="number"
+                 name="site_cut"
+                 step="0.01"
                  v-validate="'min_value:0|max_value:1|required'"
                  data-vv-as="site's cut"
                  v-model="settings.siteRedeemProfitPercent"/>
@@ -37,9 +37,9 @@
         <div class="col-md-3">
           <label>Referral's Redemption Profit Cut</label>
           <input class="form-control"
-                 type="number" 
-                 name="referral_cut" 
-                 step="0.01" 
+                 type="number"
+                 name="referral_cut"
+                 step="0.01"
                  v-validate="referralValidation"
                  data-vv-as="referral's cut"
                  v-model="settings.referralRedeemProfitPercent"/>
@@ -56,9 +56,9 @@
         <div class="col-md-3">
           <label>User's Redemption Profit Cut</label>
           <input class="form-control"
-                 type="number" 
-                 name="user_cut" 
-                 step="0.01" 
+                 type="number"
+                 name="user_cut"
+                 step="0.01"
                  v-validate="'min_value:0|max_value:1|required'"
                  data-vv-as="user's cut"
                  v-model="settings.userRedeemProfitPercent"/>
@@ -76,9 +76,9 @@
         <div class="col-md-3 form-group">
           <label>Withdrawal Fee Rate</label>
           <input class="form-control"
-                 type="number" 
-                 name="withdrawal_fee_rate" 
-                 step="0.01" 
+                 type="number"
+                 name="withdrawal_fee_rate"
+                 step="0.01"
                  v-validate="'min_value:0|max_value:1|required'"
                  data-vv-as="withdrawal fee rate"
                  v-model="settings.withdrawalFeeRate"/>
@@ -112,7 +112,7 @@ export default {
       return [
         'min_value:0',
         `max_value:${this.settings.siteRedeemProfitPercent}`,
-        'required'
+        'required',
       ].join('|');
     },
     totalProfitShare() {
@@ -120,7 +120,7 @@ export default {
       const userRedeemProfitPercent = parseFloat(this.settings.userRedeemProfitPercent);
       const fundManagerRedeemProfitPercent = parseFloat(this.settings.fundManagerRedeemProfitPercent);
       return siteRedeemProfitPercent + userRedeemProfitPercent + fundManagerRedeemProfitPercent;
-    }
+    },
   },
   methods: {
     async loadData() {
@@ -128,7 +128,7 @@ export default {
       const response = await fetchSettings()
         .catch(() => { this.error = true; })
         .finally(() => { this.loading = false; });
-        
+
       this.settings = response.data.settings;
     },
     async update() {
@@ -143,7 +143,7 @@ export default {
       if (response.data.success) {
         this.success = true;
       }
-    }
+    },
   },
   created() {
     this.loadData();

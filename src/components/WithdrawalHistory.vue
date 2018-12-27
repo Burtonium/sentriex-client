@@ -5,10 +5,10 @@
       Something went wrong when canceling a withdrawal.
       Notify support for further assistance.
     </p>
-    <b-table 
+    <b-table
       v-else
-      :items="userWithdrawals" 
-      :fields="withdrawalFields" 
+      :items="userWithdrawals"
+      :fields="withdrawalFields"
       :show-empty="true"
       empty-text="You have no withdrawals yet"
       stacked="md">
@@ -42,11 +42,12 @@
 import { mapActions, mapGetters } from 'vuex';
 import { cancelWithdrawal } from '@/api';
 import Spinner from '@/components/Spinner.vue';
-import utils  from '@/utils';
+import utils from '@/utils';
+
 const { snakeCaseToCapitalized } = utils;
 
 export default {
-  data() { 
+  data() {
     return {
       loading: true,
       error: false,
@@ -67,7 +68,7 @@ export default {
       return this.withdrawals ? this.withdrawals[this.currencyCode] : [];
     },
     withdrawalFields() {
-      return { 
+      return {
         amount: {
           label: 'Amount',
         },
@@ -76,7 +77,7 @@ export default {
         },
         createdAt: {
           label: 'Created',
-        }, 
+        },
         status: {
           label: 'Status',
         },
@@ -96,13 +97,13 @@ export default {
   watch: {
     currencyCode() {
       this.loadData();
-    }
+    },
   },
   methods: {
     ...mapActions(['fetchMyWithdrawals', 'fetchBalances']),
     loadData() {
       this.loading = true;
-      this.fetchMyWithdrawals(this.currencyCode).finally(() => { this.loading = false; } );
+      this.fetchMyWithdrawals(this.currencyCode).finally(() => { this.loading = false; });
     },
     statusToWords(status) {
       return snakeCaseToCapitalized(status);

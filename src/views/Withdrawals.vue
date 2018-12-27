@@ -59,7 +59,7 @@ export default {
       if (withdrawal.status === 'pending_email_verification') {
         this.showVerificationModal = true;
       }
-    }
-  }
+    },
+  },
 };
 </script>

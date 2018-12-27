@@ -28,7 +28,7 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
     },
     {
       path: '/login',
@@ -49,7 +49,7 @@ const router = new Router({
       component: Register,
     },
     {
-      path: '/reset-password',
+      path: '/reset-password/:token?',
       name: 'reset-password',
       component: Reset,
     },
@@ -97,7 +97,7 @@ const router = new Router({
       component: InvestmentFunds,
       async beforeEnter(to, from, next) {
         await Promise.all([
-          store.state.authenticated &&store.dispatch('fetchBalances'),
+          store.state.authenticated && store.dispatch('fetchBalances'),
           store.state.authenticated && store.dispatch('fetchInvestmentFundShares'),
           store.dispatch('fetchCurrencies'),
           store.dispatch('fetchInvestmentFunds'),

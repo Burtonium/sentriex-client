@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       success: false,
-      error: null
+      error: null,
     };
   },
   components: {
@@ -59,6 +59,6 @@ export default {
     setTimeout(() => {
       this.$router.push(this.redirect);
     }, 4000);
-  }
+  },
 };
 </script>
