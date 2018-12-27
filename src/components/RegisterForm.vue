@@ -77,6 +77,9 @@
                  v-validate="'alpha_num'">
           <span class="glyphicon fa fa-link form-control-feedback" aria-hidden="true"></span>
         </div>
+        <p class="text-danger" v-if="error">
+          Something went wrong. Contact site admin if this persists.
+        </p>
         <recaptcha-button @click="register" :sitekey="captchaKey">Create</recaptcha-button>
       </div>
       <div v-else-if="state === 'registered'" key="registered" class="registered">
@@ -107,6 +110,7 @@ Validator.extend('available', {
 export default {
   data() {
     return {
+      error: false,
       state: 'initial',
       username: '',
       email: '',
@@ -125,19 +129,25 @@ export default {
     }
   },
   methods: {
-    async register(code) {
-      this.valid = code && await this.$validator.validateAll();
-      const response = await register({
-        username: this.username,
-        email: this.email,
-        password: this.password,
-        recaptcha: this.code,
-      });
+    async register(recaptchaCode) {
+      this.valid = recaptchaCode && await this.$validator.validateAll();
+      let response;
+      try {
+        response = await register({
+          username: this.username,
+          email: this.email,
+          password: this.password,
+          referralCode: this.code,
+          recaptcha: recaptchaCode,
+        });
+      } catch (error) {
+        this.error = true;
+      }
 
-      if (response.data.success) {
+      if (response && response.data.success) {
         this.state = 'registered';
       } else {
-        this.errors.add('Something went wrong');
+        this.error = true;
       }
     },
   },
