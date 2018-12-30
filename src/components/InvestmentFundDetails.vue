@@ -22,8 +22,8 @@
                             'text-danger': investmentFund.monthlyPerformance < 0 }">
               {{ investmentFund.monthlyPerformance }}%
             </span>
-            <icon name="play" v-if="investmentFund.monthlyPerformance !== 0"
-                  :class="{ 'arrow-up': investmentFund.monthlyPerformance > 0,
+            <icon name="play"
+                  :class="{ 'arrow-up': investmentFund.monthlyPerformance >= 0,
                             'arrow-down': investmentFund.monthlyPerformance < 0 }"/>
             (monthly)
           </div>
