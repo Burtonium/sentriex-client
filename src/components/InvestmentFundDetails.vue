@@ -56,7 +56,7 @@
           <p>
             Contact:
             <a :href="`mailto:${fundManager.email}`">
-              {{ investmentFund.manager.email }}
+              {{ fundManager.email }}
               </a><br>
             Member since <timeago :datetime="fundManager.createdAt"/>
           </p>
@@ -90,7 +90,7 @@ export default {
   computed: {
     ...mapGetters(['authenticated']),
     fundManager() {
-      return this.investmentFund.manager || this.investmentFund.creator || {};
+      return this.investmentFund.manager || this.investmentFund.creator;
     },
   },
   methods: {
