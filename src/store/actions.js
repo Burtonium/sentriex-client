@@ -21,9 +21,11 @@ export default {
     const response = await api.fetchBalances();
     store.commit(types.SET_BALANCES, response.data.balances);
   },
-  async fetchInvestmentFunds(store) {
-    const response = await api.fetchInvestmentFunds();
-    store.commit(types.SET_INVESTMENT_FUNDS, response.data.investmentFunds);
+  async fetchInvestmentFunds(store, config = {}) {
+    if (!store.state.investmentFunds || config.refresh) {
+      const response = await api.fetchInvestmentFunds();
+      store.commit(types.SET_INVESTMENT_FUNDS, response.data.investmentFunds);
+    }
   },
   async fetchInvestmentFundShares(store) {
     const response = await api.fetchInvestmentFundShares();

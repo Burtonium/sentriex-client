@@ -26,7 +26,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import '../assets/scss/bootstrap-override.scss';
 ul {
   border-radius: 3px;
 }

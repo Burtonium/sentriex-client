@@ -8,6 +8,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 import NavBar from '@/components/NavBar';
 import AppFooter from '@/components/AppFooter';
 
@@ -16,6 +17,14 @@ export default {
     NavBar,
     AppFooter,
   },
+  computed: mapGetters(['authenticated']),
+  watch: {
+    authenticated() {
+      if (!this.authenticated) {
+        this.$router.push({ name: 'login', params: { redirectTo: this.$route.path } });
+      }
+    }
+  }
 };
 </script>
 

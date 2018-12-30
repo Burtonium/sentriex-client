@@ -15,6 +15,7 @@ import Deposits from '@/views/Deposits.vue';
 import Withdrawals from '@/views/Withdrawals.vue';
 import Activation from '@/views/Activation.vue';
 import Home from '@/views/Home.vue';
+import Portfolio from '@/views/Portfolio.vue';
 
 import store from '@/store';
 import { LOGOUT } from '@/store/mutation_types';
@@ -34,6 +35,9 @@ const router = new Router({
       path: '/login',
       name: 'login',
       component: Login,
+      props: route => ({
+        redirectTo: route.params.redirectTo,
+      }),
     },
     {
       path: '/logout',
@@ -90,6 +94,16 @@ const router = new Router({
         ]);
         next(store.state.authenticated || loginWithRedirect(to));
       },
+    },
+    {
+      path: '/portfolio',
+      redirect: '/portfolio/BTC',
+    },
+    {
+      path: '/portfolio/:currencyCode',
+      name: 'portfolio',
+      component: Portfolio,
+      meta: { requiresAuth: true },
     },
     {
       path: '/investment-funds',
@@ -201,7 +215,7 @@ router.beforeEach((to, from, next) => {
     if (store.state.authenticated) {
       next();
     } else {
-      next({ name: 'login' });
+      next({ name: 'login', params: { redirectTo: to.path } });
     }
   } else {
     next();

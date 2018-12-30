@@ -24,9 +24,9 @@
               Investment Funds
             </b-nav-text>
           </b-nav-item>
-          <b-nav-item :to="'/balances'" v-if="authenticated">
+          <b-nav-item :to="'/portfolio'" v-if="authenticated">
             <b-nav-text>
-              Balances
+              Porfolio
             </b-nav-text>
           </b-nav-item>
           <b-nav-item :to="'/deposits'" v-if="authenticated">
