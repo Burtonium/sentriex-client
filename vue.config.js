@@ -1,7 +1,7 @@
 module.exports = {
   pluginOptions: {
     webpackBundleAnalyzer: {
-      openAnalyzer: true,
+      openAnalyzer: false,
       analyzerPort: 8082,
       analyzerHost: '0.0.0.0',
     },
@@ -18,8 +18,9 @@ module.exports = {
     ],
   },
   devServer: {
+    https: true,
     port: process.env.PORT || 8080,
-    host: '0.0.0.0',
+    host: process.env.HOST || '0.0.0.0',
     hot: true,
     disableHostCheck: true,
   },
