@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     getRoute(id) {
-      return { name: this.routeName, [this.routeIdField]: id };
+      return { name: this.routeName, params: { [this.routeIdField]: id } };
     }
   }
 };

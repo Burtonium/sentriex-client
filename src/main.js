@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VeeValidate from 'vee-validate';
 import VueTimeago from 'vue-timeago';
+import Trend from 'vuetrend';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -22,6 +23,7 @@ VeeValidate.Validator.extend('verify_password', {
 Vue.use(VeeValidate, { fieldsBagName: 'veeFields' });
 Vue.use(VueTimeago);
 Vue.component('icon', Icon);
+Vue.use(Trend);
 
 new Vue({
   router,
