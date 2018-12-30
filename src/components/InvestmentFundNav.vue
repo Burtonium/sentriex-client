@@ -13,7 +13,8 @@
                     :key="investmentFund.id"
                     v-for="investmentFund in investmentFunds"
                     class="clickable nav-button ellipsis"
-                    :class="{'selected': selected === investmentFund.id}">
+                    :class="{'selected': selected === investmentFund.id}"
+                    :title="investmentFund.name">
           {{ investmentFund.name }}
      </router-link>
     </ul>

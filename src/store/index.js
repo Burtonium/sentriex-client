@@ -24,6 +24,7 @@ export default new Vuex.Store({
     depositAddresses: s => s.depositAddresses,
     deposits: s => s.deposits,
     withdrawals: s => s.withdrawals,
+    users: s => s.users,
   },
   mutations,
 });

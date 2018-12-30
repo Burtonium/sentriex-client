@@ -3,7 +3,7 @@
     <div class="wrapper mt-5">
       <div class="row text-left">
         <div class="col-md-2">
-          <investment-fund-nav :create="true"
+          <investment-fund-nav :create="canCreate"
                                :selected="investmentFundId"
                                :investmentFunds="myInvestmentFunds"
                                routeName="manage-investment-funds"/>
@@ -12,7 +12,11 @@
           <b-tabs>
             <b-tab title="Information" :active="!investmentFund">
               <br>
-              <investment-fund-form :investment-fund="investmentFund"/>
+              <p class="text-warning" v-if="!canCreate && myInvestmentFunds.length === 0">
+                You currently do not manage any investment funds. Contact your admin
+                to manage investment fund balances.
+              </p>
+              <investment-fund-form v-else :investment-fund="investmentFund" :canEdit="user.admin"/>
             </b-tab>
             <b-tab title="Balance Updates" v-if="investmentFund">
               <br>
@@ -20,13 +24,9 @@
               <br>
               <investment-fund-balance-updates-table :investmentFundId="investmentFund.id" />
             </b-tab>
-            <b-tab title="Red/Subs" v-if="investmentFund">
+            <b-tab title="Red/Subs" v-if="investmentFund && user.admin">
               <br>
               <manage-investment-fund-requests :investmentFund="investmentFund" />
-            </b-tab>
-            <b-tab title="Withdraw/Deposit" v-if="investmentFund">
-              <br>
-              Coming soon
             </b-tab>
           </b-tabs>
         </div>
@@ -52,11 +52,14 @@ export default {
   },
   computed: {
     ...mapGetters(['investmentFunds', 'user']),
+    canCreate() {
+      return this.user.admin;
+    },
     investmentFundId() {
       return this.$route.params.investmentFundId;
     },
     myInvestmentFunds() {
-      return this.investmentFunds.filter(fund => fund.creatorId === this.user.id);
+      return this.investmentFunds.filter(fund => this.user.admin || fund.managedBy === this.user.id);
     },
     investmentFund() {
       return this.investmentFunds.find(i => i.id === this.investmentFundId);

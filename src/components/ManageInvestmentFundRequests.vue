@@ -19,7 +19,7 @@
         <div class="form-group">
           <label>Status filter</label>
           <select v-model="statusFilter" class="form-control">
-            <option value>All</option>
+            <option value="all">All</option>
             <option :class="statusClasses[status] || ''" v-for="status in statuses" :value="status">
               {{ statusToWords(status) }}
             </option>
@@ -97,7 +97,7 @@ export default {
   data() {
     return {
       error: false,
-      statusFilter: 'pending',
+      statusFilter: 'all',
       userFilter: '',
       typeFilter: '',
       loading: false,
@@ -150,9 +150,13 @@ export default {
             profitShare: this.currencyFormat(r.profitShare),
           };
         })
-        .filter(r => !this.statusFilter || r.status === this.statusFilter)
-        .filter(r => !this.userFilter || r.username.toLowerCase().match(this.userFilter.toLowerCase()))
-        .filter(r => !this.typeFilter || r.type === this.typeFilter);
+        .filter(r => !this.statusFilter
+                      || r.status === this.statusFilter
+                      || this.statusFilter === 'all')
+        .filter(r => !this.userFilter
+                     || r.username.toLowerCase().match(this.userFilter.toLowerCase()))
+        .filter(r => !this.typeFilter
+                     || r.type === this.typeFilter);
     },
     requestFields() {
       return {

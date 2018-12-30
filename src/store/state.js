@@ -10,6 +10,7 @@ const initialState = {
   deposits: {},
   withdrawals: {},
   investmentFundRequests: [],
+  users: [],
 };
 
 if (localStorage.getItem(STORAGE_KEY)) {

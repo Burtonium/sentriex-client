@@ -174,6 +174,7 @@ const router = new Router({
       meta: { requiresManager: true },
       async beforeEnter(to, from, next) {
         await Promise.all([
+          store.state.user.admin && store.dispatch('fetchUsers', { type: 'fund_manager' }),
           store.dispatch('fetchInvestmentFunds'),
           store.dispatch('fetchCurrencies'),
         ]);

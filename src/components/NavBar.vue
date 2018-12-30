@@ -10,7 +10,7 @@
           <b-nav-item-dropdown v-if="authenticated && user.manager"
                                :text="user.admin ? 'Admin' : 'Manage'" class="navbar-text">
             <b-dropdown-item :to="'/manage/investment-funds'" class="text-primary">
-              My Investment Funds
+              Investment Funds
             </b-dropdown-item>
             <b-dropdown-item :to="'/admin/crypto'" v-if="user.admin" class="text-primary">
               Manage Crypto

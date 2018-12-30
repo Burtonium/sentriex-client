@@ -22,8 +22,8 @@
                             'text-danger': investmentFund.monthlyPerformance < 0 }">
               {{ investmentFund.monthlyPerformance }}%
             </span>
-            <icon name="play" v-if="investmentFund.monthlyPerformance !== 0"
-                  :class="{ 'arrow-up': investmentFund.monthlyPerformance > 0,
+            <icon name="play"
+                  :class="{ 'arrow-up': investmentFund.monthlyPerformance >= 0,
                             'arrow-down': investmentFund.monthlyPerformance < 0 }"/>
             (monthly)
           </div>
@@ -48,17 +48,17 @@
             Login to see the performance of your investments
           </p>
           <p>
-
+            Coming soon.
           </p>
         </b-tab>
-        <b-tab title="Manager">
+        <b-tab title="Manager" v-if="fundManager">
           <br>
           <p>
             Contact:
-            <a :href="`mailto:${investmentFund.creator.email}`">
-              {{ investmentFund.creator.email }}
+            <a :href="`mailto:${fundManager.email}`">
+              {{ fundManager.email }}
               </a><br>
-            Member since <timeago :datetime="investmentFund.creator.createdAt"/>
+            Member since <timeago :datetime="fundManager.createdAt"/>
           </p>
         </b-tab>
       </b-tabs>
@@ -89,6 +89,9 @@ export default {
   props: ['investmentFund'],
   computed: {
     ...mapGetters(['authenticated']),
+    fundManager() {
+      return this.investmentFund.manager || this.investmentFund.creator;
+    },
   },
   methods: {
     handleModalOpen(evt) {

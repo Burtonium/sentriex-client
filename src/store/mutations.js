@@ -44,4 +44,8 @@ export default {
   [types.SET_WITHDRAWALS](state, { currencyCode, withdrawals }) {
     Vue.set(state.withdrawals, currencyCode, withdrawals);
   },
+  [types.SET_USERS](state, users) {
+    state.users = users;
+  },
+
 };
