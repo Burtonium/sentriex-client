@@ -56,14 +56,16 @@ export const cancelWithdrawal = id => instance.post(`/withdrawals/${id}/cancel`)
 
 // FUND MANAGER ROUTES
 // INVESTMENT FUNDS
-export const fetchAllInvestmentFundRequests = investmentFundId => instance.get('/manager/investment-fund-requests', { params: { investmentFundId } });
-export const updateInvestmentFundRequest = ({ id, status }) => instance.patch(`/manager/investment-fund-requests/${id}`, { status });
 export const updateFundBalance = ({ id, amount }) => instance.post(`/manager/investment-funds/${id}/balance-updates`, { amount });
-export const createInvestmentFund = args => instance.post('/manager/investment-funds', args);
-export const updateInvestmentFund = args => instance.patch(`/manager/investment-funds/${args.id}`, args);
 export const fetchInvestmentBalanceUpdates = id => instance.get(`/manager/investment-funds/${id}/balance-updates`);
 
 // ADMIN ROUTES
+// INVESTMENT FUNDS
+export const createInvestmentFund = args => instance.post('/admin/investment-funds', args);
+export const updateInvestmentFund = args => instance.patch(`/admin/investment-funds/${args.id}`, args);
+export const fetchAllInvestmentFundRequests = investmentFundId => instance.get('/admin/investment-fund-requests', { params: { investmentFundId } });
+export const updateInvestmentFundRequest = ({ id, status }) => instance.patch(`/admin/investment-fund-requests/${id}`, { status });
+
 // CURRENCIES
 export const createCurrency = currency => instance.post('/admin/currencies', { currency });
 export const updateCurrency = ({ code, currency }) => instance.patch(`/admin/currencies/${code}`, { currency });
@@ -81,6 +83,9 @@ export const updateWithdrawal = ({ id, status, txId }) => instance.patch(`/withd
 // SETTINGS
 export const fetchSettings = () => instance.get('/admin/settings');
 export const patchSettings = args => instance.patch('/admin/settings', args);
+
+// USERS
+export const fetchUsers = args => instance.get('/admin/users', { params: args });
 
 export const errorCodes = {
   INVALID_2FA: 16,

@@ -73,4 +73,8 @@ export default {
     const response = await api.fetchInvestmentFundRequests();
     store.commit(types.SET_INVESTMENT_FUND_REQUESTS, response.data.requests);
   },
+  async fetchUsers(store, args) {
+    const response = await api.fetchUsers(args);
+    store.commit(types.SET_USERS, response.data.users);
+  },
 };
