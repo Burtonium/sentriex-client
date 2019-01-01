@@ -42,9 +42,7 @@
 import { mapActions, mapGetters } from 'vuex';
 import { cancelWithdrawal } from '@/api';
 import Spinner from '@/components/Spinner.vue';
-import utils from '@/utils';
-
-const { snakeCaseToCapitalized } = utils;
+import { snakeCaseToCapitalized } from '@/utils';
 
 export default {
   data() {

@@ -95,9 +95,7 @@ import { mapGetters, mapActions } from 'vuex';
 import Spinner from '@/components/Spinner.vue';
 import omit from 'lodash.omit';
 import { updateWithdrawal } from '@/api';
-import utils from '@/utils';
-
-const { snakeCaseToCapitalized } = utils;
+import { snakeCaseToCapitalized } from '@/utils';
 
 export default {
   data() {

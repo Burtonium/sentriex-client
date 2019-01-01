@@ -56,10 +56,8 @@
 import { mapGetters, mapActions } from 'vuex';
 import Spinner from '@/components/Spinner.vue';
 import { cancelInvestmentFundRequest, fetchInvestmentFundRequests } from '@/api';
-import utils from '@/utils';
+import { snakeCaseToCapitalized } from '@/utils';
 import { events, EventBus } from '@/event-bus';
-
-const { snakeCaseToCapitalized } = utils;
 
 export default {
   data() {
