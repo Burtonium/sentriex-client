@@ -2,13 +2,13 @@
   <div class="manage-crypto">
     <div class="wrapper mt-5">
       <div class="row text-left">
-        <div class="col-md-3">
+        <div class="col-md-2">
           <currency-nav :create="true"
                         :selected="currencyCode"
                         :currencies="currencies"
                         routeName="crypto-management"/>
         </div>
-        <div class="col-md-9 col-lg-8">
+        <div class="col-md-10">
           <b-tabs>
             <b-tab title="Information">
               <br>

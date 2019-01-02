@@ -76,7 +76,7 @@
         </form>
         <p class="text-warning float-right mt-2"
           v-if="refundableStatus(row.item.status) && !row.item.refunded">
-          User will be refunded {{ currency.format(row.item.amount) }}
+          User will be refunded {{ currency.format(row.item.totalAmount) }}
         </p>
         <p class="text-danger" v-if="errors.first(row.item.vId)">
           {{ errors.first(row.item.vId) }}
@@ -127,6 +127,7 @@ export default {
         .map(w => ({
           ...omit(w, ['user']),
           username: w.user && w.user.username,
+          totalAmount: parseFloat(w.amount) + parseFloat(w.feeAmount),
           vId: `withdrawal_${w.id}`,
           _showDetails: false,
         }))
@@ -141,6 +142,7 @@ export default {
         amount: {
           label: 'Amount',
         },
+        feeAmount: {},
         address: {
           label: 'Address',
         },
