@@ -14,9 +14,9 @@ module.exports = {
     },
   },
   devServer: {
+    https: true,
     port: process.env.PORT || 8080,
     host: process.env.HOST || '0.0.0.0',
-    https: true,
     hot: true,
     disableHostCheck: true,
   },

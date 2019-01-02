@@ -31,7 +31,7 @@
                 <span>Security</span>
               </div>
             <div class="card-body">
-              <p class="card-text text-bold pr-5">
+              <div class="card-text text-bold pr-5">
                 Two Factor Authentication:
                 <b-button size="sm"
                           variant="success"
@@ -56,7 +56,7 @@
                 <div class="text-danger" v-if="error">
                   Something went wrong
                 </div>
-              </p>
+              </div>
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@
               </div>
             <div class="card-body">
               <p class="card-text text-bold pr-5">
-                Your referral link: <br> {{ referralLink }}
+                Your referral link: <br/> {{ referralLink }}
               </p>
             </div>
           </div>
@@ -94,6 +94,7 @@ export default {
     return {
       success: false,
       error: false,
+      email: '',
     };
   },
   components: {
@@ -107,10 +108,12 @@ export default {
       const { referralCode } = this.account;
       return `${siteUrl}/register?referralCode=${referralCode}`;
     },
+  },
+  methods: {
     async sendReset() {
-      const response = await sendResetEmail(this.email)
+      const response = await sendResetEmail(this.account.email)
         .catch(() => { this.error = true; });
-      if (response.data.success) {
+      if (response && response.data.success) {
         this.success = true;
       }
     },

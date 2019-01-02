@@ -9,7 +9,7 @@
       <br>
       <div class="row">
         <div class="col-md-3 form-group">
-          <label>Fund Manager's Redemption Profit Cut</label>
+          <label>Fund Manager's Cut</label>
           <input class="form-control"
                  type="number"
                  name="manager_cut"
@@ -22,7 +22,7 @@
           </div>
         </div>
         <div class="col-md-3">
-          <label>Site's Redemption Profit Cut</label>
+          <label>Site's Cut</label>
           <input class="form-control"
                  type="number"
                  name="site_cut"
@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="col-md-3">
-          <label>Referral's Redemption Profit Cut</label>
+          <label>Referral's Cut</label>
           <input class="form-control"
                  type="number"
                  name="referral_cut"
@@ -54,7 +54,7 @@
           </div>
         </div>
         <div class="col-md-3">
-          <label>User's Redemption Profit Cut</label>
+          <label>User's Cut</label>
           <input class="form-control"
                  type="number"
                  name="user_cut"

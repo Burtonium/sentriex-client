@@ -53,6 +53,9 @@ export default {
   },
   computed: {
     ...mapGetters(['currencies']),
+    fundBalance() {
+      return this.investmentFund.balance;
+    },
     deltaBalance() {
       return this.balance - parseFloat(this.investmentFund.balance);
     },
@@ -67,8 +70,8 @@ export default {
     },
   },
   watch: {
-    investmentFund() {
-      this.balance = parseFloat(this.investmentFund.balance);
+    fundBalance() {
+      this.balance = parseFloat(this.fundBalance);
     },
   },
   methods: {
@@ -76,7 +79,7 @@ export default {
     async updateBalance() {
       await updateFundBalance({ id: this.investmentFund.id, amount: this.balance });
       await Promise.all([
-        this.fetchInvestmentFunds(),
+        this.fetchInvestmentFunds({ refresh: true }),
         this.fetchInvestmentBalanceUpdates(this.investmentFund.id),
       ]);
     },

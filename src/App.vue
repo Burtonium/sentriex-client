@@ -3,7 +3,7 @@
     <nav-bar />
     <div class="flex-wrapper">
       <router-view />
-      <app-footer />
+      <app-footer class="mt-5" />
     </div>
   </div>
 </template>
