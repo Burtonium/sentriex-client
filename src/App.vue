@@ -23,8 +23,8 @@ export default {
       if (!this.authenticated) {
         this.$router.push({ name: 'login', params: { redirectTo: this.$route.path } });
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

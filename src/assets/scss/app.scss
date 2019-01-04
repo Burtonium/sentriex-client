@@ -19,6 +19,8 @@ input::-webkit-inner-spin-button {
 
 .wrapper {
   margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
   max-width: $app-max-width;
 }
 
@@ -39,7 +41,7 @@ ul {
   cursor: pointer;
 }
 
-.no-uppercase { 
+.no-uppercase {
   text-transform:none;
 }
 
@@ -59,7 +61,7 @@ input.input-center-text {
   border-radius: 0;
 }
 
-.ellipsis { 
+.ellipsis {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

@@ -5,10 +5,9 @@
         <div class="col-md-2">
           <investment-fund-nav :selected="investmentFundId" :investmentFunds="investmentFunds"/>
         </div>
-        <div :class="{ 'col-md-5': authenticated, 'col-md-7': !authenticated }">
+        <div class="col-md-10">
           <investment-fund-details :investment-fund="investmentFund"/>
-        </div>
-        <div class="col-md-5" v-if="authenticated">
+          <br>
           <investment-fund-request-history />
         </div>
       </div>

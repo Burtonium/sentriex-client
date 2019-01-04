@@ -34,6 +34,7 @@ export const fetchBalances = () => instance.get('/balances');
 
 // INVESTMENT
 export const fetchInvestmentFunds = () => instance.get('/investment-funds');
+export const fetchPerformance = () => instance.get('/investment-funds/performance');
 export const fetchInvestmentFundShares = () => instance.get('/investment-fund-shares');
 export const fetchInvestmentFundRequests = () => instance.get('/investment-fund-requests');
 export const cancelInvestmentFundRequest = id => instance.post(`/investment-fund-requests/${id}/cancel`);

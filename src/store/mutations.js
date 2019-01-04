@@ -35,6 +35,9 @@ export default {
   [types.SET_INVESTMENT_FUND_REQUESTS](state, requests) {
     state.investmentFundRequests = requests;
   },
+  [types.SET_INVESTMENT_FUND_SETTINGS](state, settings) {
+    state.investmentFundSettings = settings;
+  },
   [types.SET_DEPOSIT_ADDRESSES](state, depositAddresses) {
     state.depositAddresses = depositAddresses;
   },
@@ -47,5 +50,7 @@ export default {
   [types.SET_USERS](state, users) {
     state.users = users;
   },
-
+  [types.SET_PERFORMANCE](state, perf) {
+    Vue.set(state, 'performance', perf);
+  },
 };

@@ -26,7 +26,7 @@
           </b-nav-item>
           <b-nav-item :to="'/portfolio'" v-if="authenticated">
             <b-nav-text>
-              Porfolio
+              Portfolio
             </b-nav-text>
           </b-nav-item>
           <b-nav-item :to="'/deposits'" v-if="authenticated">

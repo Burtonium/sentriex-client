@@ -2,25 +2,13 @@
   <div class="portfolio">
     <div class="wrapper mt-5">
       <div class="row text-left">
-        <div class="col-md-2">
-          <requires-async-state :actions="['fetchCurrencies']">
-            <template slot-scope="store">
-              <router-nav 
-                :items="store.getters.currencies" 
-                itemIdField="code" 
-                routeIdField="currencyCode" />
-            </template>
-          </requires-async-state>
-        </div>
-        <div class="col-md-10">
-          <requires-async-state 
-            :actions="['fetchInvestmentFunds', 'fetchInvestmentFundShares']">
-            <template slot-scope="store">
-              <portfolio-investment-list 
-                :investmentFunds="store.getters.investmentFunds"
-                :investmentFundShares="store.getters.investmentFundShares"/>
-            </template>
-          </requires-async-state>
+        <div class="col-md-12">
+          <portfolio-performance-details />
+          <div class="row">
+            <div class="col-md-6">
+              <balances-table />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -28,7 +16,8 @@
 </template>
 <script>
 import RequiresAsyncState from '@/components/RequiresAsyncState';
-import PortfolioInvestmentList from '@/components/PortfolioInvestmentList';
+import PortfolioPerformanceDetails from '@/components/PortfolioPerformanceDetails';
+import BalancesTable from '@/components/BalancesTable';
 import RouterNav from '@/components/RouterNav.vue';
 
 export default {
@@ -36,7 +25,8 @@ export default {
   components: {
     RequiresAsyncState,
     RouterNav,
-    PortfolioInvestmentList,
+    PortfolioPerformanceDetails,
+    BalancesTable,
   },
 };
 </script>

@@ -4,7 +4,7 @@
     <p class="text-danger" v-else-if="error">
       Something went wrong.
     </p>
-    <slot v-else :getters="storeGetters"></slot>
+    <slot v-else></slot>
   </div>
 </template>
 <script>
@@ -26,20 +26,11 @@ export default {
       type: Array,
       required: true,
     },
-    getters: {
-      type: Array,
-      default: () => ([]),
-    }
-  },
-  computed: {
-    storeGetters() {
-      return this.$store.getters;
-    },
   },
   created() {
     Promise.all(this.actions.map(a => this.$store.dispatch(a)))
-      .catch(() => { this.error = true; })
+      .catch((e) => { this.error = true; console.log(e); })
       .finally(() => { this.loading = false; });
-  }
-}; 
+  },
+};
 </script>

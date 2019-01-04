@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VeeValidate from 'vee-validate';
 import VueTimeago from 'vue-timeago';
-import Trend from 'vuetrend';
+import VueFrappe from 'vue2-frappe';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -12,7 +12,7 @@ Vue.config.productionTip = false;
 
 VeeValidate.Validator.extend('verify_password', {
   getMessage(field) {
-    return `The ${field} field must contain at least 1 uppercase letter, 
+    return `The ${field} field must contain at least 1 uppercase letter,
             1 lowercase letter, 1 number, and 1 special character`;
   },
   validate(value) {
@@ -22,8 +22,8 @@ VeeValidate.Validator.extend('verify_password', {
 
 Vue.use(VeeValidate, { fieldsBagName: 'veeFields' });
 Vue.use(VueTimeago);
+Vue.use(VueFrappe);
 Vue.component('icon', Icon);
-Vue.use(Trend);
 
 new Vue({
   router,

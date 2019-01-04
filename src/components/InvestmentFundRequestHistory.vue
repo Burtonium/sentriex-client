@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h2>Subscriptions/Redemptions</h2>
+    <h4 class="text-primary mb-4">
+      Subscriptions / Redemptions
+    </h4>
     <spinner v-if="loading" />
     <b-table v-else :items="investmentFundRequests"
              stacked="lg"
@@ -15,14 +17,11 @@
           {{ statusToWords(row.item.status) }}
         </span>
       </template>
-      <template slot="createdAt" slot-scope="row">
-        <timeago :datetime="row.item.createdAt" />
+      <template slot="created" slot-scope="row">
+        <timeago :datetime="row.item.created" />
       </template>
       <template slot="actions" slot-scope="row">
         <div class="no-wrap">
-          <b-btn size="sm" variant="primary" @click.stop="row.toggleDetails">
-            {{ row.detailsShowing ? 'Hide' : 'Details'}}
-          </b-btn>
           <template v-if="row.item.cancelable">
             <b-btn class="ml-1"
                    variant="outline-primary"
@@ -32,14 +31,6 @@
             </b-btn>
           </template>
         </div>
-      </template>
-      <template slot="row-details" slot-scope="row">
-        <p>Created: <timeago :datetime="row.item.createdAt" /></p>
-        <p>Investment Fund:
-          <router-link :to="investmentFundRoute(row.item.investmentFundId)">
-            {{ row.item.investmentFund }}
-          </router-link>
-        </p>
       </template>
     </b-table>
     <div class="row">
@@ -84,17 +75,16 @@ export default {
           statusClass: this.statusClasses[r.status],
           amount: amount || percentAmount,
           status: this.statusToWords(r.status),
-          createdAt: r.createdAt,
+          created: r.createdAt,
           actions: '',
           cancelable: r.isCancelable,
           investmentFund: r.investmentFund.name,
           investmentFundId: r.investmentFundId,
-          _showDetails: false,
         };
       });
     },
     fields() {
-      return ['type', 'amount', 'status', 'actions'];
+      return ['investmentFund', 'type', 'amount', 'status', 'created', 'actions'];
     },
     statusClasses() {
       return {

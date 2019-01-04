@@ -25,6 +25,7 @@ export default {
     if (!store.state.investmentFunds || config.refresh) {
       const response = await api.fetchInvestmentFunds();
       store.commit(types.SET_INVESTMENT_FUNDS, response.data.investmentFunds);
+      store.commit(types.SET_INVESTMENT_FUND_SETTINGS, response.data.investmentFundSettings);
     }
   },
   async fetchInvestmentFundShares(store) {
@@ -78,5 +79,9 @@ export default {
   async fetchUsers(store, args) {
     const response = await api.fetchUsers(args);
     store.commit(types.SET_USERS, response.data.users);
+  },
+  async fetchPerformance(store) {
+    const response = await api.fetchPerformance();
+    store.commit(types.SET_PERFORMANCE, response.data.performance);
   },
 };

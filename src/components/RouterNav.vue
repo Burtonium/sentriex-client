@@ -45,7 +45,7 @@ export default {
   },
   computed: {
     itemList() {
-      let iterable = this.items.constructor === Array ? this.items : Object.values(this.items);
+      const iterable = this.items.constructor === Array ? this.items : Object.values(this.items);
       return iterable.map(item => ({
         data: item,
         route: this.getRoute(item[this.itemIdField]),
@@ -57,13 +57,13 @@ export default {
     },
     routeName() {
       return this.$route.name;
-    }
+    },
   },
   methods: {
     getRoute(id) {
       return { name: this.routeName, params: { [this.routeIdField]: id } };
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

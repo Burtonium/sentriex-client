@@ -1,6 +1,5 @@
 <template>
   <b-modal :id="modalId"
-           lazy
            title="Investment Fund Subscription"
            cancel-variant="outline-primary"
            ref="investmentFundSubscription"

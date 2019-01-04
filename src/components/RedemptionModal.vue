@@ -1,7 +1,5 @@
 <template>
-  <b-modal v-if="investmentFund"
-           :id="modalId"
-           lazy
+  <b-modal :id="modalId"
            ref="investmentFundRedemption"
            title="Investment Fund Redemption"
            cancel-variant="outline-primary"
@@ -9,11 +7,16 @@
            @ok.prevent="handleRedemption"
            footer-class="modal-footer-center"
            class="text-center">
-    <p>
-      You currently have <span class="text-info">{{ formattedShareValue }}</span> invested.
-    </p>
+    <requires-async-state :actions="['fetchPerformance']">
+      <p v-if="fundPerformance">
+        You currently have <span class="text-info">{{ formattedPerformance }}</span> invested.
+      </p>
+      <p class="text-danger" v-else>
+        You have no balance in this fund.
+      </p>
+    </requires-async-state>
     <b-form-radio-group id="amountOrPercent" v-model="amountType" name="amountTypeRadio">
-      <b-form-radio value="amount">{{ investmentFund.currencyCode }} value</b-form-radio>
+      <b-form-radio value="amount">{{ currencyCode }} value</b-form-radio>
       <b-form-radio value="percent">% percent value</b-form-radio>
     </b-form-radio-group>
     <div class="row">
@@ -28,7 +31,7 @@
                  name="amount"
                  type="number"
                  v-validate="`min_value:0|required`"
-                 :placeholder="`${investmentFund.currencyCode} value`"
+                 :placeholder="`${currencyCode} value`"
                  autocomplete="off">
 
           <input v-show="amountType === 'percent'"
@@ -54,18 +57,22 @@
       Use percentages to account for variance if you are redeeming an amount
       near your investment's value to insure that it goes through.
     </p>
-    <template slot="modal-ok">
+    <template slot="modal-ok" disabled>
       Submit Redemption Request
     </template>
   </b-modal>
 </template>
 <script>
+import RequiresAsyncState from '@/components/RequiresAsyncState.vue';
 import { mapGetters, mapActions } from 'vuex';
 import { redeemFromFund } from '@/api';
 import { BigNumber } from 'bignumber.js';
 import { EventBus, events } from '@/event-bus';
 
 export default {
+  components: {
+    RequiresAsyncState,
+  },
   data() {
     return {
       amountType: 'percent',
@@ -79,6 +86,7 @@ export default {
     investmentFund: {
       required: false,
       type: Object,
+      default: () => ({}),
     },
     modalId: {
       required: true,
@@ -96,23 +104,23 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['investmentFundShares', 'currencies']),
-    shareBalance() {
-      const id = this.investmentFund && this.investmentFund.id;
-      const shares = this.investmentFundShares && this.investmentFundShares.find(ifs => ifs.investmentFundId === id);
-      const sharePrice = this.investmentFund && this.investmentFund.sharePrice;
-      return shares && sharePrice ? (new BigNumber(shares.amount)).times(sharePrice).toString() : 0;
+    ...mapGetters(['investmentFundShares', 'currencies', 'performance']),
+    fundPerformance() {
+      const fund = this.investmentFund || {};
+      return this.performance && this.performance.find(p => p.investmentFundId === fund.id);
     },
-    formattedShareValue() {
-      const currencyCode = this.investmentFund && this.investmentFund.currencyCode;
-      const currency = this.currencies[currencyCode];
-      return currency ? currency.format(this.shareBalance) : this.shareBalance;
+    formattedPerformance() {
+      const currency = this.currencies && this.currencies[this.currencyCode];
+      return currency.format(this.fundPerformance.investmentValue);
+    },
+    currencyCode() {
+      return this.investmentFund && this.investmentFund.currencyCode;
     },
   },
   methods: {
     ...mapActions(['fetchBalances']),
     async handleRedemption() {
-      const valid = await this.$validator.validate(this.amountType);
+      const valid = this.fundPerformance && await this.$validator.validate(this.amountType);
       if (!valid) {
         return false;
       }
