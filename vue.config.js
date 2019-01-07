@@ -13,10 +13,6 @@ module.exports = {
       preProcessor: 'scss',
     },
   },
-  configureWebpack: {
-    plugins: [
-    ],
-  },
   devServer: {
     https: true,
     port: process.env.PORT || 8080,

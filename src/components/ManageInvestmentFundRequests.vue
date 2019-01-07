@@ -47,6 +47,22 @@
       <template slot="createdAt" slot-scope="row">
         <timeago :datetime="row.item.createdAt" />
       </template>
+      <template slot="siteFees" slot-scope="row">
+        <template v-if="row.item.cancelable">
+          N/A
+        </template>
+        <template v-else>
+          {{ row.item.siteFees }}
+        </template>
+      </template>
+      <template slot="profitShare" slot-scope="row">
+        <template v-if="row.item.cancelable">
+          N/A
+        </template>
+        <template v-else>
+          {{ row.item.profitShare }}
+        </template>
+      </template>
       <template slot="status" slot-scope="row">
         <template v-if="sufficientFunds(row.item)">
           <span :class="row.item.statusClass">
@@ -89,9 +105,7 @@
 import { mapGetters, mapActions } from 'vuex';
 import Spinner from '@/components/Spinner.vue';
 import { updateInvestmentFundRequest, fetchAllInvestmentFundRequests } from '@/api';
-import utils from '@/utils';
-
-const { snakeCaseToCapitalized } = utils;
+import { snakeCaseToCapitalized } from '@/utils';
 
 export default {
   data() {
@@ -171,7 +185,7 @@ export default {
           label: 'Site Fees',
         },
         profitShare: {
-          label: 'Profit share',
+          label: 'Manager Fees',
         },
         status: {
           label: 'Status',
@@ -233,7 +247,7 @@ export default {
       } catch (error) {
         this.error = true;
       }
-      this.fetchInvestmentFunds(),
+      this.fetchInvestmentFunds({ refresh: true }),
       this.loadData();
     },
     sufficientFunds(request) {

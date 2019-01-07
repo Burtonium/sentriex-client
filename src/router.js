@@ -4,7 +4,7 @@ import Login from '@/views/Login.vue';
 import Register from '@/views/Register.vue';
 import Reset from '@/views/ResetPassword.vue';
 import Account from '@/views/Account.vue';
-import Balances from '@/views/Balances.vue';
+import Portfolio from '@/views/Portfolio.vue';
 import InvestmentFunds from '@/views/InvestmentFunds.vue';
 import InvestmentFund from '@/views/InvestmentFund.vue';
 import InvestmentFundManagement from '@/views/manage/InvestmentFundManagement.vue';
@@ -80,16 +80,10 @@ const router = new Router({
       },
     },
     {
-      path: '/balances',
-      name: 'Balances',
-      component: Balances,
-      async beforeEnter(to, from, next) {
-        await Promise.all([
-          store.dispatch('fetchBalances'),
-          store.dispatch('fetchCurrencies'),
-        ]);
-        next(store.state.authenticated || loginWithRedirect(to));
-      },
+      path: '/portfolio',
+      name: 'portfolio',
+      component: Portfolio,
+      meta: { requiresAuth: true },
     },
     {
       path: '/investment-funds',
@@ -198,11 +192,11 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(route => route.meta.requiresAuth)) {
-    if (store.state.authenticated) {
+  if (to.matched.some(route => route.meta.requiresAdmin)) {
+    if (store.state.authenticated && store.state.user.admin) {
       next();
     } else {
-      next({ name: 'login' });
+      next({ name: 'not-found' });
     }
   } else {
     next();
@@ -223,15 +217,16 @@ router.beforeEach((to, from, next) => {
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(route => route.meta.requiresAdmin)) {
-    if (store.state.authenticated && store.state.user.admin) {
+  if (to.matched.some(route => route.meta.requiresAuth)) {
+    if (store.state.authenticated) {
       next();
     } else {
-      next({ name: 'not-found' });
+      next({ name: 'login' });
     }
   } else {
     next();
   }
 });
+
 
 export default router;

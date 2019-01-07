@@ -3,11 +3,11 @@
   <div class="card">
     <div class="card-body text-center">
       <template v-if="depositAddress">
-        <p class="text-primary">
+        <p class="">
           Your {{ currency.label }} ({{ currency.code }}) address:
         </p>
-        <div class="form-group">
-          <input class="form-control input-center-text" :value="depositAddress" disabled>
+        <div class="text-primary mb-2 no-wrap">
+          {{ depositAddress }}
         </div>
         <p class="text-danger">
           <strong>
@@ -73,3 +73,16 @@ export default {
   },
 };
 </script>
+<style scoped>
+.card {
+  margin: 0 auto;
+  max-width: 380px;
+  font-size: 14px;
+}
+
+@media (max-width: 1200px) {
+  .card {
+    font-size: 12px;
+  }
+}
+</style>

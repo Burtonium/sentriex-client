@@ -95,9 +95,7 @@ import { mapGetters, mapActions } from 'vuex';
 import Spinner from '@/components/Spinner.vue';
 import omit from 'lodash.omit';
 import { updateWithdrawal } from '@/api';
-import utils from '@/utils';
-
-const { snakeCaseToCapitalized } = utils;
+import { snakeCaseToCapitalized } from '@/utils';
 
 export default {
   data() {
@@ -198,7 +196,6 @@ export default {
         await updateWithdrawal({ id, status, txId });
         await this.fetchWithdrawals(this.currencyCode);
       } catch (error) {
-        console.log(error);
         this.errors.add({ field: vId, msg: 'Something went wrong while updating' });
       }
     },

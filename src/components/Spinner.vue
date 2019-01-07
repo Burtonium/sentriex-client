@@ -4,8 +4,6 @@
   </div>
 </template>
 <style lang="scss" scoped>
-@import '../assets/scss/bootstrap-override.scss';
-
 .container {
   height: 7.5em;
 }

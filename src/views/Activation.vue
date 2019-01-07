@@ -50,7 +50,6 @@ export default {
   },
   async mounted() {
     const res = await api.post(this.$route.path).catch(() => this.error = { message: 'Invalid token' });
-    console.log(res);
     if (res.data.success) {
       this.success = true;
     } else {

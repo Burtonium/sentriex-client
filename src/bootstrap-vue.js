@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import {
+  Card,
   Modal,
   Button,
   Dropdown,
@@ -11,7 +12,7 @@ import {
   Pagination,
 } from 'bootstrap-vue/es/components';
 
-
+Vue.use(Card);
 Vue.use(Modal);
 Vue.use(Button);
 Vue.use(Dropdown);

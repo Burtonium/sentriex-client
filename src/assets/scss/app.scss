@@ -19,7 +19,15 @@ input::-webkit-inner-spin-button {
 
 .wrapper {
   margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
   max-width: $app-max-width;
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .capitalized {
@@ -39,7 +47,7 @@ ul {
   cursor: pointer;
 }
 
-.no-uppercase { 
+.no-uppercase {
   text-transform:none;
 }
 
@@ -57,9 +65,14 @@ input.input-center-text {
 
 .card {
   border-radius: 0;
+  box-shadow: 5px 5px 10px 0px #cccccc;
 }
 
-.ellipsis { 
+.card-header, .alert {
+  border-radius: 0;
+}
+
+.ellipsis {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

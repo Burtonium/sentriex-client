@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="not-found">
-      <div class="404">
+      <div class="four-oh-four">
         <img class="travolta" src="../assets/images/404.gif">
         <div class="backdrop">
           404
@@ -12,10 +12,9 @@
   </div>
 </template>
 <style scoped>
-.404 {
+.four-oh-four {
   position:relative;
 }
-
 .backdrop {
   position: absolute;
   width: 100%;
@@ -24,12 +23,10 @@
   font-size: 500px;
   color: grey;
 }
-
 .travolta {
   position: relative;
   z-index: 10;
   margin-top: 200px;
   margin-bottom: 30px;
 }
-
 </style>

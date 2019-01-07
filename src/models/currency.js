@@ -12,7 +12,7 @@ class Currency {
 
   toFixed(amount) {
     const bg = new BigNumber(amount);
-    return bg.toFixed(Math.min(bg.dp(), this.precision));
+    return parseFloat(bg.toFixed(Math.min(bg.dp(), this.precision)));
   }
 }
 
