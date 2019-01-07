@@ -35,8 +35,4 @@ export default {
   flex-direction: column;
   justify-content: space-between
 }
-
-.row {
-  width: 100%;
-}
 </style>

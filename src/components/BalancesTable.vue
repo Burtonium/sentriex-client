@@ -13,7 +13,11 @@
       </b-dropdown>
     </div>
     <requires-async-state :actions="['fetchBalances', 'fetchCurrencies']">
-      <b-table :fields="balanceFields" :items="formattedBalances" stacked="sm">
+      <b-table :fields="balanceFields"
+               :items="formattedBalances"
+               stacked="sm"
+               :current-page="currentPage"
+               :per-page="perPage">
         <template slot="currencyCode" slot-scope="row">
           <img :src="icons[row.item.currencyCode]"
                class="mb-1 currency-icon"
@@ -34,6 +38,14 @@
           </b-btn>
         </template>
       </b-table>
+      <div class="row" v-if="formattedBalances.length > perPage">
+        <div class="col-md-6 my-1">
+          <b-pagination :total-rows="formattedBalances.length"
+                        :per-page="perPage"
+                        v-model="currentPage"
+                        class="my-0"/>
+        </div>
+      </div>
     </requires-async-state>
   </div>
 </template>
@@ -46,6 +58,8 @@ import icons from '@/assets/images/currencies/index';
 export default {
   data() {
     return {
+      perPage: 5,
+      currentPage: 1,
       hideZero: false,
     };
   },
@@ -100,10 +114,5 @@ export default {
 .currency-icon {
   max-width:20px;
   max-height: 20px;
-}
-.header-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
 }
 </style>

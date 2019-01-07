@@ -2,7 +2,7 @@
   <div>
     <div class="header-flex">
       <h4 class="text-primary mb-4">
-        Top Performing {{ displayType === 'individual' ? 'Investments' : 'Currencies'}}
+        Investments
       </h4>
       <b-dropdown id="display-type"
                   variant="outline-primary"
@@ -19,7 +19,13 @@
       </b-dropdown>
     </div>
     <requires-async-state :actions="['fetchPerformance', 'fetchCurrencies']">
-      <b-table :items="performanceInfo" v-if="performance" stacked="md">
+      <b-table v-if="performance"
+               :items="performanceInfo"
+               stacked="md"
+               :show-empty="true"
+               empty-text="No subscriptions are currently active."
+               :current-page="currentPage"
+               :per-page="perPage">
         <template slot="totalProfit" slot-scope="row">
           <span :class="getSuccessClass(row.item.totalProfit)">
             {{ row.item.totalProfit }}
@@ -31,6 +37,14 @@
           </span>
         </template>
       </b-table>
+      <div class="row" v-if="performanceInfo.length > perPage">
+        <div class="col-md-6 my-1">
+          <b-pagination :total-rows="performanceInfo.length"
+                        :per-page="perPage"
+                        v-model="currentPage"
+                        class="my-0"/>
+        </div>
+      </div>
     </requires-async-state>
   </div>
 </template>
@@ -42,6 +56,8 @@ import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
+      perPage: 5,
+      currentPage: 1,
       displayType: 'individual',
     };
   },

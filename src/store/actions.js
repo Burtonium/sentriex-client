@@ -84,4 +84,8 @@ export default {
     const response = await api.fetchPerformance();
     store.commit(types.SET_PERFORMANCE, response.data.performance);
   },
+  async fetchReferralPayments(store) {
+    const response = await api.fetchReferralPayments();
+    store.commit(types.SET_REFERRAL_PAYMENTS, response.data.referralPayments);
+  },
 };

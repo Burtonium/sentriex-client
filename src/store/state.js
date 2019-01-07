@@ -11,6 +11,9 @@ const initialState = {
   withdrawals: {},
   investmentFundRequests: [],
   users: [],
+  performance: [],
+  referralPayments: [],
+  investmentFundSettings: {},
 };
 
 if (localStorage.getItem(STORAGE_KEY)) {

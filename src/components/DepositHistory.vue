@@ -1,5 +1,8 @@
 <template>
   <div class="deposit-history">
+    <h4 class="text-primary mb-4">
+      Deposits
+    </h4>
     <spinner v-if="loading" />
     <b-table
       v-else
@@ -20,6 +23,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 import Spinner from '@/components/Spinner.vue';
+import flatten from 'lodash.flatten';
 
 export default {
   data() {
@@ -39,7 +43,13 @@ export default {
       return this.currencies[this.currencyCode];
     },
     userDeposits() {
-      const deps = this.deposits ? this.deposits[this.currencyCode] : [];
+      let deps;
+      if (this.currencyCode) {
+        deps = this.deposits ? this.deposits[this.currencyCode] : [];
+      } else {
+        deps = this.deposits ? flatten(Object.values(this.deposits)) : [];
+      }
+
       return deps.map(d => ({
         ...d,
         amount: this.currency.format(d.amount),

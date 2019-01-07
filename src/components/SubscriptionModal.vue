@@ -16,7 +16,8 @@
         <input id="subscription-amount"
                class="form-control input-center-text"
                v-model="amount"
-               name="amount"
+               name="subscription_amount"
+               data-vv-as="subscription amount"
                type="number"
                v-validate="`max_value:${parseFloat(currentBalance)}|required|min_value:0`"
                placeholder="Amount"
@@ -40,7 +41,7 @@
         Something went wrong.
       </p>
       <p class="text-danger" v-if="errors.any()">
-        {{ errors.first('amount') }}
+        {{ errors.first('subscription_amount') }}
       </p>
     </div>
     <template slot="modal-ok">

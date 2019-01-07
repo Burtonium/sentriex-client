@@ -24,6 +24,12 @@ input::-webkit-inner-spin-button {
   max-width: $app-max-width;
 }
 
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
 .capitalized {
   text-transform: uppercase;
 }
@@ -58,6 +64,11 @@ input.input-center-text {
 }
 
 .card {
+  border-radius: 0;
+  box-shadow: 5px 5px 10px 0px #cccccc;
+}
+
+.card-header, .alert {
   border-radius: 0;
 }
 

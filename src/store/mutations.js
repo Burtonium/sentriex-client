@@ -53,4 +53,7 @@ export default {
   [types.SET_PERFORMANCE](state, perf) {
     Vue.set(state, 'performance', perf);
   },
+  [types.SET_REFERRAL_PAYMENTS](state, referralPayments) {
+    Vue.set(state, 'referralPayments', referralPayments);
+  },
 };

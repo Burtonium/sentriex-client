@@ -16,7 +16,7 @@
       </p>
     </requires-async-state>
     <b-form-radio-group id="amountOrPercent" v-model="amountType" name="amountTypeRadio">
-      <b-form-radio value="amount">{{ currencyCode }} value</b-form-radio>
+      <b-form-radio value="redeem_amount">{{ currencyCode }} value</b-form-radio>
       <b-form-radio value="percent">% percent value</b-form-radio>
     </b-form-radio-group>
     <div class="row">
@@ -24,12 +24,13 @@
         <div class="form-group">
         </div>
         <div class="form-group">
-          <input v-show="amountType === 'amount'"
+          <input v-show="amountType === 'redeem_amount'"
                  id="redemption-amount"
                  class="form-control"
                  v-model="amount"
-                 name="amount"
+                 name="redeem_amount"
                  type="number"
+                 data-vv-as="redemption amount"
                  v-validate="`min_value:0|required`"
                  :placeholder="`${currencyCode} value`"
                  autocomplete="off">
@@ -40,6 +41,7 @@
              v-model="percent"
              name="percent"
              type="number"
+             data-vv-as="redemption percent"
              v-validate="`max_value:100|min_value:0|required`"
              placeholder="% value"
              autocomplete="off">
@@ -50,9 +52,9 @@
       Something went wrong.
     </p>
     <p class="text-danger" v-if="errors.any()">
-      {{ errors.first('amount') || errors.first('percent') }}
+      {{ errors.first('redeem_amount') || errors.first('percent') }}
     </p>
-    <p class="text-warning" v-if="amount && amountType === 'amount'">
+    <p class="text-warning" v-if="amount && amountType === 'redeem_amount'">
       The value of your investment may change before the time it is processed.
       Use percentages to account for variance if you are redeeming an amount
       near your investment's value to insure that it goes through.
@@ -94,12 +96,10 @@ export default {
   },
   watch: {
     amountType() {
-      if (this.amountType === 'amount') {
+      if (this.amountType === 'redeem_amount') {
         this.errors.remove('percent');
-        this.$validator.validate('amount');
       } else {
-        this.errors.remove('amount');
-        this.$validator.validate('percent');
+        this.errors.remove('redeem_amount');
       }
     },
   },
@@ -120,14 +120,14 @@ export default {
   methods: {
     ...mapActions(['fetchBalances']),
     async handleRedemption() {
-      const valid = this.fundPerformance && await this.$validator.validate(this.amountType);
+      const valid = await this.$validator.validate(this.amountType);
       if (!valid) {
         return false;
       }
 
       const response = await redeemFromFund({
         id: this.investmentFund.id,
-        amount: this.amountType === 'amount' ? this.amount : null,
+        amount: this.amountType === 'redeem_amount' ? this.amount : null,
         percent: this.amountType === 'percent' ? this.percent : null,
         twofaToken: this.twofaToken,
       }).catch(() => this.error = false);

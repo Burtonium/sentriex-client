@@ -10,7 +10,7 @@ Vue.use(Vuex);
 
 const investmentFundGetter = (s) => {
   const settings = s.investmentFundSettings;
-  const userCut = settings.userRedeemProfitPercent || 1;
+  const userCut = settings.userRedeemProfitPercent || NaN;
   const actualPerformance = (p) => { return parseFloat(p > 0 ? p * userCut : p); }; // eslint-disable-line
 
   return s.investmentFunds.map(f => ({
@@ -38,6 +38,7 @@ export default new Vuex.Store({
     withdrawals: s => s.withdrawals,
     users: s => s.users,
     performance: s => s.performance,
+    referralPayments: s => s.referralPayments,
   },
   mutations,
 });

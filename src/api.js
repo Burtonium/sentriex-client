@@ -55,6 +55,9 @@ export const patchWithdrawal = (id, args) => instance.patch(`/withdrawals/${id}`
 export const fetchMyWithdrawals = currencyCode => instance.get('/withdrawals', { params: { currencyCode } });
 export const cancelWithdrawal = id => instance.post(`/withdrawals/${id}/cancel`);
 
+// REFERRALS
+export const fetchReferralPayments = () => instance.get('/referral-payments');
+
 // FUND MANAGER ROUTES
 // INVESTMENT FUNDS
 export const updateFundBalance = ({ id, amount }) => instance.post(`/manager/investment-funds/${id}/balance-updates`, { amount });

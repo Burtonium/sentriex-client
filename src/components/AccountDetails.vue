@@ -5,7 +5,7 @@
         Your account security would greatly benefit from two factor authentication.
         Please enable it immediately.
       </b-alert>
-      <div class="row">
+      <div class="row mb-2">
         <div class="col-md-6">
           <div class="card">
             <div class="card-header bg-primary">

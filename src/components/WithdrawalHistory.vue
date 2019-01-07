@@ -1,5 +1,8 @@
 <template>
   <div class="withdrawal-history">
+    <h4 class="text-primary mb-4">
+      Withdrawals
+    </h4>
     <spinner v-if="loading" />
     <p class="text-danger text-center" v-else-if="error">
       Something went wrong when canceling a withdrawal.
@@ -12,12 +15,6 @@
       :show-empty="true"
       empty-text="You have no withdrawals yet"
       stacked="md">
-      <template slot="amount" slot-scope="row">
-        {{ currency.format(row.item.amount) }}
-      </template>
-      <template slot="feeAmount" slot-scope="row">
-        {{ currency.format(row.item.feeAmount) }}
-      </template>
       <template slot="status" slot-scope="row">
         <span :class="statusClasses[row.item.status] || ''">
           {{ statusToWords(row.item.status) }}
@@ -39,6 +36,7 @@
   </div>
 </template>
 <script>
+import flatten from 'lodash.flatten';
 import { mapActions, mapGetters } from 'vuex';
 import { cancelWithdrawal } from '@/api';
 import Spinner from '@/components/Spinner.vue';
@@ -63,7 +61,21 @@ export default {
       return this.currencies[this.currencyCode];
     },
     userWithdrawals() {
-      return this.withdrawals ? this.withdrawals[this.currencyCode] : [];
+      let withdrawals = [];
+      if (!this.currencyCode) {
+        withdrawals = flatten(Object.values(this.withdrawals));
+      } else {
+        withdrawals = this.withdrawals ? this.withdrawals[this.currencyCode] : [];
+      }
+
+      return withdrawals.map(w => {
+        const currency = this.currencies[w.currencyCode];
+        return {
+          ...w,
+          amount: currency.format(w.amount),
+          feeAmount: currency.format(w.feeAmount),
+        };
+      });
     },
     withdrawalFields() {
       return {
@@ -73,11 +85,11 @@ export default {
         feeAmount: {
           label: 'Fees',
         },
-        createdAt: {
-          label: 'Created',
-        },
         status: {
           label: 'Status',
+        },
+        createdAt: {
+          label: 'Created',
         },
         actions: {},
       };
