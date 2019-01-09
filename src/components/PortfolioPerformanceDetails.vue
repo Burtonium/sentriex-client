@@ -18,7 +18,7 @@
         </b-dropdown-item>
       </b-dropdown>
     </div>
-    <requires-async-state :actions="['fetchPerformance', 'fetchCurrencies']">
+    <requires-async-state :actions="actionDependencies">
       <b-table v-if="performance"
                :items="performanceInfo"
                stacked="md"
@@ -71,6 +71,9 @@ export default {
   },
   computed: {
     ...mapGetters(['performance', 'currencies']),
+    actionDependencies() {
+      return ['fetchPerformance', 'fetchCurrencies'];
+    },
     totalsPerformance() {
       return Object.values(this.currencies).map((currency) => {
         let totalInitial = new BigNumber(0);

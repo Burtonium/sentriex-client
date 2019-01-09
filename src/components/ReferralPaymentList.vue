@@ -35,7 +35,7 @@
         </b-dropdown>
       </div>
     </div>
-    <requires-async-state :actions="['fetchReferralPayments', 'fetchCurrencies']">
+    <requires-async-state :actions="actionDependencies">
       <b-table :items="referralPaymentList"
                stacked="md"
                :show-empty="true"
@@ -76,6 +76,9 @@ export default {
     RequiresAsyncState,
   },
   computed: {
+    actionDependencies() {
+      return ['fetchReferralPayments', 'fetchCurrencies'];
+    },
     ...mapGetters(['referralPayments', 'currencies']),
     historicalList() {
       return this.referralPayments && this.referralPayments.map(p => {

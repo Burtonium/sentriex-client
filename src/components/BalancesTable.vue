@@ -12,7 +12,7 @@
         </b-dropdown-item>
       </b-dropdown>
     </div>
-    <requires-async-state :actions="['fetchBalances', 'fetchCurrencies']">
+    <requires-async-state :actions="actionDependencies">
       <b-table :fields="balanceFields"
                :items="formattedBalances"
                stacked="sm"
@@ -67,6 +67,9 @@ export default {
     RequiresAsyncState,
   },
   computed: {
+    actionDependencies() {
+      return ['fetchBalances', 'fetchCurrencies'];
+    },
     balanceFields() {
       return {
         currencyCode: {

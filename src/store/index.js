@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 import plugins from './plugins/index';
 import state from './state';
 import mutations from './mutations';
+import { LOGOUT } from './mutation_types';
 import actions from './actions';
 
 Vue.use(Vuex);
@@ -19,7 +20,7 @@ const investmentFundGetter = (s) => {
   }));
 };
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state,
   plugins,
   actions,
@@ -39,6 +40,13 @@ export default new Vuex.Store({
     users: s => s.users,
     performance: s => s.performance,
     referralPayments: s => s.referralPayments,
+    investmentFundTrendData: s => s.investmentFundTrendData,
   },
   mutations,
 });
+
+if (state.authenticated && state.tokenExpiry < new Date().getTime()) {
+  store.commit(LOGOUT);
+}
+
+export default store;

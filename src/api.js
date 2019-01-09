@@ -40,6 +40,7 @@ export const fetchInvestmentFundRequests = () => instance.get('/investment-fund-
 export const cancelInvestmentFundRequest = id => instance.post(`/investment-fund-requests/${id}/cancel`);
 export const subscribeToFund = ({ id, amount }) => instance.post(`/investment-funds/${id}/subscribe`, { amount });
 export const redeemFromFund = ({ id, amount, percent }) => instance.post(`/investment-funds/${id}/redeem`, { amount, percent });
+export const fetchTrendData = id => instance.get(`/investment-funds/${id}/trend-data`);
 
 // CURRENCY
 export const fetchCurrencies = () => instance.get('/currencies');
