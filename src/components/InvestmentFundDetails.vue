@@ -44,20 +44,15 @@
         </b-tab>
         <b-tab title="Performance" active>
           <br>
-          <p v-if="!authenticated">
-            Login to see the performance of your investments
-          </p>
-          <p>
-            Coming soon.
-          </p>
         </b-tab>
         <b-tab title="Manager" v-if="fundManager">
           <br>
           <p>
-            Contact:
-            <a :href="`mailto:${fundManager.email}`">
-              {{ fundManager.email }}
-              </a><br>
+            User:
+            <p class="text-primary">
+              {{ fundManager.username }}
+            </p>
+            <br>
             Member since <timeago :datetime="fundManager.createdAt"/>
           </p>
         </b-tab>
@@ -80,7 +75,7 @@
 import { mapGetters } from 'vuex';
 import SubscriptionModal from './SubscriptionModal.vue';
 import RedemptionModal from './RedemptionModal.vue';
-
+import InvestmentFundMetricsTable from '@/components/InvestmentFundMetricsTable.vue';
 export default {
   components: {
     SubscriptionModal,
