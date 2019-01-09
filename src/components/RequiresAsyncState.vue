@@ -27,10 +27,24 @@ export default {
       required: true,
     },
   },
+  watch: {
+    actions() {
+      this.loadData();
+    },
+  },
+  methods: {
+    loadData() {
+      this.loading = true;
+      Promise.all(this.actions.map(a => {
+          const x = a.split(':');
+          return this.$store.dispatch(x[0], x[1] && x[1].split(','));
+        }))
+        .catch((e) => { this.error = true; c })
+        .finally(() => { this.loading = false; });
+    }
+  },
   created() {
-    Promise.all(this.actions.map(a => this.$store.dispatch(a)))
-      .catch((e) => { this.error = true; })
-      .finally(() => { this.loading = false; });
+    this.loadData();
   },
 };
 </script>

@@ -14,6 +14,7 @@ const initialState = {
   performance: [],
   referralPayments: [],
   investmentFundSettings: {},
+  investmentFundTrendData: {},
 };
 
 if (localStorage.getItem(STORAGE_KEY)) {

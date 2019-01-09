@@ -3,13 +3,15 @@ import assert from 'assert';
 import * as types from './mutation_types';
 
 export default {
-  [types.LOGIN](state, { csrfToken, user }) {
-    assert(csrfToken, 'CSRF Token was not provided');
+  [types.LOGIN](state, { CSRFToken, user, tokenExpiry }) {
+    assert(CSRFToken, 'CSRF Token was not provided');
+    state.tokenExpiry = tokenExpiry;
     state.user = user;
     state.authenticated = true;
-    state.csrfToken = csrfToken;
+    state.csrfToken = CSRFToken;
   },
   [types.LOGOUT](state) {
+    state.tokenExpiry = null;
     state.authenticated = false;
     state.csrfToken = null;
     state.user = {};
@@ -55,5 +57,8 @@ export default {
   },
   [types.SET_REFERRAL_PAYMENTS](state, referralPayments) {
     Vue.set(state, 'referralPayments', referralPayments);
+  },
+  [types.SET_INVESTMENT_FUND_TREND_DATA](state, { id, investmentFundTrendData }) {
+    Vue.set(state.investmentFundTrendData, id, investmentFundTrendData);
   },
 };

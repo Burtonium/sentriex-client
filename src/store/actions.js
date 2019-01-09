@@ -95,4 +95,11 @@ export default {
     const response = await api.fetchReferralPayments();
     store.commit(types.SET_REFERRAL_PAYMENTS, response.data.referralPayments);
   },
+  async fetchTrendData(store, id) {
+    const response = await api.fetchTrendData(id);
+    store.commit(types.SET_INVESTMENT_FUND_TREND_DATA, {
+      id,
+      investmentFundTrendData: response.data.investmentFundTrendData,
+    });
+  },
 };

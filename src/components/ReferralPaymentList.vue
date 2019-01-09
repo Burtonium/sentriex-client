@@ -1,5 +1,5 @@
 <template>
-  <requires-async-state :actions="['fetchReferralPayments', 'fetchCurrencies']">
+  <requires-async-state :actions="actionDependencies">
     <div class="header-flex">
       <h4 class="text-primary mb-4">
         Referral Payments
@@ -75,6 +75,9 @@ export default {
     RequiresAsyncState,
   },
   computed: {
+    actionDependencies() {
+      return ['fetchReferralPayments', 'fetchCurrencies'];
+    },
     ...mapGetters(['referralPayments', 'currencies']),
     historicalList() {
       return this.referralPayments && this.referralPayments.map(p => {

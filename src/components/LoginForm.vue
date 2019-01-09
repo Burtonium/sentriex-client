@@ -129,8 +129,7 @@ export default {
 
       if (response.status === 200 && response.data.CSRFToken) {
         this.$store.commit(types.LOGIN, {
-          csrfToken: response.data.CSRFToken,
-          user: response.data.user,
+          ...response.data,
         });
         this.$router.push(this.redirectTo || '/investment-funds');
       }
