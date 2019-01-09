@@ -14,7 +14,9 @@
       :fields="withdrawalFields"
       :show-empty="true"
       empty-text="You have no withdrawals yet"
-      stacked="md">
+      stacked="md"
+      :current-page="currentPage"
+      :per-page="perPage">
       <template slot="status" slot-scope="row">
         <span :class="statusClasses[row.item.status] || ''">
           {{ statusToWords(row.item.status) }}
@@ -33,6 +35,14 @@
         </template>
       </template>
     </b-table>
+    <div class="row">
+      <div class="col-md-6 my-1">
+        <b-pagination :total-rows="userWithdrawals.length"
+                      :per-page="perPage"
+                      v-model="currentPage"
+                      class="my-0"/>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -47,10 +57,17 @@ export default {
     return {
       loading: true,
       error: false,
+      currentPage: 1,
     };
   },
   components: {
     Spinner,
+  },
+  props: {
+    perPage: {
+      required: false,
+      default: 10,
+    }
   },
   computed: {
     ...mapGetters(['withdrawals', 'currencies']),

@@ -16,15 +16,15 @@
       </div>
       <div class="row">
         <div class="col-lg-12">
-          <investment-fund-request-history />
+          <investment-fund-request-history :perPage="perPage"/>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-6">
-          <withdrawal-history />
+          <withdrawal-history :perPage="perPage"/>
         </div>
         <div class="col-lg-6">
-          <deposit-history />
+          <deposit-history :perPage="perPage"/>
         </div>
       </div>
     </div>
@@ -52,16 +52,15 @@ export default {
     InvestmentFundRequestHistory,
     DepositHistory,
   },
+  computed: {
+    perPage() {
+      return 5;
+    }
+  }
 };
 </script>
-<style>
-.flexed-rows {
-  display: flex;
-  flex-direction: column;
-}
-
-.flexed-rows .row {
-  flex-basis: 195px;
+<style scoped>
+.row {
   margin-bottom: 20px;
 }
 .currency-icon {
