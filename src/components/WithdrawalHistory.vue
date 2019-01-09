@@ -82,7 +82,8 @@ export default {
       if (!this.currencyCode) {
         withdrawals = flatten(Object.values(this.withdrawals));
       } else {
-        withdrawals = this.withdrawals ? this.withdrawals[this.currencyCode] : [];
+        withdrawals = this.withdrawals && this.withdrawals[this.currencyCode] ?
+          this.withdrawals[this.currencyCode] : [];
       }
 
       return withdrawals.map(w => {

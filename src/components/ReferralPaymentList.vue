@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <requires-async-state :actions="['fetchReferralPayments', 'fetchCurrencies']">
     <div class="header-flex">
       <h4 class="text-primary mb-4">
         Referral Payments
@@ -35,7 +35,6 @@
         </b-dropdown>
       </div>
     </div>
-    <requires-async-state :actions="['fetchReferralPayments', 'fetchCurrencies']">
       <b-table :items="referralPaymentList"
                stacked="md"
                :show-empty="true"
@@ -54,8 +53,8 @@
                         class="my-0"/>
         </div>
       </div>
-    </requires-async-state>
-  </div>
+
+  </requires-async-state>
 </template>
 <script>
 import BigNumber from 'bignumber.js';

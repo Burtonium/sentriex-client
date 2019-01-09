@@ -29,7 +29,7 @@ export default {
   },
   created() {
     Promise.all(this.actions.map(a => this.$store.dispatch(a)))
-      .catch((e) => { this.error = true; console.log(e); })
+      .catch((e) => { this.error = true; })
       .finally(() => { this.loading = false; });
   },
 };

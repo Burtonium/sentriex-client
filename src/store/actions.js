@@ -1,6 +1,7 @@
 import Currency from '@/models/currency';
 import * as types from './mutation_types';
 import * as api from '@/api';
+import uniq from 'lodash.uniq';
 
 export default {
   async fetchAccount(store) {
@@ -53,9 +54,12 @@ export default {
   },
   async fetchMyDeposits(store, currencyCode) {
     const response = await api.fetchMyDeposits(currencyCode);
-    store.commit(types.SET_DEPOSITS, {
-      currencyCode,
-      deposits: response.data.deposits,
+    const currencies = uniq(response.data.deposits.map(d => d.currencyCode));
+    currencies.forEach((c) => {
+      store.commit(types.SET_DEPOSITS, {
+        currencyCode: c,
+        deposits: response.data.deposits.filter(d => d.currencyCode === c),
+      });
     });
   },
   async fetchWithdrawals(store, currencyCode) {
@@ -67,9 +71,12 @@ export default {
   },
   async fetchMyWithdrawals(store, currencyCode) {
     const response = await api.fetchMyWithdrawals(currencyCode);
-    store.commit(types.SET_WITHDRAWALS, {
-      currencyCode,
-      withdrawals: response.data.withdrawals,
+    const currencies = uniq(response.data.withdrawals.map(w => w.currencyCode));
+    currencies.forEach((c) => {
+      store.commit(types.SET_WITHDRAWALS, {
+        currencyCode: c,
+        withdrawals: response.data.withdrawals.filter(w => w.currencyCode === c),
+      });
     });
   },
   async fetchMyInvestmentFundRequests(store) {
