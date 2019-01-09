@@ -1,34 +1,36 @@
 <template>
-  <div class="portfolio">
-    <div class="wrapper mt-5 text-left flexed-rows">
-      <div class="row">
-        <div class="col-md-12">
-          <portfolio-performance-details />
+  <requires-async-state :actions="actionDependencies">
+    <div class="portfolio">
+      <div class="wrapper mt-5 text-left flexed-rows">
+        <div class="row">
+          <div class="col-md-12">
+            <portfolio-performance-details />
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6">
-          <balances-table />
+        <div class="row">
+          <div class="col-lg-6">
+            <balances-table />
+          </div>
+          <div class="col-lg-6">
+            <referral-payment-list />
+          </div>
         </div>
-        <div class="col-lg-6">
-          <referral-payment-list />
+        <div class="row">
+          <div class="col-lg-12">
+            <investment-fund-request-history :perPage="perPage"/>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <investment-fund-request-history />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6">
-          <withdrawal-history />
-        </div>
-        <div class="col-lg-6">
-          <deposit-history />
+        <div class="row">
+          <div class="col-lg-6">
+            <withdrawal-history :perPage="perPage"/>
+          </div>
+          <div class="col-lg-6">
+            <deposit-history :perPage="perPage"/>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </requires-async-state>
 </template>
 <script>
 import RequiresAsyncState from '@/components/RequiresAsyncState';
@@ -52,16 +54,18 @@ export default {
     InvestmentFundRequestHistory,
     DepositHistory,
   },
+  computed: {
+    perPage() {
+      return 5;
+    },
+    actionDependencies() {
+      return ['fetchCurrencies', 'fetchBalances'];
+    },
+  }
 };
 </script>
-<style>
-.flexed-rows {
-  display: flex;
-  flex-direction: column;
-}
-
-.flexed-rows .row {
-  flex-basis: 195px;
+<style scoped>
+.row {
   margin-bottom: 20px;
 }
 .currency-icon {

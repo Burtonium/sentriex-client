@@ -16,7 +16,10 @@
                 You currently do not manage any investment funds. Contact your admin
                 to manage investment fund balances.
               </p>
-              <investment-fund-form v-else :investment-fund="investmentFund" :canEdit="user.admin"/>
+              <investment-fund-form v-else
+                                    :investment-fund="investmentFund"
+                                    :canEdit="user.admin"
+                                    :canDelete="user.admin"/>
             </b-tab>
             <b-tab title="Balance Updates" v-if="investmentFund">
               <br>

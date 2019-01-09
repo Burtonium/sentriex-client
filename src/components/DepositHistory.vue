@@ -43,17 +43,20 @@ export default {
       return this.currencies[this.currencyCode];
     },
     userDeposits() {
-      let deps;
+      let deps = [];
       if (this.currencyCode) {
         deps = this.deposits ? this.deposits[this.currencyCode] : [];
       } else {
         deps = this.deposits ? flatten(Object.values(this.deposits)) : [];
       }
 
-      return deps.map(d => ({
-        ...d,
-        amount: this.currency.format(d.amount),
-      }));
+      return deps.map(d => {
+        const currency = this.currencies[d.currencyCode];
+        return {
+          ...d,
+          amount: currency ? currency.format(d.amount) : d.amount,
+        }
+      });
     },
     depositFields() {
       return {
@@ -82,12 +85,15 @@ export default {
       this.fetchMyDeposits(this.currencyCode).finally(() => { this.loading = false; });
     },
   },
+  created() {
+    this.loadData();
+  }
 };
 </script>
 <style>
 @media (min-width: 768px) {
   td.txid-ellipsis {
-    max-width: 200px;
+    max-width: 150px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

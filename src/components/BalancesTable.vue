@@ -89,7 +89,7 @@ export default {
       return Object.values(this.filteredBalances).map(this.formatBalance);
     },
     filteredBalances() {
-      return pickBy(this.balances, balance => !this.hideZero || parseFloat(balance.total) > 0);
+      return pickBy(this.balances, balance => !this.hideZero || parseFloat(balance.amount) > 0);
     },
   },
   methods: {

@@ -56,12 +56,17 @@ export default {
       loading: true,
       error: false,
       requests: [],
-      perPage: 10,
       currentPage: 1,
     };
   },
   components: {
     Spinner,
+  },
+  props: {
+    perPage: {
+      required: false,
+      default: 10,
+    }
   },
   computed: {
     ...mapGetters(['currencies']),

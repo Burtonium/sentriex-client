@@ -58,14 +58,25 @@
     <div class="form-group">
       <b-btn variant="primary" v-if="!investmentFund.id" type="submit">Create</b-btn>
       <b-btn variant="primary" v-else-if="canEdit" type="submit">Save</b-btn>
+      <b-btn variant="danger" v-if="canDelete && investmentFundId" class="ml-3" :disabled="loading" @click="handleDelete">Delete</b-btn>
+      <icon name="spinner" :spin="true" v-if="loading" class="ml-3" scale="1.3" color="#555"/>
     </div>
+    <p class="text-danger" v-if="error">
+      Something went wrong.
+    </p>
   </form>
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { updateInvestmentFund, createInvestmentFund } from '@/api';
+import { updateInvestmentFund, createInvestmentFund, deleteInvestmentFund } from '@/api';
 
 export default {
+  data() {
+    return {
+      error: false,
+      loading: false,
+    }
+  },
   props: {
     investmentFund: {
       type: Object,
@@ -76,19 +87,54 @@ export default {
       type: Boolean,
       default: true,
     },
+    canDelete: {
+      type: Boolean,
+      default: false,
+    }
   },
   computed: {
     ...mapGetters(['currencies', 'users']),
+    investmentFundId() {
+      return this.investmentFund && this.investmentFund.id ? this.investmentFund.id : '';
+    },
   },
   methods: {
     ...mapActions(['fetchInvestmentFunds']),
     async onSubmit() {
-      if (this.investmentFund.id) {
-        await updateInvestmentFund(this.investmentFund);
+      if (this.investmentFundId) {
+        await this.handleUpdate();
       } else {
-        await createInvestmentFund(this.investmentFund);
+        await this.handleCreate();
       }
-      this.fetchInvestmentFunds();
+    },
+    async handleUpdate() {
+      this.loading = true;
+      await updateInvestmentFund(this.investmentFund)
+        .catch(() => { this.error = true; })
+        .finally(() => { this.loading = false });
+      await this.fetchInvestmentFunds({ refresh: true });
+    },
+    async handleCreate() {
+      const response = await createInvestmentFund(this.investmentFund)
+        .catch(() => { this.error = true; })
+        .finally(() => { this.loading = false });
+      let id;
+      if (response && response.data && response.data.investmentFund) {
+        id = response.data.investmentFund.id;
+      }
+      await this.fetchInvestmentFunds({ refresh: true });
+      this.$router.push(`/manage/investment-funds/${id}`);
+    },
+    async handleDelete() {
+      this.loading = true;
+      await deleteInvestmentFund(this.investmentFundId)
+        .catch(() => { this.deleteError = true; })
+        .finally(() => { this.loading = false; });
+
+      if(!this.deleteError) {
+        this.fetchInvestmentFunds({ refresh: true });
+        this.$router.push('/manage/investment-funds/');
+      }
     },
   },
 };
