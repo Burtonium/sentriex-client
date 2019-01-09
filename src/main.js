@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import VeeValidate from 'vee-validate';
 import VueTimeago from 'vue-timeago';
-import VueFrappe from 'vue2-frappe';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -22,7 +21,6 @@ VeeValidate.Validator.extend('verify_password', {
 
 Vue.use(VeeValidate, { fieldsBagName: 'veeFields' });
 Vue.use(VueTimeago);
-Vue.use(VueFrappe);
 Vue.component('icon', Icon);
 
 new Vue({
