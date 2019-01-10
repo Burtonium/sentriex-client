@@ -45,7 +45,7 @@ export default {
     userDeposits() {
       let deps = [];
       if (this.currencyCode) {
-        deps = this.deposits ? this.deposits[this.currencyCode] : [];
+        deps = this.deposits && this.deposits[this.currencyCode] ? this.deposits[this.currencyCode] : [];
       } else {
         deps = this.deposits ? flatten(Object.values(this.deposits)) : [];
       }

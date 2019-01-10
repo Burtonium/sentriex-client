@@ -19,6 +19,9 @@
       <p v-if="deltaAmountIsZero">
         Update your balance to record a profit or loss to your investment fund.
       </p>
+      <p v-else-if="balance == 0">
+        <img class="itsgone" src="../assets/images/itsgone.jpeg">
+      </p>
       <p v-else>
         Record a <span class="text-primary">{{ profitOrLoss }}</span>
         of <span class="text-primary">{{ formattedDeltaBalance }}</span>
