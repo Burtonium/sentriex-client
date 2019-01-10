@@ -4,10 +4,10 @@
       <p>
         Total assets under management: <span class="text-primary">{{ assetsUnderManagement }}</span>
       </p>
-      <p v-if="deltaBalance > 0">
+      <p v-if="deltaAmount.isGreaterThan(0)">
         Share value will increase by <span class="text-primary">{{ deltaShareValuePercent }}</span>
       </p>
-      <p v-else-if="deltaBalance < 0">
+      <p v-else-if="deltaAmount.isLessThan(0)">
         Share value will decrease by <span class="text-primary">{{ deltaShareValuePercent }}</span>
       </p>
       <p v-else>
@@ -16,7 +16,7 @@
       <p>
         Total shares owned in fund: <span class="text-primary">{{ investmentFund.shareCount || 'N/A' }}</span>
       </p>
-      <p v-if="deltaAmountIsZero">
+      <p v-if="deltaAmountIsZero || balance === ''">
         Update your balance to record a profit or loss to your investment fund.
       </p>
       <p v-else-if="balance == 0">
@@ -79,7 +79,7 @@ export default {
       return new BigNumber(this.balance).minus(this.fundBalance);
     },
     deltaShareValuePercent() {
-      const percentage = (this.deltaBalance / this.investmentFund.balance * 100).toFixed(2);
+      const percentage = this.deltaAmount.dividedBy(this.fundBalance).times(100).toFixed(2);
       return `${percentage}%`;
     },
     currentShareValue() {
