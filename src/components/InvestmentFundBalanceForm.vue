@@ -1,24 +1,27 @@
 <template>
   <div class="">
     <div class="preview">
+      <p>
+        Total assets under management: <span class="text-primary">{{ assetsUnderManagement }}</span>
+      </p>
       <p v-if="deltaBalance > 0">
-        Share value will increase by {{ deltaShareValuePercent }}
+        Share value will increase by <span class="text-primary">{{ deltaShareValuePercent }}</span>
       </p>
       <p v-else-if="deltaBalance < 0">
-        Share value will decrease by {{ deltaShareValuePercent }}
+        Share value will decrease by <span class="text-primary">{{ deltaShareValuePercent }}</span>
       </p>
       <p v-else>
-        Current share value is {{ currentShareValue || 'N/A' }}
+        Current share value: <span class="text-primary">{{ currentShareValue || 'N/A' }}</span>
       </p>
       <p>
-        Total shares owned in fund: {{ investmentFund.shareCount || 'N/A' }}
+        Total shares owned in fund: <span class="text-primary">{{ investmentFund.shareCount || 'N/A' }}</span>
       </p>
-      <p v-if="deltaBalance !== 0">
-        Record a {{ balance > parseFloat(investmentFund.balance) ? 'profit' : 'loss' }}
-        of {{ deltaBalance }} {{ investmentFund.currencyCode }}
+      <p v-if="deltaAmountIsZero">
+        Update your balance to record a profit or loss to your investment fund.
       </p>
       <p v-else>
-        Update your balance to record a profit or loss to your investment fund.
+        Record a <span class="text-primary">{{ profitOrLoss }}</span>
+        of <span class="text-primary">{{ formattedDeltaBalance }}</span>
       </p>
     </div>
     <form class="form-inline">
@@ -37,6 +40,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 import { updateFundBalance } from '@/api';
+import BigNumber from 'bignumber.js';
 
 export default {
   data() {
@@ -53,21 +57,37 @@ export default {
   },
   computed: {
     ...mapGetters(['currencies']),
+    deltaAmountIsZero() {
+      return new BigNumber(this.deltaAmount).isZero();
+    },
+    profitOrLoss() {
+      return this.balance > parseFloat(this.investmentFund.balance) ? 'profit' : 'loss';
+    },
     fundBalance() {
       return this.investmentFund.balance;
     },
-    deltaBalance() {
-      return this.balance - parseFloat(this.investmentFund.balance);
+    currency() {
+      return this.currencies[this.investmentFund.currencyCode];
+    },
+    formattedDeltaBalance() {
+      return this.currency.format(this.deltaAmount);
+    },
+    deltaAmount() {
+      return new BigNumber(this.balance).minus(this.fundBalance);
     },
     deltaShareValuePercent() {
       const percentage = (this.deltaBalance / this.investmentFund.balance * 100).toFixed(2);
       return `${percentage}%`;
     },
     currentShareValue() {
-      const currency = this.currencies[this.investmentFund.currencyCode];
       const { sharePrice } = this.investmentFund;
-      return currency ? currency.format(sharePrice) : sharePrice;
+      return this.currency ? this.currency.format(sharePrice) : sharePrice;
     },
+    assetsUnderManagement() {
+      const currency = this.currencies[this.investmentFund.currencyCode];
+      const sharePrice = new BigNumber(this.investmentFund.sharePrice);
+      return currency.format(sharePrice.times(this.investmentFund.shareCount));
+    }
   },
   watch: {
     fundBalance() {

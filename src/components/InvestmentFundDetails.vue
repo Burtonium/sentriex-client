@@ -75,7 +75,7 @@
 import { mapGetters } from 'vuex';
 import SubscriptionModal from './SubscriptionModal.vue';
 import RedemptionModal from './RedemptionModal.vue';
-import InvestmentFundMetricsTable from '@/components/InvestmentFundMetricsTable.vue';
+
 export default {
   components: {
     SubscriptionModal,
