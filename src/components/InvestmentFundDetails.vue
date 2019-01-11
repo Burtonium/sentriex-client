@@ -3,9 +3,9 @@
     <div class="card-body" v-if="investmentFund">
       <div class="row">
         <div class="col-md-8">
-          <h2>
+          <h3 class="text-primary">
             {{ investmentFund.name }}
-          </h2>
+          </h3>
           <h6>
             <small class="text-muted">
               {{ investmentFund.shortDescription }} <br>
@@ -33,6 +33,11 @@
               {{ investmentFund.riskLevel }}
             </span>
           </div>
+          <div v-if="investmentFund.redemptionWaitTime">
+            <p>
+              Redemption Delay: <span class="text-warning">{{ redemptionWaitTime }} days</span>
+            </p>
+          </div>
         </div>
       </div>
       <br>
@@ -42,16 +47,13 @@
           <h4>Summary</h4>
           <p>{{ investmentFund.detailedDescription || 'N/A' }}</p>
         </b-tab>
-        <b-tab title="Performance" active>
-          <br>
-        </b-tab>
         <b-tab title="Manager" v-if="fundManager">
           <br>
           <p>
-            User:
-            <p class="text-primary">
+            Manager:
+            <span class="text-primary">
               {{ fundManager.username }}
-            </p>
+            </span>
             <br>
             Member since <timeago :datetime="fundManager.createdAt"/>
           </p>
@@ -75,6 +77,7 @@
 import { mapGetters } from 'vuex';
 import SubscriptionModal from './SubscriptionModal.vue';
 import RedemptionModal from './RedemptionModal.vue';
+const DAY = 24 * 60 * 60;
 
 export default {
   components: {
@@ -86,6 +89,10 @@ export default {
     ...mapGetters(['authenticated']),
     fundManager() {
       return this.investmentFund.manager || this.investmentFund.creator;
+    },
+    redemptionWaitTime() {
+      const wait = this.investmentFund.redemptionWaitTime;
+      return wait && (wait / DAY);
     },
   },
   methods: {

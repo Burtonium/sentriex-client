@@ -14,7 +14,7 @@
              :per-page="perPage">
       <template slot="status" slot-scope="row">
         <span :class="row.item.statusClass">
-          {{ statusToWords(row.item.status) }}
+          {{ statusToWords(row.item) }}
         </span>
       </template>
       <template slot="created" slot-scope="row">
@@ -79,7 +79,7 @@ export default {
           type: r.type === 'subscription' ? 'Sub' : 'Redeem',
           statusClass: this.statusClasses[r.status],
           amount: amount || percentAmount,
-          status: this.statusToWords(r.status),
+          status: this.statusToWords(r),
           created: r.createdAt,
           actions: '',
           cancelable: r.isCancelable,
@@ -112,7 +112,10 @@ export default {
         this.requests = response.data.requests;
       }
     },
-    statusToWords(status) {
+    statusToWords({ daysToWait, status }) {
+      if (daysToWait) {
+        return `${daysToWait} days remaining`;
+      }
       return snakeCaseToCapitalized(status);
     },
     async cancelRequest(id) {

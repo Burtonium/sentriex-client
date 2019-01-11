@@ -42,6 +42,25 @@
       </select>
     </div>
     <div class="form-group">
+      <b-form-checkbox id="mandatoryRedemptionTimesCheckbox"
+                       v-model="enforceRedemptionWaitTimes">
+        Mandatory Redemption Wait Time
+      </b-form-checkbox>
+      <div class="form-group mt-3" v-if="enforceRedemptionWaitTimes">
+        <label>Days
+          <input v-model="days"
+                 type="number"
+                 name="days"
+                 min="0">
+        </label>
+      </div>
+      <div class="form-group" v-else>
+        <p class="text-primary mt-3 mb-3">
+          Currently not enforced
+        </p>
+      </div>
+    </div>
+    <div class="form-group">
       <label for="shortDescriptionInput">Short description</label>
       <textarea class="form-control"
                 v-model="investmentFund.shortDescription"
@@ -69,10 +88,12 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import { updateInvestmentFund, createInvestmentFund, deleteInvestmentFund } from '@/api';
-
+const DAY = 24 * 60 * 60;
 export default {
   data() {
     return {
+      days: parseInt(this.investmentFund.redemptionWaitTime / DAY) || 0,
+      enforceRedemptionWaitTimes: !!this.investmentFund.redemptionWaitTime || false,
       error: false,
       loading: false,
     }
@@ -92,6 +113,15 @@ export default {
       default: false,
     }
   },
+  watch: {
+    investmentFund() {
+      this.days = parseInt(this.investmentFund.redemptionWaitTime / DAY);
+      this.enforceRedemptionWaitTimes = !!this.investmentFund.redemptionWaitTime || false;
+    },
+    days() {
+      this.investmentFund.redemptionWaitTime = (this.days || 0) * DAY;
+    }
+  },
   computed: {
     ...mapGetters(['currencies', 'users']),
     investmentFundId() {
@@ -101,6 +131,9 @@ export default {
   methods: {
     ...mapActions(['fetchInvestmentFunds']),
     async onSubmit() {
+      if (!this.enforceRedemptionWaitTimes) {
+        this.investmentFund.redemptionWaitTime = null;
+      }
       if (this.investmentFundId) {
         await this.handleUpdate();
       } else {

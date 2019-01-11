@@ -21,7 +21,7 @@
           <select v-model="statusFilter" class="form-control">
             <option value="all">All</option>
             <option :class="statusClasses[status] || ''" v-for="status in statuses" :value="status">
-              {{ statusToWords(status) }}
+              {{ statusToWords({ status }) }}
             </option>
           </select>
         </div>
@@ -66,7 +66,7 @@
       <template slot="status" slot-scope="row">
         <template v-if="sufficientFunds(row.item)">
           <span :class="row.item.statusClass">
-            {{ statusToWords(row.item.status) }}
+            {{ statusToWords(row.item) }}
           </span>
         </template>
         <template v-else>
@@ -105,8 +105,8 @@
 import { mapGetters, mapActions } from 'vuex';
 import Spinner from '@/components/Spinner.vue';
 import { updateInvestmentFundRequest, fetchAllInvestmentFundRequests } from '@/api';
-import { snakeCaseToCapitalized } from '@/utils';
-
+import { snakeCaseToCapitalized, daysFromNow } from '@/utils';
+const DAY = 24 * 60 * 60;
 export default {
   data() {
     return {
@@ -146,6 +146,9 @@ export default {
         .map((r) => {
           const amount = r.amount && this.currencyFormat(r.amount);
           const percentAmount = r.requestPercent && `${parseFloat(r.requestPercent).toFixed(2)}%`;
+          if (r.daysToWait) {
+            r.status = 'waiting';
+          }
           return {
             id: r.id,
             type: r.type,
@@ -162,6 +165,7 @@ export default {
             amount: r.amount,
             siteFees: this.currencyFormat(r.siteFees),
             profitShare: this.currencyFormat(r.profitShare),
+            daysToWait: r.daysToWait,
           };
         })
         .filter(r => !this.statusFilter
@@ -208,6 +212,7 @@ export default {
     statusClasses() {
       return {
         pending: 'text-warning',
+        waiting: 'text-warning',
         pending_email_verification: 'text-warning',
         approved: 'text-success',
         declined: 'text-danger',
@@ -222,7 +227,10 @@ export default {
   },
   methods: {
     ...mapActions(['fetchInvestmentFunds']),
-    statusToWords(status) {
+    statusToWords({ daysToWait, status }) {
+      if (daysToWait) {
+        return `${daysToWait} days remaining`;
+      }
       return snakeCaseToCapitalized(status);
     },
     currencyFormat(amount) {

@@ -10,6 +10,7 @@ import {
   Table,
   FormRadio,
   Pagination,
+  FormCheckbox,
 } from 'bootstrap-vue/es/components';
 
 Vue.use(Card);
@@ -22,3 +23,4 @@ Vue.use(Alert);
 Vue.use(Table);
 Vue.use(FormRadio);
 Vue.use(Pagination);
+Vue.use(FormCheckbox);
