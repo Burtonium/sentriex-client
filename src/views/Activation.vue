@@ -7,12 +7,12 @@
     <div v-else-if="success">
       <checkmark/>
       <p class="text-success mt-5">
-        You {{ resourceName }} was successfully authenticated...<br>Redirecting you to login.
+        <strong>Success!</strong><br>Redirecting you...
       </p>
     </div>
     <div v-else-if="error">
       <h3 class="text-danger">
-        {{ error.message || 'Something went wrong' }}...<br>Redirecting you to login.
+        {{ error.message || 'Something went wrong' }}...<br>Redirecting you...
       </h3>
     </div>
   </landing-container>
@@ -49,7 +49,8 @@ export default {
     },
   },
   async mounted() {
-    const res = await api.post(this.$route.path).catch(() => this.error = { message: 'Invalid token' });
+    const res = await api.post(this.$route.path)
+      .catch(() => this.error = { message: 'Invalid token' });
     if (res.data.success) {
       this.success = true;
     } else {
