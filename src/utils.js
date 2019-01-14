@@ -1,3 +1,5 @@
+import { bip32, payments } from 'bitcoinjs-lib';
+
 export const snakeCaseToCapitalized = text => text
   .split('_')
   .map(word => word[0].toUpperCase() + word.substr(1))
@@ -13,3 +15,14 @@ export const daysBetween = (date1, date2) => {
 };
 
 export const daysAgo = days => new Date(new Date() - (days * oneDay));
+
+const getAddress = (node, network) => payments.p2pkh({ pubkey: node.publicKey, network }).address;
+
+export const addressDeriver = xpub => (from, to) => {
+  const addresses = [];
+  for (let i = from; i < to; i += 1) {
+    const address = getAddress(bip32.fromBase58(xpub).derivePath(`0/${i}`));
+    addresses.push(address);
+  }
+  return addresses;
+};
