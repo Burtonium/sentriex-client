@@ -81,7 +81,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6 col-sm-12">
+          <div class="col-xl-6 col-sm-12">
             <div class="features-items">
               <div class="feature-item-module row">
                 <div class="col-lg-3 col-sm-12 ">
@@ -127,8 +127,10 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-sm-12 screenshot-showcase">
-            <img src="../assets/images/fund_screenshot.png" alt="" />
+          <div class="col-xl-6 col-sm-12 vertical-center">
+            <div class="screenshot-showcase">
+              <img src="../assets/images/fund_screenshot.png" alt="" />
+            </div>
           </div>
         </div>
       </div>
@@ -476,12 +478,12 @@ a:hover{
   color:map-get($theme-colors, primary);
   text-transform:uppercase;
 }
-.module-portion {
 
+.module-portion {
   margin-top:30px;
 }
-.module_box {
 
+.module_box {
   text-align:center;
   padding:30px;
   border-radius:15px;
@@ -511,7 +513,6 @@ a:hover{
   -webkit-box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.2);
   -moz-box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.2);
   box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.2);
-
 }
 
 .module-icon {
@@ -532,18 +533,23 @@ a:hover{
   padding-top:15px;
 }
 
-.screenshot-showcase {
+.vertical-center {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.screenshot-showcase {
   box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.2);
   margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 10px;
+  padding: 15px;
 }
 
-.vertical-center > img {
+.screenshot-showcase img {
   width: 100%;
+  margin-bottom: 47px;
 }
 
 .box-shadow {
