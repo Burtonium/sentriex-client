@@ -1,41 +1,39 @@
 <template>
   <div class="manage-crypto">
-    <div class="wrapper mt-5">
-      <div class="row text-left">
-        <div class="col-md-2">
-          <currency-nav :create="true"
-                        :selected="currencyCode"
-                        :currencies="currencies"
-                        routeName="crypto-management"/>
-        </div>
-        <div class="col-md-10">
-          <b-tabs>
-            <b-tab title="Information">
+    <div class="row text-left">
+      <div class="col-md-2">
+        <currency-nav :create="true"
+                      :selected="currencyCode"
+                      :currencies="currencies"
+                      routeName="crypto-management"/>
+      </div>
+      <div class="col-md-10">
+        <b-tabs>
+          <b-tab title="Information">
+            <br>
+            <currency-form :currency="currency"/>
+          </b-tab>
+          <template v-if="currency">
+            <b-tab title="Addresses">
               <br>
-              <currency-form :currency="currency"/>
+              <user-addresses-form :currencyCode="currencyCode"/>
             </b-tab>
-            <template v-if="currency">
-              <b-tab title="Addresses">
-                <br>
-                <user-addresses-form :currencyCode="currencyCode"/>
-              </b-tab>
-              <b-tab title="Withdrawals">
-                <br>
-                <manage-user-withdrawals :currencyCode="currencyCode" />
-              </b-tab>
-              <b-tab title="Deposits">
-                <br>
-                <deposit-address-search-form :currencyCode="currencyCode"/>
-                <br>
-                <deposits-table :currencyCode="currencyCode" />
-              </b-tab>
-              <b-tab title="Server">
-                <br>
-                <crypto-server-form :currencyCode="currencyCode"/>
-              </b-tab>
-            </template>
-          </b-tabs>
-        </div>
+            <b-tab title="Withdrawals">
+              <br>
+              <manage-user-withdrawals :currencyCode="currencyCode" />
+            </b-tab>
+            <b-tab title="Deposits">
+              <br>
+              <deposit-address-search-form :currencyCode="currencyCode"/>
+              <br>
+              <deposits-table :currencyCode="currencyCode" />
+            </b-tab>
+            <b-tab title="Server">
+              <br>
+              <crypto-server-form :currencyCode="currencyCode"/>
+            </b-tab>
+          </template>
+        </b-tabs>
       </div>
     </div>
   </div>

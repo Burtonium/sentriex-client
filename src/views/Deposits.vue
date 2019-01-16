@@ -1,18 +1,16 @@
 <template>
   <div class="deposits">
-    <div class="wrapper mt-5">
-      <div class="row text-left">
-        <div class="col-md-2">
-          <currency-nav :selected="currencyCode"
-                        :currencies="currencies"
-                        routeName="deposits"/>
-        </div>
-        <div class="col-lg-4 mb-3">
-          <deposit-addresses :currency="currency"/>
-        </div>
-        <div class="col-lg-6">
-          <deposit-history />
-        </div>
+    <div class="row text-left">
+      <div class="col-md-2">
+        <currency-nav :selected="currencyCode"
+                      :currencies="currencies"
+                      routeName="deposits"/>
+      </div>
+      <div class="col-lg-4 mb-3">
+        <deposit-addresses :currency="currency"/>
+      </div>
+      <div class="col-lg-6">
+        <deposit-history />
       </div>
     </div>
   </div>

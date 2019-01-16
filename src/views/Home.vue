@@ -5,7 +5,7 @@
         <div class="container">
           <div class="banner-content">
             <h2 class="banner-title capitalized mb-4">
-              The world’s first cryptocurrency platform specializing in
+              The world’s first platform specializing in cryptocurrency
               investment funds and products
             </h2>
             <h4 class="banner-sub-title mb-4">
@@ -127,10 +127,8 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-sm-12">
-            <div class="app_screen">
-              <img src="img/mockup.png" alt="" />
-            </div>
+          <div class="col-md-6 col-sm-12 screenshot-showcase">
+            <img src="../assets/images/fund_screenshot.png" alt="" />
           </div>
         </div>
       </div>
@@ -516,7 +514,7 @@ a:hover{
 
 }
 
-.module-icon{
+.module-icon {
   background:map-get($theme-colors, primary);
   border-radius:100%;
   width:100px;
@@ -533,13 +531,25 @@ a:hover{
 .module-text {
   padding-top:15px;
 }
-.app_screen {
-  padding-top:70px;
+
+.screenshot-showcase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
 }
-.app_screen img {
-  width:100%;
-  height:auto;
+
+.vertical-center > img {
+  width: 100%;
 }
+
+.box-shadow {
+  box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.2);
+}
+
 
 /*subscription portion style*/
 .subscription {
@@ -610,11 +620,6 @@ a:hover{
     display: none !important;
 }
 
-/*
- * Hide only visually, but have it available for screen readers:
- * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- */
-
 .visuallyhidden {
     border: 0;
     clip: rect(0 0 0 0);
@@ -625,12 +630,6 @@ a:hover{
     position: absolute;
     width: 1px;
 }
-
-/*
- * Extends the .visuallyhidden class to allow the element
- * to be focusable when navigated to via the keyboard:
- * https://www.drupal.org/node/897638
- */
 
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
@@ -745,11 +744,7 @@ a:hover{
        (min-resolution: 120dpi) {
     /* Style adjustments for high resolution devices */
 }
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   http://www.phpied.com/delay-loading-your-print-css/
-   ========================================================================== */
+
 @media print {
   *,
   *:before,
@@ -757,8 +752,7 @@ a:hover{
   *:first-letter,
   *:first-line {
       background: transparent !important;
-      color: #000 !important; /* Black prints faster:
-                                 http://www.sanbeiji.com/archives/953 */
+      color: #000 !important;
       box-shadow: none !important;
       text-shadow: none !important;
   }
@@ -790,11 +784,6 @@ a:hover{
       border: 1px solid #999;
       page-break-inside: avoid;
   }
-
-  /*
-   * Printing Tables:
-   * http://css-discuss.incutio.com/wiki/Printing_Tables
-   */
 
   thead {
       display: table-header-group;

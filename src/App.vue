@@ -2,8 +2,12 @@
   <div id="app">
     <nav-bar />
     <div class="flex-wrapper">
-      <router-view />
-      <app-footer class="mt-5" />
+      <div :class="{ 'mt-5 mb-5': !wrapperExempt }">
+        <div :class="{ 'wrapper': !wrapperExempt }">
+          <router-view />
+        </div>
+      </div>
+      <app-footer />
     </div>
   </div>
 </template>
@@ -17,7 +21,12 @@ export default {
     NavBar,
     AppFooter,
   },
-  computed: mapGetters(['authenticated']),
+  computed: {
+    ...mapGetters(['authenticated']),
+    wrapperExempt() {
+      return this.$route.meta.wrapperExempt;
+    },
+  },
   watch: {
     authenticated() {
       if (!this.authenticated) {
@@ -25,6 +34,7 @@ export default {
       }
     },
   },
+
 };
 </script>
 

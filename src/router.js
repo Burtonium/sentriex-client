@@ -14,6 +14,8 @@ import PageNotFound from '@/views/PageNotFound.vue';
 import Deposits from '@/views/Deposits.vue';
 import Withdrawals from '@/views/Withdrawals.vue';
 import Activation from '@/views/Activation.vue';
+import Contact from '@/views/Contact.vue';
+import Vision from '@/views/Vision.vue';
 import Home from '@/views/Home.vue';
 
 import store from '@/store';
@@ -29,6 +31,7 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: Home,
+      meta: { wrapperExempt: true },
     },
     {
       path: '/login',
@@ -47,6 +50,16 @@ const router = new Router({
       path: '/register',
       name: 'register',
       component: Register,
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: Contact,
+    },
+    {
+      path: '/vision',
+      name: 'vision',
+      component: Vision,
     },
     {
       path: '/reset-password/:token?',

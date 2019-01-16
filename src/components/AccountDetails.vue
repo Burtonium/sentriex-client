@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="wrapper text-left mt-3">
+    <div class="text-left">
       <b-alert variant="warning" dismissible :show="!account.twofa">
         Your account security would greatly benefit from two factor authentication.
         Please enable it immediately.

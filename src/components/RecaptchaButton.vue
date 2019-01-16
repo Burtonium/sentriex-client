@@ -1,5 +1,5 @@
 <template>
-  <g-recaptcha data-btn-class="btn btn-primary btn-lg"
+  <g-recaptcha :data-btn-class="`btn btn-${variant} btn-${size}`"
                :data-sitekey="sitekey"
                :data-validate="validate"
                :data-callback="submit">
@@ -10,7 +10,17 @@
 import gRecaptcha from '@finpo/vue2-recaptcha-invisible';
 
 export default {
-  props: ['sitekey', 'valid'],
+  props: {
+    sitekey: {
+      required: true,
+    },
+    size: {
+      default: 'lg',
+    },
+    variant: {
+      default: 'primary',
+    },
+  },
   methods: {
     validate() {
       return true;

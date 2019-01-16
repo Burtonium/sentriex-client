@@ -7,9 +7,12 @@
             <h4>Products</h4>
             <ul>
               <li><router-link :to="'/investment-funds'">Investment Funds</router-link></li>
-              <li><a href="#">Savings Account</a></li>
               <li><a href="#">Exchange</a></li>
-              <li><a href="#">OTC</a></li>
+              <li>
+                <router-link :to="{ name: 'contact', query: { otc: true } }">
+                  OTC
+                </router-link>
+              </li>
             </ul>
           </div>
         </div>
@@ -17,9 +20,6 @@
           <div class="footer-widget">
             <h4>Learn</h4>
             <ul>
-              <li><a href="#">Buy Cryptocurrencies</a></li>
-              <li><a href="#">Investing and Managing Funds</a></li>
-              <li><a href="#">Country Availability</a></li>
               <li><a href="#">Crypto Market Reports</a></li>
             </ul>
           </div>
@@ -28,12 +28,9 @@
           <div class="footer-widget">
             <h4>Company</h4>
             <ul>
-              <li><a href="#">Vision</a></li>
-              <li><router-link :to="'/about'">About</router-link></li>
-              <li><a href="#">Road Map</a></li>
-              <li><a href="#">Press</a></li>
+              <li><router-link :to="'/vision'">Vision</router-link></li>
               <li><a href="#">Legal and Privacy</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><router-link :to="'/about'">Contact</router-link></li>
             </ul>
           </div>
         </div>
@@ -41,10 +38,17 @@
           <div class="footer-widget">
             <h4>Social</h4>
             <ul>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Facebook</a></li>
-              <li><a href="#">Discord</a></li>
-              <li><a href="#">Telegram</a></li>
+              <li class="flex center">
+                <a class="mx-2" target="_blank" href="https://twitter.com/TheSentriex">
+                  <icon name="brands/twitter" />
+                </a>
+                <a class="mx-2" target="_blank" href="https://discord.gg/tSrm67c">
+                  <icon name="brands/discord" />
+                </a>
+                <a class="mx-2" target="_blank" href="https://t.me/Sentriex">
+                  <icon name="brands/telegram" />
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -106,5 +110,11 @@ export default {
     padding-top:30px;
     text-align:center;
   }
+}
+.flex {
+  display: flex;
+}
+.flex.center {
+  justify-content: center;
 }
 </style>

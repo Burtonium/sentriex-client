@@ -11,10 +11,12 @@
                     :text="currencyFilter"
                     class="mb-2 mr-2"
                     v-if="displayType !== CURRENCY_TOTALS">
-          <b-dropdown-item @click="currencyFilter = 'All'" v-for="currency in currencies">
+          <b-dropdown-item @click="currencyFilter = 'All'">
             All
           </b-dropdown-item>
-          <b-dropdown-item @click="currencyFilter = currency.code" v-for="currency in currencies">
+          <b-dropdown-item @click="currencyFilter = currency.code"
+                           v-for="currency in currencies"
+                           :key="currency.code">
             {{ currency.code }}
           </b-dropdown-item>
         </b-dropdown>
@@ -35,25 +37,24 @@
         </b-dropdown>
       </div>
     </div>
-      <b-table :items="referralPaymentList"
-               stacked="md"
-               :show-empty="true"
-               empty-text="No referral payments yet. See affiliate program for details."
-               :current-page="currentPage"
-               :per-page="perPage">
-        <template slot="created" slot-scope="row">
-          <timeago :datetime="row.item.created" />
-        </template>
-      </b-table>
-      <div class="row" v-if="referralPaymentList.length > perPage">
-        <div class="col-md-6 my-1">
-          <b-pagination :total-rows="referralPaymentList.length"
-                        :per-page="perPage"
-                        v-model="currentPage"
-                        class="my-0"/>
-        </div>
+    <b-table :items="referralPaymentList"
+             stacked="md"
+             :show-empty="true"
+             empty-text="No referral payments yet. See affiliate program for details."
+             :current-page="currentPage"
+             :per-page="perPage">
+      <template slot="created" slot-scope="row">
+        <timeago :datetime="row.item.created" />
+      </template>
+    </b-table>
+    <div class="row" v-if="referralPaymentList.length > perPage">
+      <div class="col-md-6 my-1">
+        <b-pagination :total-rows="referralPaymentList.length"
+                      :per-page="perPage"
+                      v-model="currentPage"
+                      class="my-0"/>
       </div>
-
+    </div>
   </requires-async-state>
 </template>
 <script>

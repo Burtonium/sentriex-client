@@ -1,0 +1,67 @@
+<template>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 text-left">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title text-primary">
+              {{ otc ? 'OTC Request' : 'Contact' }}
+            </h2>
+            <h6 class="card-subtitle text-muted pr-5 mt-2 mb-4">
+              <template v-if="otc">
+                Please submit your details for an OTC request by submitting your
+                details in the form below.
+              </template>
+              <template v-else>
+                Got questions? Feedback? Anything at all? We'd love to hear from you.
+                Send us a message and we'll respond as soon as we can.
+              </template>
+            </h6>
+            <contact-form :otc="otc" />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <img src="../assets/images/logo-blue.png"/>
+        <br/>
+        <br/>
+        <div class="brand-icons mb-3">
+          <a href="https://twitter.com/TheSentriex">
+            <icon name="brands/twitter" scale="2.5" color="#1da1f2"/>
+          </a>
+          <a href="https://discord.gg/tSrm67c">
+            <icon name="brands/discord" scale="2.5" color="#7289da"/>
+          </a>
+          <a href="https://t.me/Sentriex">
+            <icon name="brands/telegram" scale="2.5" color="#0088cc"/>
+          </a>
+        </div>
+        <p>
+          Email: <a href="mailto:contact@sentriex.com">contact@sentriex.com</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+import ContactForm from '@/components/ContactForm.vue';
+
+export default {
+  components: {
+    ContactForm,
+  },
+  computed: {
+    otc() {
+      return this.$route.query.otc;
+    }
+  },
+}
+</script>
+<style>
+.brand-icons {
+  max-width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+</style>

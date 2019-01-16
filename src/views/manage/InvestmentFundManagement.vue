@@ -1,38 +1,36 @@
 <template>
   <div class="investment-funds">
-    <div class="wrapper mt-5">
-      <div class="row text-left">
-        <div class="col-md-2">
-          <investment-fund-nav :create="canCreate"
-                               :selected="investmentFundId"
-                               :investmentFunds="myInvestmentFunds"
-                               routeName="manage-investment-funds"/>
-        </div>
-        <div class="col-md-10 col-lg-10">
-          <b-tabs>
-            <b-tab title="Information" :active="!investmentFund">
-              <br>
-              <p class="text-warning" v-if="!canCreate && myInvestmentFunds.length === 0">
-                You currently do not manage any investment funds. Contact your admin
-                to manage investment fund balances.
-              </p>
-              <investment-fund-form v-else
-                                    :investment-fund="investmentFund"
-                                    :canEdit="user.admin"
-                                    :canDelete="user.admin"/>
-            </b-tab>
-            <b-tab title="Balance Updates" v-if="investmentFund">
-              <br>
-              <investment-fund-balance-form :investmentFund="investmentFund" />
-              <br>
-              <investment-fund-balance-updates-table :investmentFundId="investmentFund.id" />
-            </b-tab>
-            <b-tab title="Red/Subs" v-if="investmentFund && user.admin">
-              <br>
-              <manage-investment-fund-requests :investmentFund="investmentFund" />
-            </b-tab>
-          </b-tabs>
-        </div>
+    <div class="row text-left">
+      <div class="col-md-2">
+        <investment-fund-nav :create="canCreate"
+                             :selected="investmentFundId"
+                             :investmentFunds="myInvestmentFunds"
+                             routeName="manage-investment-funds"/>
+      </div>
+      <div class="col-md-10 col-lg-10">
+        <b-tabs>
+          <b-tab title="Information" :active="!investmentFund">
+            <br>
+            <p class="text-warning" v-if="!canCreate && myInvestmentFunds.length === 0">
+              You currently do not manage any investment funds. Contact your admin
+              to manage investment fund balances.
+            </p>
+            <investment-fund-form v-else
+                                  :investment-fund="investmentFund"
+                                  :canEdit="user.admin"
+                                  :canDelete="user.admin"/>
+          </b-tab>
+          <b-tab title="Balance Updates" v-if="investmentFund">
+            <br>
+            <investment-fund-balance-form :investmentFund="investmentFund" />
+            <br>
+            <investment-fund-balance-updates-table :investmentFundId="investmentFund.id" />
+          </b-tab>
+          <b-tab title="Red/Subs" v-if="investmentFund && user.admin">
+            <br>
+            <manage-investment-fund-requests :investmentFund="investmentFund" />
+          </b-tab>
+        </b-tabs>
       </div>
     </div>
   </div>

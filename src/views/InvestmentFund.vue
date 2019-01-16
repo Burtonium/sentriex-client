@@ -1,15 +1,13 @@
 <template>
   <div class="investment-funds">
-    <div class="wrapper mt-5">
-      <div class="row text-left mb-2">
-        <div class="col-md-2">
-          <investment-fund-nav :selected="investmentFundId" :investmentFunds="investmentFunds"/>
-        </div>
-        <div class="col-md-10">
-          <investment-fund-trend-data :investmentFundId="investmentFundId" />
-          <br>
-          <investment-fund-details :investment-fund="investmentFund"/>
-        </div>
+    <div class="row text-left mb-2">
+      <div class="col-md-2">
+        <investment-fund-nav :selected="investmentFundId" :investmentFunds="investmentFunds"/>
+      </div>
+      <div class="col-md-10">
+        <investment-fund-trend-data :investmentFundId="investmentFundId" />
+        <br>
+        <investment-fund-details :investment-fund="investmentFund"/>
       </div>
     </div>
   </div>

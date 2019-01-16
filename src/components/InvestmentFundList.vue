@@ -1,50 +1,48 @@
 <template>
   <div class="text-left investments">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Currency</th>
-          <th>Short Description</th>
-          <th>Risk Level</th>
-          <th>Performance</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="investmentFund in sortedInvestmentFunds"
-            :key="investmentFund.id"
-            class="clickable"
-            @click="navigateToInvestmentFund(investmentFund.id)">
-          <td>
-            {{ investmentFund.name }}
-          </td>
-          <td>
-            {{ investmentFund.currencyCode }}
-          </td>
-          <td>{{ investmentFund.shortDescription }}</td>
-          <td>
-            <div class="capitalize-first" :class="getRiskLevelClass(investmentFund.riskLevel)">
-              {{ investmentFund.riskLevel }}
-            </div>
-          </td>
-          <td :class="{ 'text-success': investmentFund.monthlyPerformance > 0,
-                        'text-danger': investmentFund.monthlyPerformance < 0 }">
-            {{ investmentFund.monthlyPerformance }}%
-          </td>
-          <td class="no-wrap">
-            <button class="btn btn-sm btn-outline-primary mr-2"
-                    @click.stop="handleModalOpen($event, investmentFund)"
-                    v-b-modal.subscription-modal>
-              Subscribe
-            </button>
-            <button class="btn btn-sm btn-outline-primary"
-                    @click.stop="handleModalOpen($event, investmentFund)"
-                    v-b-modal.redemption-modal>Redeem</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <b-table :items="sortedInvestmentFunds"
+             :fields="tableFields"
+             stacked="md"
+             hover
+             :tbody-tr-class="'clickable'"
+             @row-clicked="navigateToInvestmentFund">
+      <template slot="riskLevel" slot-scope="row">
+        <span class="capitalize-first" :class="getRiskLevelClass(row.item.riskLevel)">
+          {{ row.item.riskLevel }}
+        </span>
+      </template>
+      <template slot="monthlyPerformance" slot-scope="row">
+        <span :class="{ 'text-success': row.item.monthlyPerformance > 0,
+                        'text-danger': row.item.monthlyPerformance < 0 }">
+          {{ row.item.monthlyPerformance }}%
+        </span>
+      </template>
+      <template slot="actions" slot-scope="row">
+        <span class="no-wrap">
+          <b-btn class="mr-2"
+                  variant="outline-primary"
+                  size="sm"
+                  @click.stop="handleModalOpen($event, row.item)"
+                  v-b-modal.subscription-modal>
+            Subscribe
+          </b-btn>
+          <b-btn variant="outline-primary"
+                 size="sm"
+                 @click.stop="handleModalOpen($event, row.item)"
+                 v-b-modal.redemption-modal>
+            Redeem
+          </b-btn>
+        </span>
+      </template>
+    </b-table>
+    <div class="row" v-if="sortedInvestmentFunds.length > perPage">
+      <div class="col-md-6 my-1">
+        <b-pagination :total-rows="sortedInvestmentFunds.length"
+                      :per-page="perPage"
+                      v-model="currentPage"
+                      class="my-0"/>
+      </div>
+    </div>
     <subscription-modal modalId="subscription-modal"
                         :investmentFund="selectedInvestmentFund"
                         v-if="authenticated"/>
@@ -68,6 +66,8 @@ export default {
   },
   data() {
     return {
+      perPage: 10,
+      currentPage: 1,
       selectedInvestmentFund: null,
     };
   },
@@ -75,6 +75,9 @@ export default {
     ...mapGetters(['investmentFunds', 'authenticated']),
     sortedInvestmentFunds() {
       return (this.investmentFunds || []).sort(performanceSort);
+    },
+    tableFields() {
+      return ['name', 'currencyCode', 'shortDescription', 'riskLevel', 'monthlyPerformance', 'actions'];
     },
   },
   methods: {
@@ -97,7 +100,7 @@ export default {
       }
       return classes;
     },
-    async navigateToInvestmentFund(id) {
+    async navigateToInvestmentFund({ id }) {
       await this.$router.push({ path: `/investment-funds/${id}` });
     },
   },

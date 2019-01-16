@@ -1,13 +1,11 @@
 <template>
   <div class="manage-settings">
-    <div class="wrapper mt-5 pl-3 pr-3">
-      <b-tabs>
-        <b-tab title="Fee Settings">
-          <br>
-          <admin-settings-form />
-        </b-tab>
-      </b-tabs>
-    </div>
+    <b-tabs>
+      <b-tab title="Fee Settings">
+        <br>
+        <admin-settings-form />
+      </b-tab>
+    </b-tabs>
   </div>
 </template>
 <script>

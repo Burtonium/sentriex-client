@@ -1,6 +1,6 @@
 <template>
   <div class="investment-funds">
-    <div class="wrapper row mt-5">
+    <div class="row">
       <investment-fund-list />
     </div>
   </div>

@@ -1,7 +1,7 @@
 <template>
   <requires-async-state :actions="actionDependencies">
     <div class="portfolio">
-      <div class="wrapper mt-5 text-left flexed-rows">
+      <div class="text-left">
         <div class="row">
           <div class="col-md-12">
             <portfolio-performance-details />
@@ -66,7 +66,7 @@ export default {
 </script>
 <style scoped>
 .row {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 .currency-icon {
   max-width:20px;
