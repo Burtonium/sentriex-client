@@ -16,7 +16,7 @@ export default {
   props: {
     investmentFundId: {
       required: true,
-    }
+    },
   },
   computed: {
     actionDependencies() {
@@ -41,8 +41,8 @@ export default {
           borderColor: ['rgba(31, 97, 208, 0.8)'],
           backgroundColor: ['rgba(31, 97, 208, 0.2)'],
         }],
-      }
-    }
-  }
-}
+      };
+    },
+  },
+};
 </script>

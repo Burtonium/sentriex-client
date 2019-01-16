@@ -50,7 +50,7 @@
   </div>
 </template>
 <script>
-import  RecaptchaButton from '@/components/RecaptchaButton.vue';
+import RecaptchaButton from '@/components/RecaptchaButton.vue';
 import Spinner from '@/components/Spinner.vue';
 import Checkmark from '@/components/Checkmark.vue';
 
@@ -65,7 +65,7 @@ export default {
       name: '',
       email: '',
       message: '',
-    }
+    };
   },
   components: {
     RecaptchaButton,
@@ -81,14 +81,14 @@ export default {
       }
       this.loading = true;
       const response = await api.post('/contact', {
-          subject: this.otc ? `OTC Request - ${this.name}` : `User Contact - ${this.name}`,
-          name: this.name,
-          email: this.email,
-          message: this.message,
-          recaptcha,
-        })
+        subject: this.otc ? `OTC Request - ${this.name}` : `User Contact - ${this.name}`,
+        name: this.name,
+        email: this.email,
+        message: this.message,
+        recaptcha,
+      })
         .catch(() => { this.error = true; })
-        .finally(() => { this.loading = false; })
+        .finally(() => { this.loading = false; });
       if (response && response.data.success) {
         this.success = true;
       }
@@ -100,7 +100,7 @@ export default {
     },
     messagePlaceholder() {
       return this.otc ? 'OTC request details' : 'Enter a message';
-    }
+    },
   },
 };
 </script>

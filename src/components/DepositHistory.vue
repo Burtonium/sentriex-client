@@ -50,12 +50,12 @@ export default {
         deps = this.deposits ? flatten(Object.values(this.deposits)) : [];
       }
 
-      return deps.map(d => {
+      return deps.map((d) => {
         const currency = this.currencies[d.currencyCode];
         return {
           ...d,
           amount: currency ? currency.format(d.amount) : d.amount,
-        }
+        };
       });
     },
     depositFields() {
@@ -87,7 +87,7 @@ export default {
   },
   created() {
     this.loadData();
-  }
+  },
 };
 </script>
 <style>

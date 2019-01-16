@@ -106,6 +106,7 @@ import { mapGetters, mapActions } from 'vuex';
 import Spinner from '@/components/Spinner.vue';
 import { updateInvestmentFundRequest, fetchAllInvestmentFundRequests } from '@/api';
 import { snakeCaseToCapitalized, daysFromNow } from '@/utils';
+
 const DAY = 24 * 60 * 60;
 export default {
   data() {

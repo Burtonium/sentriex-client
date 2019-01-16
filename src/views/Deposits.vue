@@ -6,7 +6,7 @@
                       :currencies="currencies"
                       routeName="deposits"/>
       </div>
-      <div class="col-lg-4 mb-3">
+      <div class="col-lg-4 mb-4">
         <deposit-addresses :currency="currency"/>
       </div>
       <div class="col-lg-6">

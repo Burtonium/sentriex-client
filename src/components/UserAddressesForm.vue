@@ -75,13 +75,12 @@ export default {
     async onSubmit() {
       this.loading = true;
       const response = await addAddresses({
-          code: this.currencyCode,
-          addresses: this.addresses
-        })
+        code: this.currencyCode,
+        addresses: this.addresses,
+      })
         .catch(() => { this.error = true; })
         .finally(() => { this.loading = false; });
       this.success = response && response.data.success;
-
     },
     async deriveAddresses() {
       try {
@@ -92,7 +91,7 @@ export default {
       } catch (error) {
         this.derivationError = error;
       }
-    }
+    },
   },
 };
 </script>

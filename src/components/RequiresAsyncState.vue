@@ -35,13 +35,13 @@ export default {
   methods: {
     loadData() {
       this.loading = true;
-      Promise.all(this.actions.map(a => {
-          const x = a.split(':');
-          return this.$store.dispatch(x[0], x[1] && x[1].split(','));
-        }))
-        .catch((e) => { this.error = true; c })
+      Promise.all(this.actions.map((a) => {
+        const x = a.split(':');
+        return this.$store.dispatch(x[0], x[1] && x[1].split(','));
+      }))
+        .catch((e) => { this.error = true; c; })
         .finally(() => { this.loading = false; });
-    }
+    },
   },
   created() {
     this.loadData();

@@ -66,7 +66,7 @@ export default {
     perPage: {
       required: false,
       default: 10,
-    }
+    },
   },
   computed: {
     ...mapGetters(['currencies']),

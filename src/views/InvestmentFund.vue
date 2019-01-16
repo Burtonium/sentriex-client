@@ -17,6 +17,7 @@ import { mapGetters } from 'vuex';
 import InvestmentFundDetails from '@/components/InvestmentFundDetails.vue';
 import InvestmentFundNav from '@/components/InvestmentFundNav.vue';
 import InvestmentFundTrendData from '@/components/InvestmentFundTrendData.vue';
+
 export default {
   components: {
     InvestmentFundDetails,

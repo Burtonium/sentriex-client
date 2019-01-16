@@ -53,9 +53,9 @@ export default {
   computed: {
     otc() {
       return this.$route.query.otc;
-    }
+    },
   },
-}
+};
 </script>
 <style>
 .brand-icons {

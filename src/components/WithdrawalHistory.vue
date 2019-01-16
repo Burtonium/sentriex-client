@@ -35,7 +35,7 @@
         </template>
       </template>
     </b-table>
-    <div class="row">
+    <div class="row" v-if="userWithdrawals.length > perPage">
       <div class="col-md-6 my-1">
         <b-pagination :total-rows="userWithdrawals.length"
                       :per-page="perPage"
@@ -67,7 +67,7 @@ export default {
     perPage: {
       required: false,
       default: 10,
-    }
+    },
   },
   computed: {
     ...mapGetters(['withdrawals', 'currencies']),
@@ -82,11 +82,11 @@ export default {
       if (!this.currencyCode) {
         withdrawals = flatten(Object.values(this.withdrawals));
       } else {
-        withdrawals = this.withdrawals && this.withdrawals[this.currencyCode] ?
-          this.withdrawals[this.currencyCode] : [];
+        withdrawals = this.withdrawals && this.withdrawals[this.currencyCode]
+          ? this.withdrawals[this.currencyCode] : [];
       }
 
-      return withdrawals.map(w => {
+      return withdrawals.map((w) => {
         const currency = this.currencies[w.currencyCode];
         return {
           ...w,

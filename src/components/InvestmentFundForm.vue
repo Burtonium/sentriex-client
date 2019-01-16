@@ -88,6 +88,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import { updateInvestmentFund, createInvestmentFund, deleteInvestmentFund } from '@/api';
+
 const DAY = 24 * 60 * 60;
 export default {
   data() {
@@ -96,7 +97,7 @@ export default {
       enforceRedemptionWaitTimes: !!this.investmentFund.redemptionWaitTime || false,
       error: false,
       loading: false,
-    }
+    };
   },
   props: {
     investmentFund: {
@@ -111,7 +112,7 @@ export default {
     canDelete: {
       type: Boolean,
       default: false,
-    }
+    },
   },
   watch: {
     investmentFund() {
@@ -120,7 +121,7 @@ export default {
     },
     days() {
       this.investmentFund.redemptionWaitTime = (this.days || 0) * DAY;
-    }
+    },
   },
   computed: {
     ...mapGetters(['currencies', 'users']),
@@ -144,13 +145,13 @@ export default {
       this.loading = true;
       await updateInvestmentFund(this.investmentFund)
         .catch(() => { this.error = true; })
-        .finally(() => { this.loading = false });
+        .finally(() => { this.loading = false; });
       await this.fetchInvestmentFunds({ refresh: true });
     },
     async handleCreate() {
       const response = await createInvestmentFund(this.investmentFund)
         .catch(() => { this.error = true; })
-        .finally(() => { this.loading = false });
+        .finally(() => { this.loading = false; });
       let id;
       if (response && response.data && response.data.investmentFund) {
         id = response.data.investmentFund.id;
@@ -164,7 +165,7 @@ export default {
         .catch(() => { this.deleteError = true; })
         .finally(() => { this.loading = false; });
 
-      if(!this.deleteError) {
+      if (!this.deleteError) {
         this.fetchInvestmentFunds({ refresh: true });
         this.$router.push('/manage/investment-funds/');
       }

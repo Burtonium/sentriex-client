@@ -61,7 +61,7 @@ export default {
     actionDependencies() {
       return ['fetchCurrencies', 'fetchBalances'];
     },
-  }
+  },
 };
 </script>
 <style scoped>

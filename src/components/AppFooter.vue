@@ -89,7 +89,7 @@ export default {
 }
 
 .footer-widget ul {
-  padding-top:20px;
+  padding-top:10px;
 }
 .footer-widget ul li a{
   color:#ffffff;

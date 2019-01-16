@@ -90,7 +90,7 @@ export default {
       const currency = this.currencies[this.investmentFund.currencyCode];
       const sharePrice = new BigNumber(this.investmentFund.sharePrice);
       return currency.format(sharePrice.times(this.investmentFund.shareCount));
-    }
+    },
   },
   watch: {
     fundBalance() {

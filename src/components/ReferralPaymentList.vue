@@ -81,7 +81,7 @@ export default {
     },
     ...mapGetters(['referralPayments', 'currencies']),
     historicalList() {
-      return this.referralPayments && this.referralPayments.map(p => {
+      return this.referralPayments && this.referralPayments.map((p) => {
         const currency = this.currencies[p.currencyCode];
         return {
           referral: p.payer.username,
@@ -97,12 +97,12 @@ export default {
       const refPay = this.currencyFilteredReferralPayments;
       const users = uniq(refPay.map(p => p.payer.username));
       const currencies = uniq(refPay.map(p => p.currencyCode)).map(c => this.currencies[c]);
-      const byUser = (u) => ({ payer }) => payer.username === u;
-      const byCurrency = (code) => ({ currencyCode }) => code === currencyCode;
+      const byUser = u => ({ payer }) => payer.username === u;
+      const byCurrency = code => ({ currencyCode }) => code === currencyCode;
       const userPaymentTotals = [];
 
-      users.forEach(u => {
-        currencies.forEach(c => {
+      users.forEach((u) => {
+        currencies.forEach((c) => {
           const paymentTotal = refPay
             .filter(byUser(u))
             .filter(byCurrency(c.code))
@@ -121,7 +121,7 @@ export default {
       const refPay = this.currencyFilteredReferralPayments;
       const currencies = uniq(refPay.map(p => p.currencyCode)).map(c => this.currencies[c]);
 
-      return currencies.map(c => {
+      return currencies.map((c) => {
         const paymentTotal = refPay
           .filter(this.byCurrency)
           .reduce((acc, { amount }) => acc.plus(amount), new BigNumber(0));
@@ -137,7 +137,7 @@ export default {
         user: this.userTotalsList,
         history: this.historicalList,
         currency: this.currencyTotals,
-      }
+      };
       return mapped[this.displayType];
     },
     USER_TOTALS: () => 'user',
@@ -149,5 +149,5 @@ export default {
       return this.currencyFilter === 'All' || this.currencyFilter === currencyCode;
     },
   },
-}
+};
 </script>

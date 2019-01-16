@@ -77,6 +77,7 @@
 import { mapGetters } from 'vuex';
 import SubscriptionModal from './SubscriptionModal.vue';
 import RedemptionModal from './RedemptionModal.vue';
+
 const DAY = 24 * 60 * 60;
 
 export default {
