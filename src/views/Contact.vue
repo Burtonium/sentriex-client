@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-md-8 text-left">
+      <div class="col-md-8 text-left mb-5">
         <div class="card">
           <div class="card-body">
             <h2 class="card-title text-primary">
