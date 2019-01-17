@@ -24,7 +24,10 @@
             <br>
             <investment-fund-balance-form :investmentFund="investmentFund" />
             <br>
-            <investment-fund-balance-updates-table :investmentFundId="investmentFund.id" />
+            <investment-fund-balance-updates-table
+              :canEdit="user.admin"
+              :canDelete="user.admin"
+              :investmentFundId="investmentFund.id" />
           </b-tab>
           <b-tab title="Red/Subs" v-if="investmentFund && user.admin">
             <br>

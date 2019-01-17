@@ -7,6 +7,7 @@
 import { mapGetters } from 'vuex';
 import RequiresAsyncState from '@/components/RequiresAsyncState.vue';
 import LineChart from '@/components/LineChart.vue';
+import { daysFromNow } from '@/utils';
 
 export default {
   components: {
@@ -24,13 +25,14 @@ export default {
     },
     ...mapGetters(['investmentFundTrendData']),
     trendData() {
-      return this.investmentFundTrendData[this.investmentFundId] || [];
+      const trendData = this.investmentFundTrendData[this.investmentFundId] || [];
+      return trendData.filter(t => daysFromNow(new Date(t[0])) <= 30);
     },
     trendDataLabels() {
-      return this.trendData.map(t => t[0]).slice(-10);
+      return this.trendData.map(t => t[0]);
     },
     trendDataValues() {
-      return this.trendData.map(t => t[1]).slice(-10);
+      return this.trendData.map(t => t[1]);
     },
     chartData() {
       return {

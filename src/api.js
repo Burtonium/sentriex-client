@@ -61,11 +61,12 @@ export const fetchReferralPayments = () => instance.get('/referral-payments');
 
 // FUND MANAGER ROUTES
 // INVESTMENT FUNDS
-export const updateFundBalance = ({ id, amount }) => instance.post(`/manager/investment-funds/${id}/balance-updates`, { amount });
+export const updateFundBalance = args => instance.post(`/manager/investment-funds/${args.id}/balance-updates`, args);
 export const fetchInvestmentBalanceUpdates = id => instance.get(`/manager/investment-funds/${id}/balance-updates`);
 
 // ADMIN ROUTES
 // INVESTMENT FUNDS
+export const deleteBalanceFundUpdate = id => instance.delete(`/admin/balance-updates/${id}`);
 export const createInvestmentFund = args => instance.post('/admin/investment-funds', args);
 export const updateInvestmentFund = args => instance.patch(`/admin/investment-funds/${args.id}`, args);
 export const fetchAllInvestmentFundRequests = investmentFundId => instance.get('/admin/investment-fund-requests', { params: { investmentFundId } });

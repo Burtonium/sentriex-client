@@ -108,6 +108,6 @@ export default {
 </script>
 <style scoped>
 .investments {
-  margin: 0 auto;
+  margin: 0 15px;
 }
 </style>

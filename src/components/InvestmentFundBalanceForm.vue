@@ -22,25 +22,42 @@
       <p v-else-if="balance == 0">
         <img class="itsgone" src="../assets/images/itsgone.jpeg">
       </p>
-      <p v-else>
-        Record a <span class="text-primary">{{ profitOrLoss }}</span>
-        of <span class="text-primary">{{ formattedDeltaBalance }}</span>
-      </p>
+      <template v-else>
+        <p>
+          You are recording a <span class="text-primary">{{ profitOrLoss }}</span>
+          of <span class="text-primary">{{ formattedDeltaBalance }}</span>.
+        </p>
+        <p>
+          This will update the share price to
+          <span class="text-primary">{{ formatedUpdatedSharePrice }}</span>
+        </p>
+      </template>
     </div>
     <form class="form-inline">
       <div class="form-group">
-        <label for="">Current Balance:</label>
-        &nbsp;
-        &nbsp;
-        <input class="form-control" name="balance" v-model="balance" type="number">
-        &nbsp;
-        &nbsp;
-        <b-btn variant="primary" @click="updateBalance">Update</b-btn>
+        <label>Current Balance:</label>
+        <input class="form-control ml-2" name="balance" v-model="balance" type="number" :disabled="!investmentFund.shareCount">
+
+        <template v-if="user.admin">
+          <br>
+          <label class="ml-4">Date override:</label>
+          <input class="form-control ml-2" name="date_override" v-model="dateOverride" type="text" :disabled="!investmentFund.shareCount">
+        </template>
+        <b-btn class="ml-4"
+               variant="primary"
+               @click="updateBalance"
+               :disabled="!investmentFund.shareCount">
+          Update
+        </b-btn>
       </div>
     </form>
+    <div class="text-danger mt-3" v-if="!investmentFund.shareCount">
+      Initial investment required for updating balances.
+    </div>
   </div>
 </template>
 <script>
+import { formatDate } from '@/utils';
 import { mapActions, mapGetters } from 'vuex';
 import { updateFundBalance } from '@/api';
 import BigNumber from 'bignumber.js';
@@ -49,6 +66,7 @@ export default {
   data() {
     return {
       balance: parseFloat(this.investmentFund.balance),
+      dateOverride: formatDate(new Date()),
     };
   },
   props: {
@@ -59,7 +77,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['currencies']),
+    ...mapGetters(['currencies', 'user']),
     deltaAmountIsZero() {
       return new BigNumber(this.deltaAmount).isZero();
     },
@@ -91,6 +109,13 @@ export default {
       const sharePrice = new BigNumber(this.investmentFund.sharePrice);
       return currency.format(sharePrice.times(this.investmentFund.shareCount));
     },
+    updatedSharePrice() {
+      return new BigNumber(this.balance).dividedBy(this.investmentFund.shareCount);
+    },
+    formatedUpdatedSharePrice() {
+      const currency = this.currencies[this.investmentFund.currencyCode];
+      return currency.format(this.updatedSharePrice);
+    },
   },
   watch: {
     fundBalance() {
@@ -100,7 +125,12 @@ export default {
   methods: {
     ...mapActions(['fetchInvestmentFunds', 'fetchInvestmentBalanceUpdates']),
     async updateBalance() {
-      await updateFundBalance({ id: this.investmentFund.id, amount: this.balance });
+      await updateFundBalance({
+        id: this.investmentFund.id,
+        updatedSharePrice: this.updatedSharePrice.toString(),
+        sharePriceDate: this.user.admin && this.dateOverride,
+      });
+
       await Promise.all([
         this.fetchInvestmentFunds({ refresh: true }),
         this.fetchInvestmentBalanceUpdates(this.investmentFund.id),

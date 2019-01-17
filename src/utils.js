@@ -18,6 +18,10 @@ export const daysAgo = days => new Date(new Date() - (days * oneDay));
 
 const getAddress = (node, network) => payments.p2pkh({ pubkey: node.publicKey, network }).address;
 
+export const formatDate = d => `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+
+export const daysFromNow = date => daysBetween(new Date(date), new Date());
+
 export const addressDeriver = xpub => (from, to) => {
   const addresses = [];
   for (let i = from; i < to; i += 1) {
