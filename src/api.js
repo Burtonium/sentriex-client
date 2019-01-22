@@ -67,6 +67,7 @@ export const fetchInvestmentBalanceUpdates = id => instance.get(`/manager/invest
 // ADMIN ROUTES
 // INVESTMENT FUNDS
 export const deleteBalanceFundUpdate = id => instance.delete(`/admin/balance-updates/${id}`);
+export const patchBalanceFundUpdate = args => instance.patch(`/admin/balance-updates/${args.id}`, args);
 export const createInvestmentFund = args => instance.post('/admin/investment-funds', args);
 export const updateInvestmentFund = args => instance.patch(`/admin/investment-funds/${args.id}`, args);
 export const fetchAllInvestmentFundRequests = investmentFundId => instance.get('/admin/investment-fund-requests', { params: { investmentFundId } });

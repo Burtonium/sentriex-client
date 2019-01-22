@@ -22,13 +22,23 @@
           {{ row.item.sharePriceDate }}
         </template>
       </template>
+      <template slot="reportedAssetsUnderManagement" slot-scope="row">
+        <template v-if="canEdit">
+          <input  class="form-control" v-model="row.item.reportedAssetsUnderManagement"/>
+        </template>
+        <template v-else>
+          {{ row.item.reportedAssetsUnderManagement }}
+        </template>
+      </template>
       <template slot="actions" slot-scope="row">
-        <b-btn variant="primary" @click="patchUpdate(row.item)" v-if="canEdit">
-          Save
-        </b-btn>
-        <b-btn class="ml-2" variant="danger" @click="deleteUpdate(row.item)" v-if="canDelete">
-          Delete
-        </b-btn>
+        <span class="no-wrap">
+          <b-btn variant="primary" @click="patchUpdate(row.item)" v-if="canEdit">
+            Save
+          </b-btn>
+          <b-btn class="ml-2" variant="danger" @click="deleteUpdate(row.item)" v-if="canDelete">
+            Delete
+          </b-btn>
+        </span>
       </template>
     </b-table>
     <div class="row" v-if="sortedBalanceUpdates.length > perPage">
@@ -44,7 +54,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 import Spinner from './Spinner.vue';
-import { deleteBalanceFundUpdate } from '@/api';
+import { deleteBalanceFundUpdate, patchBalanceFundUpdate } from '@/api';
 
 export default {
   data() {
@@ -81,9 +91,14 @@ export default {
     },
     ...mapGetters(['investmentFundBalanceUpdates']),
     tableFields() {
+      const coreFields = [
+        'updatedSharePrice',
+        'reportedAssetsUnderManagement',
+        'sharePriceDate',
+      ];
       return this.canDelete || this.canEdit
-        ? ['updatedSharePrice', 'sharePriceDate', 'actions']
-        : ['updatedSharePrice', 'sharePriceDate'];
+        ? coreFields.concat(['actions'])
+        : coreFields;
     },
   },
   methods: {
@@ -94,6 +109,14 @@ export default {
         await this.fetchInvestmentBalanceUpdates(this.investmentFundId)
           .finally(() => { this.loading = false; });
       }
+    },
+    async patchUpdate(balanceUpdate) {
+      await patchBalanceFundUpdate(balanceUpdate);
+
+      await Promise.all([
+        this.fetchInvestmentBalanceUpdates(this.investmentFundId),
+        this.fetchInvestmentFunds({ refresh: true }),
+      ]);
     },
     async deleteUpdate({ id }) {
       await deleteBalanceFundUpdate(id);

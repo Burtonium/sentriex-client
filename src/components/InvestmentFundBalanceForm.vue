@@ -35,7 +35,7 @@
     </div>
     <form class="form-inline">
       <div class="form-group">
-        <label>Current Balance:</label>
+        <label>Update Balance:</label>
         <input class="form-control ml-2" name="balance" v-model="balance" type="number" :disabled="!investmentFund.shareCount">
 
         <template v-if="user.admin">
@@ -65,7 +65,7 @@ import BigNumber from 'bignumber.js';
 export default {
   data() {
     return {
-      balance: parseFloat(this.investmentFund.balance),
+      balance: this.investmentFund.balance,
       dateOverride: formatDate(new Date()),
     };
   },
@@ -129,6 +129,7 @@ export default {
         id: this.investmentFund.id,
         updatedSharePrice: this.updatedSharePrice.toString(),
         sharePriceDate: this.user.admin && this.dateOverride,
+        reportedAssetsUnderManagement: this.balance,
       });
 
       await Promise.all([
