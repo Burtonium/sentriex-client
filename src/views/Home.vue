@@ -14,7 +14,10 @@
               investors to grow their digital capital with minimal risk and
               maximized gains regardless of the volatility of the market.
             </h4>
-            <b-btn variant="outline-light" size="lg" :to="'/register'">Get started</b-btn>
+            <div class="buttons">
+              <b-btn variant="outline-light" size="lg" :to="'/how-it-works'">How does this work?</b-btn>
+              <b-btn variant="outline-light" size="lg" :to="'/register'">Get started</b-btn>
+            </div>
           </div>
         </div>
       </div>
@@ -310,6 +313,14 @@ a:hover{
 
 /*Custom css*/
 
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.buttons > * {
+  margin: 0 20px;
+}
 
 /*Banner section*/
 .banner {

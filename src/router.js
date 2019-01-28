@@ -16,6 +16,7 @@ import Withdrawals from '@/views/Withdrawals.vue';
 import Activation from '@/views/Activation.vue';
 import Contact from '@/views/Contact.vue';
 import Vision from '@/views/Vision.vue';
+import HowItWorks from '@/views/HowItWorks.vue';
 import Home from '@/views/Home.vue';
 
 import store from '@/store';
@@ -60,6 +61,11 @@ const router = new Router({
       path: '/vision',
       name: 'vision',
       component: Vision,
+    },
+    {
+      path: '/how-it-works',
+      name: 'howitworks',
+      component: HowItWorks,
     },
     {
       path: '/reset-password/:token?',

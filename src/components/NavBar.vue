@@ -42,11 +42,6 @@
         </b-navbar-nav>
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-item :to="'/vision'">
-            <b-nav-text>
-              Vision
-            </b-nav-text>
-          </b-nav-item>
           <b-nav-item :to="'/contact'">
             <b-nav-text>
               Contact
