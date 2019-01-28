@@ -17,6 +17,7 @@ import Activation from '@/views/Activation.vue';
 import Contact from '@/views/Contact.vue';
 import Vision from '@/views/Vision.vue';
 import HowItWorks from '@/views/HowItWorks.vue';
+import ManagerApplication from '@/views/ManagerApplication.vue';
 import Home from '@/views/Home.vue';
 
 import store from '@/store';
@@ -66,6 +67,11 @@ const router = new Router({
       path: '/how-it-works',
       name: 'howitworks',
       component: HowItWorks,
+    },
+    {
+      path: '/manager-application',
+      name: 'managerapplication',
+      component: ManagerApplication,
     },
     {
       path: '/reset-password/:token?',
