@@ -18,6 +18,7 @@ import Contact from '@/views/Contact.vue';
 import Vision from '@/views/Vision.vue';
 import HowItWorks from '@/views/HowItWorks.vue';
 import ManagerApplication from '@/views/ManagerApplication.vue';
+import InvestmentFundInfo from '@/views/InvestmentFundInfo.vue';
 import Home from '@/views/Home.vue';
 
 import store from '@/store';
@@ -72,6 +73,11 @@ const router = new Router({
       path: '/manager-application',
       name: 'managerapplication',
       component: ManagerApplication,
+    },
+    {
+      path: '/investment-funds-info',
+      name: 'fund-info',
+      component: InvestmentFundInfo,
     },
     {
       path: '/reset-password/:token?',
