@@ -5,7 +5,7 @@
         <investment-fund-nav :selected="investmentFundId" :investmentFunds="investmentFunds"/>
       </div>
       <div class="col-md-10">
-        <investment-fund-trend-data :investmentFundId="investmentFundId" />
+        <investment-fund-trend-data :investmentFundId="investmentFundId" :variant="chartVariant" />
         <br>
         <investment-fund-details :investment-fund="investmentFund"/>
       </div>
@@ -28,6 +28,9 @@ export default {
     ...mapGetters(['investmentFunds', 'authenticated']),
     investmentFundId() {
       return this.$route.params.investmentFundId;
+    },
+    chartVariant() {
+      return parseFloat(this.investmentFund.performance) >= 0 ? 'primary' : 'danger';
     },
     investmentFund() {
       return this.investmentFunds.find(i => i.id === this.investmentFundId);

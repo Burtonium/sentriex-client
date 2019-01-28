@@ -8,8 +8,7 @@
           </h3>
           <h6>
             <small class="text-muted">
-              {{ investmentFund.shortDescription }} <br>
-              Created <timeago :datetime="investmentFund.createdAt"></timeago>
+              {{ investmentFund.shortDescription }}
             </small>
           </h6>
         </div>
@@ -18,14 +17,13 @@
             {{ investmentFund.currencyCode }}
           </div>
           <div>
-            <span :class="{ 'text-success': investmentFund.monthlyPerformance > 0,
-                            'text-danger': investmentFund.monthlyPerformance < 0 }">
-              {{ investmentFund.monthlyPerformance }}%
+            <span :class="{ 'text-success': investmentFund.performance > 0,
+                            'text-danger': investmentFund.performance < 0 }">
+              {{ investmentFund.performance }}%
             </span>
             <icon name="play"
-                  :class="{ 'arrow-up': investmentFund.monthlyPerformance >= 0,
-                            'arrow-down': investmentFund.monthlyPerformance < 0 }"/>
-            (monthly)
+                  :class="{ 'arrow-up': investmentFund.performance >= 0,
+                            'arrow-down': investmentFund.performance < 0 }"/>
           </div>
           <div>
             Risk level:
@@ -54,8 +52,6 @@
             <span class="text-primary">
               {{ fundManager.username }}
             </span>
-            <br>
-            Member since <timeago :datetime="fundManager.createdAt"/>
           </p>
         </b-tab>
       </b-tabs>

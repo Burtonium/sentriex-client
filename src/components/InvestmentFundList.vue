@@ -11,10 +11,10 @@
           {{ row.item.riskLevel }}
         </span>
       </template>
-      <template slot="monthlyPerformance" slot-scope="row">
-        <span :class="{ 'text-success': row.item.monthlyPerformance > 0,
-                        'text-danger': row.item.monthlyPerformance < 0 }">
-          {{ row.item.monthlyPerformance }}%
+      <template slot="performance" slot-scope="row">
+        <span :class="{ 'text-success': row.item.performance > 0,
+                        'text-danger': row.item.performance < 0 }">
+          {{ row.item.performance }}%
         </span>
       </template>
       <template slot="actions" slot-scope="row">
@@ -77,7 +77,7 @@ export default {
       return (this.investmentFunds || []).sort(performanceSort);
     },
     tableFields() {
-      return ['name', 'currencyCode', 'shortDescription', 'riskLevel', 'monthlyPerformance', 'actions'];
+      return ['name', 'currencyCode', 'shortDescription', 'riskLevel', 'performance', 'actions'];
     },
   },
   methods: {

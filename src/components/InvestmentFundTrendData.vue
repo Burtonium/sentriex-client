@@ -18,6 +18,13 @@ export default {
     investmentFundId: {
       required: true,
     },
+    variant: {
+      validator(value) {
+        return ['primary','danger'].indexOf(value) !== -1
+      },
+      required: false,
+      default: 'primary',
+    }
   },
   computed: {
     actionDependencies() {
@@ -25,8 +32,7 @@ export default {
     },
     ...mapGetters(['investmentFundTrendData']),
     trendData() {
-      const trendData = this.investmentFundTrendData[this.investmentFundId] || [];
-      return trendData.filter(t => daysFromNow(new Date(t[0])) <= 30);
+      return this.investmentFundTrendData[this.investmentFundId] || [];
     },
     trendDataLabels() {
       return this.trendData.map(t => t[0]);
@@ -34,14 +40,28 @@ export default {
     trendDataValues() {
       return this.trendData.map(t => t[1]);
     },
+    backgroundColor() {
+      const colors = {
+        primary: 'rgba(31, 97, 208, 0.2)',
+        danger: 'rgba(238, 109, 115, 0.2)',
+      };
+      return colors[this.variant];
+    },
+    borderColor() {
+      const colors = {
+        primary: 'rgba(31, 97, 208, 0.8)',
+        danger: 'rgba(238, 109, 115, 0.8)',
+      };
+      return colors[this.variant];
+    },
     chartData() {
       return {
         labels: this.trendDataLabels,
         datasets: [{
           label: '% of profit',
           data: this.trendDataValues,
-          borderColor: ['rgba(31, 97, 208, 0.8)'],
-          backgroundColor: ['rgba(31, 97, 208, 0.2)'],
+          borderColor: [this.borderColor],
+          backgroundColor: [this.backgroundColor],
         }],
       };
     },
