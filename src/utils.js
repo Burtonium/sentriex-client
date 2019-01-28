@@ -1,4 +1,4 @@
-import { bip32, payments } from 'bitcoinjs-lib';
+import { bip32, payments, networks } from 'bitcoinjs-lib';
 
 export const snakeCaseToCapitalized = text => text
   .split('_')
@@ -22,10 +22,11 @@ export const formatDate = d => `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDa
 
 export const daysFromNow = date => daysBetween(new Date(date), new Date());
 
-export const addressDeriver = xpub => (from, to) => {
+export const addressDeriver = (xpub, networkKey) => (from, to) => {
   const addresses = [];
+  const network = networkKey && networks[networkKey];
   for (let i = from; i < to; i += 1) {
-    const address = getAddress(bip32.fromBase58(xpub).derivePath(`0/${i}`));
+    const address = getAddress(bip32.fromBase58(xpub, network).derivePath(`0/${i}`), network);
     addresses.push(address);
   }
   return addresses;

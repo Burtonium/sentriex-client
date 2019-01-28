@@ -8,11 +8,15 @@
     <template v-if="currencyCode === 'BTC'">
       <div class="form-group">
         <label for="xpubInput">Account Extended Public Key (BIP44)</label>
-        <input class="form-control" v-model="xpub" placeholder="xpub key" @input="derivationError = null"/>
+        <input class="form-control" v-model="xpub" placeholder="public hd key" @input="derivationError = null"/>
       </div>
       <div class="form-group">
         <div class="form-inline">
-          <input class="form-control" v-model="fromIndex" placeholder="From index" type="number"/>
+          <select v-model="network" class="form-control">
+            <option value="bitcoin">Bitcoin</option>
+            <option value="testnet">Testnet</option>
+          </select>
+          <input class="form-control ml-3" v-model="fromIndex" placeholder="From index" type="number"/>
           <input class="form-control ml-3" v-model="toIndex" placeholder="To index" type="number" />
           <b-btn variant="primary" class="ml-3" @click="deriveAddresses">Generate</b-btn>
         </div>
@@ -50,6 +54,7 @@ import { addressDeriver } from '@/utils';
 export default {
   data() {
     return {
+      network: 'bitcoin',
       loading: false,
       error: false,
       success: false,
@@ -86,7 +91,7 @@ export default {
       try {
         const from = parseInt(this.fromIndex, 10);
         const to = parseInt(this.toIndex, 10);
-        const addresses = addressDeriver(this.xpub)(from, to);
+        const addresses = addressDeriver(this.xpub, this.network)(from, to);
         this.addressesText = addresses.join(',\n');
       } catch (error) {
         this.derivationError = error;
