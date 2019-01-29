@@ -7,7 +7,7 @@
             <h4>Products</h4>
             <ul>
               <li><router-link :to="'/investment-funds-info'">Investment Funds</router-link></li>
-              <li><a href="#">Exchange</a></li>
+              <li><a href="#">Exchange (Coming Soon)</a></li>
               <li>
                 <router-link :to="{ name: 'contact', query: { otc: true } }">
                   OTC
@@ -28,11 +28,6 @@
           <div class="footer-widget">
             <h4>Company</h4>
             <ul>
-              <li>
-                <router-link :to="'/manager-application'">
-                  Apply to be a Fund Manager
-                </router-link>
-              </li>
               <li><router-link :to="'/vision'">Vision</router-link></li>
               <li><a href="#">Legal and Privacy</a></li>
               <li><router-link :to="'/about'">Contact</router-link></li>

@@ -1,17 +1,20 @@
 <template>
   <form class="form" @submit.prevent="onSubmit">
+    <div class="form-group" v-if="fund">
+      Creation Date: {{ fund.createdAt }}
+    </div>
     <div class="form-group">
       <label for="nameInput">Name</label>
       <input class="form-control"
              type="text"
-             v-model="investmentFund.name"
+             v-model="fund.name"
              required
              :disabled="!canEdit"/>
     </div>
     <div class="form-group">
       <label for="riskLevelInput">Risk Level</label>
       <select class="form-control"
-              v-model="investmentFund.riskLevel"
+              v-model="fund.riskLevel"
               required
               :disabled="!canEdit">
         <option value="high" selected>High</option>
@@ -23,7 +26,7 @@
       <label for="currencyCodeInput">Currency</label>
       <select class="form-control"
               required
-              v-model="investmentFund.currencyCode"
+              v-model="fund.currencyCode"
               :disabled="!canEdit">
         <option v-for="currency in currencies" :value="currency.code" :key="currency.code">
           {{ currency.label }} ({{ currency.code }})
@@ -34,7 +37,7 @@
       <label for="managedByInput">Managed By</label>
       <select id="managedByInput"
               class="form-control"
-              v-model="investmentFund.managedBy"
+              v-model="fund.managedBy"
               :disabled="!canEdit">
         <option v-for="user in users" :value="user.id" :key="user.id">
           {{ user.username }} ({{ user.email }})
@@ -54,28 +57,43 @@
                  min="0">
         </label>
       </div>
-      <div class="form-group" v-else>
-        <p class="text-primary mt-3 mb-3">
-          Currently not enforced
-        </p>
-      </div>
+    </div>
+    <div class="form-group">
+      <label for="updateStrategy">Balance Update Strategy</label>
+      <select id="updateStrategy"
+              class="form-control"
+              v-model="fund.balanceUpdateStrategy"
+              :disabled="!canEdit">
+        <option value="manual">Manual</option>
+        <option value="apr">Annual Percentage Rate</option>
+      </select>
+    </div>
+    <div class="form-group" v-if="fund.balanceUpdateStrategy === 'apr'">
+        <label>APR %
+          <input v-model="fund.annualPercentageRate"
+                 v-validate="'decimal:2'"
+                 type="number"
+                 name="apr"
+                 min="0"
+                 step="0.01">
+        </label>
     </div>
     <div class="form-group">
       <label for="shortDescriptionInput">Short description</label>
       <textarea class="form-control"
-                v-model="investmentFund.shortDescription"
+                v-model="fund.shortDescription"
                 rows="2"
                 :disabled="!canEdit"></textarea>
     </div>
     <div class="form-group">
       <label for="detailedDescriptionInput">Detailed description</label>
       <textarea class="form-control"
-                v-model="investmentFund.detailedDescription"
+                v-model="fund.detailedDescription"
                 rows="5"
                 :disabled="!canEdit"></textarea>
     </div>
     <div class="form-group">
-      <b-btn variant="primary" v-if="!investmentFund.id" type="submit">Create</b-btn>
+      <b-btn variant="primary" v-if="!fund.id" type="submit">Create</b-btn>
       <b-btn variant="primary" v-else-if="canEdit" type="submit">Save</b-btn>
       <b-btn variant="danger" v-if="canDelete && investmentFundId" class="ml-3" :disabled="loading" @click="handleDelete">Delete</b-btn>
       <icon name="spinner" :spin="true" v-if="loading" class="ml-3" scale="1.3" color="#555"/>
@@ -95,6 +113,7 @@ export default {
     return {
       days: parseInt(this.investmentFund.redemptionWaitTime / DAY) || 0,
       enforceRedemptionWaitTimes: !!this.investmentFund.redemptionWaitTime || false,
+      fund: this.investmentFund,
       error: false,
       loading: false,
     };
@@ -116,11 +135,12 @@ export default {
   },
   watch: {
     investmentFund() {
+      this.fund = this.investmentFund;
       this.days = parseInt(this.investmentFund.redemptionWaitTime / DAY);
       this.enforceRedemptionWaitTimes = !!this.investmentFund.redemptionWaitTime || false;
     },
     days() {
-      this.investmentFund.redemptionWaitTime = (this.days || 0) * DAY;
+      this.fund.redemptionWaitTime = (this.days || 0) * DAY;
     },
   },
   computed: {
@@ -133,7 +153,7 @@ export default {
     ...mapActions(['fetchInvestmentFunds']),
     async onSubmit() {
       if (!this.enforceRedemptionWaitTimes) {
-        this.investmentFund.redemptionWaitTime = null;
+        this.fund.redemptionWaitTime = null;
       }
       if (this.investmentFundId) {
         await this.handleUpdate();
@@ -143,13 +163,13 @@ export default {
     },
     async handleUpdate() {
       this.loading = true;
-      await updateInvestmentFund(this.investmentFund)
+      await updateInvestmentFund(this.fund)
         .catch(() => { this.error = true; })
         .finally(() => { this.loading = false; });
       await this.fetchInvestmentFunds({ refresh: true });
     },
     async handleCreate() {
-      const response = await createInvestmentFund(this.investmentFund)
+      const response = await createInvestmentFund(this.fund)
         .catch(() => { this.error = true; })
         .finally(() => { this.loading = false; });
       let id;

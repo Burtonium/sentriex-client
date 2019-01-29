@@ -33,6 +33,7 @@
         </p>
       </template>
     </div>
+
     <form class="form-inline">
       <div class="form-group">
         <label>Update Balance:</label>
@@ -51,6 +52,10 @@
         </b-btn>
       </div>
     </form>
+    <p class="text-warning mt-3" v-if="investmentFund.balanceUpdateStrategy !== 'manual'">
+      Your investment fund's update strategy isn't in manual mode. Manually
+      overriding balance updates is not recommended.
+    </p>
     <div class="text-danger mt-3" v-if="!investmentFund.shareCount">
       Initial investment required for updating balances.
     </div>
