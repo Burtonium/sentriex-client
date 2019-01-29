@@ -1,0 +1,93 @@
+<template>
+  <section class="subscription">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7 col-sm-9 col-xs-12 subscription-form">
+          <h2>Subscribe to us and get notified</h2>
+          <form @submit.prevent="subscribeToMailer">
+            <div class="form-group">
+              <input type="email" placeholder="Enter your email here" v-model="email"/>
+              <button type="submit"> <img src="img/send.png" alt="" /></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+<script>
+import { subscribe } from '@/api';
+
+export default {
+  data() {
+    return {
+      loading: false,
+      error: false,
+      email: '',
+    };
+  },
+  methods: {
+    async subscribeToMailer() {
+      await subscribe(this.email);
+    }
+  }
+}
+</script>
+<style lang="scss" scoped>
+/*subscription portion style*/
+.subscription {
+  width:100%;
+  min-height:300px;
+  padding:100px 0px;
+  background:url("/img/subscription-bg.png");
+  background-size:auto;
+  background-position:center center;
+  background-repeat:no-repeat;
+  position:relative;
+}
+
+.subscription:before{
+  content:"";
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;
+  left:0;
+  background:map-get($theme-colors, primary);
+  opacity:.8;
+  z-index:1;
+}
+.subscription-form {
+  position:absolute;
+  z-index:9;
+  top:25%;
+}
+.subscription h2 {
+  font-size:1.5rem;
+  color:#ffffff;
+  text-align:center;
+  padding-bottom:20px;
+  text-transform:uppercase;
+}
+.form-group {
+  position:relative;
+}
+
+
+.subscription-form input {
+  width:100%;
+  height:45px;
+  border-radius:30px;
+  background:#ffffff;
+  border:1px solid #f7f7f7;
+  padding:0px 20px;
+  color:#666666;
+}
+.subscription-form button {
+  background:transparent;
+  position:absolute;
+  top:9px;
+  right:30px;
+  border:none;
+}
+</style>

@@ -95,6 +95,9 @@ export const patchSettings = args => instance.patch('/admin/settings', args);
 // USERS
 export const fetchUsers = args => instance.get('/admin/users', { params: args });
 
+// MARKETING
+export const subscribe = email => instance.post('/subscribe', { email });
+
 export const errorCodes = {
   INVALID_2FA: 16,
   TWOFA_ALREADY_ENABLED: 17,
