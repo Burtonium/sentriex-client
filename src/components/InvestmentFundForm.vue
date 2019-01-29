@@ -1,6 +1,6 @@
 <template>
   <form class="form" @submit.prevent="onSubmit">
-    <div class="form-group" v-if="fund">
+    <div class="form-group" v-if="fund.id">
       Creation Date: {{ fund.createdAt }}
     </div>
     <div class="form-group">

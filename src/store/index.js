@@ -17,6 +17,7 @@ const investmentFundGetter = (s) => {
   return s.investmentFunds.map(f => ({
     ...f,
     monthlyPerformance: actualPerformance(f.monthlyPerformance).toFixed(2),
+    performance: actualPerformance(f.performance).toFixed(2),
   }));
 };
 

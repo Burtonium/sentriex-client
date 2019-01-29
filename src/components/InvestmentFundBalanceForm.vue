@@ -1,6 +1,9 @@
 <template>
   <div class="">
     <div class="preview">
+      <p v-if="investmentFund.balanceUpdateStrategy === 'apr'">
+        <b-btn variant="primary" @click="executeAprUpdate">Execute APR Update</b-btn>
+      </p>
       <p>
         Total assets under management: <span class="text-primary">{{ assetsUnderManagement }}</span>
       </p>
@@ -33,7 +36,6 @@
         </p>
       </template>
     </div>
-
     <form class="form-inline">
       <div class="form-group">
         <label>Update Balance:</label>
@@ -64,7 +66,7 @@
 <script>
 import { formatDate } from '@/utils';
 import { mapActions, mapGetters } from 'vuex';
-import { updateFundBalance } from '@/api';
+import { updateFundBalance, executeAprUpdate } from '@/api';
 import BigNumber from 'bignumber.js';
 
 export default {
@@ -142,6 +144,13 @@ export default {
         this.fetchInvestmentBalanceUpdates(this.investmentFund.id),
       ]);
     },
+    async executeAprUpdate() {
+      await executeAprUpdate(this.investmentFund.id);
+      await Promise.all([
+        this.fetchInvestmentFunds({ refresh: true }),
+        this.fetchInvestmentBalanceUpdates(this.investmentFund.id),
+      ]);
+    }
   },
 };
 </script>
