@@ -6,11 +6,6 @@
              hover
              :tbody-tr-class="'clickable'"
              @row-clicked="navigateToInvestmentFund">
-      <template slot="riskLevel" slot-scope="row">
-        <span class="capitalize-first" :class="getRiskLevelClass(row.item.riskLevel)">
-          {{ row.item.riskLevel }}
-        </span>
-      </template>
       <template slot="performance" slot-scope="row">
         <span :class="{ 'text-success': row.item.performance > 0,
                         'text-danger': row.item.performance < 0 }">
@@ -77,7 +72,7 @@ export default {
       return (this.investmentFunds || []).sort(performanceSort);
     },
     tableFields() {
-      return ['name', 'currencyCode', 'shortDescription', 'riskLevel', 'performance', 'actions'];
+      return ['name', 'currencyCode', 'shortDescription', 'performance', 'actions'];
     },
   },
   methods: {
@@ -88,17 +83,6 @@ export default {
       } else {
         this.selectedInvestmentFund = investmentFund;
       }
-    },
-    getRiskLevelClass(riskLevel) {
-      let classes = '';
-      if (riskLevel === 'high') {
-        classes += 'text-danger';
-      } else if (riskLevel === 'medium') {
-        classes += 'text-warning';
-      } else if (riskLevel === 'low') {
-        classes += 'text-info';
-      }
-      return classes;
     },
     async navigateToInvestmentFund({ id }) {
       await this.$router.push({ path: `/investment-funds/${id}` });

@@ -25,12 +25,6 @@
                   :class="{ 'arrow-up': investmentFund.performance >= 0,
                             'arrow-down': investmentFund.performance < 0 }"/>
           </div>
-          <div>
-            Risk level:
-            <span :class="getRiskLevelClass(investmentFund.riskLevel)">
-              {{ investmentFund.riskLevel }}
-            </span>
-          </div>
           <div v-if="investmentFund.redemptionWaitTime">
             <p>
               Redemption Delay: <span class="text-warning">{{ redemptionWaitTime }} days</span>
@@ -98,17 +92,6 @@ export default {
         evt.preventDefault();
         this.$router.push('/login');
       }
-    },
-    getRiskLevelClass(riskLevel) {
-      let classes = '';
-      if (riskLevel === 'high') {
-        classes += 'text-danger';
-      } else if (riskLevel === 'medium') {
-        classes += 'text-warning';
-      } else if (riskLevel === 'low') {
-        classes += 'text-info';
-      }
-      return classes;
     },
   },
 };

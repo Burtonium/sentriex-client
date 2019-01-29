@@ -16,11 +16,11 @@ export const daysBetween = (date1, date2) => {
 
 export const daysAgo = days => new Date(new Date() - (days * oneDay));
 
-const getAddress = (node, network) => payments.p2pkh({ pubkey: node.publicKey, network }).address;
-
 export const formatDate = d => `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
 
 export const daysFromNow = date => daysBetween(new Date(date), new Date());
+
+const getAddress = (node, network) => payments.p2pkh({ pubkey: node.publicKey, network }).address;
 
 export const addressDeriver = (xpub, networkKey) => (from, to) => {
   const addresses = [];
