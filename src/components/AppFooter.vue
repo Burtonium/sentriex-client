@@ -6,8 +6,8 @@
           <div class="footer-widget">
             <h4>Products</h4>
             <ul>
-              <li><router-link :to="'/investment-funds'">Investment Funds</router-link></li>
-              <li><a href="#">Exchange</a></li>
+              <li><router-link :to="'/investment-funds-info'">Investment Funds</router-link></li>
+              <li><a href="#">Exchange (Coming Soon)</a></li>
               <li>
                 <router-link :to="{ name: 'contact', query: { otc: true } }">
                   OTC
