@@ -36,13 +36,6 @@
               Redemption Delay: <span class="text-warning">{{ redemptionWaitTime }} days</span>
             </p>
           </div>
-          <div v-if="investmentFund.balanceUpdateStrategy === 'apr'">
-            <p>
-              Fixed Annual Percent:
-              <span class="text-primary">{{ investmentFund.annualPercentageRate }}%</span>
-            </p>
-          </div>
-
         </div>
       </div>
       <br>
