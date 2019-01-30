@@ -1,34 +1,53 @@
 <template>
+  <div>
   <section class="subscription">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-5 col-md-7 col-sm-9 col-xs-12 subscription-form">
-          <h2>Subscribe to us and get notified</h2>
-          <form @submit.prevent="subscribeToMailer">
-            <div class="form-group">
-              <input type="email" placeholder="Enter your email here" v-model="email"/>
-              <button type="submit"> <img src="img/send.png" alt="" /></button>
-            </div>
-          </form>
+          <template v-if="loading">
+            <icon name="spinner" :spin="true" color="#ddd" scale="2" />
+          </template>
+          <template v-else-if="success">
+            <h2>
+              Thanks for subscribing!
+            </h2>
+          </template>
+          <template v-else>
+            <h2>Subscribe to us and get notified</h2>
+            <form @submit.prevent="subscribeToMailer">
+              <div class="form-group">
+                <input type="email" placeholder="Enter your email here" v-model="email" required/>
+                <button type="submit"> <img src="img/send.png" alt="" /></button>
+              </div>
+            </form>
+          </template>
         </div>
       </div>
     </div>
   </section>
+  </div>
 </template>
 <script>
+import Spinner from '@/components/Spinner.vue';
 import { subscribe } from '@/api';
 
 export default {
+  components: {
+    Spinner,
+  },
   data() {
     return {
       loading: false,
       error: false,
+      success: false,
       email: '',
     };
   },
   methods: {
     async subscribeToMailer() {
-      await subscribe(this.email);
+      this.loading = true;
+      await subscribe(this.email).finally(() => { this.loading = false; });
+      this.success = true;
     }
   }
 }
@@ -72,7 +91,6 @@ export default {
 .form-group {
   position:relative;
 }
-
 
 .subscription-form input {
   width:100%;

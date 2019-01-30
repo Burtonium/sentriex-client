@@ -1,24 +1,41 @@
 <template>
   <div class="container">
-    <div class="loader"></div>
+    <div class="loader" :class="`loader-${variant}`"></div>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    variant: {
+      required: false,
+      default: 'primary',
+    }
+  }
+}
+</script>
 <style lang="scss" scoped>
 .container {
   height: 7.5em;
 }
 
+@each $name, $color in $theme-colors {
+  .loader-#{$name},
+  .loader-#{$name}:before,
+  .loader-#{$name}:after {
+    color: $color;
+    background: $color;
+  }
+}
+
 .loader,
 .loader:before,
 .loader:after {
-  background: map-get($theme-colors, primary);
   -webkit-animation: load1 1s infinite ease-in-out;
   animation: load1 1s infinite ease-in-out;
   width: 1em;
   height: 4em;
 }
 .loader {
-  color: map-get($theme-colors, primary);
   text-indent: -9999em;
   margin: 88px auto;
   position: relative;
