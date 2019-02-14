@@ -19,6 +19,8 @@ import Vision from '@/views/Vision.vue';
 import HowItWorks from '@/views/HowItWorks.vue';
 import ManagerApplication from '@/views/ManagerApplication.vue';
 import InvestmentFundInfo from '@/views/InvestmentFundInfo.vue';
+import TermsAndConditions from '@/views/TermsAndConditions.vue';
+import TermsOfService from '@/views/TermsOfService.vue';
 import Home from '@/views/Home.vue';
 
 import store from '@/store';
@@ -63,6 +65,16 @@ const router = new Router({
       path: '/vision',
       name: 'vision',
       component: Vision,
+    },
+    {
+      path: '/terms-and-conditions',
+      name: 'terms-and-conditions',
+      component: TermsAndConditions,
+    },
+    {
+      path: '/terms-of-service',
+      name: 'terms-of-service',
+      component: TermsOfService,
     },
     {
       path: '/how-it-works',

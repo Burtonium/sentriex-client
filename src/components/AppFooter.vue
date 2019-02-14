@@ -30,7 +30,8 @@
             <ul>
               <li><router-link :to="'/manager-application'">Apply to be a Fund Manager</router-link></li>
               <li><router-link :to="'/vision'">Vision</router-link></li>
-              <li><a href="#">Legal and Privacy</a></li>
+              <li><router-link :to="'/terms-and-conditions'">Terms and Conditions</router-link></li>
+              <li><router-link :to="'/terms-of-service'">Terms of Service</router-link></li>
               <li><router-link :to="'/contact'">Contact</router-link></li>
             </ul>
           </div>

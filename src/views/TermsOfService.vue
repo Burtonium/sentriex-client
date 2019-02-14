@@ -1,0 +1,699 @@
+<template>
+<div class="container mb-5 text-left">
+  <h2 class="text-primary">
+    Terms of Service<br>
+    <small class="text-muted">
+        Last updated December 8, 2018
+    </small>
+  </h2>
+  <p>
+    This User Agreement ("Agreement") is a contract between you and Sentriex,
+    AG ("Sentriex," "we," "us," or "our") that applies to your use of Sentriex
+    as user ("User", "you" or "your") to buy or sell Digital Assets, hold
+    Digital Assets, engage in margin trading (where permissible), use the
+    Sentriex Application Programming Interface ("API") or use any other
+    services offered through the Site (as defined below) or via the official
+    Sentriex mobile application (the "App") (together, the "Services").
+    By registering for an account with Sentriex ("Account") or using any of
+    the Services, you agree that you have read, understood and accept all of
+    the terms and conditions contained in this Agreement as well as our Privacy
+    Policy, Cookie Policy and E-Sign Consent and you acknowledge and agree that
+    you will be bound by these agreements and policies.
+  </p>
+  <p>
+    Section 30 of this Agreement governs how this Agreement may be changed over time.
+    The text included in boxes throughout this Agreement is there to help you
+    understand the Agreement but is not part of the Agreement. If after reading
+    this Agreement in its entirety you are still unsure of anything or you have
+    any questions, please feel free to contact Support.
+    Please print or save a copy of this Agreement for your records.
+  </p>
+  <h4 class="text-primary mb-4 mt-4">
+    1. APPLICABLE LAWS AND REGULATIONS
+  </h4>
+  <p>
+    Your conduct on the Sentriex platform is subject to the laws, regulations,
+    and rules of any applicable governmental or regulatory authority, including,
+    without limitation, all applicable tax, anti-money laundering ("AML") and
+    counter-terrorist financing ("CTF") provisions.
+  </p>
+  <p>
+    If your country of residence, as determined by your official identification
+    document and verified residential address ("Country of Residence"), is based
+    within the European Economic Area ("EEA"), your representative within the EEA
+    for the purposes of the General Data Protection Regulation (EU) 2016/679
+    ("GDPR") is Circle Trade Europe Limited. If your Country of Residence is
+    outside of the EEA, provisions related to the GDPR shall not apply to your
+    use of the Services.
+  </p>
+  <p>
+    You unequivocally agree and understand that by opening an Account and using
+    the Services in any capacity, you shall act in compliance with and be legally
+    bound by this Agreement and all applicable laws and regulations (including
+    without limitation those stated in this Section 1, where applicable), and
+    failure to do so may result in the suspension of your ability to use the
+    Services or the closure of your Account. For the avoidance of doubt, continued
+    use of your Account, and the receipt of all trading fee discounts and rebates,
+    is conditioned on your continued compliance at all times with this Agreement
+    and all applicable laws and regulations.
+  </p>
+  <h4>
+    2. ELIGIBILITY
+  </h4>
+  <p>
+    You must be at least 18 years old and have not previously been suspended or removed from Sentriex to enter into this Agreement. By accessing or using Sentriex, you further represent and warrant that you are not a Restricted Person nor are you
+    resident of a Restricted Territory (each as defined in Section 37 below).
+  </p>
+  <p>
+    You represent and warrant that you will not be using Sentriex for any illegal activity, including without limitation illegal gambling, money laundering, fraud, blackmail, extortion, ransoming data, the financing of terrorism, other violent
+    activities or any prohibited market practices, including without limitation those listed under Section 22.
+  </p>
+  <p>
+    Notwithstanding the foregoing, Sentriex may determine not to make the Services, in whole or in part, available in every market, either in its sole discretion or due to legal or regulatory requirements, depending on the User's location.
+  </p>
+  <h4>3. REGISTRATION PROCESS; IDENTITY VERIFICATION</h4>
+  <p>
+    When registering your Account, you must provide current, complete, and accurate information for all required elements on the registration page, including your full legal name. You are the only person authorized to use your Account and you may
+    not share your Account credentials with any other person. You also agree to provide us, when registering an Account and on an ongoing basis, with any additional information we request for the purposes of identity verification and the detection
+    of money laundering, terrorist financing, fraud, or any other financial crime, including without limitation a copy of your government issued photo ID or evidence of residency such as a lease or utility bill. You permit us to keep a record of
+    such information and authorise us to make the inquiries, whether directly or through third parties, that we consider necessary to verify your identity or protect you and/or us against fraud or other financial crime, and to take action we
+    reasonably deem necessary based on the results of such inquiries. When we carry out these inquiries, you acknowledge and agree that your personal information may be disclosed to credit reference and fraud prevention or financial crime agencies
+    and that these agencies may respond to our inquiries in full.
+  </p>
+  <p>
+    In certain circumstances, we may require you to submit additional information about yourself or your business, provide records, and complete other verification steps (such process, "Enhanced Due Diligence"). You represent and warrant that any
+    and all information provided to us pursuant to this Agreement or otherwise is true, accurate and not misleading in any respect. If any such information changes, it is your obligation to update such information as soon as possible.
+  </p>
+  <p>
+    From time to time we may be required to request further information regarding your transactions in order to comply with applicable law and regulation and our own policies. Failure to provide such information in a timely fashion may result in the
+    suspension of your ability to use the Services (until you provide such information) or the closure of your Account.
+  </p>
+  <p>
+    We reserve the right to maintain your account registration information after you close your Account for business and regulatory compliance purposes, subject to applicable law and regulation. For example, we are subject to various AML and CTF
+    regulations which, in a number of jurisdictions, require us to retain certain personal data for a minimum period of five (5) years following the closure of your Account.
+  </p>
+  <h4>4. AML AND CTF COMPLIANCE</h4>
+  <p>
+    Our AML and CTF procedures are guided by all applicable rules and regulations regarding AML and CTF. These standards are designed to prevent the use of the Sentriex platform for money laundering or terrorist financing activities. We take
+    compliance very seriously and it is our policy to take all the necessary steps to prohibit fraudulent transactions, report suspicious activities, and actively engage in the prevention of money laundering and any related acts that facilitate
+    money laundering, terrorist financing or any other financial crimes.
+  </p>
+  <h4>5. PATRIOT ACT NOTIFICATION</h4>
+  <p>
+    Please also note that Section 326 of the USA PATRIOT Act of 2001 requires all financial institutions to obtain, verify, and record information that identifies each person who opens an account. This federal requirement applies to all new users.
+    This information is used to assist the U.S. government in the fight against the funding of terrorism and money laundering activities.
+  </p>
+  <p>
+    What this means to you: when each person opens an Account, we will ask each person for his or her name, physical address, mailing address, date of birth, and other information that will allow us to identify him or her.
+  </p>
+  <h4>6. INITIAL FUNDING; THIRD PARTY TRANSFERS</h4>
+  <p>
+    Sentriex does not allow Users to exchange Digital Assets for fiat currency; Users can only exchange Digital Assets for other Digital Assets. In order to fund your Account and begin trading, you will need to first procure Digital Assets. Once
+    procured, you must send the relevant Digital Assets to the address provided by Sentriex and wait for the balance to appear in your Account. It is your responsibility to ensure you send the Digital Assets to the correct address provided for that
+    particular Digital Asset, else your funds may never be recovered.
+  </p>
+  <p>
+    If you send a Digital Asset to a Sentriex address that does not correspond to that exact Digital Asset, such Digital Asset may be lost forever. If you send a Digital Asset from your Sentriex account to an external address that does not
+    correspond to that exact Digital Asset, such Digital Asset may be lost forever. You assume all liability for any losses incurred as a result of sending a Digital Asset to an incorrect address. You acknowledge and agree that certain Digital
+    Assets have a minimum amount for deposits. Deposits below this may not be visible in your Account. You understand that you will be required to meet minimum deposit amounts in order to trade and to be able to withdraw these funds.
+  </p>
+  <p>
+    Sentriex makes no representations or warranties regarding the amount of time that may be required to complete transfer of your Digital Assets from a third party wallet or other source and have said Digital Assets become available in your
+    Account. When you elect to transfer Digital Assets from your Account to a third party wallet or other location, it is always possible the party administering the new location may reject your transfer or that the transfer may fail due to
+    technical or other issues affecting our platform. You agree that you shall not hold Sentriex liable for any damages arising from a rejected transfer.
+  </p>
+  <h4>7. PRIVACY POLICY</h4>
+  <p>
+    We are committed to protecting your personal information and to helping you understand exactly how your personal information is being used. You should carefully read our Privacy Policy and Cookie Policy which provide details on how your personal
+    information is collected, stored, protected, and used.
+  </p>
+  <h4>8. COMMUNICATIONS</h4>
+  <p>
+    By entering into this Agreement, you agree to receive electronic communications and notifications in accordance with our E-Sign Consent Policy. Printing and mailing correspondence, disclosures, and account statements takes time and money, so we
+    like to handle these matters electronically. This Agreement is provided to you and concluded in English. We will communicate with you in English for all matters related to your use of our Services. Where we have provided you with a translation
+    of the English language version of this Agreement, you agree that the translation is provided for your convenience only and that the English language version of the Agreement will govern your use of the Services.
+  </p>
+  <h4>9. SECURITY OF USER INFORMATION</h4>
+  <p>
+    You are responsible for maintaining the confidentiality and security of any and all account names, User IDs, passwords and any other security feature that you use to access the Services. You are responsible for
+  </p>
+  <p class="ml-4">
+    (i) keeping your email address up
+    to date in your Account profile and
+  </p>
+  <p>
+    (ii) maintaining the confidentiality of your User information and the security of your Account, which includes the enabling of all relevant security features. You agree to notify Sentriex immediately if you
+    become aware of any unauthorized use of the Services or any other breach of security regarding the Services. Sentriex will not be liable for any loss or damage arising from your failure to protect your Account or your User information.
+  </p>
+  <p>
+    We shall not bear any liability for any damage or interruptions caused by any computer viruses, spyware, or other malware that may affect your computer or other equipment, or any phishing, spoofing, or other attack. We advise the regular use of
+    a
+    reliable virus and malware screening and prevention software. If you question the authenticity of a communication purporting to be from Sentriex, you should login to your Account through the Sentriex website (Sentriex.com) (the "Site") or via
+    the
+    App, not by clicking links contained in emails.
+  </p>
+  <p>
+    We go to great lengths to protect your Account, but we need you to do the same. It is important that you always protect not only your password but also the email account associated with your Account and any device used to access your Account. We
+    strongly advise you to enable two-factor authentication: this offers you greater protection from possible attackers attempting to log in to your Account than password alone and in situations where your email and/or password is compromised by a
+    third party data breach.
+  </p>
+  <h4>10. API USE</h4>
+  <p>
+    Subject to your compliance with this Agreement and any other agreement which may be in place between you and Sentriex related to your use of the API, Sentriex hereby grants you a limited, revocable, non-exclusive, non-transferable,
+    non-sublicensable license, to use the API solely for the purposes of trading on Sentriex. You agree to not use the API or data provided through the API for any other commercial purpose. You access and use the API entirely at your own risk, and
+    Sentriex will not be responsible for any actions you take based on the API.
+  </p>
+  <p>
+    Sentriex may, at its sole discretion, set limits on the number of API calls that you can make, for example, to maintain market stability and integrity. You acknowledge and agree that if you exceed these limits, Sentriex may moderate your
+    activity or cease offering you access to the API (or any other API offered by the Circle group), each in its sole discretion. Sentriex may immediately suspend or terminate your access to the API without notice if it believes you are in violation
+    of the terms of this Agreement (including, without limitation, Section 22) or any other agreement which may be in place between you and Sentriex related to your use of the API.
+  </p>
+  <h4>11. ACCOUNT SUSPENSION & CLOSURE</h4>
+  <p>
+    We may, in our sole and absolute discretion, without liability to you or any third party, refuse to let you open an Account, suspend your Account, consolidate Accounts if you have more than one or terminate your Account or your use of one or
+    more of the Services. Such actions may be taken as a result of a number of factors, including without limitation account inactivity, failure to respond to customer support requests, failure to positively identify you, a court order or your
+    violation of the terms of this Agreement (including without limitation Section 22). Sentriex may also temporarily suspend access to your Account in the event that a technical problem causes system outage or Account errors until the problem is
+    resolved.
+  </p>
+  <p>
+    You may terminate this Agreement at any time by closing your Account in accordance with this Agreement. In order to do so, you should contact Supportwho will assist you in closing your Account. You should also contact Support if you are seeking
+    to close an Account on behalf of a deceased User. You may not close an Account if Sentriex determines, in its sole discretion, that such closure is being performed in an effort to evade a legal or regulatory investigation or avoid paying any
+    amounts otherwise due to Sentriex.
+  </p>
+  <p>
+    We encourage you to withdraw any remaining balance of Digital Assets prior to issuing a request to close your Account. We will be unable to close your Account at your request unless you have withdrawn your remaining balance of Digital Assets. We
+    reserve the right to restrict or refuse to permit withdrawals from your Account if
+  </p>
+  <p class="ml-4">
+    (i) your Account has otherwise been suspended or closed by Sentriex in accordance with this Agreement;
+  </p>
+  <p class="ml-4">
+    (ii) to do so would be prohibited by law or a court order
+    or we have determined that the Digital Assets were obtained fraudulently; or
+  </p>
+  <p class="ml-4">
+    (iii) you have not undergone the required identity verification procedure such that your identity has been verified, as indicated by your Account.
+  </p>
+  <p>
+    You can check whether or not your Account has been verified by reviewing your verification status under the "My Profile" section of your Account. Upon closure or suspension of your Account, you authorize Sentriex to cancel or suspend pending
+    transactions. In the event that you or Sentriex terminates this Agreement or your access to the Services, or deactivates or cancels your Account, you remain liable for all activity conducted with or in connection with your Account while it was
+    open and for all amounts due hereunder.
+  </p>
+  <h4>12. RISK DISCLOSURES</h4>
+  <p>
+    The following list of risks associated with Digital Assets and the Services is not exhaustive.
+  </p>
+  <h6>
+    No advice
+  </h6>
+  <p>
+    Sentriex provides an execution-only service and does not advise on the merits of any particular transactions, trading risk or their tax consequences, and Sentriex does not provide any other financial, investment or legal advice in connection
+    with the Services. To the extent that we or our representatives do provide trading recommendations, market commentary, or any other information, the act of doing so is incidental to your relationship with us and such information may not be
+    considered as investment or financial advice and should not be construed as such. Any decision to buy or sell Digital Assets is the User's decision and Sentriex will not be liable for any loss suffered.
+  </p>
+  <p>
+    You accept the risk of trading Digital Assets. In entering into any transaction on Sentriex, you represent that you have been, are, and will be solely responsible for making your own independent appraisal and investigations into the risks of the
+    transaction and the underlying Digital Asset. You represent that you have sufficient knowledge, market sophistication, professional advice and experience to make your own evaluation of the merits and risks of any transaction or any underlying
+    Digital Asset.
+  </p>
+  <h6>
+    Digital Assets and transfers
+  </h6>
+  <p>
+    Trading Digital Assets can be extremely risky. Each Digital Asset has unique features that make it more or less likely to fluctuate in value. In addition, factors beyond Sentriex's control may affect market liquidity for a particular Digital
+    Asset, such as regulatory activity, market manipulation, or unexplainable price volatility. Blockchain networks may go offline as a result of bugs, Forks (defined below), or a number of other unforeseeable reasons. As a general matter, we advise
+    Users with limited trading experience and low risk tolerance not to engage in active trading. Speculating on the value of Digital Assets is high risk and Users should never trade more than they can afford to lose.
+  </p>
+  <p>
+    Understanding Digital Assets requires advanced technical knowledge. Digital Assets are often described in exceedingly technical language that requires a comprehensive understanding of applied cryptography and computer science in order to
+    appreciate inherent risks. Listing of a Digital Asset on Sentriex does not indicate approval or disapproval of the underlying technology regarding any Digital Asset and should not be used as a substitute for your own understanding of the risks
+    specific to each Digital Asset. We give you no warranty as to the suitability of the Digital Asset traded under this Agreement and assume no fiduciary duty in our relations with you.
+  </p>
+
+  <p>
+    Users accept all consequences of sending Digital Assets to an address off our platform. Digital Asset transactions may not be reversible. Once you send Digital Assets to an address, you accept the risk that you may lose access to your Digital
+    Assets indefinitely. For example, an address may have been entered incorrectly and the true owner of the address may never be discovered, or an address may belong to an entity that will not return your Digital Assets, or an address belongs to an
+    entity that may return your Digital Assets but first requires action on your part, such as verification of your identity.
+  </p>
+  <h6>
+    Supply and value of Digital Assets
+  </h6>
+  <p>
+    The ability for you to purchase Digital Assets using Sentriex is contingent on there being a counterparty willing to sell the same Digital Asset, which is outside of Sentriex's control. Sentriex makes no promises as to the timing or availability
+    of the ability to purchase Digital Assets via the platform. The value of Digital Assets may be derived from the continued willingness of market participants to exchange Digital Assets for Digital Assets, which may result in the potential for
+    permanent and total loss of value of a particular Digital Asset should the market for that Digital Asset disappear.
+  </p>
+  <p>
+    You acknowledge and agree that Digital Assets and/or Sentriex features available in one jurisdiction may not be available for trading or to access, as applicable, in another.
+  </p>
+  <h6>
+    Software protocols and operational challenges
+  </h6>
+  <p>
+    The software protocols that underlie Digital Assets are typically open source projects, which means that
+  </p>
+  <p class="ml-4">
+    (i) the development and control of such Digital Assets is outside of Sentriex's control and
+  </p>
+  <p class="ml-4">
+    (ii) such software protocols are subject to
+    sudden and dramatic changes that might have a significant impact on the availability, usability or value of a given Digital Asset.
+  </p>
+  <p>
+    You are aware of and accept the risk of operational challenges. Sentriex may experience sophisticated cyber attacks, unexpected surges in activity or other operational or technical difficulties that may cause interruptions to the Services. You
+    understand that the Services may experience operational issues that lead to delays. You agree to accept the risk of transaction failure resulting from unanticipated or heightened technical difficulties, including those resulting from sophisticated
+    attacks. You agree not to hold Sentriex accountable for any related losses.
+  </p>
+  <h6>
+    Compliance
+  </h6>
+  <p>
+    You are responsible for complying with applicable law. You agree that Sentriex is not responsible for determining whether or which laws may apply to your transactions, including tax law. You are solely responsible for reporting and paying any
+    taxes arising from your use of the Services.
+  </p>
+  Legislative and regulatory changes
+  <p>
+    Legislative and regulatory changes or actions at the state, federal, or international level may adversely affect the use, transfer, exchange, and value of Digital Assets.
+  </p>
+  <h6>
+    No deposit protection
+  </h6>
+  <p>
+    Digital Assets held in your Account are not subject to deposit insurance protection, including without limitation, where your Country of Residence is
+  </p>
+  <p class="ml-4">
+    (i) the United States, Federal Deposit Insurance Corporation insurance or Securities Investor
+    Protection Corporation protections; or
+  </p>
+  <p class="ml-4">
+    (ii) outside of the United States, any equivalent scheme.
+  </p>
+  <h4>13. FORKS & ADVANCED PROTOCOLS</h4>
+  <p>
+    As a result of the decentralized and open source nature of Digital Assets it is possible that sudden, unexpected, or controversial changes ("Forks") can be made to any Digital Asset that may change the usability, functions, value or even name of
+    a given Digital Asset. Such Forks may result in multiple versions of a Digital Asset and could lead to the dominance of one or more such versions of a Digital Asset (each a "Dominant Digital Asset") and the partial or total abandonment or loss
+    of value of any other versions of such Digital Asset (each a "Non-Dominant Digital Asset").
+  </p>
+  <p>
+    Sentriex is under no obligation to support a Fork of a Digital Asset that you hold in your Account, whether or not any resulting version of such forked Digital Asset is a Dominant Digital Asset or Non-Dominant Digital Asset or holds value at or
+    following such Fork. If Sentriex elects, in its sole discretion, to support a Fork of a Digital Asset, it will make a public announcement through its Site and/or the App and/or by notifying customers via email, and shall bear no liability for any
+    real or potential losses that may result based on the decision to support such Fork or the timing of implementation of support. If Sentriex, in its sole discretion, does not elect to support a Fork of a given Digital Asset, including the
+    determination to support, continue to support, or cease to support any Dominant Digital Asset or Non-Dominant Digital Asset, Sentriex assumes no responsibility or liability whatsoever for any losses or other issues that might arise from an
+    unsupported Fork of a Digital Asset.
+  </p>
+  <p>
+    Forks of Digital Assets can be frequent, contentious and unpredictable, and therefore cannot be consistently supported on Sentriex. When trading or holding Digital Assets using your Account you should operate under the assumption that Sentriex
+    will never support any Fork of the supported Digital Asset.
+  </p>
+  <p>
+    Sentriex also does not generally support any other distributions, dividends, or "airdrops" of Digital Assets to wallet addresses (collectively, "Airdrops") regardless of whether or not you would have received such Airdrops if you held your
+    Digital Assets outside of Sentriex. Sentriex may, at its sole discretion, elect to distribute and/or support an Airdrop, but it has no obligation to do so and shall bear no liability to Users for failing to do so. If we do not support an
+    Airdrop, we will not claim such Airdrop for our own benefit (unless it is unavoidable or impractical to avoid based on the means of distribution).
+  </p>
+
+  <p>
+    Certain Digital Assets are built to operate on the Ethereum or other protocols or are distributed to holders of Ethereum or other protocols (often referred to as an "Airdrop") without any action required by the User. As a general rule, Sentriex
+    does not support Forks or Airdrops, but will notify Users if it intends to support a specific Fork, Airdrop, or other distribution or creation of a Digital Asset.
+  </p>
+  <p>
+    Note that in the event of a Fork of a Digital Asset, Sentriex may be forced to suspend all activities relating to such Digital Asset (including trading, depositing, and withdrawing) for an extended period of time until Sentriex has determined in
+    its sole discretion that such functionality can be restored ("Downtime"). This Downtime will likely occur immediately upon a Fork of a given Digital Asset, potentially with little to no warning, and during this period of Downtime you will not be
+    able to trade, deposit, or withdraw the Digital Asset subject to such Fork.
+  </p>
+  <h4>14. ATTACKS ON BLOCKCHAIN NETWORKS</h4>
+  <p>
+    Sentriex does not have any ability to prevent or mitigate attacks on blockchain networks. Sentriex reserves the right to take the following commercially reasonable actions in the event of an attack:
+  </p>
+  <p class="ml-4">
+    (i) if we are able to confirm that a Digital
+    Asset active on Sentriex been compromised or is under attack, we may immediately
+     halt trading, deposits, and withdrawals for such Digital Asset;
+  </p>
+  <p class="ml-4">
+    (ii) if it is determined that such an attack caused the Digital Asset to greatly decrease in value,
+    we may discontinue trade activity in such Digital Asset entirely. Sentriex does not have any obligation to engage in activity in relation to attacks on blockchain networks.
+  </p>
+  <p>
+    Resolutions concerning deposits, withdrawals and User balances for an attacked Digital Asset will be determined on a case-by-case basis by Sentriex in its sole discretion. Sentriex makes no representation and does not warrant the safety of
+    Sentriex and you assume all liability for any lost value or stolen property.
+  </p>
+  <h4>15. MARGIN TRADING</h4>
+  <p>
+    This Section 15 applies only to the extent you are permitted to engage in margin trading on the platform. If your Country of Residence is the United States, you should be aware that margin trading is, or is in the process of becoming, prohibited
+    in your jurisdiction: you should refer to the Site for further details. Sentriex reserves the right to amend and/or remove margin trading functionality in your Country of Residence. You will receive reasonable advance notice of any such change.
+  </p>
+  <p>
+    Margin trading on Sentriex is HIGH RISK. As a borrower, you may sustain a total loss of Digital Assets or owe Digital Assets beyond what you have deposited to your Account. The high volatility and substantial risk of illiquidity in markets means
+    that you may not always be able to liquidate your position. You agree to maintain a sufficient amount of Digital Assets at all times to meet Sentriex's minimum balance requirements, as such requirements may be modified from time to time. If the
+    value of the assets in your Account falls below the minimum balance requirement or Sentriex determines, at its sole discretion, that your Account appears to be in danger of defaulting on a loan, Sentriex may seize and liquidate any or all of
+    your positions and assets on any balance in your Account in order to settle your debt to other Users. If, after your positions and assets are liquidated, your Account still contains insufficient Digital Assets to settle your debts to other
+    Users, you will be responsible for any additional Digital Assets owed. Intentionally defaulting on a loan may result in Sentriex reporting your activities to authorities and/or in legal prosecution.
+  </p>
+  <p>
+    Sentriex may, in its sole discretion, perform measures to mitigate potential losses to you on your behalf, including, but not limited to, transferring balances from your margin to your exchange Account and/or from your exchange to your margin
+    Account if, prior to any such transfer, any of your margin balance is a Digital Asset that Sentriex plans to delist in accordance with Section 23. When you lend Digital Assets to other Users, you risk the loss of an unpaid principal if the
+    borrower defaults on a loan and liquidation of the borrower's Account fails to raise sufficient Digital Assets to cover the borrower's debt. Although Sentriex takes several precautions to prevent borrowing Users from defaulting on loans, the
+    high volatility and substantial risk of illiquidity in markets means that Sentriex cannot make any guarantees to any Users using the Services against default.
+  </p>
+
+  <p>
+    Under certain market conditions, you may find it difficult or impossible to liquidate a position. This can occur, for example, if there is insufficient liquidity in the market or due to technical issues on our platform. Placing contingent
+    orders, such as "stop-loss" or "stop-limit" orders, will not necessarily limit your losses to the intended amounts, since market conditions may make it impossible to execute such orders. The use of leverage can work against you as well as for
+    you and can lead to large losses as well as gains.
+  </p>
+  <p>
+    All Users understand that the technology underlying Digital Assets is subject to change at any time, and such changes may affect your assets stored on our platform. You claim full responsibility for monitoring such technological changes and
+    understanding their consequences for your Digital Assets. Users conduct all trading, margin trading, lending, and/or borrowing on their own account and Sentriex does not take any responsibility for any loss or damage incurred as a result of your
+    use of any Services or your failure to understand the risks involved associated with Digital Assets use generally or your use of our Services.
+  </p>
+  <h4>16. RIGHT TO CHANGE OR REMOVE FEATURES AND SUSPEND OR DELAY TRANSACTIONS</h4>
+  <p>
+    We reserve the right to change, suspend, or discontinue any aspect of the Services at any time and in any jurisdiction, including hours of operation or availability of any feature, without notice and without liability. We may decline to process
+    any order and may limit or suspend your use of one or more Services at any time, in our sole discretion. Suspension of your use of any of the Services will not affect your rights and obligations pursuant to this Agreement. We may, in our sole
+    discretion, decline to process orders if
+  </p>
+  <p class="ml-4">
+    (i) we believe the transaction is suspicious;
+  </p>
+  <p class="ml-4">
+    (ii) the transaction may involve fraud or misconduct;
+  </p>
+  <p class="ml-4">
+    (iii) it violates applicable laws; or
+  </p>
+  <p class="ml-4">
+    (vi) it violates the terms of this Agreement. Where permitted by
+    law, we will notify you by the end of the business day if we have
+    suspended processing your orders and, if possible, provide our reasons
+    for doing so and anything you can do to correct any errors leading to the stoppage.
+  </p>
+  <h4>17. FEES</h4>
+  <p>
+    In consideration for the use of the Services, you agree to pay to Sentriex the fees for completed trades, as set forth in our fee schedule displayed on the Site ("Fee Schedule") , which Sentriex may revise or update in its sole discretion from
+    time to time. On request, Sentriex may make available an alternative fee schedule ("Alternative Fee Schedule") to Users who satisfy certain criteria (such as in relation to trading volume), which are determined by Sentriex in its sole discretion
+    from time to time. You authorize Sentriex to deduct any applicable fees from your Account at the time you make a given transaction. Changes to the Fee Schedule or Alternative Fee Schedule are effective as of the date set forth in any revision
+    and will apply prospectively from that date forward.
+  </p>
+  <p>
+    You agree at all times to maintain a sufficient balance in your Account to meet any relevant withdrawal fees. We reserve the right to refuse to facilitate withdrawals of Digital Assets which fall below any applicable withdrawal fee.
+  </p>
+  <h4>18. PROMOTIONS</h4>
+  <p>
+    Sentriex does not, as a general rule, participate in promotions without an official pronouncement, either on the Site, the App or elsewhere. You shall obtain prior written approval prior to releasing any statements, written media releases,
+    public announcements and public disclosures, including promotional or marketing materials, relating to Sentriex.
+  </p>
+  <h4>19. COPYRIGHT INFRINGEMENT</h4>
+  <p>
+    If you believe anything on the Site or on the App infringes upon any copyright which you own or control, you may file a notification of such infringement with our designated agent as set forth below.
+  </p>
+  Sentriex, LLP Zug, CH
+  <h4>20. FINMA REGISTRATION</h4>
+  <p>
+    Sentriex, LLP is registered with the Financial Market Spervisory Authority ("FINMA"). Sentriex, LLP may be required to file details of Account activity to FINMA from time to time. Sentriex, LLP may also be required to provide information to
+    government agencies as required by law to other state or federal agencies.
+  </p>
+  <h4>21. COPYRIGHT OF FEEDBACK MATERIALS</h4>
+  <p>
+    You acknowledge and agree that any materials, including without limitation questions, comments, feedback, suggestions, ideas, plans, notes, drawings, original or creative materials or other information or commentary you provide on our platform
+    or one of our social media accounts, regarding Sentriex or the Services (collectively, "Feedback") that are provided by you, whether by email, posting to the Site, provided via the App or otherwise, are non-confidential and will become the sole
+    property of Sentriex. Sentriex will own exclusive rights, including all intellectual property rights, and will be entitled to the unrestricted use and dissemination of such Feedback for any purpose, commercial or otherwise, without
+    acknowledgment or compensation to you.
+  </p>
+  <h4>22. RESTRICTED ACTIVITIES</h4>
+  <p>
+    In connection with your use of the Services, you will not:
+  </p>
+  <ul class="bullet-list">
+    <li> violate or assist any party in violating any law, statute, ordinance, regulation or any rule of any self-regulatory or similar organization of which you are or are required to be a
+    member through your use of the Services
+  </li>
+    <li> provide false, inaccurate, incomplete or misleading information;
+    </li>
+    <li> infringe upon Sentriex's or any third party's copyright, patent, trademark, or intellectual property rights;</li> <li> engage in any illegal
+    activity, including without limitation illegal gambling, money laundering, fraud, blackmail, extortion, ransoming data, the financing of terrorism, other violent activities or any prohibited market practices;</li> <li> distribute unsolicited or
+    unauthorized advertising or promotional material, written media releases, public announcements and public disclosures, junk mail, spam or chain letters;</li> <li> use a web crawler or similar technique to access our Services or to extract data;</li> <li>
+    reverse engineer or disassemble any aspect of the Site, the API, the App or the Services in an effort to access any source code, underlying ideas and concepts and algorithms;</li> <li> perform any vulnerability, penetration or similar testing on the
+    API;
+    </li>
+    <li> take any action that imposes an unreasonable or disproportionately large load on our infrastructure, or detrimentally interfere with, intercept, or expropriate any system, data or information;</li> <li> transmit or upload any material to the Site
+    or the App that contains viruses, Trojan horses, worms, or any other harmful or deleterious programs;</li> <li> otherwise attempt to gain unauthorized access to or use of the Site, the API, the App, other Sentriex Accounts, computer systems or networks
+    connected to the Site or the App, through password mining or any other means;</li> <li> transfer any rights granted to you under this Agreement;</li> <li> engage in any other activity which, in Sentriex's reasonable opinion, amounts to or may amount to market
+    abuse including without limitation the carrying out of fictitious transactions or wash trades, front running or engaging in disorderly market conduct;</li>  or<li> engage in any behavior which is unlawful, violates this Agreement or is otherwise deemed
+    unacceptable by Sentriex in its sole discretion.</li>
+  </ul>
+  <h4>23. ELECTRONIC TRADING TERMS</h4>
+  <p>
+    We may delist a Digital Asset at any time in its sole discretion based on a number of factors, one of which may include changes in a given Digital Asset's characteristics after we have listed the Digital Asset on Sentriex. A transaction on
+    Sentriex may fail for several reasons, including without limitation to change in seller prices, insufficient margin, or unanticipated technical difficulties. We make no representation or warrant that any transaction will be executed properly. We
+    are under no circumstances liable for any loss or injury suffered by a failure of a transaction to complete properly or in a timely manner. Further, we are in no way responsible for notifying you of a transaction failure, although you are able
+    to see any such failures on the Site. You have full responsibility to determine and inquire into the failure of any transaction which you initiate.
+  </p>
+  <p>
+    In the event that you receive any data, information, or software through our Services other than that which you are entitled to receive pursuant to this Agreement, you will immediately notify us and will not use, in any way whatsoever, such
+    data, information or software. If you request a withdrawal of Digital Assets and we cannot comply with it without closing some part of your open positions, we will not comply with the request until you have closed sufficient positions to allow
+    you to make the withdrawal.
+  </p>
+  <p>
+    We may refuse to execute a trade, impose trade amount limits or restrictions at any time in its sole discretion without notice. Specifically, we reserve the right to refuse to process, or the right to cancel or reverse, any transaction or not
+    provide access to a User's deposit address on the Sentriex where it suspects the transaction involves money laundering, terrorist financing, fraud, or any other type of crime or if we suspect the transaction relates to a prohibited use as stated
+    in this Agreement, including transactions involving the opening of an Account and subsequent closure without any actual trading occurring. Sentriex provides deposit Accounts to enable trading using the Services and does not allow Users to use
+    such Accounts as a web wallet or address changing service. We reserve the right to halt deposit activity at our sole discretion. While Sentriex may in its discretion reverse a trade, a User may not change, withdraw, or cancel its authorization
+    to make a transaction, except with respect to partially filled orders.
+  </p>
+  <p>
+    We may correct, reverse, or cancel any trade impacted by an error in processing your purchase or otherwise. Your remedy in the event of an error will be limited. You may seek to cancel your order or obtain a refund of any amounts charged to you,
+    although we cannot guarantee such cancellations or refunds will always be possible. We provide Users with a platform that allows their orders to be matched with the orders of other Users. Orders may be partially filled or may be filled by a
+    number of orders, depending on the trading activity at the time an order is placed. Sentriex operates as a trading platform provider only and does not act as principal or counterparty with respect to trades entered into on the platform.
+    Notwithstanding the foregoing,
+  </p>
+  <p class="ml-4">
+    (i) Sentriex may act as a counterparty for limited trades made for the purpose of liquidating fees collected on User trades, and
+  </p>
+  <p class="ml-4">
+    (ii) affiliates of Sentriex may execute trades on the platform; provided, however,
+    that such affiliates shall not be afforded any priority in trade execution.
+  </p>
+  <p>
+    The Digital Assets that are available for purchase through the Services may be subject to high or low transaction volume, liquidity, and volatility at any time for potentially extended periods. You acknowledge that while we are using
+    commercially reasonable methods to provide exchange rate information to you through our Services, the exchange rate information we provide may differ from prevailing exchange rates made available by third parties. Similarly, the actual market
+    rate at the time of your trade may be different from the indicated prevailing rate depending on the velocity of trading in the Digital Asset involved in your trade. You agree that you assume all risks and potential losses associated with price
+    fluctuations or differences in actual versus indicated rates.
+  </p>
+  <h4>24. OWNERSHIP OF DIGITAL ASSETS</h4>
+  <p>
+    You hereby represent and warrant to us that any Digital Assets used by you in connection with Sentriex are either owned by you or that you are validly authorized to carry out transactions using such Digital Assets and that all transactions
+    initiated with your Account are for your own Account and not on behalf of any other person or entity. For the avoidance of doubt, Sentriex does not own any Digital Assets held by Users on the platform.
+  </p>
+  <h4>25. TAXES</h4>
+  <p>
+    You will be able to see a record of your transactions via your Account which you may wish to use for the purposes of making any required tax filings or payments. It is your responsibility to determine what, if any, taxes apply to the payments
+    you make or receive, and to collect, report, and remit the correct tax to the appropriate tax authority. We will make any tax withholdings or filings that we are required by law to make, but we are not responsible for determining whether taxes
+    apply to your transaction, or for collecting, reporting, or remitting any taxes arising from any transaction.
+  </p>
+  <h4>26. INDEMNIFICATION; RELEASE</h4>
+  <p>
+    You agree to indemnify and hold Sentriex, its affiliates, and service providers, and each of their officers, directors, agents, joint venturers, employees, and representatives harmless from any claim or demand (including attorneys' fees and any
+    losses, fines, fees, or penalties imposed by any regulatory authority) arising out of your breach of this Agreement, or your violation of any law or regulation. For the purpose of this Section 26, the term "losses" means all net costs reasonably
+    incurred by us or the other persons referred to in this Section which are the result of the matters set out in this Section 26 and which may relate to any claims, demands, causes of action, debt, cost, expense or other liability, including
+    reasonable legal fees (without duplication).
+  </p>
+  <p>
+    "Indemnify" means to compensate someone for the harm or loss they may suffer. If you breach this Agreement or violate the law and it results in Sentriex facing claims or expenses, you agree to cover those losses. If you have a dispute with one or
+    more users or third parties, you release Sentriex (and its affiliates and service providers, and each of their officers, directors, agents, joint ventures, employees, and representatives) from any and all claims, demands, and damages (actual and
+    consequential) of every kind and nature arising out of or in any way connected with such disputes.
+  </p>
+  <p>
+    If you have a dispute with anyone other than Sentriex, you release us from liability associated with that dispute.
+  </p>
+  <h4>27. LIMITATION OF LIABILITY; NO WARRANTY</h4>
+  <p>
+    YOU EXPRESSLY UNDERSTAND AND AGREE THAT SENTRIEX AND OUR AFFILIATES AND SERVICE PROVIDERS, AND THEIR RESPECTIVE OFFICERS, DIRECTORS, AGENTS, JOINT VENTURERS, EMPLOYEES, AND REPRESENTATIVES WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL,
+    SPECIAL, CONSEQUENTIAL, EXEMPLARY DAMAGES, OR DAMAGES FOR LOSS OF PROFITS INCLUDING WITHOUT LIMITATION DAMAGES FOR LOSS OF GOODWILL, USE, DATA, OR OTHER INTANGIBLE LOSSES (EVEN IF SENTRIEX HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES),
+    WHETHER BASED ON CONTRACT, TORT, NEGLIGENCE, STRICT LIABILITY, OR OTHERWISE, RESULTING FROM:
+  </p>
+  <p class="ml-4">
+    (I) THE USE OR THE INABILITY TO USE THE SERVICES;
+  </p>
+  <p class="ml-4">
+    (II) THE COST OF PROCUREMENT OF SUBSTITUTE GOODS AND SERVICES RESULTING FROM ANY GOODS, DATA,
+    INFORMATION, OR SERVICES PURCHASED OR OBTAINED OR MESSAGES RECEIVED OR TRANSACTIONS ENTERED INTO THROUGH OR FROM THE SERVICES;
+  </p>
+  <p class="ml-4">
+    (III) UNAUTHORISED ACCESS TO OR ALTERATION OF YOUR TRANSMISSIONS OR DATA; OR
+  </p>
+  <p class="ml-4">
+    (IV) ANY OTHER MATTER RELATING TO THE SERVICES.
+  </p>
+  <p>
+    We will not be liable for "exemplary damages" (often called punitive damages) or other indirect losses.
+  </p>
+  <p>
+    SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR THE LIMITATION OR EXCLUSION OF LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES. ACCORDINGLY, SOME OF THE LIMITATIONS SET FORTH ABOVE MAY NOT APPLY TO YOU.
+  </p>
+  <p>
+    IF YOU ARE DISSATISFIED WITH ANY PORTION OF THE SERVICES OR WITH THIS AGREEMENT, YOUR SOLE AND EXCLUSIVE REMEDY IS TO DISCONTINUE USE OF THE SERVICES AND CLOSE YOUR ACCOUNT. THE SERVICES ARE PROVIDED "AS IS" AND WITHOUT ANY REPRESENTATION OR
+    WARRANTY, WHETHER EXPRESS OR IMPLIED. SENTRIEX, OUR AFFILIATES, AND OUR RESPECTIVE OFFICERS, DIRECTORS, AGENTS, JOINT VENTURERS, EMPLOYEES, AND SUPPLIERS SPECIFICALLY DISCLAIM ANY IMPLIED WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A
+    PARTICULAR PURPOSE OR NON-INFRINGEMENT. SENTRIEX MAKES NO WARRANTY THAT
+  </p>
+  <p class="ml-4">
+    (I) THE SERVICES WILL MEET YOUR REQUIREMENTS,
+  </p>
+  <p class="ml-4">
+    (II) THE SERVICES WILL BE UNINTERRUPTED, TIMELY, SECURE, OR ERROR-FREE, OR
+  </p>
+  <p class="ml-4">
+    (III) THE QUALITY OF ANY PRODUCTS, SERVICES,
+    INFORMATION, OR OTHER MATERIAL PURCHASED OR OBTAINED BY YOU WILL MEET YOUR EXPECTATIONS.
+  </p>
+  <p>
+    We cannot guarantee that Sentriex will always meet your demands. As we grow we will likely add new services, change certain features and drop old features. We hope you are always happy with Sentriex, but we cannot contractually guarantee you
+    will be. Some jurisdictions do not allow the disclaimer of implied warranties, so the foregoing disclaimers may not apply to you. This paragraph gives you specific legal rights and you may also have other legal rights that vary from jurisdiction
+    to jurisdiction.
+  </p>
+  <h4>28. FORCE MAJEURE</h4>
+  <p>
+    Sentriex shall have no liability for any failure or delay resulting from any abnormal or unforeseeable circumstances outside our reasonable control, the consequences of which would have been unavoidable despite all efforts to the contrary,
+    including without limitation governmental action or acts of terrorism, earthquake, fire, flood, or other acts of God, labor conditions, delays or failures caused by problems with another system or network, mechanical breakdown or data-processing
+    failures or where we are bound by other legal obligations.
+  </p>
+  <h4>29. GOVERNING LAW; VENUE AND ARBITRATION</h4>
+  <p>
+    The laws of the Country of Switzerland shall govern this Agreement. Except for those disputes that shall be resolved in arbitration or in small claims court pursuant to this section, each party agrees to submit to the personal and exclusive
+    jurisdiction of the courts located in Zug, CH provided that any claims or disputes shall be subject to the arbitration provisions set forth below.
+  </p>
+  <p>
+    Except for claims for injunctive or equitable relief or claims regarding intellectual property rights (which may be brought, in an individual capacity only, and not on a class-wide or representative basis, in the courts specified above), any
+    dispute between you and Sentriex related in any way to, or arising in any way from, our Services or this Agreement ("Dispute") shall be finally settled on an individual, non-representative basis in binding arbitration, as modified by this
+    Agreement or in accordance with rules on which we may mutually agree; provided, however, that to the extent a Dispute is within the scope of a small claims court's jurisdiction, either you or Sentriex may commence an action in small claims
+    court, in the county (or equivalent) of your most recent physical address, to resolve the Dispute.
+  </p>
+  <p>
+    Any arbitration will be conducted by a single, neutral arbitrator and shall take place in Zug, CH. The arbitrator may award any relief that a court of competent jurisdiction could award, including attorneys' fees when authorized by law. The
+    arbitral decision may be enforced in any court of competent jurisdiction.
+  </p>
+  <h4>30. AMENDMENTS</h4>
+  <p>
+    We may amend any portion of this Agreement at any time by posting the revised version of this Agreement with an updated revision date. The changes will become effective, and shall be deemed accepted by you, the first time you use the Services
+    after the initial posting of the revised Agreement and shall apply on a going-forward basis with respect to transactions initiated after the posting date. In the event that you do not agree with any such modification, your sole and exclusive
+    remedy is to terminate your use of the Services and close your Account. You agree that we shall not be liable to you or any third party as a result of any losses suffered by any modification or amendment of this Agreement.
+  </p>
+  <p>
+    If the revised Agreement includes a material change we will provide you with prior notice before the material change becomes effective. For this purpose, a "material change" means a significant change other than changes that:
+  </p>
+  <p class="ml-4">
+    (i) are to your
+    benefit;
+  </p>
+  <p class="ml-4">
+    (ii) are required to be made to comply with applicable laws and/or regulation;
+  </p>
+  <p class="ml-4">
+    (iii) relates to a new product or service made available to you or
+  </p>
+  <p class="ml-4">
+    (iv) to otherwise clarify an existing term.
+  </p>
+  <p>
+    As Sentriex grows and offers new features, products, and services, we will need to make changes to this Agreement. If we make a big change, we'll let you know by email. You can always tell when this Agreement was last changed by checking the
+    "Last Revised" date at the top of the Agreement.
+  </p>
+  <h4>31. ASSIGNMENT</h4>
+  <p>
+    You may not transfer or assign this Agreement or any rights or obligations you have under this Agreement without our prior written consent or otherwise and any such attempted assignment shall be void. We reserve the right to freely assign or
+    transfer this Agreement and the rights and obligations of this Agreement, to any third party at any time without notice or consent. If you object to such transfer or assignment, you may stop using our Services and terminate this Agreement by
+    contacting Support and asking us to close your account.
+  </p>
+  <h4>32. SURVIVAL</h4>
+  <p>
+    Upon termination of your account or this Agreement for any other reason, all rights and obligations of the parties that by their nature are continuing will survive such termination.
+  </p>
+  <h4>33. THIRD PARTY APPLICATIONS</h4>
+  <p>
+    If you grant express permission to a third party to connect to your Account, either through the third party's product or through Sentriex, you acknowledge that granting permission to a third party to take specific actions on your behalf does not
+    relieve you of any of your responsibilities under this Agreement. Further, you acknowledge and agree that you will not hold Sentriex responsible for, and will indemnify Sentriex from, any liability arising from the actions or inactions of this
+    third party in connection with the permissions you grant.
+  </p>
+  <h4>34. SITE; THIRD PARTY CONTENT</h4>
+  <p>
+    Sentriex strives to provide accurate and reliable information and content on the Site and the App, but such information may not always be correct, complete, or up to date. Sentriex will update the information on the Site and the App as necessary
+    to provide you with the most up to date information, but you should always independently verify such information. The Site and the App may also contain links to third party websites, applications, events or other materials ("Third Party
+    Content"). Such information is provided for your convenience and links or references to Third Party Content do not constitute an endorsement by Sentriex of any products or services. Sentriex shall have no liability for any losses incurred as a
+    result of actions taken in reliance on the information contained on the Site, the App or in any Third Party Content. From time to time we might post helpful links or articles on our Site or provide these via the App, but you should investigate
+    those sources on your own.
+  </p>
+  <h4>35. LIMITED LICENSE; IP RIGHTS</h4>
+  <p>
+    We grant you a limited, non-exclusive, non-sublicensable, and non-transferable license, subject to the terms and conditions of this Agreement, to access and use the Services solely for approved purposes as determined by Sentriex. Any other use
+    of the Services is expressly prohibited. Sentriex and its licensors reserve all rights in the Services and you agree that this Agreement does not grant you any rights in or licenses to the Services except for the limited license set forth above.
+    Except as expressly authorised by Sentriex, you agree not to modify, reverse engineer, copy, frame, scrape, rent, lease, loan, sell, distribute, or create derivative works based on the Services, in whole or in part. If you violate any portion of
+    this Agreement, your permission to access and use the Services may be terminated pursuant to this Agreement. "Sentriex.com", "Sentriex" and all logos related to the Services are either trademarks, or registered marks of Sentriex or its
+    licensors. You may not copy, imitate, or use them without Sentriex's prior written consent. All right, title, and interest in and to the Site, any content thereon, the Services, the App and all technology and any content created or derived from
+    any of the foregoing is the exclusive property of Sentriex and its licensors. We grant you access to use our products and services, but we still own the intellectual property associated with these products and services.
+  </p>
+  <h4>36. UNCLAIMED PROPERTY</h4>
+  <p>
+    If Sentriex is holding funds in your Account, and Sentriex is unable to contact you and has no record of your use of the Services for a prolonged period of time, applicable law may require Sentriex to report these funds as unclaimed property to
+    the applicable jurisdiction. If this occurs, Sentriex will try to locate you at the address shown in our records, but if Sentriex is unable to locate you, it may be required to deliver any such funds to the applicable jurisdiction as unclaimed
+    property. Sentriex reserves the right to deduct a dormancy fee or other administrative charges from such unclaimed funds, as permitted by applicable law. If you haven't logged into your Account for a prolonged period of time and we are unable to
+    get in touch with you, we may be obligated under law to consider your account abandoned and we might then be required to transfer your account balance to a body designated by law.
+  </p>
+  <h4>37. LEGAL COMPLIANCE</h4>
+  <p>
+    The Services are subject to all applicable export control restrictions, and, by using the Services, you represent that your actions are not in violation of such export control restrictions. Without limiting the foregoing, you may not use the
+    Services if
+  </p>
+  <p class="ml-4">
+    (i) you are a resident, national or agent of Cuba, Iran, North Korea, Sudan, Syria or any other country to which the United States, the United Kingdom or the European Union embargoes goods or imposes similar sanctions ("Restricted
+    Territories");
+  </p>
+  <p class="ml-4">
+    (ii) you are a member of any sanctions list or equivalent maintained by the United States government, the United Kingdom government or by the European Union ("Restricted Persons") or
+  </p>
+  <p class="ml-4">
+    (iii) you intend to transact with any Restricted Territories or Restricted Persons.
+  </p>
+  <h4>38. ENTIRE AGREEMENT; THIRD PARTY RIGHTS</h4>
+  <p>
+    The failure of Sentriex to exercise or enforce any right or provision of the Agreement shall not constitute a waiver of such right or provision. If any provision of this Agreement shall be adjudged by any court of competent jurisdiction to be
+    unenforceable or invalid, that provision shall be limited or eliminated to the minimum extent necessary so that this Agreement shall otherwise remain in full force and effect and remain enforceable between the parties.
+  </p>
+  <p>
+    The heading and explanatory text are for reference purposes only and in no way define, limit, construe, or describe the scope or extent of such section. This Agreement, including Sentriex's policies governing the Services referenced herein, the
+    Privacy Policy, the Cookie Policy and the E-Sign Consentconstitute the entire agreement between you and Sentriex with respect to the use of the Services. This Agreement is not intended and shall not be construed to create any rights or remedies
+    in any parties other than you and Sentriex and other Sentriex affiliates which each shall be a third party beneficiary of this Agreement, and no other person shall assert any rights as a third party beneficiary hereunder.
+  </p>
+  <p>
+    This Agreement (along with the Privacy Policy, the Cookie Policy and the E-Sign Consent) are the only documents that govern your relationship with Sentriex. If some future court judgment deems any particular provision of this Agreement
+    unenforceable, the rest of the Agreement is still valid.
+  </p>
+  <h4>39. QUESTIONS AND CONTACT INFORMATION</h4>
+  <p>
+    We often post outage notices and other relevant Services information on our Twitter account: @Sentriex so we advise Users to check this before contacting support. To contact support, go to Support and open a ticket. Please provide all relevant
+    information, including your Sentriex username and transaction IDs of any related deposits. Although we make no representations or provide no warranties about the speed of response, we will get back to you as soon as possible.
+  </p>
+  <p class="text-center mt-5">
+    <img src="../assets/images/logo-blue.png" />
+  </p>
+</div>
+</template>
+<style lang="scss" scoped>
+p {
+    line-height: 2;
+    letter-spacing: 1px;
+}
+
+ul {
+  font-family: sans-serif;
+
+  line-height: 1.15;
+
+  -webkit-text-size-adjust: 100%;
+}
+h2,
+h4,
+h6 {
+    color: map-get($theme-colors, primary);
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+</style>
