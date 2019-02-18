@@ -4,13 +4,20 @@
       <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="footer-widget">
-            <h4>Products</h4>
+            <h4>{{ $t('footer.products') }}</h4>
             <ul>
-              <li><router-link :to="'/investment-funds-info'">Investment Funds</router-link></li>
-              <li><a href="#">Exchange (Coming Soon)</a></li>
+              <li>
+                <router-link :to="'/investment-funds-info'">
+                  {{ $t('footer.investmentFunds') }}
+                </router-link></li>
+              <li>
+                <a href="#">
+                  {{ $t('footer.exchange') }}
+                </a>
+              </li>
               <li>
                 <router-link :to="{ name: 'contact', query: { otc: true } }">
-                  OTC
+                  {{ $t('footer.otc') }}
                 </router-link>
               </li>
             </ul>
@@ -18,27 +25,57 @@
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="footer-widget">
-            <h4>Learn</h4>
+            <h4>
+              {{ $t('footer.learn') }}
+            </h4>
             <ul>
-              <li><a href="#">Crypto Market Reports</a></li>
+              <li>
+                <a href="#">
+                  {{ $t('footer.cryptoMarketReports') }}
+                </a>
+              </li>
             </ul>
           </div>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="footer-widget">
-            <h4>Company</h4>
+            <h4>
+              {{ $t('footer.company') }}
+            </h4>
             <ul>
-              <li><router-link :to="'/manager-application'">Apply to be a Fund Manager</router-link></li>
-              <li><router-link :to="'/vision'">Vision</router-link></li>
-              <li><router-link :to="'/terms-and-conditions'">Terms and Conditions</router-link></li>
-              <li><router-link :to="'/terms-of-service'">Terms of Service</router-link></li>
-              <li><router-link :to="'/contact'">Contact</router-link></li>
+              <li>
+                <router-link :to="'/manager-application'">
+                  {{ $t('footer.managerApplication') }}
+                </router-link>
+              </li>
+              <li>
+                <router-link :to="'/vision'">
+                 {{ $t('footer.vision') }} 
+                </router-link>
+              </li>
+              <li>
+                <router-link :to="'/terms-and-conditions'">
+                  {{ $t('footer.termsAndConditions') }}
+                </router-link>
+              </li>
+              <li>
+                <router-link :to="'/terms-of-service'">
+                  {{ $t('footer.termsOfService') }}
+                </router-link>
+              </li>
+              <li>
+                <router-link :to="'/contact'">
+                  {{ $t('footer.contact') }}
+                </router-link>
+              </li>
             </ul>
           </div>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="footer-widget">
-            <h4>Social</h4>
+            <h4>
+              {{ $t('footer.social') }}
+            </h4>
             <ul>
               <li class="flex center">
                 <a class="mx-2" target="_blank" href="https://twitter.com/TheSentriex">
@@ -58,14 +95,15 @@
       <div class="row mt-3">
         <div class="col-lg-12">
           <div class="footer-copyright">
-            <p>Copyright &copy; sentriex.com 2018 | All right reserved</p>
+            <p>
+              {{ $t('footer.copyright') }}
+            </p>
           </div>
         </div>
       </div>
     </div>
   </section>
 </template>
-
 <script>
 export default {
   name: 'app-footer',

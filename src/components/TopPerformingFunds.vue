@@ -5,25 +5,29 @@
       <div class="row justify-content-center mb-3">
         <div class="col-lg-7 col-md-9 col-sm-12">
           <div class="investment-content">
-            <h2>Top performing investment funds (monthly)</h2>
+            <h2>
+              {{ $t('homepage.topPerformingFundsTitle') }}
+            </h2>
           </div>
         </div>
       </div>
       <div class="row investment-plan-segment">
-        <div class="col-md-3 col-sm-6" v-for="investment in topFourInvestmentFunds">
+        <div class="col-md-3 col-sm-6" v-for="investment in topFourInvestmentFunds" :key="investment.id">
           <div class="investment-plan shadow">
             <h4>{{ investment.name }}</h4>
             <p>{{ investment.monthlyPerformance }}%</p>
             <b-btn size="sm"
                    variant="outline-primary"
                    :to="`/investment-funds/${investment.id}`">
-              View
+              {{ $t('homepage.viewButton') }}
             </b-btn>
           </div>
         </div>
       </div>
       <div class="text-center mt-5">
-        <b-btn variant="primary" :to="'/investment-funds'" size="lg">View all</b-btn>
+        <b-btn variant="primary" :to="'/investment-funds'" size="lg">
+          {{ $t('homepage.viewAllButton') }}
+        </b-btn>
       </div>
     </div>
   </section>

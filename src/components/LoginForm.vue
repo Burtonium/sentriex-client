@@ -1,31 +1,30 @@
 <template>
   <div>
-    <h3>Login</h3>
-    <p>Need an account? <router-link :to="'/register'">Register</router-link></p>
+    <h3>{{ $t('login.title') }}</h3>
+    <p>{{ $t('login.needAccount') }} 
+      <router-link :to="'/register'">
+        {{ $t('general.register') }}
+      </router-link>
+    </p>
     <transition name="fade" mode="out-in">
       <div v-if="state === 'initial'" key="login">
         <p class="text-danger" v-if="error === 'credentials'">
-          Invalid credentials. Make sure you've entered
-          your information correctly
+          {{ $t('error.credentials') }}
         </p>
         <div class="text-danger" v-if="error === 'activation'" key="activation">
-        <h5><b>You need to activate your account.</b></h5>
-          <p>
-            Check your email and click on the link provided to activate your account.
-          </p>
-          <p>Never received it? You can click <a @click="resend" href="#">here</a> to resend it.</p>
+          {{ $t('error.inactiveAccount') }}
         </div>
         <div class="form-group has-feedback">
           <input class="form-control form-control-lg"
                  v-model="identifier"
-                 placeholder="Username or email"
+                 :placeholder="$t('login.usernamePlaceholder')"
                  type="text">
           <span class="glyphicon fa fa-envelope form-control-feedback" aria-hidden="true"></span>
         </div>
         <div class="form-group has-feedback">
           <input class="form-control form-control-lg"
                  v-model="password"
-                 placeholder="Password"
+                 :placeholder="$t('login.passwordPlaceholder')"
                  type="password" @keyup.enter="login">
           <span class="glyphicon fa fa-lock form-control-feedback" aria-hidden="true"></span>
         </div>
@@ -37,7 +36,7 @@
                v-model="twofa"
                name="code"
                type="number"
-               placeholder="2fa code"
+               :placeholder="$t('twoFa.codePlaceholder')"
                autocomplete="off"
                :maxlength="6"
                @input="checkCode"
@@ -50,25 +49,28 @@
       <div v-else-if="state === 'resent'">
         <checkmark/>
         <p class="text-success">
-          We've resent your validation email.<br>
-          <a :href="`mailto:${supportEmail}`">Contact support</a> if you're having issues.
+          {{ $t('success.activationResent') }}
         </p>
       </div>
     </transition>
     <template v-if="state === 'resent'">
       <button class="btn btn-primary btn-lg"
               @click="clearStateAndError">
-        Back
+        {{ $t('general.back') }}
       </button>
     </template>
     <template>
       <p class="forget">
-        <router-link :to="'/reset-password'" v-if="state === 'initial'">Forgot your password?</router-link>
-        <a href="#" @click.prevent="state = 'initial'" v-if="state === 'twofa'">Back</a>
+        <router-link :to="'/reset-password'" v-if="state === 'initial'">
+          {{ $t('login.forgotPassword') }}
+        </router-link>
+        <a href="#" @click.prevent="state = 'initial'" v-if="state === 'twofa'">
+          {{ $t('general.back') }}
+        </a>
       </p>
       <button class="btn btn-primary btn-lg"
              @click="login">
-          Login
+          {{ $t('general.login') }}
       </button>
     </template>
   </div>

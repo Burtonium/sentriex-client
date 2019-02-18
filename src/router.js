@@ -22,6 +22,7 @@ import InvestmentFundInfo from '@/views/InvestmentFundInfo.vue';
 import TermsAndConditions from '@/views/TermsAndConditions.vue';
 import TermsOfService from '@/views/TermsOfService.vue';
 import Home from '@/views/Home.vue';
+import { loadLanguageAsync } from '@/setup/i18n-setup';
 
 import store from '@/store';
 import { LOGOUT } from '@/store/mutation_types';
@@ -259,7 +260,7 @@ router.beforeEach((to, from, next) => {
   }
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
   if (to.matched.some(route => route.meta.requiresAuth)) {
     if (store.state.authenticated) {
       next();
@@ -270,6 +271,5 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
-
 
 export default router;

@@ -1,12 +1,16 @@
 <template>
   <div>
     <div class="mb-4">
-      <h3>Register</h3>
+      <h3>
+        {{ $t('register.title') }}
+      </h3>
       <span v-if="state === 'initial'">
-        Already have an account? <router-link :to="'/login'">Sign In</router-link>
+        {{ $t('register.registeredAlready') }}
+        <router-link :to="'/login'">{{ $t('navbar.login') }}</router-link>
       </span>
       <span v-if="state === 'registered'">
-        Activated already? <router-link :to="'/login'">Sign In</router-link>
+        {{ $t('register.activatedAlready') }}
+        <router-link :to="'/login'">{{ $t('navbar.login') }}</router-link>
       </span>
     </div>
     <transition name="fade" mode="out-in">
@@ -14,7 +18,7 @@
         <div class="form-group has-feedback">
             <input class="form-control form-control-lg"
                    name="email"
-                   placeholder="Email Address"
+                   :placeholder="$t('register.emailPlaceholder')"
                    v-model="email"
                    type="text"
                    v-validate="'email'">
@@ -27,7 +31,7 @@
             <input class="form-control form-control-lg"
                    name="username"
                    v-model="username"
-                   placeholder="Username"
+                   :placeholder="$t('register.usernamePlaceholder')"
                    type="text"
                    data-vv-validate-on="blur"
                    v-validate="'alpha_dash|available'">
@@ -42,7 +46,7 @@
                  name="password"
                  v-model="password"
                  class="form-control form-control-lg"
-                 placeholder="Password"
+                 :placeholder="$t('register.passwordPlaceholder')"
                  autocomplete="false"
                  ref="password"
                  data-vv-validate-on="blur"
@@ -55,7 +59,7 @@
         <div class="form-group has-feedback">
           <input class="form-control form-control-lg"
                  name="password_confirmation"
-                 placeholder="Confirm Password"
+                 :placeholder="$t('register.confirmPasswordPlaceholder')"
                  type="password"
                  v-validate="'required|confirmed:password'"
                  data-vv-validate-on="blur"
@@ -70,21 +74,22 @@
           <input class="form-control form-control-lg"
                  name="referral_code"
                  v-model="code"
-                 placeholder="Referral Code"
+                 :placeholder="$t('register.referralCodePlaceholder')"
                  type="text"
                  v-validate="'alpha_num'">
           <span class="glyphicon fa fa-link form-control-feedback" aria-hidden="true"></span>
         </div>
         <p class="text-danger" v-if="error">
-          Something went wrong. Contact site admin if this persists.
+          {{ $t('error.generalExtended') }}
         </p>
-        <recaptcha-button @click="register" :sitekey="captchaKey">Create</recaptcha-button>
+        <recaptcha-button @click="register" :sitekey="captchaKey">
+          {{ $t('general.create') }}
+        </recaptcha-button>
       </div>
       <div v-else-if="state === 'registered'" key="registered" class="registered">
         <checkmark/>
         <p class="text-success">
-          Thanks for the interest in becoming part of the team!<br>
-          Check your email for the activation link.
+          {{ $t('success.registration') }}
         </p>
       </div>
     </transition>
@@ -96,14 +101,6 @@ import { Validator } from 'vee-validate';
 import { register, availability } from '@/api';
 import RecaptchaButton from './RecaptchaButton.vue';
 import Checkmark from './Checkmark.vue';
-
-Validator.extend('available', {
-  getMessage: field => `This ${field} is not available`,
-  async validate(value) {
-    const response = await availability(value);
-    return { valid: response && response.data && response.data.available };
-  },
-});
 
 export default {
   data() {

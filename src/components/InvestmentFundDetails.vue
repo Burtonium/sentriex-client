@@ -27,22 +27,21 @@
           </div>
           <div v-if="investmentFund.redemptionWaitTime">
             <p>
-              Redemption Delay: <span class="text-warning">{{ redemptionWaitTime }} days</span>
+              {{ $t('funds.delayDays', { delay: investmentFund.redemptionWaitTime}) }}
             </p>
           </div>
         </div>
       </div>
       <br>
       <b-tabs>
-        <b-tab title="Summary" active>
+        <b-tab :title="$t('funds.summaryTitle')" active>
           <br>
-          <h4>Summary</h4>
           <p>{{ investmentFund.detailedDescription || 'N/A' }}</p>
         </b-tab>
-        <b-tab title="Manager" v-if="fundManager">
+        <b-tab :title="$t('funds.managerTitle')" v-if="fundManager">
           <br>
           <p>
-            Manager:
+            {{ $t('funds.manager') }}:
             <span class="text-primary">
               {{ fundManager.username }}
             </span>
@@ -51,8 +50,12 @@
       </b-tabs>
       <br>
       <div class="float-right">
-        <b-btn variant="primary mr-2" @click="handleModalOpen($event)" v-b-modal.subscription-modal>Subscribe</b-btn>
-        <b-btn variant="primary" @click="handleModalOpen($event)" v-b-modal.redemption-modal>Redeem</b-btn>
+        <b-btn variant="primary mr-2" @click="handleModalOpen($event)" v-b-modal.subscription-modal>
+          {{ $t('general.subscribe') }}
+        </b-btn>
+        <b-btn variant="primary" @click="handleModalOpen($event)" v-b-modal.redemption-modal>
+          {{ $t('general.redeem') }}
+        </b-btn>
       </div>
     </div>
     <div class="modals" v-if="authenticated">

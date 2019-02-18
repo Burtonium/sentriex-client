@@ -19,13 +19,13 @@
                   size="sm"
                   @click.stop="handleModalOpen($event, row.item)"
                   v-b-modal.subscription-modal>
-            Subscribe
+            {{ $t('general.subscribe' )}}
           </b-btn>
           <b-btn variant="outline-primary"
                  size="sm"
                  @click.stop="handleModalOpen($event, row.item)"
                  v-b-modal.redemption-modal>
-            Redeem
+            {{ $t('general.redeem' )}}
           </b-btn>
         </span>
       </template>
@@ -72,7 +72,23 @@ export default {
       return (this.investmentFunds || []).sort(performanceSort);
     },
     tableFields() {
-      return ['name', 'currencyCode', 'shortDescription', 'performance', 'actions'];
+      return {
+        name: {
+          label: this.$t('general.name'),
+        },
+        currencyCode: {
+          label: this.$t('general.currency'),
+        },
+        shortDescription: {
+          label: this.$t('general.description'),
+        },
+        performance: {
+          label: this.$t('general.performance'),
+        },
+        actions: {
+          label: this.$t('general.actions'),
+        }
+      };
     },
   },
   methods: {

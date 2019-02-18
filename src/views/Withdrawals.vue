@@ -16,10 +16,12 @@
       </div>
     </div>
     <b-modal centered title="Email Verification" v-model="showVerificationModal">
-      <div>As a security measure we've sent you an email to confirm your request.</div>
+      <div>
+        {{ $t('withdrawals.pendingEmailVerification') }}
+      </div>
       <div slot="modal-footer">
         <b-btn class="float-right" variant="primary" @click="showVerificationModal=false">
-          OK
+          {{ $t('general.ok') }}
         </b-btn>
       </div>
     </b-modal>

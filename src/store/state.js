@@ -1,7 +1,10 @@
 /* global localStorage */
 export const STORAGE_KEY = 'durango-project';
 
+const preferredLang = navigator && navigator.language.slice(0, 2);
+
 const initialState = {
+  lang: preferredLang || 'en',
   authenticated: false,
   user: {},
   csrfToken: '',

@@ -1,17 +1,19 @@
 <template>
   <div>
-    <h3>Reset Password</h3>
+    <h3>
+      {{ $t('reset.title') }}
+    </h3>
     <br>
     <p class="text-success" v-if="success">
-      Success! We changed your password.
+      {{ $t('success.paswordChanged') }}
     </p>
     <p class="text-danger" v-if="error">
-      Something went wrong.
+      {{ $t('error.generalExtended') }}
     </p>
     <div class="form-group has-feedback">
       <input class="form-control form-control-lg"
              name="password"
-             placeholder="New password"
+             :placeholder="$t('reset.newPasswordPlaceholder')"
              type="password"
              data-vv-validate-on="blur"
              v-validate="'required|verify_password'"
@@ -23,7 +25,7 @@
       <input class="form-control form-control-lg"
              name="confirm"
              v-model="confirm"
-             placeholder="Confirm new password"
+             :placeholder="$t('reset.newPasswordConfirmationPlaceholder')"
              v-validate="{ required : true,  confirmed: newPassword}"
              data-vv-validate-on="blur"
              data-vv-as="password"
@@ -33,7 +35,9 @@
     <p class="text-danger" v-if="errors.any()">
       {{ errors.first('password') || errors.first('confirm') }}
     </p>
-    <button class="btn btn-primary btn-lg" @click="sendReset">Save</button>
+    <button class="btn btn-primary btn-lg" @click="sendReset">
+      {{ $t('general.save') }}
+    </button>
   </div>
 </template>
 <script>

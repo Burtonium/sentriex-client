@@ -1,6 +1,6 @@
 <template>
   <b-modal :id="modalId"
-           title="Investment Fund Subscription"
+           :title="$t('subscription.title')"
            cancel-variant="outline-primary"
            ref="investmentFundSubscription"
            ok-variant="primary"
@@ -8,8 +8,7 @@
            footer-class="modal-footer-center"
            class="text-center">
     <p>
-      You currently have
-      <span class="text-info">{{ formattedCurrentBalance }}</span>
+      {{ $t('subscription.balance', { balance: formattedCurrentBalance })}}
     </p>
     <div class="col-md-6 offset-md-3">
       <div class="form-group">
@@ -20,13 +19,13 @@
                data-vv-as="subscription amount"
                type="number"
                v-validate="`max_value:${parseFloat(currentBalance)}|required|min_value:0`"
-               placeholder="Amount"
+               :placeholder="$t('general.amount')"
                autocomplete="off">
       </div>
       <div class="form-group" v-if="user.twofa">
         <input class="form-control input-center-text"
                name="twofa"
-               placeholder="2FA Code"
+               :placeholder="$t('twoFa.codePlaceholder')"
                type="number"
                v-model="twofaToken"
                autocomplete="off"
@@ -38,14 +37,14 @@
     </div>
     <div class="errors mt-2">
       <p class="text-danger" v-if="!investmentFund || error">
-        Something went wrong.
+        {{ $t('error.generalExtended') }}
       </p>
       <p class="text-danger" v-if="errors.any()">
         {{ errors.first('subscription_amount') }}
       </p>
     </div>
     <template slot="modal-ok">
-      Submit Subscription Request
+      {{ $t('subscription.submit') }}
     </template>
   </b-modal>
 </template>

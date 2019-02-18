@@ -9,12 +9,10 @@
             </h2>
             <h6 class="card-subtitle text-muted pr-5 mt-2 mb-4">
               <template v-if="otc">
-                Please submit your details for an OTC request by submitting your
-                details in the form below.
+                {{ $t('contact.otcInstructions') }}
               </template>
               <template v-else>
-                Got questions? Feedback? Anything at all? We'd love to hear from you.
-                Send us a message and we'll respond as soon as we can.
+                {{ $t('contact.instructions') }}
               </template>
             </h6>
             <contact-form :otc="otc" />
@@ -37,7 +35,7 @@
           </a>
         </div>
         <p>
-          Email: <a href="mailto:contact@sentriex.com">contact@sentriex.com</a>
+          {{ $t('general.email') }}: <a href="mailto:contact@sentriex.com">contact@sentriex.com</a>
         </p>
       </div>
     </div>

@@ -58,7 +58,7 @@ export default {
       return {
         labels: this.trendDataLabels,
         datasets: [{
-          label: '% of profit',
+          label: this.$t('funds.percentOfProfit'),
           data: this.trendDataValues,
           borderColor: [this.borderColor],
           backgroundColor: [this.backgroundColor],

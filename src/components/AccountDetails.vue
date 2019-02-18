@@ -2,8 +2,7 @@
   <div>
     <div class="text-left">
       <b-alert variant="warning" dismissible :show="!account.twofa">
-        Your account security would greatly benefit from two factor authentication.
-        Please enable it immediately.
+        {{ $t('account.twoFaWarning') }}
       </b-alert>
       <div class="row mb-2">
         <div class="col-md-6">
@@ -12,12 +11,16 @@
               <div class="card-icon">
                 <icon name="info-circle"/>
               </div>
-              <span>Account Info</span>
+              <span>{{ $t('account.accountInfo') }}</span>
             </div>
             <div class="card-body">
               <p class="card-text text-bold">
-                Email: {{ account.email }} <span class="badge badge-primary">Unverified</span><br>
-                Created: <timeago :datetime="account.createdAt"></timeago>
+                {{ $t('general.email') }}: {{ account.email }} 
+                <span class="badge badge-primary">
+                  {{ $t('verifications.unverified') }}
+                </span>
+                <br>
+                {{ $t('general.created') }}: <timeago :datetime="account.createdAt"></timeago>
               </p>
             </div>
           </div>
@@ -28,33 +31,33 @@
               <div class="card-icon">
                 <icon name="key"/>
                 </div>
-                <span>Security</span>
+                <span>{{ $t('account.accountInfoTitle') }}</span>
               </div>
             <div class="card-body">
               <div class="card-text text-bold pr-5">
-                Two Factor Authentication:
+                {{ $t('account.security') }}:
                 <b-button size="sm"
                           variant="success"
                           v-show="!account.twofa"
                           v-b-modal.enable-two-fa>
-                  Enable
+                  {{ $t('general.enable') }}:
                 </b-button>
                 <b-button size="sm"
                           variant="danger"
                           v-show="account.twofa"
                           v-b-modal.disable-two-fa>
-                  Disable
+                  {{ $t('general.disable') }}
                 </b-button>
                 <br>
-                Password:
+                {{ $t('general.password') }}:
                 <b-button variant="primary" size="sm" @click="sendReset">
-                  Reset
+                  {{ $t('general.reset') }}
                 </b-button>
                 <div class="text-success" v-if="success">
-                  Password reset request successfully sent.
+                  {{ $t('success.passwordReset') }}
                 </div>
                 <div class="text-danger" v-if="error">
-                  Something went wrong
+                  {{ $t('error.general') }}
                 </div>
               </div>
             </div>
@@ -68,11 +71,11 @@
               <div class="card-icon">
                 <icon name="user-friends"/>
                 </div>
-                <span>Referral Link</span>
+                <span>{{ $t('account.referralTitle') }}</span>
               </div>
             <div class="card-body">
               <p class="card-text text-bold pr-5">
-                Your referral link: <br/> {{ referralLink }}
+                {{ $t('account.yourReferralLink') }}: <br/> {{ referralLink }}
               </p>
             </div>
           </div>

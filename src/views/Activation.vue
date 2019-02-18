@@ -2,17 +2,19 @@
   <landing-container>
     <div v-if="!error && !success">
       <loading/>
-      <p class="text-primary mt-5">Currently activating your {{ resourceName }}, please wait.</p>
+      <p class="text-primary mt-5">
+        {{ $t('activation.progress', { resourceName }) }}
+      </p>
     </div>
     <div v-else-if="success">
       <checkmark/>
       <p class="text-success mt-5">
-        <strong>Success!</strong><br>Redirecting you...
+        {{ $t('success.activation') }}
       </p>
     </div>
     <div v-else-if="error">
       <h3 class="text-danger">
-        {{ error.message || 'Something went wrong' }}...<br>Redirecting you...
+        {{ $t('error.invalidActivationToken') }}
       </h3>
     </div>
   </landing-container>
@@ -50,11 +52,11 @@ export default {
   },
   async mounted() {
     const res = await api.post(this.$route.path)
-      .catch(() => this.error = { message: 'Invalid token' });
+      .catch(() => this.error = true);
     if (res.data.success) {
       this.success = true;
     } else {
-      this.error = { message: 'Invalid Token' };
+      this.error = true;
     }
     setTimeout(() => {
       this.$router.push(this.redirect);

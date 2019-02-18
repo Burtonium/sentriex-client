@@ -1,7 +1,7 @@
 <template>
   <div class="deposits">
     <spinner v-if="loading" />
-    <b-table :items="filteredDeposits" :fields="['userId', 'amount', 'txId', 'createdAt']" v-else />
+    <b-table :items="filteredDeposits" :fields="tableFields" v-else />
   </div>
 </template>
 <script>
@@ -21,6 +21,22 @@ export default {
   },
   computed: {
     ...mapGetters(['deposits']),
+    tableFields() {
+      return {
+        userId: {
+          label: this.$t('general.userId'),
+        },
+        amount: {
+          label: this.$t('general.amount'),
+        },
+        txId: {
+          label: 'Tx ID',
+        },
+        createdAt: {
+          label: this.$t('general.created')
+        }
+      }
+    },
     filteredDeposits() {
       const c = this.currencyCode;
       return c ? this.deposits[c] : valueConcat(this.deposits);

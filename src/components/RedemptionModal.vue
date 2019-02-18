@@ -10,13 +10,15 @@
              footer-class="modal-footer-center"
              class="text-center">
         <p v-if="fundPerformance">
-          You currently have <span class="text-info">{{ formattedPerformance }}</span> invested.
+          {{ $t('redeem.invested', { performance: formattedPerformance })}}
         </p>
         <p class="text-danger" v-else>
-          You have no balance in this fund.
+          {{ $t('redeem.noFundBalance') }}
         </p>
       <b-form-radio-group id="amountOrPercent" v-model="amountType" name="amountTypeRadio">
-        <b-form-radio value="redeem_amount">{{ currencyCode }} value</b-form-radio>
+        <b-form-radio value="redeem_amount">
+          {{ $t('redeem.currencyValue', { currency: currencyCode })}}
+        </b-form-radio>
         <b-form-radio value="percent">% percent value</b-form-radio>
       </b-form-radio-group>
       <div class="row">
@@ -32,7 +34,7 @@
                    type="number"
                    data-vv-as="redemption amount"
                    v-validate="`min_value:0|required`"
-                   :placeholder="`${currencyCode} value`"
+                   :placeholder="$t('redeem.currencyValue', { currency: currencyCode })"
                    autocomplete="off">
 
             <input v-show="amountType === 'percent'"
@@ -43,24 +45,22 @@
                type="number"
                data-vv-as="redemption percent"
                v-validate="`max_value:100|min_value:0|required`"
-               placeholder="% value"
+               :placeholder="$t('redeem.percentValue')"
                autocomplete="off">
           </div>
         </div>
       </div>
       <p class="text-danger" v-if="!investmentFund">
-        Something went wrong.
+        {{ $t('error.generalExtended') }}
       </p>
       <p class="text-danger" v-if="errors.any()">
         {{ errors.first('redeem_amount') || errors.first('percent') }}
       </p>
       <p class="text-warning" v-if="amount && amountType === 'redeem_amount'">
-        The value of your investment may change before the time it is processed.
-        Use percentages to account for variance if you are redeeming an amount
-        near your investment's value to insure that it goes through.
+        {{ $t('redeem.warning') }}
       </p>
       <template slot="modal-ok" disabled>
-        Submit Redemption Request
+        {{ $t('redeem.submit') }}
       </template>
     </b-modal>
   </requires-async-state>

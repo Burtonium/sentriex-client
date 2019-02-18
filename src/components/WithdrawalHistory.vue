@@ -1,19 +1,18 @@
 <template>
   <div class="withdrawal-history">
     <h4 class="text-primary mb-4">
-      Withdrawals
+      {{ $t('withdrawals.historyTitle') }}
     </h4>
     <spinner v-if="loading" />
     <p class="text-danger text-center" v-else-if="error">
-      Something went wrong when canceling a withdrawal.
-      Notify support for further assistance.
+      {{ $t('error.generalExtended') }}
     </p>
     <b-table
       v-else
       :items="userWithdrawals"
       :fields="withdrawalFields"
       :show-empty="true"
-      empty-text="You have no withdrawals yet"
+      :empty-text="$t('withdrawals.noWithdrawals')"
       stacked="md"
       :current-page="currentPage"
       :per-page="perPage">
@@ -30,7 +29,7 @@
           <b-btn variant="outline-primary"
                  size="sm"
                  @click="cancelWithdrawal(row.item.id)">
-            Cancel
+            {{ $t('general.cancel') }}
           </b-btn>
         </template>
       </template>
@@ -98,18 +97,20 @@ export default {
     withdrawalFields() {
       return {
         amount: {
-          label: 'Amount',
+          label: this.$t('general.amount'),
         },
         feeAmount: {
-          label: 'Fees',
+          label: this.$t('general.fees'),
         },
         status: {
-          label: 'Status',
+          label: this.$t('general.status'),
         },
         createdAt: {
-          label: 'Created',
+          label: this.$t('general.created'),
         },
-        actions: {},
+        actions: {
+          label: this.$t('general.actions'),
+        },
       };
     },
     statusClasses() {

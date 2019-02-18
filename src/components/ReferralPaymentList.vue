@@ -2,7 +2,7 @@
   <requires-async-state :actions="actionDependencies">
     <div class="header-flex">
       <h4 class="text-primary mb-4">
-        Referral Payments
+        {{ $t('referrals.paymentsTitle') }}
       </h4>
       <div>
         <b-dropdown id="currency-filter"
@@ -12,7 +12,7 @@
                     class="mb-2 mr-2"
                     v-if="displayType !== CURRENCY_TOTALS">
           <b-dropdown-item @click="currencyFilter = 'All'">
-            All
+            {{ $t('general.all') }}
           </b-dropdown-item>
           <b-dropdown-item @click="currencyFilter = currency.code"
                            v-for="currency in currencies"
@@ -23,16 +23,16 @@
         <b-dropdown id="display-type"
                     variant="outline-primary"
                     size="sm"
-                    :text="`Display:${displayType}`"
+                    :text="$t(`referrals.displayTypes.${displayType}`)"
                     class="mb-2">
           <b-dropdown-item @click="displayType = HISTORY">
-            Historical
+            {{ $t('referrals.historical') }}
           </b-dropdown-item>
           <b-dropdown-item @click="displayType = USER_TOTALS">
-            User Totals
+            {{ $t('referrals.userTotals') }}
           </b-dropdown-item>
           <b-dropdown-item @click="displayType = CURRENCY_TOTALS">
-            Currency Totals
+            {{ $t('referrals.currencyTotals') }}
           </b-dropdown-item>
         </b-dropdown>
       </div>
@@ -40,7 +40,8 @@
     <b-table :items="referralPaymentList"
              stacked="md"
              :show-empty="true"
-             empty-text="No referral payments yet. See affiliate program for details."
+             :fields="tableFields"
+             :empty-text="$t('referrals.noPayments')"
              :current-page="currentPage"
              :per-page="perPage">
       <template slot="created" slot-scope="row">
@@ -90,6 +91,19 @@ export default {
         };
       });
     },
+    historialFields() {
+      return {
+        referral: {
+          label: this.$t('referrals.referral'),
+        },
+        amount: {
+          label: this.$t('general.amount'),
+        },
+        created: {
+          label: this.$t('general.created'),
+        }
+      }
+    },
     currencyFilteredReferralPayments() {
       return this.referralPayments && this.referralPayments.filter(this.byCurrency);
     },
@@ -117,6 +131,16 @@ export default {
 
       return userPaymentTotals;
     },
+    userTotalsFields() {
+      return {
+        referral: {
+          label: this.$t('referrals.referral'),
+        },
+        paymentTotal: {
+          label: this.$t('referrals.paymentTotal'),
+        }
+      }
+    },
     currencyTotals() {
       const refPay = this.currencyFilteredReferralPayments;
       const currencies = uniq(refPay.map(p => p.currencyCode)).map(c => this.currencies[c]);
@@ -132,11 +156,29 @@ export default {
         };
       });
     },
+    currencyTotalsFields() {
+      return {
+        currency: {
+          label: this.$t('general.currency'),
+        },
+        paymentTotal: {
+          label: this.$t('referrals.paymentTotal'),
+        }
+      }
+    },
     referralPaymentList() {
       const mapped = {
         user: this.userTotalsList,
         history: this.historicalList,
         currency: this.currencyTotals,
+      };
+      return mapped[this.displayType];
+    },
+    tableFields() {
+      const mapped = {
+        user: this.userTotalsFields,
+        history: this.historialFields,
+        currency: this.currencyTotalsFields,
       };
       return mapped[this.displayType];
     },

@@ -2,19 +2,19 @@
   <div>
     <div class="header-flex">
       <h4 class="text-primary mb-4">
-        Investments
+        {{ $t('portfolio.investments') }}
       </h4>
       <b-dropdown id="display-type"
                   variant="outline-primary"
                   size="sm"
-                  :text="`Display:${displayType}`"
+                  :text="$t(`portfolio.displayTypes.${displayType}`)"
                   class="mb-2"
                   style="">
         <b-dropdown-item @click="displayType = 'individual'">
-          Individual Investments
+          {{ $t('portfolio.individualInvestments') }}
         </b-dropdown-item>
         <b-dropdown-item @click="displayType = 'totals'">
-          Currency Totals
+          {{ $t('portfolio.currencyTotals') }}
         </b-dropdown-item>
       </b-dropdown>
     </div>
@@ -22,8 +22,9 @@
       <b-table v-if="performance"
                :items="performanceInfo"
                stacked="md"
+               :fields="tableFields"
                :show-empty="true"
-               empty-text="No subscriptions are currently active."
+               :empty-text="$t('portfolio.noActiveSubs')"
                :current-page="currentPage"
                :per-page="perPage">
         <template slot="totalProfit" slot-scope="row">
@@ -99,6 +100,25 @@ export default {
         };
       });
     },
+    totalsPerformanceFields() {
+      return {
+        currency: {
+          label: this.$t('general.currency'),
+        },
+        totalInitial: {
+          label: this.$t('portfolio.totalInitial'),
+        },
+        totalValue: {
+          label: this.$t('portfolio.totalValue'),
+        },
+        totalProfit: {
+          label: this.$t('portfolio.totalProfit'),
+        },
+        profitPercent: {
+          label: this.$t('portfolio.profitPercent'),
+        }
+      };
+    },
     individualPerformance() {
       if (!this.performance) {
         return [];
@@ -115,9 +135,32 @@ export default {
         };
       });
     },
+    individualPerformanceFields() {
+      return {
+        currency: {
+          label: this.$t('general.currency'),
+        },
+        totalInitial: {
+          label: this.$t('portfolio.totalInitial'),
+        },
+        totalValue: {
+          label: this.$t('portfolio.totalValue'),
+        },
+        totalProfit: {
+          label: this.$t('portfolio.totalProfit'),
+        },
+        profitPercent: {
+          label: this.$t('portfolio.profitPercent'),
+        }
+      };
+    },
+
     performanceInfo() {
       return this.displayType === 'individual' ? this.individualPerformance : this.totalsPerformance;
     },
+    tableFields() {
+      return this.displayType === 'individual' ? this.individualPerformanceFields : this.totalsPerformanceFields;
+    }
   },
 };
 </script>

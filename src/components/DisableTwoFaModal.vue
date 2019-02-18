@@ -2,16 +2,15 @@
   <b-modal :id="modalId"
            ref="disableTwoFaModal"
            size="lg"
-           title="Disable 2FA"
+           :title="$t('twoFa.disableTitle')"
            cancel-variant="outline-primary"
            ok-variant="danger"
            @ok.prevent="disable2fa">
     <p v-if="error" class="text-danger">
-      Something went wrong. Please contact support.
+      {{ $t('error.generalExtended') }}
     </p>
     <p class="text-danger">
-      <strong>Warning!</strong> Two factor authentication is a
-      critical part of your account security.
+      {{ $t('twoFa.disableWarning') }}
     </p>
     <div class="text-center">
       <input id="twofa-code"
@@ -19,7 +18,7 @@
              v-model="code"
              name="code"
              type="number"
-             placeholder="2fa code"
+             :placeholder="$t('twoFa.codePlaceholder')"
              autocomplete="off"
              maxlength="6">
       <br>
@@ -28,7 +27,7 @@
       </p>
     </div>
     <template slot="modal-ok">
-      Disable
+      {{ $t('general.disable') }}
     </template>
   </b-modal>
 </template>

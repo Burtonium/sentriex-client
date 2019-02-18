@@ -1,7 +1,7 @@
 <template>
   <div>
     <h4 class="text-primary mb-4">
-      Subscriptions / Redemptions
+      {{ $t('general.subscriptions') }} / {{ $t('general.redemptions') }}
     </h4>
     <spinner v-if="loading" />
     <b-table v-else :items="investmentFundRequests"
@@ -9,7 +9,7 @@
              :fields="fields"
              class="table-condensed"
              :show-empty="true"
-             empty-text="No requests"
+             :empty-text="$t('requests.none')"
              :current-page="currentPage"
              :per-page="perPage">
       <template slot="status" slot-scope="row">
@@ -27,7 +27,7 @@
                    variant="outline-primary"
                    size="sm"
                    @click="cancelRequest(row.item.id)">
-              Cancel
+              {{ $t('general.cancel') }}
             </b-btn>
           </template>
         </div>

@@ -9,15 +9,17 @@
           </template>
           <template v-else-if="success">
             <h2>
-              Thanks for subscribing!
+              {{ $t('homepage.subscriptionThanks') }}
             </h2>
           </template>
           <template v-else>
-            <h2>Subscribe to us and get notified</h2>
+            <h2>
+              {{ $t('homepage.subscriptionTitle') }}
+            </h2>
             <form @submit.prevent="subscribeToMailer">
               <div class="form-group">
-                <input type="email" placeholder="Enter your email here" v-model="email" required/>
-                <button type="submit"> <img src="img/send.png" alt="" /></button>
+                <input type="email" :placeholder="$t('homepage.emailPlaceholder')" v-model="email" required/>
+                <button type="submit"> <img src="../assets/images/send.png" alt="" /></button>
               </div>
             </form>
           </template>
@@ -58,7 +60,7 @@ export default {
   width:100%;
   min-height:300px;
   padding:100px 0px;
-  background:url("/img/subscription-bg.png");
+  background:url("../assets/images/subscription-bg.png");
   background-size:auto;
   background-position:center center;
   background-repeat:no-repeat;

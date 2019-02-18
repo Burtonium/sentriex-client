@@ -10,6 +10,7 @@ const localStoragePlugin = (store) => {
       user,
       csrfToken,
       tokenExpiry,
+      lang
     } = state;
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify({
@@ -17,6 +18,7 @@ const localStoragePlugin = (store) => {
       user,
       csrfToken,
       tokenExpiry,
+      lang
     }));
 
     if (mutation.type === types.LOGOUT) {

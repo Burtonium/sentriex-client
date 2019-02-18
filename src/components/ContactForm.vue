@@ -2,7 +2,7 @@
   <div>
     <spinner v-if="loading" />
     <checkmark v-else-if="success">
-      We've received your message. Expect to hear from us soon.
+      {{ $t('contact.messageReceived') }}
     </checkmark>
     <form v-else>
       <div class="form-group" :class="{ 'has-danger': errors.first('name')}">
@@ -11,7 +11,7 @@
                :class="{'form-control-danger': errors.first('name') }"
                name="name"
                v-model="name"
-               placeholder="Your Name"/>
+               :placeholder="$t('contact.namePlaceholder')"/>
         <div class="text-danger pl-2 pt-2">
           {{ errors.first('name') }}
         </div>
@@ -22,7 +22,7 @@
                :class="{'form-control-danger': errors.first('email') }"
                v-model="email"
                name="email"
-               placeholder="Your Email"
+               :placeholder="$t('contact.namePlaceholder')"
                type="email"/>
         <div class="text-danger pl-2 pt-2">
           {{ errors.first('email') }}
@@ -41,10 +41,12 @@
         </div>
       </div>
       <div class="text-danger text-center mb-2" v-if="error">
-        Something went wrong.
+        {{ $t('error.general') }}
       </div>
       <div class="form-group text-center" v-else>
-        <recaptcha-button @click="handleSubmit" :sitekey="captchaKey" size="md">Submit</recaptcha-button>
+        <recaptcha-button @click="handleSubmit" :sitekey="captchaKey" size="md">
+          {{ $t('general.submit') }}
+        </recaptcha-button>
       </div>
     </form>
   </div>
@@ -99,7 +101,7 @@ export default {
       return process.env.VUE_APP_RECAPTCHA_SITE_KEY;
     },
     messagePlaceholder() {
-      return this.otc ? 'OTC request details' : 'Enter a message';
+      return this.otc ? this.$t('contact.otcRequestPlaceholder') : this.$t('contact.messagePlaceholder');
     },
   },
 };

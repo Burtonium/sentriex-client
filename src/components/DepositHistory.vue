@@ -1,7 +1,7 @@
 <template>
   <div class="deposit-history">
     <h4 class="text-primary mb-4">
-      Deposits
+      {{ $t('deposits.title') }}
     </h4>
     <spinner v-if="loading" />
     <b-table
@@ -10,7 +10,7 @@
       :fields="depositFields"
       :show-empty="true"
       stacked="md"
-      empty-text="You have no deposits yet">
+      :empty-text="$t('deposits.noneYet')">
       <template slot="txId" slot-scope="row">
         {{ row.item.txId }}
       </template>
@@ -61,14 +61,14 @@ export default {
     depositFields() {
       return {
         amount: {
-          label: 'Amount',
+          label: this.$t('general.amount'),
         },
         txId: {
-          label: 'Transaction ID',
+          label: this.$t('general.transactionId'),
           tdClass: 'txid-ellipsis',
         },
         createdAt: {
-          label: 'Created',
+          label: this.$t('general.created'),
         },
       };
     },

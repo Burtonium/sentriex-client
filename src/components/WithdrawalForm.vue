@@ -1,10 +1,10 @@
 <template>
   <form @submit.prevent="onSubmit">
     <p class="text-primary" v-if="!withdrawal.amount || errors.first('amount')">
-      You currently have {{ balanceAmount }}
+      {{ $t('withdrawals.balance', { balance: balanceAmount }) }}
     </p>
     <p class="text-primary" v-else-if="!errors.first('amount')">
-      You will have {{ differenceAmount }} after the withdrawal.
+      {{ $t('withdrawals.afterBalance', { balance: differenceAmount }) }}
     </p>
     <div class="form-group">
       <input class="form-control input-center-text"
@@ -17,15 +17,14 @@
           {{ errors.first('address') }}
         </p>
       <p class="text-warning mt-1" v-if="withdrawal.address">
-        Double check to make sure this address is correct and that it is a valid
-        {{ currencyCode }} address.
+        {{ $t('withdrawals.doubleCheckAddress', { currency: currencyCode }) }}
       </p>
     </div>
     <div class="form-group">
       <input class="form-control input-center-text"
              v-model="withdrawal.amount"
              name="amount"
-             placeholder="Withdrawal Amount"
+             :placeholder="$t('general.amount')"
              v-validate="amountValidation"/>
       <p class="text-danger mt-1" v-if="errors.has('amount')">
         {{ errors.first('amount') }}
@@ -34,7 +33,7 @@
     <div class="form-group" v-if="account.twofa">
       <input class="form-control input-center-text"
              name="twofa"
-             placeholder="2FA Code"
+             :placeholder="$t('twoFa.codePlaceholder')"
              type="number"
              v-model="twofaToken"
              autocomplete="off"
@@ -43,7 +42,9 @@
         {{ errors.first('twofa') }}
       </p>
     </div>
-    <b-btn type="submit" variant="primary">Withdraw</b-btn>
+    <b-btn type="submit" variant="primary">
+      {{ $t('general.withdraw') }}
+    </b-btn>
   </form>
 </template>
 <script>
@@ -129,7 +130,7 @@ export default {
       if (response.data.code === errorCodes.INVALID_2FA) {
         this.errors.add({
           field: 'twofa',
-          msg: 'Invalid 2fa code',
+          msg: this.$t('twoFa.invalidCode'),
         });
       }
 

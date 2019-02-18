@@ -2,20 +2,20 @@
   <b-modal :id="modalId"
            ref="enableTwoFaModal"
            size="lg"
-           title="Enable 2FA"
+           :title="$t('twoFa.enableTitle')"
            cancel-variant="outline-primary"
            @change="generateSecret"
            @ok.prevent="enableTwoFa">
     <p v-if="error" class="text-danger">
-      Something went wrong. Please contact support.
+      {{ $t('error.generalExtended') }}
     </p>
     <template v-if="secret">
       <img :src="imageUrl" class="qr-code"><br>
-      <small>Scan this on a mobile 2FA app that supports QR codes.</small>
+      <small>{{ $t('twoFa.qrScanInstructions') }}</small>
       <br>
       <br>
       <p class="text-bold">
-        Please keep this secret somewheres very safe as you will need it for recovery purposes:
+        {{ $t('twoFa.pleaseKeepSafe') }}:
       </p>
       <p class="text-danger">{{ secret }}</p>
       <div class="text-center">
@@ -24,7 +24,7 @@
                v-model="code"
                name="code"
                type="number"
-               placeholder="2fa code"
+               :placeholder="$t('twoFa.codePlaceholder')"
                autocomplete="off"
                maxlength="6">
         <br>
@@ -76,7 +76,7 @@ export default {
         if (response.data.code === errorCodes.INVALID_2FA) {
           this.errors.add({
             field: 'code',
-            msg: 'Invalid 2FA code',
+            msg: this.$t('twoFa.invalidCode'),
           });
         }
 

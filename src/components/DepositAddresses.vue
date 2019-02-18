@@ -3,30 +3,30 @@
   <div class="card">
     <div class="card-body text-center">
       <template v-if="depositAddress">
-        <p class="">
-          Your {{ currency.label }} ({{ currency.code }}) address:
+        <p>
+          {{ $t('deposits.yourAddress', { currency: fullLabel })}}:
         </p>
         <div class="text-primary mb-2 no-wrap">
           {{ depositAddress }}
         </div>
         <p class="text-danger">
           <strong>
-            Make sure you are sending {{ currency.code }} to this address.
-            Sending any other coin or token may result in the loss of your deposit.
+            {{ $t('deposits.depositWarning', { currencyCode: currency.code })}}:
           </strong>
         </p>
       </template>
       <template v-else-if="error">
         <p class="card-text text-danger">
-          Something went wrong with generating an address. Please contact support.
+          {{ $t('deposits.generationError') }}
         </p>
       </template>
       <template v-else>
         <p class="card-text">
-          You have no deposit address for {{ currency.label }}
-          ({{ currency.code }}).
+          {{ $t('deposits.noAddressWarning', { currency: fullLabel })}}:
         </p>
-        <b-btn variant="primary" @click="generateAddress">Generate</b-btn>
+        <b-btn variant="primary" @click="generateAddress">
+          {{ $t('general.generate') }}
+        </b-btn>
       </template>
     </div>
   </div>
@@ -48,6 +48,9 @@ export default {
       const d = this.depositAddresses[this.currency.code];
       return d && d.address;
     },
+    fullLabel() {
+      return `${this.currency.label} (${this.currency.code})`;
+    }
   },
   props: {
     currency: {

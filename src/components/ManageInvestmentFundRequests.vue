@@ -20,7 +20,10 @@
           <label>Status filter</label>
           <select v-model="statusFilter" class="form-control">
             <option value="all">All</option>
-            <option :class="statusClasses[status] || ''" v-for="status in statuses" :value="status">
+            <option :class="statusClasses[status] || ''" 
+                    v-for="status in statuses" 
+                    :value="status" 
+                    :key="status">
               {{ statusToWords({ status }) }}
             </option>
           </select>

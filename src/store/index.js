@@ -14,7 +14,7 @@ const investmentFundGetter = (s) => {
   const userCut = settings.userRedeemProfitPercent || NaN;
   const actualPerformance = (p) => { return parseFloat(p > 0 ? p * userCut : p); }; // eslint-disable-line
 
-  return s.investmentFunds.map(f => ({
+  return s.investmentFunds && s.investmentFunds.map(f => ({
     ...f,
     monthlyPerformance: actualPerformance(f.monthlyPerformance).toFixed(2),
     performance: actualPerformance(f.performance).toFixed(2),
@@ -42,6 +42,7 @@ const store = new Vuex.Store({
     performance: s => s.performance,
     referralPayments: s => s.referralPayments,
     investmentFundTrendData: s => s.investmentFundTrendData,
+    lang: s => s.lang,
   },
   mutations,
 });

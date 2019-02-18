@@ -77,3 +77,28 @@ input.input-center-text {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.info-page {
+  & strong {
+    font-weight: 800;
+  }
+  
+  & p, & ul {
+    line-height: 2;
+    letter-spacing: 1px;
+
+    & li {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      margin-left: 1rem;
+    }
+  }
+
+  & h2,
+  & h4,
+  & h6 {
+    color: map-get($theme-colors, primary);
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+}

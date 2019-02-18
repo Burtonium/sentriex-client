@@ -2,7 +2,7 @@
   <div>
     <spinner v-if="loading" />
     <checkmark v-else-if="success">
-      We've received your application. Expect to hear from us soon.
+      {{ $t('managerApplication.received') }}
     </checkmark>
     <form v-else>
       <div class="form-group" :class="{ 'has-danger': errors.first('name')}">
@@ -11,7 +11,7 @@
                :class="{'form-control-danger': errors.first('name') }"
                name="name"
                v-model="name"
-               placeholder="Your Full Name"/>
+               :placeholder="$t('contact.namePlaceholder')"/>
         <div class="text-danger pl-2 pt-2">
           {{ errors.first('name') }}
         </div>
@@ -22,7 +22,7 @@
                :class="{'form-control-danger': errors.first('email') }"
                v-model="email"
                name="email"
-               placeholder="Your Email"
+               :placeholder="$t('contact.emailPlaceholder')"
                type="email"/>
         <div class="text-danger pl-2 pt-2">
           {{ errors.first('email') }}
@@ -32,25 +32,25 @@
         <input class="form-control"
                name="twitter"
                v-model="info.twitter"
-               placeholder="Twitter Account" />
+               :placeholder="$t('managerApplication.twitterPlaceholder')" />
       </div>
       <div class="form-group">
         <input class="form-control"
-                  name="discord"
-                  v-model="info.discord"
-                  placeholder="Discord Account" />
+               name="discord"
+               v-model="info.discord"
+               :placeholder="$t('managerApplication.discordPlaceholder')" />
       </div>
       <div class="form-group">
         <input class="form-control"
-                  name="telegram"
-                  v-model="info.telegram"
-                  placeholder="Telegram Account" />
+               name="telegram"
+               v-model="info.telegram"
+               :placeholder="$t('managerApplication.telegramPlaceholder')"  />
       </div>
       <div class="form-group">
         <input class="form-control"
                 name="phone"
                 v-model="info.phone"
-                placeholder="Phone number" />
+                :placeholder="$t('managerApplication.phonePlaceholder')" />
       </div>
       <div class="form-group" :class="{ 'has-danger': errors.first('message')}">
         <textarea class="form-control"
@@ -59,16 +59,18 @@
                   name="message"
                   v-model="info.message"
                   rows="10"
-                  :placeholder="messagePlaceholder"></textarea>
+                  :placeholder="$t('managerApplication.messagePlaceholder')"></textarea>
         <div class="text-danger pl-2 pt-2">
           {{ errors.first('message') }}
         </div>
       </div>
       <div class="text-danger text-center mb-2" v-if="error">
-        Something went wrong.
+        {{ $t('error.generalExtended') }}
       </div>
       <div class="form-group text-center" v-else>
-        <recaptcha-button @click="handleSubmit" :sitekey="captchaKey" size="md">Submit</recaptcha-button>
+        <recaptcha-button @click="handleSubmit" :sitekey="captchaKey" size="md">
+          {{ $t('general.submit') }}
+        </recaptcha-button>
       </div>
     </form>
   </div>
@@ -132,9 +134,6 @@ export default {
         Message:
 
         ${message}`;
-    },
-    messagePlaceholder() {
-      return 'Describe your experience, markets, volumes, AUM, performance. Let us also know your preferred method of contact and the best time to reach you.';
     },
   },
 };

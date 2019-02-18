@@ -1,6 +1,7 @@
 import Currency from '@/models/currency';
 import * as types from './mutation_types';
 import * as api from '@/api';
+import { loadLanguageAsync } from '@/setup/i18n-setup'; 
 import uniq from 'lodash.uniq';
 
 export default {
@@ -102,4 +103,8 @@ export default {
       investmentFundTrendData: response.data.investmentFundTrendData,
     });
   },
+  async setPreferredLanguage(store, lang) {
+    const preferredLang = await loadLanguageAsync(lang);
+    store.commit(types.SET_PREFERRED_LANGUAGE, preferredLang);
+  }
 };

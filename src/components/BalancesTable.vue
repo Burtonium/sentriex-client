@@ -1,14 +1,16 @@
 <template>
   <div>
     <div class="header-flex">
-      <h4 class="text-primary mb-4">Balances</h4>
+      <h4 class="text-primary mb-4">
+        {{ $t('balances.title') }}
+      </h4>
       <b-dropdown id="zero-balances"
                   variant="outline-primary"
                   size="sm"
-                  :text="`Zero balances:${hideZero ? '\u2717' : '\u2713'}`"
+                  :text="`${$t('balances.zeroBalances')}:${hideZero ? '\u2717' : '\u2713'}`"
                   class="mb-2">
         <b-dropdown-item @click="hideZero = !hideZero" class="no-uppercase">
-          {{ hideZero ? 'Show zero balances' : 'Hide zero balances' }}
+          {{ hideZero ? $t('balances.showZero') : $t('balances.hideZero') }}
         </b-dropdown-item>
       </b-dropdown>
     </div>
@@ -29,12 +31,12 @@
                   variant="outline-primary"
                   size="sm"
                   class="mr-2">
-            Withdraw
+            {{ $t('general.withdraw') }}
           </b-btn>
           <b-btn :to="`/deposits/${row.item.currencyCode}`"
                   variant="outline-primary"
                   size="sm">
-            Deposit
+            {{ $t('general.deposit') }}
           </b-btn>
         </template>
       </b-table>
@@ -73,12 +75,14 @@ export default {
     balanceFields() {
       return {
         currencyCode: {
-          label: 'Currency',
+          label: this.$t('general.currency'),
         },
         amount: {
-          label: 'Available',
+          label: this.$t('general.available'),
         },
-        actions: {},
+        actions: {
+          label: this.$t('general.actions'),
+        },
       };
     },
     icons() {

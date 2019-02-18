@@ -61,4 +61,7 @@ export default {
   [types.SET_INVESTMENT_FUND_TREND_DATA](state, { id, investmentFundTrendData }) {
     Vue.set(state.investmentFundTrendData, id, investmentFundTrendData);
   },
+  [types.SET_PREFERRED_LANGUAGE](state, lang) {
+    state.lang = lang;
+  }
 };

@@ -5,7 +5,7 @@
         <div class="card">
           <div class="card-body">
             <h2 class="card-title text-primary mb-4">
-              Fund Manager Application
+              {{ $t('managerApplication.title') }}
             </h2>
             <fund-manager-application-form />
           </div>
@@ -27,7 +27,7 @@
           </a>
         </div>
         <p>
-          Email: <a href="mailto:contact@sentriex.com">contact@sentriex.com</a>
+          {{ $t('general.email')}}: <a href="mailto:contact@sentriex.com">contact@sentriex.com</a>
         </p>
       </div>
     </div>

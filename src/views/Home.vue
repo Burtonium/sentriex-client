@@ -5,18 +5,18 @@
         <div class="container">
           <div class="banner-content">
             <h2 class="banner-title capitalized mb-4">
-              The world’s first platform specializing in cryptocurrency
-              investment funds and products
+              {{ $t('homepage.title') }}
             </h2>
             <h4 class="banner-sub-title mb-4">
-              There's finally a secure investment solution managed by veteran
-              cryptocurrency traders that enables current and new cryptocurrency
-              investors to grow their digital capital with minimal risk and
-              maximized gains regardless of the volatility of the market.
+              {{ $t('homepage.subTitle') }}
             </h4>
             <div class="buttons">
-              <b-btn variant="outline-light" size="lg" :to="'/how-it-works'">How does this work?</b-btn>
-              <b-btn variant="outline-light" size="lg" :to="'/register'">Get started</b-btn>
+              <b-btn variant="outline-light" size="lg" :to="'/how-it-works'">
+                {{ $t('homepage.howItWorksButton') }}
+              </b-btn>
+              <b-btn variant="outline-light" size="lg" :to="'/register'">
+                {{ $t('homepage.getStartedButton') }}
+              </b-btn>
             </div>
           </div>
         </div>
@@ -29,18 +29,17 @@
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="mission-thumbnail">
               <div class="content-thumbnail">
-                <img src="img/feature-img.png" alt="" />
+                <img src="../assets/images/feature-img.png" alt="" />
               </div>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="mission-content">
-              <h2>Our mission</h2>
+              <h2>
+                {{ $t('homepage.ourMissionTitle') }}
+              </h2>
               <p>
-                Giving our customers investment services and products in a secure
-                environment that helps maximize gains and manage
-                risk as well as providing piece of mind with expert
-                traders continuously watching and studying the market for them.
+                {{ $t('homepage.ourMissionDescription') }}
               </p>
             </div>
           </div>
@@ -51,26 +50,34 @@
       <div class="container howitworks-container">
         <div class="row justify-content-center">
           <div class="col-lg-7 col-md-7 col-sm-10 col-xs-12 section-heading">
-            <h2>How it works</h2>
+            <h2>
+              {{ $t('homepage.howItWorksTitle') }}
+            </h2>
           </div>
         </div>
         <div class="row">
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="module_box shadow-lg">
-              <img src="/img/icon1.png" alt="" />
-              <h3>Create an account </h3>
+              <img src="../assets/images/icon1.png" alt="" />
+              <h3>
+                {{ $t('homepage.createAnAccount') }}
+              </h3>
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="module_box shadow-lg">
-              <img src="/img/icon2.png" alt="" />
-              <h3>Fund your account</h3>
+              <img src="../assets/images/icon2.png" alt="" />
+              <h3>
+                {{ $t('homepage.fundYourAccount') }}
+              </h3>
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="module_box shadow-lg">
-              <img src="/img/icon3.png" alt="" />
-              <h3>Start investing</h3>
+              <img src="../assets/images/icon3.png" alt="" />
+              <h3>
+                {{ $t('homepage.startInvesting') }}
+              </h3>
             </div>
           </div>
         </div>
@@ -80,7 +87,9 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-8 ccol-sm-10 col-xs-12 section-heading">
-            <h2>Create your digital currency portfolio today</h2>
+            <h2>
+              {{ $t('homepage.portfolioSectionTitle') }}
+            </h2>
           </div>
         </div>
         <div class="row">
@@ -94,8 +103,12 @@
                 </div>
                 <div class="col-lg-9 col-sm-12">
                   <div class="module-text">
-                    <h4>Manage your risk</h4>
-                    <p>Choose from a variety of investment funds with different levels of risk.</p>
+                    <h4>
+                      {{ $t('homepage.manageRiskTitle') }}
+                    </h4>
+                    <p>
+                      {{ $t('homepage.manageRiskDescription') }}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -107,8 +120,12 @@
                 </div>
                 <div class="col-lg-9 col-sm-12">
                   <div class="module-text">
-                    <h4>Manage Your Portfolio</h4>
-                    <p>Maximize gains by strategically allocating assets to high performing funds.</p>
+                    <h4>
+                      {{ $t('homepage.managePortfolioTitle') }}
+                    </h4>
+                    <p>
+                      {{ $t('homepage.managePortfolioDescription') }}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -120,10 +137,11 @@
                 </div>
                 <div class="col-lg-9 col-sm-12">
                   <div class="module-text">
-                    <h4>Referral Incentives</h4>
+                    <h4>
+                      {{ $t('homepage.referralIncentivesTitle') }}
+                    </h4>
                     <p>
-                      Refer other investors to the platform to participate in
-                      our competitive affiliate program.
+                      {{ $t('homepage.referralIncentivesDescription') }}
                     </p>
                   </div>
                 </div>
@@ -150,11 +168,6 @@ export default {
   components: {
     TopPerformingFunds,
     MailerSubscribeForm,
-  },
-  computed: {
-    api() {
-      return process.env.VUE_APP_API_URL;
-    },
   },
 };
 </script>
@@ -314,7 +327,7 @@ a:hover{
 .banner {
   width:100%;
   height:100vh;
-  background:url("/img/banner-bg.png");
+  background:url("../assets/images/banner-bg.png");
   background-size:cover;
   background-repeat:no-repeat;
   background-position:center center;
@@ -352,7 +365,7 @@ a:hover{
   height:100%;
   bottom:-5px;
   left:0;
-  background:url(/img/banner-wave.png);
+  background:url(../assets/images/banner-wave.png);
   background-repeat:no-repeat;
   background-size:contain;
   background-position:bottom center;
@@ -431,7 +444,6 @@ a:hover{
 }
 
 /*how it works area*/
-
 .howitworks {
   width:100%;
   height:auto;
@@ -446,7 +458,7 @@ a:hover{
   height:30%;
   bottom:0;
   left:0;
-  background:url(/img/subscription-bg.png);
+  background:url(../assets/images/subscription-bg.png);
   background-size:cover;
   background-position:center center;
   z-index:-11;
