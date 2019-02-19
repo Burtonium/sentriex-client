@@ -17,7 +17,7 @@
              type="password"
              data-vv-validate-on="blur"
              v-validate="'required|verify_password'"
-             data-vv-as="new password"
+             :data-vv-as="$t('fields.password')"
              v-model="newPassword">
       <span class="glyphicon fa fa-envelope form-control-feedback" aria-hidden="true"></span>
     </div>
@@ -28,7 +28,7 @@
              :placeholder="$t('reset.newPasswordConfirmationPlaceholder')"
              v-validate="{ required : true,  confirmed: newPassword}"
              data-vv-validate-on="blur"
-             data-vv-as="password"
+             :data-vv-as="$t('fields.password')"
              type="password">
       <span class="glyphicon fa fa-envelope form-control-feedback" aria-hidden="true"></span>
     </div>

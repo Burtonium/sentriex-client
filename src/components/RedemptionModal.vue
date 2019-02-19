@@ -32,7 +32,7 @@
                    v-model="amount"
                    name="redeem_amount"
                    type="number"
-                   data-vv-as="redemption amount"
+                   :data-vv-as="$t('fields.amount')"
                    v-validate="`min_value:0|required`"
                    :placeholder="$t('redeem.currencyValue', { currency: currencyCode })"
                    autocomplete="off">
@@ -43,7 +43,7 @@
                v-model="percent"
                name="percent"
                type="number"
-               data-vv-as="redemption percent"
+               :data-vv-as="$t('fields.percent')"
                v-validate="`max_value:100|min_value:0|required`"
                :placeholder="$t('redeem.percentValue')"
                autocomplete="off">

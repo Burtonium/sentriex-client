@@ -21,7 +21,8 @@
                    :placeholder="$t('register.emailPlaceholder')"
                    v-model="email"
                    type="text"
-                   v-validate="'email'">
+                   v-validate="'email'"
+                   :data-vv-as="$t('fields.email')">
             <span class="glyphicon fa fa-envelope form-control-feedback" aria-hidden="true"></span>
         </div>
         <p class="text-danger" v-if="errors.first('email')">
@@ -34,6 +35,7 @@
                    :placeholder="$t('register.usernamePlaceholder')"
                    type="text"
                    data-vv-validate-on="blur"
+                   :data-vv-as="$t('fields.username')"
                    v-validate="'alpha_dash|available'">
             <span class="glyphicon fa fa-user form-control-feedback" aria-hidden="true"></span>
         </div>
@@ -50,6 +52,7 @@
                  autocomplete="false"
                  ref="password"
                  data-vv-validate-on="blur"
+                 :data-vv-as="$t('fields.password')"
                  v-validate="'required|verify_password'">
           <span class="glyphicon fa fa-lock form-control-feedback" aria-hidden="true"></span>
         </div>
@@ -63,7 +66,7 @@
                  type="password"
                  v-validate="'required|confirmed:password'"
                  data-vv-validate-on="blur"
-                 data-vv-as="password">
+                 :data-vv-as="$t('fields.password')">
           <span class="glyphicon fa fa-lock form-control-feedback" aria-hidden="true"></span>
           <p class="text-danger" v-if="errors.first('password_confirmation')
             && fields.password_confirmation.touched">
@@ -76,7 +79,8 @@
                  v-model="code"
                  :placeholder="$t('register.referralCodePlaceholder')"
                  type="text"
-                 v-validate="'alpha_num'">
+                 v-validate="'alpha_num'"
+                 :data-vv-as="$t('fields.referralCode')">
           <span class="glyphicon fa fa-link form-control-feedback" aria-hidden="true"></span>
         </div>
         <p class="text-danger" v-if="error">

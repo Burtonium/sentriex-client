@@ -16,9 +16,9 @@
                class="form-control input-center-text"
                v-model="amount"
                name="subscription_amount"
-               data-vv-as="subscription amount"
                type="number"
                v-validate="`max_value:${parseFloat(currentBalance)}|required|min_value:0`"
+               :data-vv-as="$t('fields.amount')"
                :placeholder="$t('general.amount')"
                autocomplete="off">
       </div>
@@ -29,6 +29,7 @@
                type="number"
                v-model="twofaToken"
                autocomplete="off"
+               :data-vv-as="$t('fields.twoFa')"
                v-validate="'digits:6|required'">
         <p class="text-danger mt-2">
           {{ errors.first('twofa') }}

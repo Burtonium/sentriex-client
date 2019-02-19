@@ -12,6 +12,7 @@
              type="text"
              name="address"
              v-validate="'required'"
+             :data-vv-as="$t('fields.address')"
              placeholder="Address" />
         <p class="text-danger mt-1" v-if="errors.has('address')">
           {{ errors.first('address') }}
@@ -25,6 +26,7 @@
              v-model="withdrawal.amount"
              name="amount"
              :placeholder="$t('general.amount')"
+             :data-vv-as="$t('fields.amount')"
              v-validate="amountValidation"/>
       <p class="text-danger mt-1" v-if="errors.has('amount')">
         {{ errors.first('amount') }}
@@ -37,6 +39,7 @@
              type="number"
              v-model="twofaToken"
              autocomplete="off"
+             :data-vv-as="$t('fields.twoFa')"
              v-validate="'digits:6|required'">
       <p class="text-danger mt-2">
         {{ errors.first('twofa') }}

@@ -11,6 +11,7 @@
                :class="{'form-control-danger': errors.first('name') }"
                name="name"
                v-model="name"
+               :data-vv-as="$t('fields.name')"
                :placeholder="$t('contact.namePlaceholder')"/>
         <div class="text-danger pl-2 pt-2">
           {{ errors.first('name') }}
@@ -22,6 +23,7 @@
                :class="{'form-control-danger': errors.first('email') }"
                v-model="email"
                name="email"
+               :data-vv-as="$t('fields.email')"
                :placeholder="$t('contact.emailPlaceholder')"
                type="email"/>
         <div class="text-danger pl-2 pt-2">
@@ -56,6 +58,7 @@
         <textarea class="form-control"
                   :class="{'form-control-danger': errors.first('message') }"
                   v-validate="'required'"
+                  :data-vv-as="$t('fields.message')"
                   name="message"
                   v-model="info.message"
                   rows="10"

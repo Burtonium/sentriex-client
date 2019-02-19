@@ -47,6 +47,18 @@ export default {
     fees: 'Fees',
     status: 'Status',
   },
+  fields: {
+    name: 'name',
+    username: 'username',
+    password: 'password',
+    identifier: 'username or email',
+    email: 'email',
+    message: 'message',
+    amount: 'amount',
+    percent: 'percent',
+    referralCode: 'referral code',
+    twoFa: '2FA code'
+  },
   verifications: {
     unverified: 'Unverified',
   },
