@@ -15,7 +15,7 @@
         {{ row.item.txId }}
       </template>
       <template slot="createdAt" slot-scope="row">
-        <timeago :datetime="row.item.createdAt" />
+        <timeago :datetime="row.item.createdAt" :locale="locale" />
       </template>
     </b-table>
   </div>
@@ -35,7 +35,7 @@ export default {
     Spinner,
   },
   computed: {
-    ...mapGetters(['deposits', 'currencies']),
+    ...mapGetters(['deposits', 'currencies', 'locale']),
     currencyCode() {
       return this.$route.params.currencyCode;
     },
