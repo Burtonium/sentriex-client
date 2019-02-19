@@ -45,7 +45,7 @@
              :current-page="currentPage"
              :per-page="perPage">
       <template slot="created" slot-scope="row">
-        <timeago :datetime="row.item.created" />
+        <timeago :datetime="row.item.created" :locale="locale" />
       </template>
     </b-table>
     <div class="row" v-if="referralPaymentList.length > perPage">
@@ -80,7 +80,7 @@ export default {
     actionDependencies() {
       return ['fetchReferralPayments', 'fetchCurrencies'];
     },
-    ...mapGetters(['referralPayments', 'currencies']),
+    ...mapGetters(['referralPayments', 'currencies', 'locale']),
     historicalList() {
       return this.referralPayments && this.referralPayments.map((p) => {
         const currency = this.currencies[p.currencyCode];

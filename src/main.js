@@ -12,7 +12,7 @@ Vue.config.productionTip = false;
 
 VeeValidate.Validator.extend('verify_password', {
   getMessage(field) {
-    return i18n.$t('register.passwordStrength');
+    return i18n.t('register.passwordStrength');
   },
   validate(value) {
     return /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{4,}$/.test(value);
@@ -21,7 +21,7 @@ VeeValidate.Validator.extend('verify_password', {
 
 
 VeeValidate.Validator.extend('available', {
-  getMessage: field => i18n.$t('register.usernameAvailability'),
+  getMessage: field => i18n.t('register.usernameAvailability'),
   async validate(value) {
     const response = await availability(value);
     return { valid: response && response.data && response.data.available };

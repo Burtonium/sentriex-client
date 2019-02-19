@@ -79,10 +79,6 @@
                               @click="setPreferredLanguage('en')">
               English
             </b-dropdown-item>
-            <b-dropdown-item :active="lang === 'fr'"
-                              @click="setPreferredLanguage('fr')">
-              French
-            </b-dropdown-item>
             <b-dropdown-item :active="lang === 'ko'"
                               @click="setPreferredLanguage('ko')">
               Korean

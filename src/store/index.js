@@ -42,6 +42,7 @@ const store = new Vuex.Store({
     performance: s => s.performance,
     referralPayments: s => s.referralPayments,
     investmentFundTrendData: s => s.investmentFundTrendData,
+    locale: s => s.lang,
     lang: s => s.lang,
   },
   mutations,

@@ -22,7 +22,7 @@
         </span>
       </template>
       <template slot="createdAt" slot-scope="row">
-        <timeago :datetime="row.item.createdAt" />
+        <timeago :datetime="row.item.createdAt" :locale="locale" />
       </template>
       <template slot="actions" slot-scope="row">
         <template v-if="cancelableStatus(row.item.status)">
@@ -69,7 +69,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['withdrawals', 'currencies']),
+    ...mapGetters(['withdrawals', 'currencies', 'locale']),
     currencyCode() {
       return this.$route.params.currencyCode;
     },

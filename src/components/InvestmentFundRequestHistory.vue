@@ -18,7 +18,7 @@
         </span>
       </template>
       <template slot="created" slot-scope="row">
-        <timeago :datetime="row.item.created" />
+        <timeago :datetime="row.item.created" :locale="locale"/>
       </template>
       <template slot="actions" slot-scope="row">
         <div class="no-wrap">
@@ -69,7 +69,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['currencies']),
+    ...mapGetters(['currencies', 'locale']),
     investmentFundRequests() {
       return this.requests.map((r) => {
         const amount = r.amount && this.currencies[r.investmentFund.currencyCode].format(r.amount);

@@ -47,7 +47,7 @@ const router = new Router({
     {
       path: '/logout',
       name: 'logout',
-      beforeEnter(to, from, next) {
+      beforeEnter(_to, _from, next) {
         store.commit(LOGOUT);
         next('/');
       },
@@ -101,7 +101,7 @@ const router = new Router({
       path: '/account',
       name: 'account',
       component: Account,
-      async beforeEnter(to, from, next) {
+      async beforeEnter(to, _from, next) {
         await store.dispatch('fetchAccount');
         next(store.state.authenticated || loginWithRedirect(to));
       },
@@ -119,7 +119,7 @@ const router = new Router({
       props: () => ({
         resourceName: 'request',
       }),
-      beforeEnter(to, from, next) {
+      beforeEnter(to, _from, next) {
         next(store.state.authenticated || loginWithRedirect(to));
       },
     },
@@ -133,7 +133,7 @@ const router = new Router({
       path: '/investment-funds',
       name: 'investment-funds',
       component: InvestmentFunds,
-      async beforeEnter(to, from, next) {
+      async beforeEnter(_to, _from, next) {
         await Promise.all([
           store.state.authenticated && store.dispatch('fetchBalances'),
           store.state.authenticated && store.dispatch('fetchInvestmentFundShares'),
@@ -147,7 +147,7 @@ const router = new Router({
       path: '/investment-funds/:investmentFundId',
       name: 'investment-fund-view',
       component: InvestmentFund,
-      async beforeEnter(to, from, next) {
+      async beforeEnter(_to, _from, next) {
         await Promise.all([
           store.state.authenticated && store.dispatch('fetchBalances'),
           store.state.authenticated && store.dispatch('fetchInvestmentFundShares'),
@@ -161,7 +161,7 @@ const router = new Router({
       path: '/deposits/:currencyCode',
       name: 'deposits',
       component: Deposits,
-      async beforeEnter(to, from, next) {
+      async beforeEnter(to, _from, next) {
         await Promise.all([
           store.dispatch('fetchCurrencies'),
           store.dispatch('fetchDepositAddresses'),
@@ -174,7 +174,7 @@ const router = new Router({
       path: '/withdrawals/:currencyCode',
       name: 'withdrawals',
       component: Withdrawals,
-      async beforeEnter(to, from, next) {
+      async beforeEnter(to, _from, next) {
         await Promise.all([
           store.dispatch('fetchCurrencies'),
           store.dispatch('fetchBalances'),
@@ -196,7 +196,7 @@ const router = new Router({
       name: 'manage-investment-funds',
       component: InvestmentFundManagement,
       meta: { requiresManager: true },
-      async beforeEnter(to, from, next) {
+      async beforeEnter(to, _from, next) {
         await Promise.all([
           store.state.user.admin && store.dispatch('fetchUsers', { type: 'fund_manager' }),
           store.dispatch('fetchInvestmentFunds'),
@@ -210,7 +210,7 @@ const router = new Router({
       name: 'crypto-management',
       component: CryptoManagement,
       meta: { requiresAdmin: true },
-      async beforeEnter(to, from, next) {
+      async beforeEnter(to, _from, next) {
         await Promise.all([
           store.dispatch('fetchCurrencies'),
         ]);
@@ -235,7 +235,14 @@ const router = new Router({
   ],
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (_to, _from, next) => {
+  if(store.state.lang !== 'eng') {
+    await loadLanguageAsync(store.state.lang);
+  }
+  next();
+})
+
+router.beforeEach((to, _from, next) => {
   if (to.matched.some(route => route.meta.requiresAdmin)) {
     if (store.state.authenticated && store.state.user.admin) {
       next();
@@ -248,7 +255,7 @@ router.beforeEach((to, from, next) => {
 });
 
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
   if (to.matched.some(route => route.meta.requiresManager)) {
     if (store.state.authenticated && store.state.user.manager) {
       next();
