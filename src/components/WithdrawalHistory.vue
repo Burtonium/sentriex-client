@@ -49,7 +49,6 @@ import flatten from 'lodash.flatten';
 import { mapActions, mapGetters } from 'vuex';
 import { cancelWithdrawal } from '@/api';
 import Spinner from '@/components/Spinner.vue';
-import { snakeCaseToCapitalized } from '@/utils';
 
 export default {
   data() {
@@ -135,7 +134,15 @@ export default {
       this.fetchMyWithdrawals(this.currencyCode).finally(() => { this.loading = false; });
     },
     statusToWords(status) {
-      return snakeCaseToCapitalized(status);
+      const i18nKeys = {
+        pending: 'pending',
+        declined: 'declined',
+        pending_email_verification: 'pendingEmailVerification',
+        approved: 'approved',
+        canceled: 'canceled',
+      };
+
+      return this.$t(`statuses.${i18nKeys[status]}`);
     },
     cancelableStatus(status) {
       return ['pending_email_verification', 'pending'].includes(status);

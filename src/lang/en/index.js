@@ -49,6 +49,7 @@ export default {
   },
   fields: {
     name: 'name',
+    address: 'address',
     username: 'username',
     password: 'password',
     identifier: 'username or email',
@@ -57,7 +58,15 @@ export default {
     amount: 'amount',
     percent: 'percent',
     referralCode: 'referral code',
-    twoFa: '2FA code'
+    twoFa: '2FA code',
+    address: 'address',
+  },
+  statuses: {
+    pendingEmailVerification: 'Pending Email Verification',
+    pending: 'Pending',
+    canceled: 'Canceled',
+    declined: 'Declined',
+    approved: 'Approved'
   },
   verifications: {
     unverified: 'Unverified',
@@ -190,6 +199,7 @@ export default {
   },
   requests: {
     none: 'No requests to show',
+    daysToWait: '{daysToWait} days remaining',
   },
   login: {
     title: 'Login',

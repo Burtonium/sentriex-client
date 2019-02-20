@@ -13,7 +13,7 @@
              name="address"
              v-validate="'required'"
              :data-vv-as="$t('fields.address')"
-             placeholder="Address" />
+             :placeholder="$t('withdrawals.addressPlaceholder')" />
         <p class="text-danger mt-1" v-if="errors.has('address')">
           {{ errors.first('address') }}
         </p>

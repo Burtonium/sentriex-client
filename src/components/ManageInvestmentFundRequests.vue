@@ -233,9 +233,18 @@ export default {
     ...mapActions(['fetchInvestmentFunds']),
     statusToWords({ daysToWait, status }) {
       if (daysToWait) {
-        return `${daysToWait} days remaining`;
+        return $t('requests.daysToWait', { daysToWait });
       }
-      return snakeCaseToCapitalized(status);
+
+      const i18nKeys = {
+        pending: 'pending',
+        declined: 'declined',
+        pending_email_verification: 'pendingEmailVerification',
+        approved: 'approved',
+        canceled: 'canceled',
+      };
+
+      return this.$t(`statuses.${i18nKeys[status]}`);
     },
     currencyFormat(amount) {
       return this.currency ? this.currency.format(amount) : amount;
@@ -243,7 +252,7 @@ export default {
     async loadData() {
       this.loading = true;
       const response = await fetchAllInvestmentFundRequests(this.investmentFundId)
-        .catch(() => this.error = { message: 'Something went wrong' })
+        .catch(() => this.error = { message: this.$t('error.general') })
         .finally(() => { this.loading = false; });
 
       if (response.data.success) {

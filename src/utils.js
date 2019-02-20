@@ -1,10 +1,5 @@
 import { bip32, payments, networks } from 'bitcoinjs-lib';
 
-export const snakeCaseToCapitalized = text => text
-  .split('_')
-  .map(word => word[0].toUpperCase() + word.substr(1))
-  .join(' ');
-
 const oneDay = 1000 * 60 * 60 * 24;
 
 export const daysBetween = (date1, date2) => {

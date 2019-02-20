@@ -184,7 +184,15 @@ export default {
   methods: {
     ...mapActions(['fetchWithdrawals']),
     statusToWords(status) {
-      return snakeCaseToCapitalized(status);
+      const i18nKeys = {
+        pending: 'pending',
+        declined: 'declined',
+        pending_email_verification: 'pendingEmailVerification',
+        approved: 'approved',
+        canceled: 'canceled',
+      };
+
+      return this.$t(`statuses.${i18nKeys[status]}`);
     },
     loadData() {
       this.loading = true;
@@ -200,7 +208,7 @@ export default {
         await updateWithdrawal({ id, status, txId });
         await this.fetchWithdrawals(this.currencyCode);
       } catch (error) {
-        this.errors.add({ field: vId, msg: 'Something went wrong while updating' });
+        this.errors.add({ field: vId, msg: this.$t('error.general') });
       }
     },
   },

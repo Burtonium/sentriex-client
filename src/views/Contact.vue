@@ -5,7 +5,7 @@
         <div class="card">
           <div class="card-body">
             <h2 class="card-title text-primary">
-              {{ otc ? 'OTC Request' : 'Contact' }}
+              {{ otc ? $t('contact.otcRequest') : $t('navbar.contact') }}
             </h2>
             <h6 class="card-subtitle text-muted pr-5 mt-2 mb-4">
               <template v-if="otc">

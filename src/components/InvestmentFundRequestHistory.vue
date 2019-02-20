@@ -47,7 +47,6 @@
 import { mapGetters, mapActions } from 'vuex';
 import Spinner from '@/components/Spinner.vue';
 import { cancelInvestmentFundRequest, fetchInvestmentFundRequests } from '@/api';
-import { snakeCaseToCapitalized } from '@/utils';
 import { events, EventBus } from '@/event-bus';
 
 export default {
@@ -114,9 +113,18 @@ export default {
     },
     statusToWords({ daysToWait, status }) {
       if (daysToWait) {
-        return `${daysToWait} days remaining`;
+        return $t('requests.daysToWait', { daysToWait });
       }
-      return snakeCaseToCapitalized(status);
+
+      const i18nKeys = {
+        pending: 'pending',
+        declined: 'declined',
+        pending_email_verification: 'pendingEmailVerification',
+        approved: 'approved',
+        canceled: 'canceled',
+      };
+
+      return this.$t(`statuses.${i18nKeys[status]}`);
     },
     async cancelRequest(id) {
       try {
