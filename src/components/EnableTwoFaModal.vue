@@ -34,6 +34,12 @@
         </p>
       </div>
     </template>
+    <template slot="modal-ok">
+      {{ $t('general.enable') }}
+    </template>
+    <template slot="modal-cancel">
+      {{ $t('general.cancel') }}
+    </template>
   </b-modal>
 </template>
 <script>

@@ -78,7 +78,7 @@ export default {
           type: r.type === 'subscription' ? 'Sub' : 'Redeem',
           statusClass: this.statusClasses[r.status],
           amount: amount || percentAmount,
-          status: this.statusToWords(r),
+          status: r.status,
           created: r.createdAt,
           actions: '',
           cancelable: r.isCancelable,
@@ -124,6 +124,7 @@ export default {
         canceled: 'canceled',
       };
 
+      console.log(status);
       return this.$t(`statuses.${i18nKeys[status]}`);
     },
     async cancelRequest(id) {

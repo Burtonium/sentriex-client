@@ -35,7 +35,7 @@ export default {
     name: '이름',
     currency: '통화',
     description: '설명',
-    actions: '실행목록',
+    actions: '구분',
     subscriptions: '가입',
     redemptions: '해지',
     register: '아이디 만들기',
@@ -149,8 +149,8 @@ export default {
   },
   balances: {
     title: '보유 잔고',
-    zeroBalances: '0',
-    showZero: '모든 자산 보기',
+    zeroBalances: '미보유 자산 목록 보기',
+    showZero: '모든 자산 리스트 보기',
     hideZero: '보유 자산만 보기',
   },
   contact: {
@@ -166,8 +166,8 @@ export default {
   deposits: {
     title: '입금',
     noneYet: '입금내역이 없습니다.',
-    yourAddress: '고객님의 {currency} 주소',
-    depositWarning: '보내시는 통화가 {currencyCode} 가 맞는지 확인해주십시오. 오입금시 환불받기 어려우실 수 있습니다.',
+    yourAddress: '고객님의 {currency} 입금 주소',
+    depositWarning: '보내시는 통화가 {currencyCode} 이(가) 맞는지 확인해주십시오. 오입금시 환불받기 어려우실 수 있습니다.',
     generationError: '주소 받기에 실패하였습니다. 고객센터로 문의 해주시기 바랍니다.',
     noAddressWarning: '{currency} 의 입금 주소를 발급 받으세요.',
   },
@@ -187,10 +187,10 @@ export default {
     discordPlaceholder: '디스코드 계정',
     telegramPlaceholder: '텔레그램 계정',
     phonePlaceholder: '전화 번호',
-    messagePlaceholder: '당신의 경험, 시장, 거래 액수, 실적등을 적어주세요. 연락받으실 방법과 시간을 알려주세요.',
+    messagePlaceholder: '투자 경험, 투자 시장, 거래 액수, 수익률 등을 적어주세요. 연락 받으실 방법과 시간을 알려주세요.',
   },
   funds: {
-    summaryTitle: '요약',
+    summaryTitle: '펀드명',
     managerTitle: '매니저',
     delayDays: '상환 지연{delay} 일',
     manager: '펀드매니저',
@@ -218,8 +218,8 @@ export default {
   },
   portfolio: {
     investments: '투자',
-    individualInvestments: '투자 목록',
-    currencyTotals: '통화 총액',
+    individualInvestments: '펀드별 보기',
+    currencyTotals: '통화별 보기',
     totalInitial: '최초 금액',
     totalValue: '총 가치',
     totalProfit: '총 수익',
@@ -227,7 +227,7 @@ export default {
     noActiveSubs: '현재 펀드가 가입 되어 있지 않습니다.',
     displayTypes: {
       individual: '개별보기',
-      totals: '전체보기'
+      totals: '통화 전체보기'
     }
   },
   redeem: {
@@ -241,14 +241,14 @@ export default {
   referrals: {
     referral: '추천인',
     paymentTotal: '총 지급금액',
-    paymentsTitle: '지급금 요청하기',
+    paymentsTitle: '추천인 수익',
     historical: '날짜별',
-    userTotals: '총 사용자',
-    currencyTotals: '총 통화',
+    userTotals: '사용자별',
+    currencyTotals: '통화별',
     displayTypes: {
-      user: '유저 보기',
-      history: '날짜별 보기',
-      currency: '통화 보기'
+      user: '유저로 보기',
+      history: '날짜로 보기',
+      currency: '통화로 보기'
     },
     noPayments: '아직까지 추천인이 없습니다. 추천인코드 사용방법 페이지를 확인해주십시오.',
   },

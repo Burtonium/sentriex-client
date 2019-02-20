@@ -20,7 +20,7 @@
                   {{ $t('verifications.unverified') }}
                 </span>
                 <br>
-                {{ $t('general.created') }}: <timeago :datetime="account.createdAt"></timeago>
+                {{ $t('general.created') }}: <timeago :datetime="account.createdAt" :locale="locale"></timeago>
               </p>
             </div>
           </div>
@@ -105,7 +105,7 @@ export default {
     DisableTwoFaModal,
   },
   computed: {
-    ...mapGetters(['account']),
+    ...mapGetters(['account', 'locale']),
     referralLink() {
       const siteUrl = process.env.VUE_APP_SITE_URL || 'http://localhost';
       const { referralCode } = this.account;

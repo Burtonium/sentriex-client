@@ -19,7 +19,7 @@
         <b-form-radio value="redeem_amount">
           {{ $t('redeem.currencyValue', { currency: currencyCode })}}
         </b-form-radio>
-        <b-form-radio value="percent">% percent value</b-form-radio>
+        <b-form-radio value="percent">{{ $t('redeem.percentValue') }}</b-form-radio>
       </b-form-radio-group>
       <div class="row">
         <div class="col-md-6 offset-md-3">

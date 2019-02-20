@@ -47,6 +47,9 @@
     <template slot="modal-ok">
       {{ $t('subscription.submit') }}
     </template>
+    <template slot="modal-cancel">
+      {{ $t('general.cancel')}}
+    </template>
   </b-modal>
 </template>
 <script>

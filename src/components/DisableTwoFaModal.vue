@@ -29,6 +29,9 @@
     <template slot="modal-ok">
       {{ $t('general.disable') }}
     </template>
+    <template slot="modal-cancel">
+      {{ $t('general.cancel') }}
+    </template>
   </b-modal>
 </template>
 <script>

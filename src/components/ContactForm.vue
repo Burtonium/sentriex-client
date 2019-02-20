@@ -24,7 +24,7 @@
                v-model="email"
                name="email"
                :data-vv-as="$t('fields.email')"
-               :placeholder="$t('contact.namePlaceholder')"
+               :placeholder="$t('contact.emailPlaceholder')"
                type="email"/>
         <div class="text-danger pl-2 pt-2">
           {{ errors.first('email') }}
