@@ -73,14 +73,17 @@
           </template>
           <b-nav-item-dropdown class="pl-2" right>
             <template slot="button-content">
-              <icon class="text-light" name="language" scale="2"/>
+              <img src="../assets/images/language.png" width="50"/>
             </template>
             <b-dropdown-item :active="lang === 'en'"
                               @click="setPreferredLanguage('en')">
+              
+              <img src="../assets/images/en_flag.svg" width="25"/>
               English
             </b-dropdown-item>
             <b-dropdown-item :active="lang === 'ko'"
                               @click="setPreferredLanguage('ko')">
+              <img src="../assets/images/ko_flag.svg" width="25"/>
               Korean
             </b-dropdown-item>
           </b-nav-item-dropdown>
