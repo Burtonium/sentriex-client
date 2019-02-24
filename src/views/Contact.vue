@@ -35,7 +35,10 @@
           </a>
         </div>
         <p>
-          {{ $t('general.email') }}: <a href="mailto:contact@sentriex.com">contact@sentriex.com</a>
+          {{ $t('general.email') }}: 
+          <a :href="`mailto:${$t('contact.supportEmail')}`">
+            {{ $t('contact.supportEmail') }}
+          </a>
         </p>
       </div>
     </div>

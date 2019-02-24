@@ -162,6 +162,7 @@ export default {
     emailPlaceholder: 'Your email',
     otcRequestPlaceholder: 'OTC Request Details',
     messagePlaceholder: 'Enter a message',
+    supportEmail: 'support@sentriex.com',
   },
   deposits: {
     title: 'Deposits',
@@ -270,6 +271,7 @@ export default {
     submit: 'Submit Subscription Request',
   },
   withdrawals: {
+    addressPlaceholder: 'Address',
     historyTitle: 'Withdrawal History',
     noWithdrawals: 'You have no withdrawals yet',
     balance: 'You currently have {balance}',

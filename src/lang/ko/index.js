@@ -162,6 +162,7 @@ export default {
     otcRequest: '장외거래',
     otcRequestPlaceholder: '장외거래 신청 조건',
     messagePlaceholder: '메세지를 입력해주세요',
+    supportEmail: 'supportKR@sentriex.com',
   },
   deposits: {
     title: '입금',

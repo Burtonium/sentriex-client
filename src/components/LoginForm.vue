@@ -92,7 +92,7 @@ export default {
       twofa: '',
       state: 'initial',
       error: null,
-      supportEmail: process.env.VUE_APP_SUPPORT_EMAIL,
+      supportEmail: this.$t('contact.supportEmail'),
     };
   },
   props: ['redirectTo'],
