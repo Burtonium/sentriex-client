@@ -6,19 +6,28 @@ import state from './state';
 import mutations from './mutations';
 import { LOGOUT } from './mutation_types';
 import actions from './actions';
+import pick from 'lodash.pick';
 
 Vue.use(Vuex);
 
-const investmentFundGetter = (s) => {
+const investmentFundsGetter = (s) => {
   const settings = s.investmentFundSettings;
   const userCut = settings.userRedeemProfitPercent || NaN;
   const actualPerformance = (p) => { return parseFloat(p > 0 ? p * userCut : p); }; // eslint-disable-line
 
-  return s.investmentFunds && s.investmentFunds.map(f => ({
-    ...f,
-    monthlyPerformance: actualPerformance(f.monthlyPerformance).toFixed(2),
-    performance: actualPerformance(f.performance).toFixed(2),
-  }));
+  return s.investmentFunds && s.investmentFunds.map(f => {
+    const fund = {
+      ...f,
+      monthlyPerformance: actualPerformance(f.monthlyPerformance).toFixed(2),
+      performance: actualPerformance(f.performance).toFixed(2),
+    };
+
+    const translation = f.translations.find(t => t.locale === state.lang);
+    if (translation) {
+      Object.assign(fund, pick(translation, ['name', 'shortDescription', 'detailedDescription']))
+    }
+    return fund;
+  });
 };
 
 const store = new Vuex.Store({
@@ -31,7 +40,7 @@ const store = new Vuex.Store({
     account: s => s.account,
     currencies: s => s.currencies,
     balances: s => s.balances,
-    investmentFunds: investmentFundGetter,
+    investmentFunds: investmentFundsGetter,
     investmentFundShares: s => s.investmentFundShares,
     investmentFundBalanceUpdates: s => s.balanceUpdates,
     investmentFundSettings: s => s.investmentFundSettings,

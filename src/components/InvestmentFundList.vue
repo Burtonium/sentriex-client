@@ -109,5 +109,6 @@ export default {
 <style scoped>
 .investments {
   margin: 0 15px;
+  width: 100%;
 }
 </style>

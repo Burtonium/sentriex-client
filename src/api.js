@@ -75,6 +75,9 @@ export const fetchAllInvestmentFundRequests = investmentFundId => instance.get('
 export const updateInvestmentFundRequest = ({ id, status }) => instance.patch(`/admin/investment-fund-requests/${id}`, { status });
 export const deleteInvestmentFund = id => instance.delete(`/admin/investment-funds/${id}`);
 export const executeAprUpdate = id => instance.post(`/admin/investment-funds/${id}/execute-apr-update`);
+export const translateInvestmentFund = args => instance.post(`/admin/investment-funds/${args.id}/translate`, { ...args });
+export const fetchInvestmentFundTranslations = id => instance.get(`/admin/investment-funds/${id}/translations`);
+
 // CURRENCIES
 export const createCurrency = currency => instance.post('/admin/currencies', { currency });
 export const updateCurrency = ({ code, currency }) => instance.patch(`/admin/currencies/${code}`, { currency });

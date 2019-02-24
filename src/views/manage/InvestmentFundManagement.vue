@@ -33,6 +33,10 @@
             <br>
             <manage-investment-fund-requests :investmentFund="investmentFund" />
           </b-tab>
+          <b-tab title="Translations" v-if="investmentFund && user.admin">
+            <br>
+            <manage-investment-fund-translations :investmentFundId="investmentFund.id" />
+          </b-tab>
         </b-tabs>
       </div>
     </div>
@@ -44,6 +48,7 @@ import InvestmentFundForm from '@/components/InvestmentFundForm.vue';
 import InvestmentFundBalanceForm from '@/components/InvestmentFundBalanceForm.vue';
 import InvestmentFundBalanceUpdatesTable from '@/components/InvestmentFundBalanceUpdatesTable.vue';
 import ManageInvestmentFundRequests from '@/components/ManageInvestmentFundRequests.vue';
+import ManageInvestmentFundTranslations from '@/components/ManageInvestmentFundTranslations.vue';
 import InvestmentFundNav from '@/components/InvestmentFundNav.vue';
 
 export default {
@@ -53,6 +58,7 @@ export default {
     InvestmentFundNav,
     InvestmentFundBalanceUpdatesTable,
     ManageInvestmentFundRequests,
+    ManageInvestmentFundTranslations,
   },
   computed: {
     ...mapGetters(['investmentFunds', 'user']),

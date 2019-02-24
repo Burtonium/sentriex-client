@@ -20,6 +20,7 @@
     "lodash.clonedeep": "^4.5.0",
     "lodash.flatten": "^4.4.0",
     "lodash.omit": "^4.5.0",
+    "lodash.pick": "^4.4.0",
     "lodash.pickby": "^4.6.0",
     "lodash.uniq": "^4.5.0",
     "vee-validate": "^2.1.3",
