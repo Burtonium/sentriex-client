@@ -220,7 +220,10 @@ export default {
   portfolio: {
     investments: 'Investments',
     individualInvestments: 'Individual Investments',
+    initialInvestment: 'Initial Investment',
+    fundName: 'Fund Name',
     currencyTotals: 'Currency Totals',
+    currentValue: 'Current Value',
     totalInitial: 'Total initial',
     totalValue: 'Total value',
     totalProfit: 'Total profit',

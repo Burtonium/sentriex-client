@@ -124,7 +124,6 @@ export default {
         canceled: 'canceled',
       };
 
-      console.log(status);
       return this.$t(`statuses.${i18nKeys[status]}`);
     },
     async cancelRequest(id) {

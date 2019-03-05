@@ -137,14 +137,14 @@ export default {
     },
     individualPerformanceFields() {
       return {
-        currency: {
-          label: this.$t('general.currency'),
+        fundName: {
+          label: this.$t('portfolio.fundName'),
         },
-        totalInitial: {
-          label: this.$t('portfolio.totalInitial'),
+        initialInvestment: {
+          label: this.$t('portfolio.initialInvestment'),
         },
-        totalValue: {
-          label: this.$t('portfolio.totalValue'),
+        currentValue: {
+          label: this.$t('portfolio.currentValue'),
         },
         totalProfit: {
           label: this.$t('portfolio.totalProfit'),
