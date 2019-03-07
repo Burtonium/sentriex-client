@@ -27,7 +27,7 @@
           </div>
           <div v-if="investmentFund.redemptionWaitTime">
             <p>
-              {{ $t('funds.delayDays', { delay: investmentFund.redemptionWaitTime}) }}
+              {{ $t('funds.delayDays', { delay: redemptionWaitTime}) }}
             </p>
           </div>
         </div>

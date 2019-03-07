@@ -193,7 +193,7 @@ export default {
   funds: {
     summaryTitle: 'Summary',
     managerTitle: 'Manager',
-    delayDays: 'Redemption Delay {delay} days',
+    delayDays: 'Redemption Delay: {delay} days',
     manager: 'Fund Manager',
     viewFunds: 'View Investment Funds',
     percentOfProfit: '% of profit',
@@ -222,8 +222,8 @@ export default {
     individualInvestments: 'Individual Investments',
     initialInvestment: 'Initial Investment',
     fundName: 'Fund Name',
-    currencyTotals: 'Currency Totals',
     currentValue: 'Current Value',
+    currencyTotals: 'Currency Totals',
     totalInitial: 'Total initial',
     totalValue: 'Total value',
     totalProfit: 'Total profit',
