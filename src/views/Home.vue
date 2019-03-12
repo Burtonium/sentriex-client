@@ -11,10 +11,10 @@
               {{ $t('homepage.subTitle') }}
             </h4>
             <div class="buttons">
-              <b-btn variant="outline-light" size="lg" :to="'/how-it-works'">
+              <b-btn variant="outline-light" :to="'/how-it-works'">
                 {{ $t('homepage.howItWorksButton') }}
               </b-btn>
-              <b-btn variant="outline-light" size="lg" :to="'/register'">
+              <b-btn variant="outline-light" :to="'/register'">
                 {{ $t('homepage.getStartedButton') }}
               </b-btn>
             </div>
@@ -321,6 +321,12 @@ a:hover{
 
 .buttons > * {
   margin: 0 20px;
+}
+
+@include media-breakpoint-down(sm) {
+  .buttons  {
+    color: red !important;
+  }
 }
 
 /*Banner section*/

@@ -1,4 +1,42 @@
+const ImageminPlugin = require('imagemin-webpack');
+const imageminGifsicle = require('imagemin-gifsicle');
+const imageminMozJpeg = require('imagemin-mozjpeg');
+const imageminPngQuant = require('imagemin-pngquant');
+const imageminSvgo = require('imagemin-svgo');
+
 module.exports = {
+  configureWebpack: {
+    plugins: [
+      new ImageminPlugin({
+        bail: false,
+        cache: false,
+        imageminOptions: {
+          filter: source => {
+            if (source.byteLength >= 8192) {
+              return true;
+            }
+    
+            return false;
+          },
+          // Lossy optimizations
+          plugins: [
+            imageminGifsicle({
+              interlaced: true,
+            }),
+            imageminMozJpeg({
+              quality: 25,
+            }),
+            imageminPngQuant({
+              strip: true,
+            }),
+            imageminSvgo({
+              removeViewBox: true
+            })
+          ]
+        }
+      })
+    ]
+  },
   chainWebpack: config => {
     config.module
       .rule('html')
@@ -19,6 +57,13 @@ module.exports = {
         './src/assets/scss/animations/*.scss',
       ],
       preProcessor: 'scss',
+    },
+    'file-loader': {
+      options: {
+        emitFile: true,
+        name: '[path][name].[ext]'
+      },
+      test: /\.(jpe?g|png|gif|svg)$/i,
     },
   },
   devServer: {
