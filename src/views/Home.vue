@@ -1,16 +1,20 @@
 <template>
   <div class="home">
-    <section class="banner">
+    <section class="banner" :class="{ expanded: visionExpanded }">
       <div class="banner-wraper">
-        <div class="container">
+        <div class="banner-container">
           <div class="banner-content">
-            <h2 class="banner-title capitalized mb-4">
+            <h2 class="banner-title capitalized">
               {{ $t('homepage.title') }}
             </h2>
-            <h4 class="banner-sub-title mb-4">
-              {{ $t('homepage.subTitle') }}
-            </h4>
-            <div class="buttons">
+            <b-collapse id="collapse-1" class="mb-4 mt-3" v-model="visionExpanded">
+              <h4 class="banner-sub-title" v-html="$t('homepage.visionHtml')">
+              </h4>
+            </b-collapse>
+            <div class="buttons mt-4">
+              <b-btn v-b-toggle.collapse-1 variant="outline-light">
+                {{ $t('footer.vision') }}
+              </b-btn>
               <b-btn variant="outline-light" :to="'/how-it-works'">
                 {{ $t('homepage.howItWorksButton') }}
               </b-btn>
@@ -169,6 +173,11 @@ export default {
     TopPerformingFunds,
     MailerSubscribeForm,
   },
+  data() {
+    return {
+      visionExpanded: false,
+    }
+  }
 };
 </script>
 
@@ -323,11 +332,6 @@ a:hover{
   margin: 0 20px;
 }
 
-@include media-breakpoint-down(sm) {
-  .buttons  {
-    color: red !important;
-  }
-}
 
 /*Banner section*/
 .banner {
@@ -338,20 +342,72 @@ a:hover{
   background-repeat:no-repeat;
   background-position:center center;
   position:relative;
+  transition: all 0.4s;
 }
 
-@media(max-width: 468px) {
+.banner.expanded {
+  height: 200vh;
+}
+
+@media(max-width: 1080px) {
+  .banner.expanded {
+    height: 160vh;
+  }
+}
+
+@media(max-width: 768px) {
+  .banner {
+    height: 100vh;
+  }
+
+  .banner.expanded {
+    height: 220vh;
+  }
+}
+
+@media(max-width: 550px) {
+  .banner.expanded {
+    height: 260vh;
+  }
+}
+
+
+@media(max-width: 480px) {
+  .banner-title {
+    font-size: 1.2em;
+  }
+  .banner-sub-title {
+    font-size: 1em;
+  }
+
+  .buttons {
+    flex-direction: column;
+
+    .btn {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@media(max-width: 400px) {
+  .banner-title {
+    font-size: 1.1em;
+  }
+  .banner-sub-title {
+    font-size: 0.9em;
+  }
+
+  .banner.expanded {
+    height: 300vh;
+  }
+}
+
+@media(max-width: 300px) {
   .banner-title {
     font-size: 1em;
   }
   .banner-sub-title {
-    font-size: 0.7em;
-  }
-}
-
-@media(max-width: 340px) {
-  .banner {
-    height: 130vh;
+    font-size: 0.8em;
   }
 }
 
@@ -364,6 +420,7 @@ a:hover{
   left:0;
   background:rgba(25, 89, 197, .9);
 }
+
 .banner:after {
   content:"";
   position:absolute;
@@ -376,10 +433,19 @@ a:hover{
   background-size:contain;
   background-position:bottom center;
 }
+
+.banner-container {
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 968px;
+  margin: 0 auto;
+}
+
 .banner-title {
   letter-spacing: 0.15em;
   line-height: 1.7;
 }
+
 .banner-sub-title {
   letter-spacing: 0.08em;
   line-height: 1.5;
@@ -391,22 +457,31 @@ a:hover{
   position:fixed;
   z-index:99;
 }
+
 .banner-wraper {
   width:100%;
   height:inherit;
   position:absolute;
   z-index:90;
 }
+
 .sticky {
   background:map-get($theme-colors, primary);
   -webkit-box-shadow: 0px 5px 17px 0px rgba(0,0,0,0.2);
   -moz-box-shadow: 0px 5px 17px 0px rgba(0,0,0,0.2);
   box-shadow: 0px 5px 17px 0px rgba(0,0,0,0.2);
 }
+
 .banner-content {
   padding-top:200px;
   text-align:center;
   color:#ffffff;
+}
+
+@media(max-width: 1023px) {
+  .banner-content {
+    padding-top: 30px;
+  }
 }
 
 /*mission area*/
