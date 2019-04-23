@@ -336,7 +336,7 @@ a:hover{
 /*Banner section*/
 .banner {
   width:100%;
-  height:100vh;
+  height: 700px;
   background:url("../assets/images/banner-bg.png");
   background-size:cover;
   background-repeat:no-repeat;
@@ -346,28 +346,27 @@ a:hover{
 }
 
 .banner.expanded {
-  height: 200vh;
+  height: 1000px;
 }
 
 @media(max-width: 1080px) {
   .banner.expanded {
-    height: 160vh;
+    height: 900px;
   }
 }
 
 @media(max-width: 768px) {
   .banner {
-    height: 100vh;
+    height: 550px;
   }
-
   .banner.expanded {
-    height: 220vh;
+    height: 1000px;
   }
 }
 
-@media(max-width: 550px) {
+@media(max-width: 600px) {
   .banner.expanded {
-    height: 260vh;
+    height: 1200px;
   }
 }
 
@@ -378,6 +377,10 @@ a:hover{
   }
   .banner-sub-title {
     font-size: 1em;
+  }
+
+  .banner.expanded {
+    height: 1350px;
   }
 
   .buttons {
@@ -395,10 +398,6 @@ a:hover{
   }
   .banner-sub-title {
     font-size: 0.9em;
-  }
-
-  .banner.expanded {
-    height: 300vh;
   }
 }
 
